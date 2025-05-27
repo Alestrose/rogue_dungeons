@@ -50,6 +50,7 @@ public class Main {
         frame.setVisible(true);                                               // Sets frame as visable
         frame.requestFocus();                                                   // Frame takes focus for keyboard and mouse
         gridPanel.requestFocus();                                               // Panel takes focus for keyboard and mouse
+        gamePanel.requestFocus();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                   // Program will terminate on exit from frame
         frame.setLocationRelativeTo(null);                                    // Sets Frame to center of screen
         frame.setResizable(false);                                    // Prevents resizing frame
@@ -62,8 +63,8 @@ public class Main {
         while(true){
             long elapsedTime = System.currentTimeMillis() - startTime;
             if(elapsedTime > Constants.REFRESH_RATE){
-                
                 gridPanel.update();
+                gamePanel.update();
                 startTime = System.currentTimeMillis();                         // This function must remain at the end of this statement
             }
         }

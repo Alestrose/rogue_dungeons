@@ -14,6 +14,7 @@ public class GridManager {
      * Create instance of your class here
      */
     Grid grid;
+    PlayableCharacter pc;
 
 
     /*
@@ -28,7 +29,8 @@ public class GridManager {
      * Initialize classes to be rendered here
      */
     private void start(){
-        grid = new Grid(10, 10);
+        grid = Grid.getInstance(10, 10);
+        pc = new PlayableCharacter("Player One", 10, 35, "Fighter1.png", grid.getCellArray()[0][0]);
     }
 
     /*
@@ -36,11 +38,8 @@ public class GridManager {
      * Implement graphics.drawImage(image, int x position, int y position, int wifth, int height, panel); to render an image to the panel
      */
     public void drawSprites(Graphics2D graphics, JPanel panel){
-        //Draw Basket
-        //graphics.drawImage(basket.getImage(), basket.getX(), basket.getY(), basket.getWidth(), basket.getHeight(), panel);
-        
         grid.drawGrid(grid, graphics, panel);
-
+        pc.drawGrid(graphics, panel);
 
     }
 

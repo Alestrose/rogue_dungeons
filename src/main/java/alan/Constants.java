@@ -4,7 +4,7 @@ import java.awt.Color;
 public class Constants {
 
     // Display Constants
-    public final static int REFRESH_RATE = 100;
+    public final static int REFRESH_RATE = 1000;
     public final static int FRAME_WIDTH = 1200;
     public final static int FRAME_HEIGHT = 800;
     public final static Color SKY_BLUE = new Color(174,227,245);

@@ -4,12 +4,14 @@ import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
+// Singleton Class
 public class Grid {
     private int rows, cols;
     private Cell[][] cellArray;
     protected int borderBuffer = 1;
 
-    public Grid(int rows, int cols){
+    private static Grid instance = null;
+    private Grid(int rows, int cols){
         this.rows = rows;
         this.cols = cols;
         setCellArray();
@@ -18,6 +20,12 @@ public class Grid {
     /*
      * Methods
      */
+
+    public static Grid getInstance(int rows, int cols){
+        if(instance == null){
+            instance = new Grid(rows, cols);
+        }return instance;
+    }
 
     // For use in "GameManager.drawSprites()"
     public void drawGrid(Grid grid, Graphics2D graphics, JPanel panel){

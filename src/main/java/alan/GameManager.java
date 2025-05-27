@@ -14,7 +14,7 @@ public class GameManager {
     /*
      * Create instance of your class here
      */
-    PlayableCharacter pc; 
+
 
 
     /*
@@ -29,7 +29,7 @@ public class GameManager {
      * Initialize classes to be rendered here
      */
     private void start(){
-        pc = new PlayableCharacter("Player One", 10, 35, "Fighter.png");
+        
     }
 
     /*
@@ -37,8 +37,8 @@ public class GameManager {
      * Implement graphics.drawImage(image, int x position, int y position, int wifth, int height, panel); to render an image to the panel
      */
     public void drawSprites(Graphics2D graphics, JPanel panel){
-        //Draw Basket
-        //graphics.drawImage(basket.getImage(), basket.getX(), basket.getY(), basket.getWidth(), basket.getHeight(), panel);
+        
+
     }
 
     /*
