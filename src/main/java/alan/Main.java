@@ -1,7 +1,8 @@
 package alan;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
+import java.awt.GridLayout;
 import java.awt.Insets;
 
 import javax.swing.JFrame;
@@ -16,43 +17,49 @@ public class Main {
         
 
         JFrame frame = new JFrame();
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new GridBagLayout());
+        JPanel mainPanel = new JPanel(new GridLayout(1, 2)); // 1 row, 2 columns
         mainPanel.setBackground(Constants.BLACK);
 
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.insets = new Insets(1,1 , 1, 1);
-        gbc.fill = GridBagConstraints.BOTH; // Make the components expand
-        gbc.weightx = 1.0;
-        gbc.weighty = 1.0;
+        // === GridPanel ===
+        GridBagConstraints gbcGrid = new GridBagConstraints();
+        gbcGrid.insets = new Insets(1, 1, 1, 1);
+        gbcGrid.fill = GridBagConstraints.BOTH;
+        gbcGrid.weightx = 0.5;
+        gbcGrid.weighty = 1.0;
+        gbcGrid.gridx = 0;
+        gbcGrid.gridy = 0;
 
         GridPanel gridPanel = new GridPanel();
-        gbc.gridx = 0;
-        gbc.gridy = 0;
-        gbc.weightx = 1;
-        mainPanel.add(gridPanel, gbc);
+        gridPanel.setPreferredSize(new Dimension(Constants.FRAME_WIDTH / 2, Constants.FRAME_HEIGHT));
         gridPanel.addKeyListener(gridPanel);
+        mainPanel.add(gridPanel, gbcGrid);
+
+        // === GamePanel ===
+        GridBagConstraints gbcGame = new GridBagConstraints();
+        gbcGame.insets = new Insets(1, 1, 1, 1);
+        gbcGame.fill = GridBagConstraints.BOTH;
+        gbcGame.weightx = 0.5;
+        gbcGame.weighty = 1.0;
+        gbcGame.gridx = 1;
+        gbcGame.gridy = 0;
 
         GamePanel gamePanel = new GamePanel();
-        gbc.gridx = 1;
-        gbc.gridy = 0;
-        gbc.weightx = 1.0;
-        mainPanel.add(gamePanel, gbc);
+        gamePanel.setPreferredSize(new Dimension(Constants.FRAME_WIDTH / 2, Constants.FRAME_HEIGHT));
         gamePanel.addKeyListener(gamePanel);
-        
+        gamePanel.setCards();
+        gamePanel.addCards();
+        mainPanel.add(gamePanel, gbcGame);
+
+        // === Final frame setup ===
         frame.add(mainPanel);
-
-        // Tryout GridBagLayout
-        
-
         frame.setTitle("Rogue Dungeons");
-        frame.setSize(Constants.FRAME_WIDTH, Constants.FRAME_HEIGHT);           // Sets size of frame (window) (ratio of frameSize variable)
-        frame.setVisible(true);                                               // Sets frame as visable
-        frame.requestFocus();                                                   // Frame takes focus for keyboard and mouse
-        gridPanel.requestFocus();                                               // Panel takes focus for keyboard and mouse
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                   // Program will terminate on exit from frame
-        frame.setLocationRelativeTo(null);                                    // Sets Frame to center of screen
-        frame.setResizable(false);                                    // Prevents resizing frame
+        frame.setSize(Constants.FRAME_WIDTH, Constants.FRAME_HEIGHT);
+        frame.setVisible(true);
+        frame.requestFocus();
+        gridPanel.requestFocus();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
 
         /*
         * Game Loop

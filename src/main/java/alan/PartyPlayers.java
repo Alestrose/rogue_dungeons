@@ -7,7 +7,7 @@ public class PartyPlayers {
     Grid grid = Grid.getInstance(0, 0);
     private static PartyPlayers instance = null;
     @SuppressWarnings("FieldMayBeFinal")
-    private ArrayList<PlayableCharacter> party = new ArrayList<>();
+    private ArrayList<Creature> party = new ArrayList<>();
     private PartyPlayers(){
         
     }
@@ -23,7 +23,7 @@ public class PartyPlayers {
         party.add(new PlayableCharacter("Ranger", 10, 35, "Ranger1.png", grid.getCellArray()[7][9]));
     }
 
-    public ArrayList<PlayableCharacter> getParty() {
+    public ArrayList<Creature> getParty() {
         return party;
     }
 

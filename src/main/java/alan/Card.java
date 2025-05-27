@@ -1,5 +1,6 @@
 package alan;
 
+import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -68,8 +69,10 @@ public class Card  extends JPanel implements KeyListener{
         JButton move = new JButton("Move");
             gbc.gridx = 2;
             gbc.gridy = 2;
-
             this.add(move,gbc);
+
+        this.setMaximumSize(new Dimension(Constants.FRAME_WIDTH/2, Constants.FRAME_HEIGHT/10));
+        this.setBackground(Constants.BLACK);
     }
 
 

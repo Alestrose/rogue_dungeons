@@ -60,7 +60,7 @@ public class GridManager {
      * Methods
      */
     public void drawParty(Graphics2D graphics, JPanel panel){
-        for (PlayableCharacter i : partyPlayers.getParty()) {
+        for (Creature i : partyPlayers.getParty()) {
             i.drawCreature(graphics, panel);
         }
     }

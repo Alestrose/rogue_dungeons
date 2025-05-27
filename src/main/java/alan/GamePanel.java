@@ -4,29 +4,30 @@ import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
+import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 public class GamePanel extends JPanel implements KeyListener{
     private final GameManager gameManager;
+    PartyPlayers partyPlayers = PartyPlayers.getInstance();
+    @SuppressWarnings("FieldMayBeFinal")
+    private ArrayList<Card> playerCards = new ArrayList<>();
 
     public GamePanel(){
         gameManager = new GameManager();
+        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setFocusable(true);
     }
 
     @Override
-    public void paint(Graphics g) {
-        super.paint(g);
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g); // <-- CRITICAL: lets Swing paint children (like Card)
 
-        Graphics2D graphics = (Graphics2D)g;
-        // Improves image rendering
-        RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        graphics.setRenderingHints(hints);
+        Graphics2D graphics = (Graphics2D) g;
+        graphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 
-        // Draw Background
         drawBackground(graphics);
-
-        // Draws Sprites (buckets, eggs, timer, score etc.)
         gameManager.drawSprites(graphics, this);
     }
 
@@ -39,6 +40,18 @@ public class GamePanel extends JPanel implements KeyListener{
     public void update(){
         gameManager.update();
         this.repaint();
+    }
+
+    public void setCards(){
+        for (Creature i : partyPlayers.getParty()) {
+            playerCards.add(new Card(i));
+        }
+    }
+
+    public void addCards(){
+        for (Card c : playerCards) {
+            this.add(c);
+        }
     }
 
 
