@@ -50,7 +50,6 @@ public class Main {
         frame.setVisible(true);                                               // Sets frame as visable
         frame.requestFocus();                                                   // Frame takes focus for keyboard and mouse
         gridPanel.requestFocus();                                               // Panel takes focus for keyboard and mouse
-        gamePanel.requestFocus();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);                   // Program will terminate on exit from frame
         frame.setLocationRelativeTo(null);                                    // Sets Frame to center of screen
         frame.setResizable(false);                                    // Prevents resizing frame
