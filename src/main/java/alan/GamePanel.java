@@ -1,0 +1,62 @@
+package alan;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.swing.JPanel;
+public class GamePanel extends JPanel implements KeyListener{
+    private final GameManager gameManager;
+
+    public GamePanel(){
+        gameManager = new GameManager();
+        setFocusable(true);
+    }
+
+    @Override
+    public void paint(Graphics g) {
+        super.paint(g);
+
+        Graphics2D graphics = (Graphics2D)g;
+        // Improves image rendering
+        RenderingHints hints = new RenderingHints(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        graphics.setRenderingHints(hints);
+
+        // Draw Background
+        drawBackground(graphics);
+
+        // Draws Sprites (buckets, eggs, timer, score etc.)
+        gameManager.drawSprites(graphics, this);
+    }
+
+    // Sets background color, size of screen
+    public void drawBackground(Graphics2D graphics){
+        graphics.setColor(Constants.SKY_BLUE);
+        graphics.fillRect(0, 0, Constants.FRAME_WIDTH, Constants.FRAME_HEIGHT);
+    }
+
+    public void update(){
+        gameManager.update();
+        this.repaint();
+    }
+
+
+    @Override
+    public void keyTyped(KeyEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'keyTyped'");
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'keyPressed'");
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'keyReleased'");
+    }
+}
