@@ -14,8 +14,6 @@ public class Main {
         * Initializes frame and adds panel
         * Implements additional settings for the frame
         */
-        
-
         JFrame frame = new JFrame();
         JPanel mainPanel = new JPanel(new GridLayout(1, 2)); // 1 row, 2 columns
         mainPanel.setBackground(Constants.BLACK);

@@ -10,21 +10,33 @@ import javax.swing.JPanel;
 
 public abstract class Creature {
     private String name;
+    private int level = 1;
+    private int ac = 10;
     private int health;
     private int speed;
+    private String playerRace;
+    private String playerClass;
+    private int dc = 12;
     private int x,y;
     private int width, height;
-    protected  String fileName;
-    protected  BufferedImage image;
+    protected String fileName;
+    protected BufferedImage image;
     private Cell location;
 
     // No Cell location Constructor
-    public Creature(String name, int health, int speed, String fileName){
+    public Creature(
+        String name,
+        int health,
+        int speed,
+        String fileName,
+        String playerClass,
+        String playerRace){
         this.name = name;
         this.health = health;
         this.speed = speed;
         this.fileName = fileName;
-        
+        this.playerClass = playerClass;
+        this.playerRace = playerRace;
         // Initializes image from images folder. Image selected via fileName
         File pic = new File("images/" + fileName);
         try {
@@ -35,7 +47,13 @@ public abstract class Creature {
     }
 
     // Specified Cell location constructor
-    public Creature(String name, int health, int speed, String fileName, Cell location){
+    public Creature(
+        String name,
+        int health, int speed,
+        String fileName,
+        Cell location,
+        String playerClass,
+        String playerRace){
         this.name = name;
         this.health = health;
         this.speed = speed;
@@ -43,6 +61,8 @@ public abstract class Creature {
         this.location = location;
         this.x = location.getX();
         this.y = location.getY();
+        this.playerClass = playerClass;
+        this.playerRace = playerRace;
         this.width = location.getWidth();
         this.height = location.getHeight();
         
@@ -157,11 +177,46 @@ public abstract class Creature {
         this.height = location.getHeight();
     }
 
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getAc() {
+        return ac;
+    }
+
+    public void setAc(int ac) {
+        this.ac = ac;
+    }
+
+    public int getDc() {
+        return dc;
+    }
+
+    public void setDc(int dc) {
+        this.dc = dc;
+    }
+    public String getPlayerRace() {
+        return playerRace;
+    }
+
+    public void setPlayerRace(String playerRace) {
+        this.playerRace = playerRace;
+    }
+
+    public String getPlayerClass() {
+        return playerClass;
+    }
+
+    public void setPlayerClass(String playerClass) {
+        this.playerClass = playerClass;
+    }
     
-
     
-
-
 
 
 
