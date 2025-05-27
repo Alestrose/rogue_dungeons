@@ -14,8 +14,7 @@ public class GridManager {
      * Create instance of your class here
      */
     Grid grid;
-    PlayableCharacter pc;
-
+    PartyPlayers partyPlayers;
 
     /*
      * Executed by GamePanel
@@ -30,7 +29,11 @@ public class GridManager {
      */
     private void start(){
         grid = Grid.getInstance(10, 10);
-        pc = new PlayableCharacter("Player One", 10, 35, "Fighter1.png", grid.getCellArray()[0][0]);
+        partyPlayers = PartyPlayers.getInstance();
+        partyPlayers.addPlayers();
+
+
+        // pc = new PlayableCharacter("Player One", 10, 35, "Fighter1.png", grid.getCellArray()[4][9]);
     }
 
     /*
@@ -39,12 +42,12 @@ public class GridManager {
      */
     public void drawSprites(Graphics2D graphics, JPanel panel){
         grid.drawGrid(grid, graphics, panel);
-        pc.drawGrid(graphics, panel);
+        drawParty(graphics, panel);
 
     }
 
     /*
-     * Implement class methods to run each frame here
+     * Implement class methods to run each frame heres
      * basket.move();
      * egg.spawn();
      * etc.
@@ -53,5 +56,13 @@ public class GridManager {
         
     }
 
+    /*
+     * Methods
+     */
+    public void drawParty(Graphics2D graphics, JPanel panel){
+        for (PlayableCharacter i : partyPlayers.getParty()) {
+            i.drawCreature(graphics, panel);
+        }
+    }
 
 }

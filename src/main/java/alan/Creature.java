@@ -64,7 +64,7 @@ public abstract class Creature {
     }
 
     // For use in "GameManager.drawSprites()"
-    public void drawGrid(Graphics2D graphics, JPanel panel){
+    public void drawCreature(Graphics2D graphics, JPanel panel){
         graphics.drawImage(getImage(), getX(), getY(), getWidth(), getHeight(), panel);
     }
     
