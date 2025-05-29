@@ -1,4 +1,4 @@
-package alan.grids;
+package alan.grid_panel;
 
 import java.awt.Graphics2D;
 

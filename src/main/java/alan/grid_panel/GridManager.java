@@ -1,11 +1,11 @@
-package alan.grids;
+package alan.grid_panel;
 
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
 
-import alan.Creature;
-import alan.PartyPlayers;
+import alan.creatures.Creature;
+import alan.creatures.PartyPlayers;
 public class GridManager {
 
     /*

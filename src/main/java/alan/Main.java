@@ -8,6 +8,9 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import alan.game_panel.GamePanel;
+import alan.grid_panel.GridPanel;
+
 public class Main {
     public static void main(String[] args) {
         /*

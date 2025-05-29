@@ -1,4 +1,4 @@
-package alan;
+package alan.game_panel;
 
 import java.awt.Graphics2D;
 
