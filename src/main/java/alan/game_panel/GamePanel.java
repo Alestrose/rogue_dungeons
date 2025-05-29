@@ -1,4 +1,4 @@
-package alan;
+package alan.game_panel;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
@@ -8,6 +8,10 @@ import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
+
+import alan.Constants;
+import alan.creatures.Creature;
+import alan.creatures.PartyPlayers;
 public class GamePanel extends JPanel implements KeyListener{
     private final GameManager gameManager;
     PartyPlayers partyPlayers = PartyPlayers.getInstance();

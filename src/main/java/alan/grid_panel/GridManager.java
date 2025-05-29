@@ -1,8 +1,11 @@
-package alan;
+package alan.grids;
 
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
+
+import alan.Creature;
+import alan.PartyPlayers;
 public class GridManager {
 
     /*

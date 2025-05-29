@@ -19,8 +19,8 @@ public class PartyPlayers {
     }
 
     public void addPlayers(){
-        party.add(new PlayableCharacter("Phillo", 10, 35, "Fighter1.png", grid.getCellArray()[4][9], "Human", "Figther"));
-        party.add(new PlayableCharacter("Tanith", 10, 35, "Ranger1.png", grid.getCellArray()[7][9],"Hal-Elf","Ranger"));
+        party.add(new PlayableCharacter("Phillo", "Fighter1.png", grid.getCellArray()[4][9]));
+        party.add(new PlayableCharacter("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
     }
 
     public ArrayList<Creature> getParty() {

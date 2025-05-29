@@ -1,4 +1,4 @@
-package alan;
+package alan.game_panel;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -16,6 +16,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import alan.Constants;
+import alan.creatures.Creature;
 
 public class Card extends JPanel implements KeyListener {
     protected String fileName;
@@ -54,8 +57,6 @@ public class Card extends JPanel implements KeyListener {
         // Info labels/text (row 0 and 1, columns 1–5)
         String[] labels = { 
             "Name: " + c.getName(),
-            "Class: " + c.getPlayerClass(),
-            "Race: " + c.getPlayerRace(),
             "Level: " + c.getLevel(),
             "AC: " + c.getAc(), 
             "Health: " + c.getHealth(),

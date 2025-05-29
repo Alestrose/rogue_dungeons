@@ -1,4 +1,4 @@
-package alan;
+package alan.creatures;
 
 import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
@@ -8,35 +8,28 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import alan.grids.Cell;
+
 public abstract class Creature {
     private String name;
     private int level = 1;
     private int ac = 10;
     private int health;
     private int speed;
-    private String playerRace;
-    private String playerClass;
     private int dc = 12;
     private int x,y;
     private int width, height;
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
+    private String size;
 
     // No Cell location Constructor
     public Creature(
         String name,
-        int health,
-        int speed,
-        String fileName,
-        String playerClass,
-        String playerRace){
+        String fileName){
         this.name = name;
-        this.health = health;
-        this.speed = speed;
         this.fileName = fileName;
-        this.playerClass = playerClass;
-        this.playerRace = playerRace;
         // Initializes image from images folder. Image selected via fileName
         File pic = new File("images/" + fileName);
         try {
@@ -49,20 +42,13 @@ public abstract class Creature {
     // Specified Cell location constructor
     public Creature(
         String name,
-        int health, int speed,
         String fileName,
-        Cell location,
-        String playerClass,
-        String playerRace){
+        Cell location){
         this.name = name;
-        this.health = health;
-        this.speed = speed;
         this.fileName = fileName;
         this.location = location;
         this.x = location.getX();
         this.y = location.getY();
-        this.playerClass = playerClass;
-        this.playerRace = playerRace;
         this.width = location.getWidth();
         this.height = location.getHeight();
         
@@ -200,21 +186,15 @@ public abstract class Creature {
     public void setDc(int dc) {
         this.dc = dc;
     }
-    public String getPlayerRace() {
-        return playerRace;
+
+    public String getSize() {
+        return size;
     }
 
-    public void setPlayerRace(String playerRace) {
-        this.playerRace = playerRace;
+    public void setSize(String size) {
+        this.size = size;
     }
 
-    public String getPlayerClass() {
-        return playerClass;
-    }
-
-    public void setPlayerClass(String playerClass) {
-        this.playerClass = playerClass;
-    }
     
     
 

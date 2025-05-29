@@ -1,8 +1,10 @@
-package alan;
+package alan.grids;
 
 import java.awt.Graphics2D;
 
 import javax.swing.JPanel;
+
+import alan.Constants;
 
 // Singleton Class
 public class Grid {

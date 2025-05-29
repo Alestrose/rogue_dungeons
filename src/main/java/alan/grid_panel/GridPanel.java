@@ -1,4 +1,4 @@
-package alan;
+package alan.grids;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -7,6 +7,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
+
+import alan.Constants;
 
 public class GridPanel extends JPanel implements KeyListener{
     private final GridManager gridManager;
