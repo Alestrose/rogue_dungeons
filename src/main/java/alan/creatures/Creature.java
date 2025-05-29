@@ -8,9 +8,10 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
-import alan.grids.Cell;
+import alan.grid_panel.Cell;
 
 public abstract class Creature {
+    private String creatureType;
     private String name;
     private int level = 1;
     private int ac = 10;
@@ -195,7 +196,16 @@ public abstract class Creature {
         this.size = size;
     }
 
+    public String getCreatureType() {
+        return creatureType;
+    }
+
+    public void setCreatureType(String creatureType) {
+        this.creatureType = creatureType;
+    }
+
     
+
     
 
 

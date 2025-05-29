@@ -1,6 +1,8 @@
-package alan;
+package alan.creatures;
 
 import java.util.ArrayList;
+
+import alan.grid_panel.Grid;
 
 // Singleton Class
 public class PartyPlayers {
@@ -19,8 +21,8 @@ public class PartyPlayers {
     }
 
     public void addPlayers(){
-        party.add(new PlayableCharacter("Phillo", "Fighter1.png", grid.getCellArray()[4][9]));
-        party.add(new PlayableCharacter("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
+        // party.add(new PlayableCharacter("Phillo", "Fighter1.png", grid.getCellArray()[4][9]));
+        // party.add(new PlayableCharacter("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
     }
 
     public ArrayList<Creature> getParty() {
