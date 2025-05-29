@@ -3,24 +3,23 @@ package alan.races;
 import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
 
-public class Orc extends PlayableCharacter implements RaceInterface{
-    final String RACE_NAME = "Orc";
-    private Boolean hasRelentlessEndurance = true;
+public class Gnome extends PlayableCharacter implements RaceInterface{
+    final String RACE_NAME = "Gnome";
 
-    public Orc(String name, String fileName) {
+    public Gnome(String name, String fileName) {
         super(name, fileName);
         setCreatureType("Humanoid");
         setSpeed(30);
-        setSize("Medium");
+        setSize("Small");
         setRaceName(RACE_NAME);
         setSpecialFeatures();
     }
 
-    public Orc(String name, String fileName, Cell location) {
+    public Gnome(String name, String fileName, Cell location) {
         super(name, fileName, location);
         setCreatureType("Humanoid");
         setSpeed(30);
-        setSize("Medium");
+        setSize("Small");
         setRaceName(RACE_NAME);
         setSpecialFeatures();
     }
@@ -31,7 +30,7 @@ public class Orc extends PlayableCharacter implements RaceInterface{
     @Override
     public final void setSpecialFeatures() {
         // Darkvision
-        setDarkVision(120);
+        setDarkVision(60);
     }
 
     @Override
@@ -46,7 +45,6 @@ public class Orc extends PlayableCharacter implements RaceInterface{
 
     @Override
     public void onLongRestRace() {
-        setHasRelentlessEndurance(true);
 
     }
 
@@ -55,13 +53,5 @@ public class Orc extends PlayableCharacter implements RaceInterface{
      */
     public String getRACE_NAME() {
         return RACE_NAME;
-    }
-
-    public Boolean getHasRelentlessEndurance() {
-        return hasRelentlessEndurance;
-    }
-
-    public void setHasRelentlessEndurance(Boolean hasRelentlessEndurance) {
-        this.hasRelentlessEndurance = hasRelentlessEndurance;
     }
 }
