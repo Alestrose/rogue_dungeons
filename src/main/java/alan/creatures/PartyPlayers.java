@@ -27,7 +27,7 @@ public class PartyPlayers {
         // party.add(new PlayableCharacter("Phillo", "Fighter1.png", grid.getCellArray()[4][9]));
         // party.add(new PlayableCharacter("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
         party.add(new Elf("Phillo","Fighter1.png" , grid.getCellArray()[4][6]));
-        party.add(new Human("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
+        party.add(new Human("Tanith", "Ranger1.png", grid.getCellArray()[7][9], "history"));
         party.add(new Dwarf("Ti Nee","Fighter1.png" , grid.getCellArray()[1][8]));
     }
 

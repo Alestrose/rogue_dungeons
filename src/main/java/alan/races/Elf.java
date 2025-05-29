@@ -12,6 +12,7 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         setSpeed(30);
         setSize("Medium");
         setRaceName(RACE_NAME);
+        setSpecialFeatures();
     }
 
     public Elf(String name, String fileName, Cell location) {
@@ -20,13 +21,14 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         setSpeed(30);
         setSize("Medium");
         setRaceName(RACE_NAME);
+        setSpecialFeatures();
     }
 
     /*
      * Methods
      */
     @Override
-    public void setSpecialFeatures() {
+    public final void setSpecialFeatures() {
         // Darkvision
         setDarkVision(60);
         // Keen Senses
@@ -36,6 +38,16 @@ public class Elf extends PlayableCharacter implements RaceInterface{
 
     @Override
     public void onLevelUpRace(){
+
+    }
+
+    @Override
+    public void onShortRestRace() {
+
+    }
+
+    @Override
+    public void onLongRestRace() {
 
     }
 

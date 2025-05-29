@@ -2,7 +2,11 @@ package alan.races;
 
 public interface RaceInterface {
 
-    abstract  void setSpecialFeatures();
+    abstract void setSpecialFeatures();
 
     abstract void onLevelUpRace();
+
+    abstract void onShortRestRace();
+
+    abstract void onLongRestRace();
 }

@@ -5,34 +5,50 @@ import alan.grid_panel.Cell;
 
 public class Human extends  PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Human";
+    final String SkilledTrait;
+    private Boolean hasHeroicInspiration = true;
 
-    public Human(String name, String fileName, Cell location) {
+    public Human(String name, String fileName, Cell location, String skill) {
         super(name, fileName, location);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize("Medium");
         setRaceName(RACE_NAME);
+        setSpecialFeatures();
+        this.SkilledTrait = skill;
     }
 
-    public Human(String name, String fileName) {
+    public Human(String name, String fileName, String skill) {
         super(name, fileName);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize("Medium");
         setRaceName(RACE_NAME);
+        setSpecialFeatures();
+        this.SkilledTrait = skill;
     }
 
     /*
      * Methods
      */
     @Override
-    public void setSpecialFeatures() {
-        throw new UnsupportedOperationException("Not supported yet.");
+    public final void setSpecialFeatures() {
+        grantSkillProficiency(SkilledTrait);
     }
 
     @Override
     public void onLevelUpRace(){
+        
+    }
 
+    @Override
+    public void onShortRestRace() {
+
+    }
+
+    @Override
+    public void onLongRestRace() {
+        setHasHeroicInspiration(true);
     }
 
     /*
@@ -41,6 +57,22 @@ public class Human extends  PlayableCharacter implements RaceInterface{
     public String getRACE_NAME() {
         return RACE_NAME;
     }
+
+    public String getSkilledTrait() {
+        return SkilledTrait;
+    }
+
+    public Boolean getHasHeroicInspiration() {
+        return hasHeroicInspiration;
+    }
+
+    public void setHasHeroicInspiration(Boolean hasHeroicInspiration) {
+        this.hasHeroicInspiration = hasHeroicInspiration;
+    }
+
+    
+
+    
 
     
 
