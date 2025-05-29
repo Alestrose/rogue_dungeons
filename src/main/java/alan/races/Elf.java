@@ -11,6 +11,7 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize("Medium");
+        setRaceName(RACE_NAME);
     }
 
     public Elf(String name, String fileName, Cell location) {
@@ -18,6 +19,7 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize("Medium");
+        setRaceName(RACE_NAME);
     }
 
     /*
@@ -27,6 +29,8 @@ public class Elf extends PlayableCharacter implements RaceInterface{
     public void setSpecialFeatures() {
         // Darkvision
         setDarkVision(60);
+        // Keen Senses
+        grantSkillProficiency("insight");
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

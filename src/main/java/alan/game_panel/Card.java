@@ -57,6 +57,7 @@ public class Card extends JPanel implements KeyListener {
         // Info labels/text (row 0 and 1, columns 1–5)
         String[] labels = { 
             "Name: " + c.getName(),
+            "Race: " + c.getRaceName(),
             "Level: " + c.getLevel(),
             "AC: " + c.getAc(), 
             "Health: " + c.getMaxHealth(),

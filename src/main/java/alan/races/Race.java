@@ -1,4 +1,4 @@
-package alan.creatures;
+package alan.races;
 
 public abstract class Race {
     /*

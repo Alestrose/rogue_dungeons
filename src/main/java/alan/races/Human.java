@@ -11,6 +11,7 @@ public class Human extends  PlayableCharacter implements RaceInterface{
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize("Medium");
+        setRaceName(RACE_NAME);
     }
 
     public Human(String name, String fileName) {
@@ -18,6 +19,7 @@ public class Human extends  PlayableCharacter implements RaceInterface{
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize("Medium");
+        setRaceName(RACE_NAME);
     }
 
     /*

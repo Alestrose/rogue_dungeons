@@ -16,7 +16,9 @@ public abstract class Creature {
     private String
         creatureType,
         name,
-        size;
+        size,
+        raceName;
+
     private int
         level = 1,
         ac = 10,
@@ -368,7 +370,13 @@ public abstract class Creature {
         return charismaMod;
     }
 
+    public String getRaceName() {
+        return raceName;
+    }
 
+    public void setRaceName(String raceName) {
+        this.raceName = raceName;
+    }
     
 
 }

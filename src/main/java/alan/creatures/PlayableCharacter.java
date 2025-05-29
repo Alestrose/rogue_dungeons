@@ -47,25 +47,36 @@ public class PlayableCharacter extends Creature{
 
     }
 
-    public void setDefaultSkillMap(){
-        skillMap.put("Athletics", new Skill("Athletics", getStrength(), getProficiencyBonus()));
-        skillMap.put("Acrobatics", new Skill("Acrobatics", getDexterity(), getProficiencyBonus()));
-        skillMap.put("Sleight of Hand", new Skill("Sleight of Hand", getDexterity(), getProficiencyBonus()));
-        skillMap.put("Stealth", new Skill("Stealth", getDexterity(), getProficiencyBonus()));
-        skillMap.put("Arcana", new Skill("Arcana", getIntelligence(), getProficiencyBonus()));
-        skillMap.put("History", new Skill("History", getIntelligence(), getProficiencyBonus()));
-        skillMap.put("Investigation", new Skill("Investigation", getIntelligence(), getProficiencyBonus()));
-        skillMap.put("Nature", new Skill("Nature", getIntelligence(), getProficiencyBonus()));
-        skillMap.put("Religion", new Skill("Religion", getIntelligence(), getProficiencyBonus()));
-        skillMap.put("Animal Handling", new Skill("Animal Handling", getWisdom(), getProficiencyBonus()));
-        skillMap.put("Insight", new Skill("Insight", getWisdom(), getProficiencyBonus()));
-        skillMap.put("Medicine", new Skill("Medicine", getWisdom(), getProficiencyBonus()));
-        skillMap.put("Perception", new Skill("Perception", getWisdom(), getProficiencyBonus()));
-        skillMap.put("Survival", new Skill("Survival", getWisdom(), getProficiencyBonus()));
-        skillMap.put("Deception", new Skill("Deception", getCharisma(), getProficiencyBonus()));
-        skillMap.put("Intimidation", new Skill("Intimidation", getCharisma(), getProficiencyBonus()));
-        skillMap.put("Performance", new Skill("Performance", getCharisma(), getProficiencyBonus()));
-        skillMap.put("Persuasion", new Skill("Persuasion", getCharisma(), getProficiencyBonus()));
+    public void grantSkillProficiency(String skillName) {
+        Skill skill = skillMap.get(skillName);
+        if (skill != null) {
+            skill.setHasProficiency(true);
+        }
+    }
+
+    public void grantResistance(String resistanceName){
+        resistances.put(resistanceName, true);
+    }
+
+    private void setDefaultSkillMap(){
+        skillMap.put("athletics", new Skill("athletics", getStrength(), getProficiencyBonus()));
+        skillMap.put("acrobatics", new Skill("acrobatics", getDexterity(), getProficiencyBonus()));
+        skillMap.put("sleight of Hand", new Skill("sleight of Hand", getDexterity(), getProficiencyBonus()));
+        skillMap.put("stealth", new Skill("stealth", getDexterity(), getProficiencyBonus()));
+        skillMap.put("arcana", new Skill("arcana", getIntelligence(), getProficiencyBonus()));
+        skillMap.put("history", new Skill("history", getIntelligence(), getProficiencyBonus()));
+        skillMap.put("investigation", new Skill("investigation", getIntelligence(), getProficiencyBonus()));
+        skillMap.put("nature", new Skill("nature", getIntelligence(), getProficiencyBonus()));
+        skillMap.put("religion", new Skill("religion", getIntelligence(), getProficiencyBonus()));
+        skillMap.put("animal handling", new Skill("animal handling", getWisdom(), getProficiencyBonus()));
+        skillMap.put("insight", new Skill("insight", getWisdom(), getProficiencyBonus()));
+        skillMap.put("medicine", new Skill("medicine", getWisdom(), getProficiencyBonus()));
+        skillMap.put("perception", new Skill("perception", getWisdom(), getProficiencyBonus()));
+        skillMap.put("survival", new Skill("survival", getWisdom(), getProficiencyBonus()));
+        skillMap.put("deception", new Skill("deception", getCharisma(), getProficiencyBonus()));
+        skillMap.put("intimidation", new Skill("intimidation", getCharisma(), getProficiencyBonus()));
+        skillMap.put("performance", new Skill("performance", getCharisma(), getProficiencyBonus()));
+        skillMap.put("persuasion", new Skill("persuasion", getCharisma(), getProficiencyBonus()));
     }
     
     /*

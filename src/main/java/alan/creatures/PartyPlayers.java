@@ -3,6 +3,9 @@ package alan.creatures;
 import java.util.ArrayList;
 
 import alan.grid_panel.Grid;
+import alan.races.Dwarf;
+import alan.races.Elf;
+import alan.races.Human;
 
 // Singleton Class
 public class PartyPlayers {
@@ -23,6 +26,9 @@ public class PartyPlayers {
     public void addPlayers(){
         // party.add(new PlayableCharacter("Phillo", "Fighter1.png", grid.getCellArray()[4][9]));
         // party.add(new PlayableCharacter("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
+        party.add(new Elf("Phillo","Fighter1.png" , grid.getCellArray()[4][6]));
+        party.add(new Human("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
+        party.add(new Dwarf("Ti Nee","Fighter1.png" , grid.getCellArray()[1][8]));
     }
 
     public ArrayList<Creature> getParty() {

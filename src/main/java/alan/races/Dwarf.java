@@ -11,6 +11,7 @@ public class Dwarf extends PlayableCharacter implements RaceInterface{
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize("Medium");
+        setRaceName(RACE_NAME);
         // Dwarven Toughness
         setMaxHealth(getMaxHealth()+1);
     }
@@ -20,6 +21,7 @@ public class Dwarf extends PlayableCharacter implements RaceInterface{
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize("Medium");
+        setRaceName(RACE_NAME);
     }
 
     /*
@@ -30,7 +32,7 @@ public class Dwarf extends PlayableCharacter implements RaceInterface{
         // Darkvision
         setDarkVision(120);
         //Dwarven Resilience
-        resistances.put("poison", true);
+        grantResistance("poison");
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
