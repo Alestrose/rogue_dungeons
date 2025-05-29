@@ -59,7 +59,7 @@ public class Card extends JPanel implements KeyListener {
             "Name: " + c.getName(),
             "Level: " + c.getLevel(),
             "AC: " + c.getAc(), 
-            "Health: " + c.getHealth(),
+            "Health: " + c.getMaxHealth(),
             "Speed: " + c.getSpeed(), 
             "DC: " + c.getDc()
         };

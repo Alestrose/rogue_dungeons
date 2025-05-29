@@ -4,6 +4,8 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
@@ -11,19 +13,39 @@ import javax.swing.JPanel;
 import alan.grid_panel.Cell;
 
 public abstract class Creature {
-    private String creatureType;
-    private String name;
-    private int level = 1;
-    private int ac = 10;
-    private int health;
-    private int speed;
-    private int dc = 12;
-    private int x,y;
-    private int width, height;
+    private String
+        creatureType,
+        name,
+        size;
+    private int
+        level = 1,
+        ac = 10,
+        maxHealth,
+        currentHealth,
+        speed,
+        dc = 10,
+        x,y,
+        width,
+        height,
+        darkVision = 0;
+
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
-    private String size;
+
+    // Ability scores & Modifiers
+    private int strength, dexterity, constitution, intelligence, wisdom, charisma;
+    private int
+        strengthMod = setModifier(strength),
+        dexterityMod = setModifier(dexterity),
+        constitutionMod = setModifier(constitution),
+        intelligenceMod = setModifier(intelligence),
+        wisdomMod = setModifier(wisdom),
+        charismaMod = setModifier(charisma);
+    
+    // Resistances & Vulnerabilities
+    protected Map<String, Boolean> resistances = new HashMap<>();
+    protected Map<String, Boolean> vulnerabilities = new HashMap<>();
 
     // No Cell location Constructor
     public Creature(
@@ -38,6 +60,9 @@ public abstract class Creature {
         } catch (IOException e) {
             System.out.println("file not found");
         }
+        
+        setDefaultResistences();
+        setDefaultVulnerabilities();
     }
 
     // Specified Cell location constructor
@@ -60,6 +85,9 @@ public abstract class Creature {
         } catch (IOException e) {
             System.out.println("file not found");
         }
+
+        setDefaultResistences();
+        setDefaultVulnerabilities();
     }
 
     /*
@@ -74,7 +102,39 @@ public abstract class Creature {
     public void drawCreature(Graphics2D graphics, JPanel panel){
         graphics.drawImage(getImage(), getX(), getY(), getWidth(), getHeight(), panel);
     }
+
+    // Initialize named booleans
+    private void setDefaultResistences(){
+    resistances.put("fire", false);
+    resistances.put("ice", false);
+    resistances.put("lightning", false);
+    resistances.put("poison", false);
+    resistances.put("acid", false);
+    resistances.put("slashing", false);
+    resistances.put("piercing", false);
+    resistances.put("bludgeoning", false);
+    resistances.put("necrotic", false);
+    resistances.put("radiant", false);
+    }
     
+    // Initialize named booleans
+    private void setDefaultVulnerabilities(){
+    vulnerabilities.put("fire", false);
+    vulnerabilities.put("ice", false);
+    vulnerabilities.put("lightning", false);
+    vulnerabilities.put("poison", false);
+    vulnerabilities.put("acid", false);
+    vulnerabilities.put("slashing", false);
+    vulnerabilities.put("piercing", false);
+    vulnerabilities.put("bludgeoning", false);
+    vulnerabilities.put("necrotic", false);
+    vulnerabilities.put("radiant", false);
+    }
+
+    public int setModifier(int abilityScore){
+        if(abilityScore >= 10) return strengthMod = (abilityScore - 10) /2;
+        else return strengthMod = (abilityScore - 11) /2;
+    }
 
     /*
      * Getters & Setters
@@ -88,12 +148,20 @@ public abstract class Creature {
         this.name = name;
     }
 
-    public int getHealth() {
-        return health;
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
-    public void setHealth(int health) {
-        this.health = health;
+    public void setMaxHealth(int health) {
+        this.maxHealth = health;
+    }
+
+    public int getCurrentHealth() {
+        return currentHealth;
+    }
+
+    public void setCurrentHealth(int currentHealth) {
+        this.currentHealth = currentHealth;
     }
 
     public int getSpeed() {
@@ -204,12 +272,104 @@ public abstract class Creature {
         this.creatureType = creatureType;
     }
 
-    
+   public int getDarkVision() {
+        return darkVision;
+    }
+
+    public void setDarkVision(int darkVision) {
+        this.darkVision = darkVision;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public int getConstitution() {
+        return constitution;
+    }
+
+    public void setConstitution(int constitution) {
+        this.constitution = constitution;
+    }
+
+    public int getIntelligence() {
+        return intelligence;
+    }
+
+    public void setIntelligence(int intelligence) {
+        this.intelligence = intelligence;
+    }
+
+    public int getWisdom() {
+        return wisdom;
+    }
+
+    public void setWisdom(int wisdom) {
+        this.wisdom = wisdom;
+    }
+
+    public int getCharisma() {
+        return charisma;
+    }
+
+    public void setCharisma(int charisma) {
+        this.charisma = charisma;
+    }
+
+    public Map<String, Boolean> getResistances() {
+        return resistances;
+    }
+
+    public void setResistances(Map<String, Boolean> resistances) {
+        this.resistances = resistances;
+    }
+
+    public Map<String, Boolean> getVulnerabilities() {
+        return vulnerabilities;
+    }
+
+    public void setVulnerabilities(Map<String, Boolean> vulnerabilities) {
+        this.vulnerabilities = vulnerabilities;
+    }
+
+    public int getStrengthMod() {
+        return strengthMod;
+    }
+
+    public int getDexterityMod() {
+        return dexterityMod;
+    }
+
+    public int getConstitutionMod() {
+        return constitutionMod;
+    }
+
+    public int getIntelligenceMod() {
+        return intelligenceMod;
+    }
+
+    public int getWisdomMod() {
+        return wisdomMod;
+    }
+
+    public int getCharismaMod() {
+        return charismaMod;
+    }
+
 
     
-
-
-
 
 }
 
