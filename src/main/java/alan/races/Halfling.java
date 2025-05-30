@@ -30,7 +30,7 @@ public class Halfling extends PlayableCharacter implements RaceInterface{
      */
     @Override
     public final void setSpecialFeatures() {
-        
+        grantConditionAdvantage(Constants.CONDITION_KEY.FRIGHTENED);
     }
 
     @Override

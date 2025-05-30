@@ -36,6 +36,7 @@ public class Goliath extends PlayableCharacter implements RaceInterface{
     public final void setSpecialFeatures() {
         // Powerful Build
         grantConditionAdvantage(Constants.CONDITION_KEY.GRAPPLED);
+        // Giant Ancestry
         switch (ancestry) {
             case CLOUD_GIANT -> {// 
             }
