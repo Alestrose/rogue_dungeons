@@ -35,6 +35,7 @@ public abstract class Creature {
     protected BufferedImage image;
     private Cell location;
     private Constants.CREATURE_SIZE size;
+    private Constants.ABILITY spellCastAbility;
 
     // Ability scores & Modifiers
     protected Map<Constants.ABILITY, Integer> abilities = new HashMap<>();
@@ -424,6 +425,13 @@ public abstract class Creature {
         this.size = size;
     }
     
+    public Constants.ABILITY getSpellCastAbility() {
+        return spellCastAbility;
+    }
+
+    public void setSpellCastAbility(Constants.ABILITY spellCastAbility) {
+        this.spellCastAbility = spellCastAbility;
+    }
 
 }
 
