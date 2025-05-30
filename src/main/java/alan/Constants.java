@@ -16,10 +16,7 @@ public class Constants {
     public final static int GRID_PANEL_WIDTH = (int)(FRAME_WIDTH/2);
     public final static int GRID_PANEL_HEIGHT = FRAME_HEIGHT;
 
-    // Bucket Constants
-    public final static int BASKET_WIDTH = 100;
-    public final static int BASKET_HEIGHT = 100;
-    public final static int BASKET_X = (FRAME_WIDTH/2)-(BASKET_WIDTH/2);
-    public final static int BASKET_Y = (int)(FRAME_HEIGHT*.75)-BASKET_HEIGHT;
+    // Creature
+    public static enum CREATURE_SIZE {TINY, SMALL, MEDIUM, LARGE, HUGE, GARGANTUAN, COLOSSAL};
     
 }
