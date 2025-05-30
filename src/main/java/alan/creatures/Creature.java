@@ -12,6 +12,7 @@ import javax.swing.JPanel;
 
 import alan.Constants;
 import alan.grid_panel.Cell;
+import alan.skills_and_feats.ConditionEffect;
 
 public abstract class Creature {
     private String
@@ -48,6 +49,7 @@ public abstract class Creature {
     // Resistances & Vulnerabilities
     protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
     protected Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities = new HashMap<>();
+    protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionMap = new HashMap<>();
 
     // No Cell location Constructor
     public Creature(
@@ -65,6 +67,7 @@ public abstract class Creature {
         
         setDefaultResistences();
         setDefaultVulnerabilities();
+        setDefaultConditionMap();
     }
 
     // Specified Cell location constructor
@@ -90,6 +93,7 @@ public abstract class Creature {
 
         setDefaultResistences();
         setDefaultVulnerabilities();
+        setDefaultConditionMap();
     }
 
     /*
@@ -133,6 +137,24 @@ public abstract class Creature {
     vulnerabilities.put(Constants.DAMAGE_TYPE.RADIANT, false);
     }
 
+
+    private void setDefaultConditionMap(){
+        conditionMap.put(Constants.CONDITION_KEY.BLINDED, new ConditionEffect("blinded"));
+        conditionMap.put(Constants.CONDITION_KEY.CHARMED, new ConditionEffect("charmed"));
+        conditionMap.put(Constants.CONDITION_KEY.DEAFENED, new ConditionEffect("deafened"));
+        conditionMap.put(Constants.CONDITION_KEY.EXHAUSTION, new ConditionEffect("exhaustion"));
+        conditionMap.put(Constants.CONDITION_KEY.FRIGHTENED, new ConditionEffect("frightened"));
+        conditionMap.put(Constants.CONDITION_KEY.GRAPPLED, new ConditionEffect("grappled"));
+        conditionMap.put(Constants.CONDITION_KEY.INCAPACITATED, new ConditionEffect("incapacitated"));
+        conditionMap.put(Constants.CONDITION_KEY.INVISIBLE, new ConditionEffect("invisible"));
+        conditionMap.put(Constants.CONDITION_KEY.PARALYZED, new ConditionEffect("paralyzed"));
+        conditionMap.put(Constants.CONDITION_KEY.PETRIFIED, new ConditionEffect("petrified"));
+        conditionMap.put(Constants.CONDITION_KEY.POISONED, new ConditionEffect("poisoned"));
+        conditionMap.put(Constants.CONDITION_KEY.PRONE, new ConditionEffect("prone"));
+        conditionMap.put(Constants.CONDITION_KEY.RESTRAINED, new ConditionEffect("restrained"));
+        conditionMap.put(Constants.CONDITION_KEY.STUNNED, new ConditionEffect("stunned"));
+        conditionMap.put(Constants.CONDITION_KEY.UNCONSCIOUS, new ConditionEffect("unconscious"));
+    }
     public int setModifier(int abilityScore){
         if(abilityScore >= 10) return strengthMod = (abilityScore - 10) /2;
         else return strengthMod = (abilityScore - 11) /2;
