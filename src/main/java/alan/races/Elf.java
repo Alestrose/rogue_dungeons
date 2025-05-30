@@ -6,15 +6,18 @@ import alan.grid_panel.Cell;
 
 public class Elf extends PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Elf";
-    private Constants.SKILL_KEY skill_key;
+    private final Constants.SKILL_KEY SKILL_KEY;
+    public enum ELVEN_LINEAGE {DROW, HIGH_ELF, WOOD_ELF};
+    ELVEN_LINEAGE lineage;
 
-    public Elf(String name, String fileName, Constants.SKILL_KEY skill_key) {
+    public Elf(String name, String fileName, Constants.SKILL_KEY skill_key, ELVEN_LINEAGE lineage) {
         super(name, fileName);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
-        this.skill_key = skill_key;
+        this.lineage = lineage;
+        this.SKILL_KEY = skill_key;
         setSpecialFeatures();
     }
 
@@ -24,7 +27,8 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
-        this.skill_key = skill_key;
+        
+        this.SKILL_KEY = skill_key;
         setSpecialFeatures();
     }
 
@@ -36,7 +40,15 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         // Darkvision
         setDarkVision(60);
         // Keen Senses
-        grantSkillProficiency(skill_key);
+        grantSkillProficiency(SKILL_KEY);
+        // Elven Lineage
+        switch (lineage) {
+            case DROW: setDarkVision(120) /* Gets Dancing Lights cantrip */; break;
+            case HIGH_ELF: /* Gets Prestidigitation cantrip */ ; break;
+            case WOOD_ELF: setSpeed(35) /* Gets Druid Craft cantrip */; break;
+            default:
+                throw new AssertionError();
+        }
     }
 
     @Override
