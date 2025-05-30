@@ -3,6 +3,7 @@ package alan.creatures;
 import java.util.HashMap;
 import java.util.Map;
 
+import alan.Constants;
 import alan.grid_panel.Cell;
 import alan.skills_and_feats.Skill;
 
@@ -54,7 +55,7 @@ public class PlayableCharacter extends Creature{
         }
     }
 
-    public void grantResistance(String resistanceName){
+    public void grantResistance(Constants.DAMAGE_TYPE resistanceName){
         resistances.put(resistanceName, true);
     }
 

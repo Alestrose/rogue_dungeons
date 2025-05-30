@@ -1,5 +1,6 @@
 package alan.races;
 
+import alan.Constants;
 import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
 
@@ -10,7 +11,7 @@ public class Goliath extends PlayableCharacter implements RaceInterface{
         super(name, fileName);
         setCreatureType("Humanoid");
         setSpeed(35);
-        setSize("Medium");
+        setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
         setSpecialFeatures();
     }
@@ -19,7 +20,7 @@ public class Goliath extends PlayableCharacter implements RaceInterface{
         super(name, fileName, location);
         setCreatureType("Humanoid");
         setSpeed(35);
-        setSize("Medium");
+        setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
         setSpecialFeatures();
     }

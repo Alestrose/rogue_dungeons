@@ -10,13 +10,13 @@ import java.util.Map;
 import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
+import alan.Constants;
 import alan.grid_panel.Cell;
 
 public abstract class Creature {
     private String
         creatureType,
         name,
-        size,
         raceName;
 
     private int
@@ -30,10 +30,10 @@ public abstract class Creature {
         width,
         height,
         darkVision = 0;
-
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
+    private Constants.CREATURE_SIZE size;
 
     // Ability scores & Modifiers
     private int strength, dexterity, constitution, intelligence, wisdom, charisma;
@@ -46,8 +46,8 @@ public abstract class Creature {
         charismaMod = setModifier(charisma);
     
     // Resistances & Vulnerabilities
-    protected Map<String, Boolean> resistances = new HashMap<>();
-    protected Map<String, Boolean> vulnerabilities = new HashMap<>();
+    protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
+    protected Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities = new HashMap<>();
 
     // No Cell location Constructor
     public Creature(
@@ -107,30 +107,30 @@ public abstract class Creature {
 
     // Initialize named booleans
     private void setDefaultResistences(){
-    resistances.put("fire", false);
-    resistances.put("ice", false);
-    resistances.put("lightning", false);
-    resistances.put("poison", false);
-    resistances.put("acid", false);
-    resistances.put("slashing", false);
-    resistances.put("piercing", false);
-    resistances.put("bludgeoning", false);
-    resistances.put("necrotic", false);
-    resistances.put("radiant", false);
+    resistances.put(Constants.DAMAGE_TYPE.FIRE, false);
+    resistances.put(Constants.DAMAGE_TYPE.ICE, false);
+    resistances.put(Constants.DAMAGE_TYPE.LIGHTNING, false);
+    resistances.put(Constants.DAMAGE_TYPE.POISON, false);
+    resistances.put(Constants.DAMAGE_TYPE.ACID, false);
+    resistances.put(Constants.DAMAGE_TYPE.SLASHING, false);
+    resistances.put(Constants.DAMAGE_TYPE.PIERCING, false);
+    resistances.put(Constants.DAMAGE_TYPE.BLUDGEONING, false);
+    resistances.put(Constants.DAMAGE_TYPE.NECROTIC, false);
+    resistances.put(Constants.DAMAGE_TYPE.RADIANT, false);
     }
     
     // Initialize named booleans
     private void setDefaultVulnerabilities(){
-    vulnerabilities.put("fire", false);
-    vulnerabilities.put("ice", false);
-    vulnerabilities.put("lightning", false);
-    vulnerabilities.put("poison", false);
-    vulnerabilities.put("acid", false);
-    vulnerabilities.put("slashing", false);
-    vulnerabilities.put("piercing", false);
-    vulnerabilities.put("bludgeoning", false);
-    vulnerabilities.put("necrotic", false);
-    vulnerabilities.put("radiant", false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.FIRE, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.ICE, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.LIGHTNING, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.POISON, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.ACID, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.SLASHING, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.PIERCING, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.BLUDGEONING, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.NECROTIC, false);
+    vulnerabilities.put(Constants.DAMAGE_TYPE.RADIANT, false);
     }
 
     public int setModifier(int abilityScore){
@@ -257,15 +257,7 @@ public abstract class Creature {
     public void setDc(int dc) {
         this.dc = dc;
     }
-
-    public String getSize() {
-        return size;
-    }
-
-    public void setSize(String size) {
-        this.size = size;
-    }
-
+    
     public String getCreatureType() {
         return creatureType;
     }
@@ -330,22 +322,6 @@ public abstract class Creature {
         this.charisma = charisma;
     }
 
-    public Map<String, Boolean> getResistances() {
-        return resistances;
-    }
-
-    public void setResistances(Map<String, Boolean> resistances) {
-        this.resistances = resistances;
-    }
-
-    public Map<String, Boolean> getVulnerabilities() {
-        return vulnerabilities;
-    }
-
-    public void setVulnerabilities(Map<String, Boolean> vulnerabilities) {
-        this.vulnerabilities = vulnerabilities;
-    }
-
     public int getStrengthMod() {
         return strengthMod;
     }
@@ -376,6 +352,54 @@ public abstract class Creature {
 
     public void setRaceName(String raceName) {
         this.raceName = raceName;
+    }
+
+    public void setStrengthMod(int strengthMod) {
+        this.strengthMod = strengthMod;
+    }
+
+    public void setDexterityMod(int dexterityMod) {
+        this.dexterityMod = dexterityMod;
+    }
+
+    public void setConstitutionMod(int constitutionMod) {
+        this.constitutionMod = constitutionMod;
+    }
+
+    public void setIntelligenceMod(int intelligenceMod) {
+        this.intelligenceMod = intelligenceMod;
+    }
+
+    public void setWisdomMod(int wisdomMod) {
+        this.wisdomMod = wisdomMod;
+    }
+
+    public void setCharismaMod(int charismaMod) {
+        this.charismaMod = charismaMod;
+    }
+
+    public Map<Constants.DAMAGE_TYPE, Boolean> getResistances() {
+        return resistances;
+    }
+
+    public void setResistances(Map<Constants.DAMAGE_TYPE, Boolean> resistances) {
+        this.resistances = resistances;
+    }
+
+    public Map<Constants.DAMAGE_TYPE, Boolean> getVulnerabilities() {
+        return vulnerabilities;
+    }
+
+    public void setVulnerabilities(Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities) {
+        this.vulnerabilities = vulnerabilities;
+    }
+
+    public Constants.CREATURE_SIZE getSize() {
+        return size;
+    }
+
+    public void setSize(Constants.CREATURE_SIZE size) {
+        this.size = size;
     }
     
 

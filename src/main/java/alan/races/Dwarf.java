@@ -1,5 +1,6 @@
 package alan.races;
 
+import alan.Constants;
 import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
 
@@ -10,7 +11,7 @@ public class Dwarf extends PlayableCharacter implements RaceInterface{
         super(name, fileName);
         setCreatureType("Humanoid");
         setSpeed(30);
-        setSize("Medium");
+        setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
         setSpecialFeatures();
         // Dwarven Toughness
@@ -21,7 +22,7 @@ public class Dwarf extends PlayableCharacter implements RaceInterface{
         super(name, fileName, location);
         setCreatureType("Humanoid");
         setSpeed(30);
-        setSize("Medium");
+        setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
         setSpecialFeatures();
     }
@@ -34,7 +35,7 @@ public class Dwarf extends PlayableCharacter implements RaceInterface{
         // Darkvision
         setDarkVision(120);
         //Dwarven Resilience
-        grantResistance("poison");
+        grantResistance(Constants.DAMAGE_TYPE.POISON);
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

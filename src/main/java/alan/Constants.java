@@ -18,5 +18,19 @@ public class Constants {
 
     // Creature
     public static enum CREATURE_SIZE {TINY, SMALL, MEDIUM, LARGE, HUGE, GARGANTUAN, COLOSSAL};
+    public static enum DAMAGE_TYPE {FIRE, ICE, LIGHTNING, POISON, ACID, SLASHING, PIERCING, BLUDGEONING, NECROTIC, RADIANT};
+
+    /*
+     * resistances.put("fire", false);
+    resistances.put("ice", false);
+    resistances.put("lightning", false);
+    resistances.put("poison", false);
+    resistances.put("acid", false);
+    resistances.put("slashing", false);
+    resistances.put("piercing", false);
+    resistances.put("bludgeoning", false);
+    resistances.put("necrotic", false);
+    resistances.put("radiant", false);
+     */
     
 }
