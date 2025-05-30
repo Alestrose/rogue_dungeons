@@ -36,7 +36,6 @@ public class Dwarf extends PlayableCharacter implements RaceInterface{
         setDarkVision(120);
         //Dwarven Resilience
         grantResistance(Constants.DAMAGE_TYPE.POISON);
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override

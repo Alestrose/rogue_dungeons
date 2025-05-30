@@ -72,7 +72,7 @@ public class Main {
             if(elapsedTime > Constants.REFRESH_RATE){
                 gridPanel.update();
                 gamePanel.update();
-                startTime = System.currentTimeMillis();                         // This function must remain at the end of this statement
+                startTime = System.currentTimeMillis();            // This function must remain at the end of this statement
             }
         }
     }

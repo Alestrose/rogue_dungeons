@@ -14,6 +14,7 @@ public class PartyPlayers {
     private static PartyPlayers instance = null;
     @SuppressWarnings("FieldMayBeFinal")
     private ArrayList<Creature> party = new ArrayList<>();
+    
     private PartyPlayers(){
         
     }
@@ -25,9 +26,7 @@ public class PartyPlayers {
     }
 
     public void addPlayers(){
-        // party.add(new PlayableCharacter("Phillo", "Fighter1.png", grid.getCellArray()[4][9]));
-        // party.add(new PlayableCharacter("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
-        party.add(new Elf("Phillo","Fighter1.png" , grid.getCellArray()[4][6]));
+        party.add(new Elf("Phillo","Fighter1.png" , grid.getCellArray()[4][6], Constants.SKILL_KEY.PERCEPTION));
         party.add(new Human("Tanith", "Ranger1.png", grid.getCellArray()[7][9], Constants.SKILL_KEY.HISTORY));
         party.add(new Dwarf("Ti Nee","Fighter1.png" , grid.getCellArray()[1][8]));
     }

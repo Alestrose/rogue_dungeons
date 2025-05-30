@@ -6,22 +6,25 @@ import alan.grid_panel.Cell;
 
 public class Elf extends PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Elf";
+    private Constants.SKILL_KEY skill_key;
 
-    public Elf(String name, String fileName) {
+    public Elf(String name, String fileName, Constants.SKILL_KEY skill_key) {
         super(name, fileName);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
+        this.skill_key = skill_key;
         setSpecialFeatures();
     }
 
-    public Elf(String name, String fileName, Cell location) {
+    public Elf(String name, String fileName, Cell location, Constants.SKILL_KEY skill_key) {
         super(name, fileName, location);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
+        this.skill_key = skill_key;
         setSpecialFeatures();
     }
 
@@ -33,8 +36,7 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         // Darkvision
         setDarkVision(60);
         // Keen Senses
-        grantSkillProficiency(Constants.SKILL_KEY.INSIGHT);
-        throw new UnsupportedOperationException("Not supported yet.");
+        grantSkillProficiency(skill_key);
     }
 
     @Override

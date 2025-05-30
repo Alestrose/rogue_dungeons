@@ -5,6 +5,7 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.grid_panel.Cell;
+import alan.skills_and_feats.ConditionEffect;
 import alan.skills_and_feats.Skill;
 
 public class PlayableCharacter extends Creature{
@@ -12,6 +13,7 @@ public class PlayableCharacter extends Creature{
     private int proficiencyBonus = 0;
 
     protected Map<Constants.SKILL_KEY, Skill> skillMap = new HashMap<>();
+    protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionMap = new HashMap<>();
 
 
     // Without location constructor
@@ -19,13 +21,15 @@ public class PlayableCharacter extends Creature{
         super(name, fileName);
         setClassFeatures();
         setDefaultSkillMap();
+        setDefaultConditionMap();
     }
     
     // With location constructor
     public PlayableCharacter(String name, String fileName, Cell location) {
         super(name, fileName, location);
         setClassFeatures();
-
+        setDefaultSkillMap();
+        setDefaultConditionMap();
     }
 
     /*
@@ -78,6 +82,30 @@ public class PlayableCharacter extends Creature{
         skillMap.put(Constants.SKILL_KEY.INTIMIDATION, new Skill("intimidation", getCharisma(), getProficiencyBonus()));
         skillMap.put(Constants.SKILL_KEY.PERFORMANCE, new Skill("performance", getCharisma(), getProficiencyBonus()));
         skillMap.put(Constants.SKILL_KEY.PERSUASION, new Skill("persuasion", getCharisma(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.STRENGTH, new Skill("strength", getStrength(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.DEXTERITY, new Skill("dexterity", getDexterity(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.CONSTITUTION, new Skill("constitution", getConstitution(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.INTELLIGENCE, new Skill("intelligence", getIntelligence(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.WISDOM, new Skill("wisdom", getWisdom(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.CHARISMA, new Skill("charisma", getCharisma(), getProficiencyBonus()));
+    }
+
+    private void setDefaultConditionMap(){
+        conditionMap.put(Constants.CONDITION_KEY.BLINDED, new ConditionEffect("blinded"));
+        conditionMap.put(Constants.CONDITION_KEY.CHARMED, new ConditionEffect("charmed"));
+        conditionMap.put(Constants.CONDITION_KEY.DEAFENED, new ConditionEffect("deafened"));
+        conditionMap.put(Constants.CONDITION_KEY.EXHAUSTION, new ConditionEffect("exhaustion"));
+        conditionMap.put(Constants.CONDITION_KEY.FRIGHTENED, new ConditionEffect("frightened"));
+        conditionMap.put(Constants.CONDITION_KEY.GRAPPLED, new ConditionEffect("grappled"));
+        conditionMap.put(Constants.CONDITION_KEY.INCAPACITATED, new ConditionEffect("incapacitated"));
+        conditionMap.put(Constants.CONDITION_KEY.INVISIBLE, new ConditionEffect("invisible"));
+        conditionMap.put(Constants.CONDITION_KEY.PARALYZED, new ConditionEffect("paralyzed"));
+        conditionMap.put(Constants.CONDITION_KEY.PETRIFIED, new ConditionEffect("petrified"));
+        conditionMap.put(Constants.CONDITION_KEY.POISONED, new ConditionEffect("poisoned"));
+        conditionMap.put(Constants.CONDITION_KEY.PRONE, new ConditionEffect("prone"));
+        conditionMap.put(Constants.CONDITION_KEY.RESTRAINED, new ConditionEffect("restrained"));
+        conditionMap.put(Constants.CONDITION_KEY.STUNNED, new ConditionEffect("stunned"));
+        conditionMap.put(Constants.CONDITION_KEY.UNCONSCIOUS, new ConditionEffect("unconscious"));
     }
     
     /*
