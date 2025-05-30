@@ -2,6 +2,7 @@ package alan.creatures;
 
 import java.util.ArrayList;
 
+import alan.Constants;
 import alan.grid_panel.Grid;
 import alan.races.Dwarf;
 import alan.races.Elf;
@@ -27,7 +28,7 @@ public class PartyPlayers {
         // party.add(new PlayableCharacter("Phillo", "Fighter1.png", grid.getCellArray()[4][9]));
         // party.add(new PlayableCharacter("Tanith", "Ranger1.png", grid.getCellArray()[7][9]));
         party.add(new Elf("Phillo","Fighter1.png" , grid.getCellArray()[4][6]));
-        party.add(new Human("Tanith", "Ranger1.png", grid.getCellArray()[7][9], "history"));
+        party.add(new Human("Tanith", "Ranger1.png", grid.getCellArray()[7][9], Constants.SKILL_KEY.HISTORY));
         party.add(new Dwarf("Ti Nee","Fighter1.png" , grid.getCellArray()[1][8]));
     }
 

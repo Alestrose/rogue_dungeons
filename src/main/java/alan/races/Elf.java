@@ -33,7 +33,7 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         // Darkvision
         setDarkVision(60);
         // Keen Senses
-        grantSkillProficiency("insight");
+        grantSkillProficiency(Constants.SKILL_KEY.INSIGHT);
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

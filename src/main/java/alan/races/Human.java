@@ -6,10 +6,10 @@ import alan.grid_panel.Cell;
 
 public class Human extends  PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Human";
-    final String SkilledTrait;
+    final Constants.SKILL_KEY SkilledTrait;
     private Boolean hasHeroicInspiration = true;
 
-    public Human(String name, String fileName, Cell location, String skill) {
+    public Human(String name, String fileName, Cell location, Constants.SKILL_KEY skill) {
         super(name, fileName, location);
         setCreatureType("Humanoid");
         setSpeed(30);
@@ -19,7 +19,7 @@ public class Human extends  PlayableCharacter implements RaceInterface{
         this.SkilledTrait = skill;
     }
 
-    public Human(String name, String fileName, String skill) {
+    public Human(String name, String fileName, Constants.SKILL_KEY skill) {
         super(name, fileName);
         setCreatureType("Humanoid");
         setSpeed(30);
@@ -59,7 +59,7 @@ public class Human extends  PlayableCharacter implements RaceInterface{
         return RACE_NAME;
     }
 
-    public String getSkilledTrait() {
+    public Constants.SKILL_KEY getSkilledTrait() {
         return SkilledTrait;
     }
 
