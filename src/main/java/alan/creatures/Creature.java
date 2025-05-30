@@ -49,7 +49,8 @@ public abstract class Creature {
     // Resistances & Vulnerabilities
     protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
     protected Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities = new HashMap<>();
-    protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionMap = new HashMap<>();
+    protected Map<Constants.DAMAGE_TYPE, Boolean> inVulnerabilities = new HashMap<>();
+    protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionEffects = new HashMap<>();
 
     // No Cell location Constructor
     public Creature(
@@ -109,6 +110,39 @@ public abstract class Creature {
         graphics.drawImage(getImage(), getX(), getY(), getWidth(), getHeight(), panel);
     }
 
+    public void grantResistance(Constants.DAMAGE_TYPE resistanceName){
+        resistances.put(resistanceName, true);
+    }
+
+    public void grantDamageVulnerabilities(Constants.DAMAGE_TYPE vulnerabilityName){
+        vulnerabilities.put(vulnerabilityName, true);
+    }
+
+    public void grantDamageInVulnerabilities(Constants.DAMAGE_TYPE InVulnerabilityName){
+        inVulnerabilities.put(InVulnerabilityName, true);
+    }
+
+    public void ApplyConditionEffect(Constants.CONDITION_KEY condition_key){
+        ConditionEffect effect = conditionEffects.get(condition_key);
+        if (effect != null) {
+            effect.setActive(true);
+        }
+    }
+
+    public void grantConditionAdvantage(Constants.CONDITION_KEY condition_key){
+        ConditionEffect effect = conditionEffects.get(condition_key);
+        if (effect != null) {
+            effect.setHasAdvantage(true);
+        }
+    }
+
+    public void grantConditionInvulnerability(Constants.CONDITION_KEY condition_key){
+        ConditionEffect effect = conditionEffects.get(condition_key);
+        if (effect != null) {
+            effect.setInvulnerable(true);
+        }
+    }
+
     // Initialize named booleans
     private void setDefaultResistences(){
     resistances.put(Constants.DAMAGE_TYPE.FIRE, false);
@@ -139,21 +173,21 @@ public abstract class Creature {
 
 
     private void setDefaultConditionMap(){
-        conditionMap.put(Constants.CONDITION_KEY.BLINDED, new ConditionEffect("blinded"));
-        conditionMap.put(Constants.CONDITION_KEY.CHARMED, new ConditionEffect("charmed"));
-        conditionMap.put(Constants.CONDITION_KEY.DEAFENED, new ConditionEffect("deafened"));
-        conditionMap.put(Constants.CONDITION_KEY.EXHAUSTION, new ConditionEffect("exhaustion"));
-        conditionMap.put(Constants.CONDITION_KEY.FRIGHTENED, new ConditionEffect("frightened"));
-        conditionMap.put(Constants.CONDITION_KEY.GRAPPLED, new ConditionEffect("grappled"));
-        conditionMap.put(Constants.CONDITION_KEY.INCAPACITATED, new ConditionEffect("incapacitated"));
-        conditionMap.put(Constants.CONDITION_KEY.INVISIBLE, new ConditionEffect("invisible"));
-        conditionMap.put(Constants.CONDITION_KEY.PARALYZED, new ConditionEffect("paralyzed"));
-        conditionMap.put(Constants.CONDITION_KEY.PETRIFIED, new ConditionEffect("petrified"));
-        conditionMap.put(Constants.CONDITION_KEY.POISONED, new ConditionEffect("poisoned"));
-        conditionMap.put(Constants.CONDITION_KEY.PRONE, new ConditionEffect("prone"));
-        conditionMap.put(Constants.CONDITION_KEY.RESTRAINED, new ConditionEffect("restrained"));
-        conditionMap.put(Constants.CONDITION_KEY.STUNNED, new ConditionEffect("stunned"));
-        conditionMap.put(Constants.CONDITION_KEY.UNCONSCIOUS, new ConditionEffect("unconscious"));
+        conditionEffects.put(Constants.CONDITION_KEY.BLINDED, new ConditionEffect("blinded"));
+        conditionEffects.put(Constants.CONDITION_KEY.CHARMED, new ConditionEffect("charmed"));
+        conditionEffects.put(Constants.CONDITION_KEY.DEAFENED, new ConditionEffect("deafened"));
+        conditionEffects.put(Constants.CONDITION_KEY.EXHAUSTION, new ConditionEffect("exhaustion"));
+        conditionEffects.put(Constants.CONDITION_KEY.FRIGHTENED, new ConditionEffect("frightened"));
+        conditionEffects.put(Constants.CONDITION_KEY.GRAPPLED, new ConditionEffect("grappled"));
+        conditionEffects.put(Constants.CONDITION_KEY.INCAPACITATED, new ConditionEffect("incapacitated"));
+        conditionEffects.put(Constants.CONDITION_KEY.INVISIBLE, new ConditionEffect("invisible"));
+        conditionEffects.put(Constants.CONDITION_KEY.PARALYZED, new ConditionEffect("paralyzed"));
+        conditionEffects.put(Constants.CONDITION_KEY.PETRIFIED, new ConditionEffect("petrified"));
+        conditionEffects.put(Constants.CONDITION_KEY.POISONED, new ConditionEffect("poisoned"));
+        conditionEffects.put(Constants.CONDITION_KEY.PRONE, new ConditionEffect("prone"));
+        conditionEffects.put(Constants.CONDITION_KEY.RESTRAINED, new ConditionEffect("restrained"));
+        conditionEffects.put(Constants.CONDITION_KEY.STUNNED, new ConditionEffect("stunned"));
+        conditionEffects.put(Constants.CONDITION_KEY.UNCONSCIOUS, new ConditionEffect("unconscious"));
     }
     public int setModifier(int abilityScore){
         if(abilityScore >= 10) return strengthMod = (abilityScore - 10) /2;

@@ -55,9 +55,7 @@ public class PlayableCharacter extends Creature{
         }
     }
 
-    public void grantResistance(Constants.DAMAGE_TYPE resistanceName){
-        resistances.put(resistanceName, true);
-    }
+    
 
     private void setDefaultSkillMap(){
         skillMap.put(Constants.SKILL_KEY.ATHLETICS, new Skill("athletics", getStrength(), getProficiencyBonus()));

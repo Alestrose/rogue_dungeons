@@ -1,12 +1,12 @@
 package alan.skills_and_feats;
 
-public class Condition {
+public class ConditionEffect {
     private String conditionName;
 
     private boolean hasAdvantage, isInvulnerable, isActive;
     private int duration;
 
-    public Condition(String conditionName){
+    public ConditionEffect(String conditionName){
         this.conditionName = conditionName;
     }
 
