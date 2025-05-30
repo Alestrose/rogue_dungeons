@@ -6,6 +6,8 @@ import alan.grid_panel.Cell;
 
 public class Gnome extends PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Gnome";
+    public enum GNOMISH_LINEAGE {DROW, HIGH_ELF, WOOD_ELF};
+    GNOMISH_LINEAGE lineage;
 
     public Gnome(String name, String fileName) {
         super(name, fileName);
@@ -32,6 +34,11 @@ public class Gnome extends PlayableCharacter implements RaceInterface{
     public final void setSpecialFeatures() {
         // Darkvision
         setDarkVision(60);
+        // Gnomish Cunning
+        grantSkillAdvantage(Constants.SKILL_KEY.CHARISMA);
+        grantSkillAdvantage(Constants.SKILL_KEY.INTELLIGENCE);
+        grantSkillAdvantage(Constants.SKILL_KEY.WISDOM);
+        
     }
 
     @Override

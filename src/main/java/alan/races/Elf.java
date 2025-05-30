@@ -21,13 +21,13 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         setSpecialFeatures();
     }
 
-    public Elf(String name, String fileName, Cell location, Constants.SKILL_KEY skill_key) {
+    public Elf(String name, String fileName, Cell location, Constants.SKILL_KEY skill_key, ELVEN_LINEAGE lineage) {
         super(name, fileName, location);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);
         setRaceName(RACE_NAME);
-        
+        this.lineage = lineage;
         this.SKILL_KEY = skill_key;
         setSpecialFeatures();
     }
@@ -43,11 +43,10 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         grantSkillProficiency(SKILL_KEY);
         // Elven Lineage
         switch (lineage) {
-            case DROW: setDarkVision(120) /* Gets Dancing Lights cantrip */; break;
-            case HIGH_ELF: /* Gets Prestidigitation cantrip */ ; break;
-            case WOOD_ELF: setSpeed(35) /* Gets Druid Craft cantrip */; break;
-            default:
-                throw new AssertionError();
+            case DROW -> setDarkVision(120) /* Gets Dancing Lights cantrip */;
+            case HIGH_ELF -> {/* Gets Prestidigitation cantrip */ }
+            case WOOD_ELF -> setSpeed(35) /* Gets Druid Craft cantrip */;
+            default -> throw new AssertionError();
         }
     }
 

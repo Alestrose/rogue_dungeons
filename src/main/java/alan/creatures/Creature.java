@@ -37,14 +37,15 @@ public abstract class Creature {
     private Constants.CREATURE_SIZE size;
 
     // Ability scores & Modifiers
-    private int strength, dexterity, constitution, intelligence, wisdom, charisma;
+    protected Map<Constants.ABILITY, Integer> abilities = new HashMap<>();
+    //private int strength, dexterity, constitution, intelligence, wisdom, charisma;
     private int
-        strengthMod = setModifier(strength),
-        dexterityMod = setModifier(dexterity),
-        constitutionMod = setModifier(constitution),
-        intelligenceMod = setModifier(intelligence),
-        wisdomMod = setModifier(wisdom),
-        charismaMod = setModifier(charisma);
+        strengthMod = setModifier(abilities.getOrDefault(Constants.ABILITY.STRENGTH, 10)),
+        dexterityMod = setModifier(abilities.getOrDefault(Constants.ABILITY.DEXTERITY, 10)),
+        constitutionMod = setModifier(abilities.getOrDefault(Constants.ABILITY.CONSTITUTION, 10)),
+        intelligenceMod = setModifier(abilities.getOrDefault(Constants.ABILITY.INTELLIGENCE, 10)),
+        wisdomMod = setModifier(abilities.getOrDefault(Constants.ABILITY.WISDOM, 10)),
+        charismaMod = setModifier(abilities.getOrDefault(Constants.ABILITY.CHARISMA, 10));
     
     // Resistances & Vulnerabilities
     protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
@@ -69,6 +70,7 @@ public abstract class Creature {
         setDefaultResistences();
         setDefaultVulnerabilities();
         setDefaultConditionMap();
+        setDefaultAbilities();
     }
 
     // Specified Cell location constructor
@@ -95,6 +97,7 @@ public abstract class Creature {
         setDefaultResistences();
         setDefaultVulnerabilities();
         setDefaultConditionMap();
+        setDefaultAbilities();
     }
 
     /*
@@ -189,6 +192,17 @@ public abstract class Creature {
         conditionEffects.put(Constants.CONDITION_KEY.STUNNED, new ConditionEffect("stunned"));
         conditionEffects.put(Constants.CONDITION_KEY.UNCONSCIOUS, new ConditionEffect("unconscious"));
     }
+
+    private void setDefaultAbilities(){
+    abilities.put(Constants.ABILITY.STRENGTH, 10);
+    abilities.put(Constants.ABILITY.CONSTITUTION, 10);
+    abilities.put(Constants.ABILITY.DEXTERITY, 10);
+    abilities.put(Constants.ABILITY.INTELLIGENCE, 10);
+    abilities.put(Constants.ABILITY.WISDOM, 10);
+    abilities.put(Constants.ABILITY.CHARISMA, 10);
+
+    }
+
     public int setModifier(int abilityScore){
         if(abilityScore >= 10) return strengthMod = (abilityScore - 10) /2;
         else return strengthMod = (abilityScore - 11) /2;
@@ -328,54 +342,6 @@ public abstract class Creature {
 
     public void setDarkVision(int darkVision) {
         this.darkVision = darkVision;
-    }
-
-    public int getStrength() {
-        return strength;
-    }
-
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public int getDexterity() {
-        return dexterity;
-    }
-
-    public void setDexterity(int dexterity) {
-        this.dexterity = dexterity;
-    }
-
-    public int getConstitution() {
-        return constitution;
-    }
-
-    public void setConstitution(int constitution) {
-        this.constitution = constitution;
-    }
-
-    public int getIntelligence() {
-        return intelligence;
-    }
-
-    public void setIntelligence(int intelligence) {
-        this.intelligence = intelligence;
-    }
-
-    public int getWisdom() {
-        return wisdom;
-    }
-
-    public void setWisdom(int wisdom) {
-        this.wisdom = wisdom;
-    }
-
-    public int getCharisma() {
-        return charisma;
-    }
-
-    public void setCharisma(int charisma) {
-        this.charisma = charisma;
     }
 
     public int getStrengthMod() {

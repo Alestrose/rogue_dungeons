@@ -27,7 +27,7 @@ public class PartyPlayers {
     }
 
     public void addPlayers(){
-        party.add(new Elf("Phillo","Fighter1.png" , grid.getCellArray()[4][6], Constants.SKILL_KEY.PERCEPTION));
+        party.add(new Elf("Phillo","Fighter1.png" , grid.getCellArray()[4][6], Constants.SKILL_KEY.PERCEPTION, Elf.ELVEN_LINEAGE.DROW));
         party.add(new Human("Tanith", "Ranger1.png", grid.getCellArray()[7][9], Constants.SKILL_KEY.HISTORY));
         party.add(new Dwarf("Ti Nee","Fighter1.png" , grid.getCellArray()[1][8]));
         party.add(new Dragonborn("Drago", "Ranger1.png", grid.getCellArray()[9][6], Dragonborn.DRACONIC_ANCESTRY.GREEN));

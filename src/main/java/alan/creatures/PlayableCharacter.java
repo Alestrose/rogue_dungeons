@@ -55,33 +55,38 @@ public class PlayableCharacter extends Creature{
         }
     }
 
-    
+    public void grantSkillAdvantage(Constants.SKILL_KEY skill_key) {
+        Skill skill = skillMap.get(skill_key);
+        if (skill != null) {
+            skill.setHasAdvantage(true);
+        }
+    }
 
     private void setDefaultSkillMap(){
-        skillMap.put(Constants.SKILL_KEY.ATHLETICS, new Skill("athletics", getStrength(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.ACROBATICS, new Skill("acrobatics", getDexterity(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.SLEIGHT_OF_HAND, new Skill("sleight of Hand", getDexterity(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.STEALTH, new Skill("stealth", getDexterity(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.ARCANA, new Skill("arcana", getIntelligence(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.HISTORY, new Skill("history", getIntelligence(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.INVESTIGATION, new Skill("investigation", getIntelligence(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.NATURE, new Skill("nature", getIntelligence(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.RELIGION, new Skill("religion", getIntelligence(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.ANIMAL_HANDLING, new Skill("animal handling", getWisdom(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.INSIGHT, new Skill("insight", getWisdom(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.MEDICINE, new Skill("medicine", getWisdom(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.PERCEPTION, new Skill("perception", getWisdom(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.SURVIVAL, new Skill("survival", getWisdom(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.DECEPTION, new Skill("deception", getCharisma(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.INTIMIDATION, new Skill("intimidation", getCharisma(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.PERFORMANCE, new Skill("performance", getCharisma(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.PERSUASION, new Skill("persuasion", getCharisma(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.STRENGTH, new Skill("strength", getStrength(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.DEXTERITY, new Skill("dexterity", getDexterity(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.CONSTITUTION, new Skill("constitution", getConstitution(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.INTELLIGENCE, new Skill("intelligence", getIntelligence(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.WISDOM, new Skill("wisdom", getWisdom(), getProficiencyBonus()));
-        skillMap.put(Constants.SKILL_KEY.CHARISMA, new Skill("charisma", getCharisma(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.ATHLETICS, new Skill("athletics", getStrengthMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.ACROBATICS, new Skill("acrobatics", getDexterityMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.SLEIGHT_OF_HAND, new Skill("sleight of Hand", getDexterityMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.STEALTH, new Skill("stealth", getDexterityMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.ARCANA, new Skill("arcana", getIntelligenceMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.HISTORY, new Skill("history", getIntelligenceMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.INVESTIGATION, new Skill("investigation", getIntelligenceMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.NATURE, new Skill("nature", getIntelligenceMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.RELIGION, new Skill("religion", getIntelligenceMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.ANIMAL_HANDLING, new Skill("animal handling", getWisdomMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.INSIGHT, new Skill("insight", getWisdomMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.MEDICINE, new Skill("medicine", getWisdomMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.PERCEPTION, new Skill("perception", getWisdomMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.SURVIVAL, new Skill("survival", getWisdomMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.DECEPTION, new Skill("deception", getCharismaMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.INTIMIDATION, new Skill("intimidation", getCharismaMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.PERFORMANCE, new Skill("performance", getCharismaMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.PERSUASION, new Skill("persuasion", getCharismaMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.STRENGTH, new Skill("strength", getStrengthMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.DEXTERITY, new Skill("dexterity", getDexterityMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.CONSTITUTION, new Skill("constitution", getConstitutionMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.INTELLIGENCE, new Skill("intelligence", getIntelligenceMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.WISDOM, new Skill("wisdom", getWisdomMod(), getProficiencyBonus()));
+        skillMap.put(Constants.SKILL_KEY.CHARISMA, new Skill("charisma", getCharismaMod(), getProficiencyBonus()));
     }
 
     
