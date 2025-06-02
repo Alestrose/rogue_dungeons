@@ -35,6 +35,7 @@ public abstract class Creature {
         enemyDamageRollReduction,
         playerAttackRollIncrease,
         playerDamageRollIncrease,
+        playerAbilityCheckIncrease,
         darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -511,6 +512,14 @@ public abstract class Creature {
 
     public void setConditionEffects(Map<Constants.CONDITION_KEY, ConditionEffect> conditionEffects) {
         this.conditionEffects = conditionEffects;
+    }
+
+    public int getPlayerAbilityCheckIncrease() {
+        return playerAbilityCheckIncrease;
+    }
+
+    public void setPlayerAbilityCheckIncrease(int playerAbilityCheckIncrease) {
+        this.playerAbilityCheckIncrease = playerAbilityCheckIncrease;
     }
     
     

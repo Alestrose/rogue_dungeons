@@ -14,10 +14,7 @@ public class FireBolt extends SpellAbstract implements SpellInterface{
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.EVOCATION);
         setDamage_type(Constants.DAMAGE_TYPE.FIRE);
-        //setConcentration(true);
         setAction(true);
-        //setBonus(true);
-        //setReaction(true);
         setRange((short) 120);
         setDuration((byte) 0);
         setDamageDie(10);

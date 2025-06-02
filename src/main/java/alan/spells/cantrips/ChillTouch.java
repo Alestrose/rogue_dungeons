@@ -15,7 +15,6 @@ public class ChillTouch extends SpellAbstract implements SpellInterface{
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.NECROMANCY);
         setDamage_type(Constants.DAMAGE_TYPE.NECROTIC);
-        // setConcentration(true);
         setAction(true);
         setRange((short) 0);
         setDuration((byte) 10);
@@ -25,7 +24,7 @@ public class ChillTouch extends SpellAbstract implements SpellInterface{
 
     @Override
     public void cast() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        castOnTarget();
     }
 
     @Override

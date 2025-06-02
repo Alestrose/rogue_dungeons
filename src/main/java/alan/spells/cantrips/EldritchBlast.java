@@ -14,7 +14,6 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.EVOCATION);
         setDamage_type(Constants.DAMAGE_TYPE.FORCE);
-        // setConcentration(true);
         setAction(true);
         setRange((short) 120);
         setDuration((byte) 0);

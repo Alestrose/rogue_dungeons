@@ -13,13 +13,9 @@ public class DruidCraft extends SpellAbstract implements SpellInterface{
         setSpellName("Druid Craft");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.TRANSMUTATION);
-        // setDamage_type(Constants.DAMAGE_TYPE.NECROTIC);
-        // setConcentration(true);
         setAction(true);
         setRange((short) 30);
         setDuration((byte) 0);
-        //setDamageDie(10);
-        //setQuantityOfDie(1);
     }
 
     @Override

@@ -24,7 +24,7 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
 
     @Override
     public void cast() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        castOnArea();
     }
     @Override
     public void castOnArea() {
@@ -43,7 +43,7 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
 
     @Override
     public void castOnTarget() {
-        getTarget().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        
         
     }
     

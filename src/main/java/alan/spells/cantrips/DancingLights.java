@@ -13,13 +13,11 @@ public class DancingLights extends SpellAbstract implements SpellInterface{
         setSpellName("Dancing Lights");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.ILLUSION);
-        // setDamage_type(Constants.DAMAGE_TYPE.NECROTIC);
         setConcentration(true);
         setAction(true);
         setRange((short) 120);
         setDuration((byte) 10);
-        //setDamageDie(10);
-        //setQuantityOfDie(1);
+
     }
 
     @Override

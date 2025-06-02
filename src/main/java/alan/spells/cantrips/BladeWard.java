@@ -13,18 +13,15 @@ public class BladeWard extends SpellAbstract implements SpellInterface{
         setSpellName("Blade Ward");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.ABJURATION);
-        // setDamage_type(Constants.DAMAGE_TYPE.ACID);
         setConcentration(true);
         setAction(true);
         setRange((short) 0);
         setDuration((byte) 10);
-        // setDamageDie(6);
-        // setQuantityOfDie(1);
     }
 
     @Override
     public void cast() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        castOnTarget();
     }
     @Override
     public void castOnArea() {
