@@ -24,7 +24,7 @@ public class DruidCraft extends SpellAbstract implements SpellInterface{
 
     @Override
     public void cast() {
-        // TODO Auto-generated method stub
+        // No combat implementation
     }
 
     @Override
@@ -34,7 +34,7 @@ public class DruidCraft extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void castOnTarget(Creature target) {
+    public void castOnTarget() {
         // TODO Auto-generated method stub
         
     }

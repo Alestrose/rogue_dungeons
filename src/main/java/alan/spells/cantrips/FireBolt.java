@@ -6,43 +6,38 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class EldritchBlast extends SpellAbstract implements SpellInterface{
+public class FireBolt extends SpellAbstract implements SpellInterface{
 
-    public EldritchBlast(Creature caster, Creature target, Creature[] targetList, Cell cell){
+    public FireBolt(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         super(caster, target, targetList, cell);
-        setSpellName("Eldritch Blast");
+        setSpellName("Fire Bolt");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.EVOCATION);
-        setDamage_type(Constants.DAMAGE_TYPE.FORCE);
-        // setConcentration(true);
+        setDamage_type(Constants.DAMAGE_TYPE.FIRE);
+        //setConcentration(true);
         setAction(true);
+        //setBonus(true);
+        //setReaction(true);
         setRange((short) 120);
         setDuration((byte) 0);
         setDamageDie(10);
         setQuantityOfDie(1);
     }
 
-    // Calls one of below cast types
     @Override
     public void cast() {
-        multiCast();
+        castOnTarget();
     }
 
     @Override
     public void castOnArea() {
+        // TODO Auto-generated method stub
         
     }
 
     @Override
     public void castOnTarget() {
-        
-    }
-
-    @Override
-    public void multiCast() {
-        for (Creature c : getTargetList()) {
-            c.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        }
+        getTarget().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
         
     }
 
@@ -50,9 +45,15 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
     public String descreiption() {
         // TODO Auto-generated method stub
         return """
-               Your hurl a beam of crackling energy. Make a ranged spell attack against one creature or object in range. On a hit, the target takes 1d10 Force damage.\r
-               Cantrip Upgrade. The spell creates two beams at level 5, three beams at level 11, and four beams at level 17. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam.""" //
+               You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Fire damage. A flammable object hit by this spell starts burning if it isn't being worn or carried.\r
+               Cantrip Upgrade. The damage increases by 1d10 when you reach levels 5 (2d10), 11 (3d10), and 17 (4d10).""" //
         ;
+    }
+
+    @Override
+    public void multiCast() {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override
@@ -66,7 +67,7 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
             }
             case 4 -> {
             }
-            case 5 -> {setMultiCastHits(2);
+            case 5 -> {setQuantityOfDie(2);
             }
             case 6 -> {
             }
@@ -78,7 +79,7 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
             }
             case 10 -> {
             }
-            case 11 -> {setMultiCastHits(3);
+            case 11 -> {setQuantityOfDie(3);
             }
             case 12 -> {
             }
@@ -90,7 +91,7 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
             }
             case 16 -> {
             }
-            case 17 -> {setMultiCastHits(4);
+            case 17 -> {setQuantityOfDie(4);
             }
             case 18 -> {
             }
@@ -101,5 +102,9 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
             default -> {
             }
         }
+        
     }
+
+    
+
 }

@@ -7,6 +7,24 @@ import alan.creatures.PartyPlayers;
 import alan.grid_panel.Cell;
 import alan.grid_panel.Grid;
 
+
+    // Standard object constructor layout
+    /*
+     *  setSpellName("Eldritch Blast");
+        setSpellLevel((byte) 0);
+        setSchool(Constants.SCHOOL.EVOCATION);
+        setDamage_type(Constants.DAMAGE_TYPE.FORCE);
+        setConcentration(true);
+        setAction(true);
+        setBonus(true);
+        setReaction(true);
+        setRange((short) 120);
+        setDuration((byte) 0);
+        setDamageDie(10);
+        setQuantityOfDie(1);
+     */
+    
+
 public abstract class SpellAbstract implements DiceRoll{
     Grid grid;
     PartyPlayers partyPlayers;

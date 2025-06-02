@@ -33,9 +33,9 @@ public class ChillTouch extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void castOnTarget(Creature target) {
-        target.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        target.ApplyConditionEffect(CONDITION_KEY.CHILL_TOUCH);
+    public void castOnTarget() {
+        getTarget().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getTarget().ApplyConditionEffect(CONDITION_KEY.CHILL_TOUCH);
     }
 
     @Override

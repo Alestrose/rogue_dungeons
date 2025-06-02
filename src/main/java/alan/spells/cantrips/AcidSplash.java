@@ -30,20 +30,20 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
     public void castOnArea() {
         int x = getCell().getX();
         int y = getCell().getY();
-        castOnTarget(getGrid().getCellArray()[x][y].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x+1][y+1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x-1][y-1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x+1][y-1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x-1][y+1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x][y+1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x][y-1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x+1][y].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x-1][y].getOccupant());
+        getGrid().getCellArray()[x][y].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x+1][y+1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x-1][y-1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x+1][y-1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x-1][y+1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x][y+1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x][y-1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x+1][y].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x-1][y].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
     }
 
     @Override
-    public void castOnTarget(Creature target) {
-        target.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+    public void castOnTarget() {
+        getTarget().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
         
     }
     

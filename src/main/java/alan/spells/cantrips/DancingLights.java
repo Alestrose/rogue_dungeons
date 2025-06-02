@@ -24,7 +24,7 @@ public class DancingLights extends SpellAbstract implements SpellInterface{
 
     @Override
     public void cast() {
-        // TODO Auto-generated method stub
+        // No combat implementation
         
     }
 
@@ -35,7 +35,7 @@ public class DancingLights extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void castOnTarget(Creature target) {
+    public void castOnTarget() {
         // TODO Auto-generated method stub
         
     }
