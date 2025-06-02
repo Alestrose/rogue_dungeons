@@ -31,6 +31,10 @@ public abstract class Creature {
         x,y,
         width,
         height,
+        enemyAttackRollReduction,
+        enemyDamageRollReduction,
+        playerAttackRollIncrease,
+        playerDamageRollIncrease,
         darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -451,8 +455,64 @@ public abstract class Creature {
     public void setTmepHhealth(int tmepHhealth) {
         this.tmepHhealth = tmepHhealth;
     }
-    
 
+    public int getEnemyAttackRollReduction() {
+        return enemyAttackRollReduction;
+    }
+
+    public void setEnemyAttackRollReduction(int enemyAttackRollReduction) {
+        this.enemyAttackRollReduction = enemyAttackRollReduction;
+    }
+
+    public int getEnemyDamageRollReduction() {
+        return enemyDamageRollReduction;
+    }
+
+    public void setEnemyDamageRollReduction(int enemyDamageRollReduction) {
+        this.enemyDamageRollReduction = enemyDamageRollReduction;
+    }
+
+    public int getPlayerAttackRollIncrease() {
+        return playerAttackRollIncrease;
+    }
+
+    public void setPlayerAttackRollIncrease(int playerAttackRollIncrease) {
+        this.playerAttackRollIncrease = playerAttackRollIncrease;
+    }
+
+    public int getPlayerDamageRollIncrease() {
+        return playerDamageRollIncrease;
+    }
+
+    public void setPlayerDamageRollIncrease(int playerDamageRollIncrease) {
+        this.playerDamageRollIncrease = playerDamageRollIncrease;
+    }
+
+    public Map<Constants.ABILITY, Integer> getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(Map<Constants.ABILITY, Integer> abilities) {
+        this.abilities = abilities;
+    }
+
+    public Map<Constants.DAMAGE_TYPE, Boolean> getInVulnerabilities() {
+        return inVulnerabilities;
+    }
+
+    public void setInVulnerabilities(Map<Constants.DAMAGE_TYPE, Boolean> inVulnerabilities) {
+        this.inVulnerabilities = inVulnerabilities;
+    }
+
+    public Map<Constants.CONDITION_KEY, ConditionEffect> getConditionEffects() {
+        return conditionEffects;
+    }
+
+    public void setConditionEffects(Map<Constants.CONDITION_KEY, ConditionEffect> conditionEffects) {
+        this.conditionEffects = conditionEffects;
+    }
+    
+    
 }
 
 
