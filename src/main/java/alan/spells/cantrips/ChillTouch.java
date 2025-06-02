@@ -1,40 +1,41 @@
 package alan.spells.cantrips;
 
 import alan.Constants;
+import alan.Constants.CONDITION_KEY;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class BladeWard extends SpellAbstract implements SpellInterface{
+public class ChillTouch extends SpellAbstract implements SpellInterface{
 
-    public BladeWard(){
-        setSpellName("Blade Ward");
+    public ChillTouch(){
+        setSpellName("Chill Touch");
         setSpellLevel((byte) 0);
-        setSchool(Constants.SCHOOL.ABJURATION);
-        // setDamage_type(Constants.DAMAGE_TYPE.ACID);
-        setConcentration(true);
+        setSchool(Constants.SCHOOL.NECROMANCY);
+        setDamage_type(Constants.DAMAGE_TYPE.NECROTIC);
+        // setConcentration(true);
         setAction(true);
         setRange((short) 0);
         setDuration((byte) 10);
-        // setDamageDie(6);
-        // setQuantityOfDie(1);
+        setDamageDie(10);
+        setQuantityOfDie(1);
     }
 
     @Override
     public void castOnArea(Creature caster, Cell cell) {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
     public void castOnTarget(Creature caster, Creature target) {
-        caster.setEnemyAttackRollReduction(4);
+        target.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        target.ApplyConditionEffect(CONDITION_KEY.CHILL_TOUCH);
     }
 
     @Override
     public String descreiption() {
-        return "Whenever a creature makes an attack roll against you before the spell ends, the attacker subtracts 1d4 from the attack roll";
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
@@ -48,7 +49,7 @@ public class BladeWard extends SpellAbstract implements SpellInterface{
             }
             case 4 -> {
             }
-            case 5 -> {
+            case 5 -> {setQuantityOfDie(2);
             }
             case 6 -> {
             }
@@ -60,7 +61,7 @@ public class BladeWard extends SpellAbstract implements SpellInterface{
             }
             case 10 -> {
             }
-            case 11 -> {
+            case 11 -> {setQuantityOfDie(3);
             }
             case 12 -> {
             }
@@ -72,7 +73,7 @@ public class BladeWard extends SpellAbstract implements SpellInterface{
             }
             case 16 -> {
             }
-            case 17 -> {
+            case 17 -> {setQuantityOfDie(4);
             }
             case 18 -> {
             }
@@ -83,7 +84,8 @@ public class BladeWard extends SpellAbstract implements SpellInterface{
             default -> {
             }
         }
+        
     }
-
+    
     
 }

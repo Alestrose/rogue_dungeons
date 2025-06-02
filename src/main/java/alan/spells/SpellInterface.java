@@ -7,4 +7,5 @@ public interface SpellInterface {
     void castOnTarget(Creature caster, Creature target);
     void castOnArea(Creature caster, Cell cell);
     String descreiption();
+    void onLevelUp(int lvl);
 }

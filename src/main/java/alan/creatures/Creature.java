@@ -207,6 +207,7 @@ public abstract class Creature {
         conditionEffects.put(Constants.CONDITION_KEY.RESTRAINED, new ConditionEffect("restrained"));
         conditionEffects.put(Constants.CONDITION_KEY.STUNNED, new ConditionEffect("stunned"));
         conditionEffects.put(Constants.CONDITION_KEY.UNCONSCIOUS, new ConditionEffect("unconscious"));
+        conditionEffects.put(Constants.CONDITION_KEY.CHILL_TOUCH, new ConditionEffect("chill touch"));
     }
 
     private void setDefaultAbilities(){
