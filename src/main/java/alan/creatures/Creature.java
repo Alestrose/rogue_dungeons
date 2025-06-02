@@ -25,6 +25,7 @@ public abstract class Creature {
         ac = 10,
         maxHealth,
         currentHealth,
+        tmepHhealth,
         speed,
         dc = 10,
         x,y,
@@ -107,6 +108,16 @@ public abstract class Creature {
 
     public void move(){
 
+    }
+
+    public void damageHealth(int val){
+        currentHealth -= val;
+        if(currentHealth < 0) currentHealth = 0;
+    }
+
+    public void healHealth(int val){
+        currentHealth += val;
+        if(currentHealth > maxHealth) currentHealth = maxHealth;
     }
 
     // For use in "GameManager.drawSprites()"
@@ -432,6 +443,15 @@ public abstract class Creature {
     public void setSpellCastAbility(Constants.ABILITY spellCastAbility) {
         this.spellCastAbility = spellCastAbility;
     }
+
+    public int getTmepHhealth() {
+        return tmepHhealth;
+    }
+
+    public void setTmepHhealth(int tmepHhealth) {
+        this.tmepHhealth = tmepHhealth;
+    }
+    
 
 }
 

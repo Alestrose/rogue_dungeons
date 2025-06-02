@@ -23,3 +23,7 @@ C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\ra
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\races\Tiefling.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\skills_and_feats\ConditionEffect.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\skills_and_feats\Skill.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\spells\cantrips\AcidSplash.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\spells\DiceRoll.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\spells\SpellAbstract.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\spells\SpellInterface.java

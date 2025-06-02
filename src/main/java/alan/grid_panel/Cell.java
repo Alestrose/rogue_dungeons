@@ -6,12 +6,15 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+import alan.creatures.Creature;
+
 public class Cell {
-    private int x,y;                    // x & y coordinates
+    private int x,y;                    
     private int width,height;
     private boolean isOccupied = false;
-    protected  String fileName;
-    protected  BufferedImage image;
+    private Creature occupant;
+    protected String fileName;
+    protected BufferedImage image;
 
     @SuppressWarnings("CallToPrintStackTrace")
     public Cell(int x,int y,int width, int height, String fileName){
@@ -101,6 +104,15 @@ public class Cell {
         this.isOccupied = isOccupied;
     }
 
+    public Creature getOccupant() {
+        return occupant;
+    }
+
+    public void setOccupant(Creature occupant) {
+        this.occupant = occupant;
+    }
+
+    
     
     
 }
