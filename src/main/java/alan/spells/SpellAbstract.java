@@ -2,7 +2,9 @@ package alan.spells;
 
 import alan.Constants.DAMAGE_TYPE;
 import alan.Constants.SCHOOL;
+import alan.creatures.Creature;
 import alan.creatures.PartyPlayers;
+import alan.grid_panel.Cell;
 import alan.grid_panel.Grid;
 
 public abstract class SpellAbstract implements DiceRoll{
@@ -13,6 +15,7 @@ public abstract class SpellAbstract implements DiceRoll{
     private byte duration;
     private int damageDie;
     private int quantityOfDie;
+    private int multiCastHits;
     private short range;
     private boolean reaction;
     private boolean action;
@@ -21,11 +24,20 @@ public abstract class SpellAbstract implements DiceRoll{
     private boolean ritual;
     private SCHOOL school;
     private DAMAGE_TYPE damage_type;
+    private Creature caster;
+    private Creature target;
+    private Creature[] targetList;
+    private Cell cell;
 
     /*
      * Constructor
      */
-    public SpellAbstract(){
+    public SpellAbstract(Creature caster, Creature target, Creature[] targetList, Cell cell){
+        this.caster = caster;
+        this.target = target;
+        this.targetList = targetList;
+        this.cell = cell;
+
         grid = Grid.getInstance(0, 0);
         partyPlayers = PartyPlayers.getInstance();
     }
@@ -162,6 +174,56 @@ public abstract class SpellAbstract implements DiceRoll{
 
     public void setQuantityOfDie(int quantityOfDie) {
         this.quantityOfDie = quantityOfDie;
+    }
+
+
+    public int getMultiCastHits() {
+        return multiCastHits;
+    }
+
+
+    public void setMultiCastHits(int multiCastHits) {
+        this.multiCastHits = multiCastHits;
+    }
+
+
+    public Creature getCaster() {
+        return caster;
+    }
+
+
+    public void setCaster(Creature caster) {
+        this.caster = caster;
+    }
+
+
+    public Creature getTarget() {
+        return target;
+    }
+
+
+    public void setTarget(Creature target) {
+        this.target = target;
+    }
+
+
+    public Creature[] getTargetList() {
+        return targetList;
+    }
+
+
+    public void setTargetList(Creature[] targetList) {
+        this.targetList = targetList;
+    }
+
+
+    public Cell getCell() {
+        return cell;
+    }
+
+
+    public void setCell(Cell cell) {
+        this.cell = cell;
     }
 
     

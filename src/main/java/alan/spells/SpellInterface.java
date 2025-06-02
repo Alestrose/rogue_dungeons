@@ -1,11 +1,12 @@
 package alan.spells;
 
 import alan.creatures.Creature;
-import alan.grid_panel.Cell;
 
 public interface SpellInterface {
-    void castOnTarget(Creature caster, Creature target);
-    void castOnArea(Creature caster, Cell cell);
+    void cast();    // Calls one of below cast types
+    void castOnTarget(Creature target);
+    void multiCast();
+    void castOnArea();
     String descreiption();
     void onLevelUp(int lvl);
 }

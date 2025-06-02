@@ -8,7 +8,8 @@ import alan.spells.SpellInterface;
 
 public class BladeWard extends SpellAbstract implements SpellInterface{
 
-    public BladeWard(){
+    public BladeWard(Creature caster, Creature target, Creature[] targetList, Cell cell){
+        super(caster, target, targetList, cell);
         setSpellName("Blade Ward");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.ABJURATION);
@@ -22,14 +23,24 @@ public class BladeWard extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void castOnArea(Creature caster, Cell cell) {
+    public void cast() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    @Override
+    public void castOnArea() {
         // TODO Auto-generated method stub
         
     }
 
     @Override
-    public void castOnTarget(Creature caster, Creature target) {
-        caster.setEnemyAttackRollReduction(4);
+    public void castOnTarget(Creature target) {
+        getCaster().setEnemyAttackRollReduction(4);
+    }
+    
+    @Override
+    public void multiCast() {
+        // TODO Auto-generated method stub
+        
     }
 
     @Override

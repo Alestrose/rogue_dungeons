@@ -6,58 +6,55 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class AcidSplash extends SpellAbstract implements SpellInterface{
+public class EldritchBlast extends SpellAbstract implements SpellInterface{
 
-    public AcidSplash(Creature caster, Creature target, Creature[] targetList, Cell cell){
+    
+
+    public EldritchBlast(Creature caster, Creature target, Creature[] targetList, Cell cell){
         super(caster, target, targetList, cell);
-        setSpellName("Acid Splash");
+        setSpellName("Eldritch Blast");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.EVOCATION);
-        setDamage_type(Constants.DAMAGE_TYPE.ACID);
+        setDamage_type(Constants.DAMAGE_TYPE.FORCE);
         // setConcentration(true);
         setAction(true);
-        setRange((short) 60);
+        setRange((short) 120);
         setDuration((byte) 0);
-        setDamageDie(6);
+        setDamageDie(10);
         setQuantityOfDie(1);
     }
 
+    // Calls one of below cast types
     @Override
     public void cast() {
-        throw new UnsupportedOperationException("Not supported yet.");
+        multiCast();
     }
+
     @Override
     public void castOnArea() {
-        int x = getCell().getX();
-        int y = getCell().getY();
-        castOnTarget(getGrid().getCellArray()[x][y].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x+1][y+1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x-1][y-1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x+1][y-1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x-1][y+1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x][y+1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x][y-1].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x+1][y].getOccupant());
-        castOnTarget(getGrid().getCellArray()[x-1][y].getOccupant());
+        
     }
 
     @Override
     public void castOnTarget(Creature target) {
-        target.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        
-    }
-    
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
+        getTarget().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
     }
 
+    @Override
+    public void multiCast() {
+        for (Creature c : getTargetList()) {
+            castOnTarget(c);
+        }
+        
+    }
 
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return "You create an acidic bubble at a point within range, where it explodes in a 5-foot-radius Sphere. Each creature in that Sphere must succeed on a Dexterity saving throw or take 1d6 Acid damage.";
+        return """
+               Your hurl a beam of crackling energy. Make a ranged spell attack against one creature or object in range. On a hit, the target takes 1d10 Force damage.\r
+               Cantrip Upgrade. The spell creates two beams at level 5, three beams at level 11, and four beams at level 17. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam.""" //
+        ;
     }
 
     @Override
@@ -71,7 +68,7 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
             }
             case 4 -> {
             }
-            case 5 -> {
+            case 5 -> {setMultiCastHits(2);
             }
             case 6 -> {
             }
@@ -83,7 +80,7 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
             }
             case 10 -> {
             }
-            case 11 -> {
+            case 11 -> {setMultiCastHits(3);
             }
             case 12 -> {
             }
@@ -95,7 +92,7 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
             }
             case 16 -> {
             }
-            case 17 -> {
+            case 17 -> {setMultiCastHits(4);
             }
             case 18 -> {
             }
@@ -107,6 +104,5 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
             }
         }
     }
-    
     
 }
