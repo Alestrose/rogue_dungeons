@@ -8,9 +8,8 @@ import alan.spells.SpellInterface;
 
 public class PoisonSpray extends SpellAbstract implements SpellInterface{
 
-    public PoisonSpray(Creature caster, Creature target, Creature[] targetList, Cell cell) {
-        super(caster, target, targetList, cell);
-        setSpellName("Spell Name");
+    public PoisonSpray() {
+        setSpellName("Poison Spray");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.NECROMANCY);
         setDamage_type(Constants.DAMAGE_TYPE.POISON);
@@ -23,21 +22,8 @@ public class PoisonSpray extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast() {
-        castOnTarget();
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        getTarget().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
+        target.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
     }
 
     @Override
@@ -49,56 +35,13 @@ public class PoisonSpray extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void onLevelUp(int lvl) {
         switch (lvl) {
-            case 1 -> {
-            }
-            case 2 -> {
-            }
-            case 3 -> {
-            }
-            case 4 -> {
-            }
-            case 5 -> {setQuantityOfDie(2);
-            }
-            case 6 -> {
-            }
-            case 7 -> {
-            }
-            case 8 -> {
-            }
-            case 9 -> {
-            }
-            case 10 -> {
-            }
-            case 11 -> {setQuantityOfDie(3);
-            }
-            case 12 -> {
-            }
-            case 13 -> {
-            }
-            case 14 -> {
-            }
-            case 15 -> {
-            }
-            case 16 -> {
-            }
-            case 17 -> {setQuantityOfDie(4);
-            }
-            case 18 -> {
-            }
-            case 19 -> {
-            }
-            case 20 -> {
-            }
-            default -> {
-            }
+
+            case 5 -> {setQuantityOfDie(2);}
+            case 11 -> {setQuantityOfDie(3);}
+            case 17 -> {setQuantityOfDie(4);}
+            default -> {}
         }
         
     }

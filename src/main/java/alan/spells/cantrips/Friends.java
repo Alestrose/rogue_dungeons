@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class Friends extends SpellAbstract implements SpellInterface{
 
-    public Friends(Creature caster, Creature target, Creature[] targetList, Cell cell) {
-        super(caster, target, targetList, cell);
+    public Friends() {
         setSpellName("Friends");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.ENCHANTMENT);
@@ -21,20 +20,8 @@ public class Friends extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast() {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         // No combat implementation
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        // TODO Auto-generated method stub
         
     }
 
@@ -42,12 +29,6 @@ public class Friends extends SpellAbstract implements SpellInterface{
     public String descreiption() {
         // TODO Auto-generated method stub
         return null;
-    }
-
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override

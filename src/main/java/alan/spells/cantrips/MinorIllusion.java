@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class MinorIllusion extends SpellAbstract implements SpellInterface{
 
-    public MinorIllusion(Creature caster, Creature target, Creature[] targetList, Cell cell) {
-        super(caster, target, targetList, cell);
+    public MinorIllusion() {
         setSpellName("Minor Illusion");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.ILLUSION);
@@ -22,21 +21,8 @@ public class MinorIllusion extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast() {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         // No combat implementation
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
@@ -50,15 +36,8 @@ public class MinorIllusion extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public void onLevelUp(int lvl) {
         // TODO Auto-generated method stub
-        
     }
     
 }

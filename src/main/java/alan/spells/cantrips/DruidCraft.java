@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class DruidCraft extends SpellAbstract implements SpellInterface{
 
-    public DruidCraft(Creature caster, Creature target, Creature[] targetList, Cell cell){
-        super(caster, target, targetList, cell);
+    public DruidCraft(){
         setSpellName("Druid Craft");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.TRANSMUTATION);
@@ -19,31 +18,12 @@ public class DruidCraft extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast() {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         // No combat implementation
     }
 
     @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        // TODO Auto-generated method stub
-        
-    }
-    
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
     public String descreiption() {
-        // TODO Auto-generated method stub
         return """
                Weather Sensor. You create a Tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round.\r
                Bloom. You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.\r

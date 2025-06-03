@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class Mending extends SpellAbstract implements SpellInterface{
 
-    public Mending(Creature caster, Creature target, Creature[] targetList, Cell cell) {
-        super(caster, target, targetList, cell);
+    public Mending() {
         setSpellName("Mending");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.TRANSMUTATION);
@@ -18,33 +17,18 @@ public class Mending extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast() {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         // No combat implementation
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
+        return """
+               This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.\r
+               This spell can physically repair a magic item, but it can't restore magic to such an object.""" //
+        ;
     }
 
     @Override

@@ -55,12 +55,7 @@ public abstract class SpellAbstract implements DiceRoll{
     /*
      * Constructor
      */
-    public SpellAbstract(Creature caster, Creature target, Creature[] targetList, Cell cell){
-        this.caster = caster;
-        this.target = target;
-        this.targetList = targetList;
-        this.cell = cell;
-
+    public SpellAbstract(){
         grid = Grid.getInstance(0, 0);
         partyPlayers = PartyPlayers.getInstance();
     }

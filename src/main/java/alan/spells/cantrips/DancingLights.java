@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class DancingLights extends SpellAbstract implements SpellInterface{
 
-    public DancingLights(Creature caster, Creature target, Creature[] targetList, Cell cell){
-        super(caster, target, targetList, cell);
+    public DancingLights(){
         setSpellName("Dancing Lights");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.ILLUSION);
@@ -17,30 +16,11 @@ public class DancingLights extends SpellAbstract implements SpellInterface{
         setAction(true);
         setRange((short) 120);
         setDuration((byte) 10);
-
     }
 
     @Override
-    public void cast() {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         // No combat implementation
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        // TODO Auto-generated method stub
-        
-    }
-    
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
         
     }
 

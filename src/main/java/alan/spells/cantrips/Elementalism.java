@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class Elementalism extends SpellAbstract implements SpellInterface{
 
-    public Elementalism(Creature caster, Creature target, Creature[] targetList, Cell cell) {
-        super(caster, target, targetList, cell);
+    public Elementalism() {
         setSpellName("Elementalism");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.TRANSMUTATION);
@@ -18,28 +17,13 @@ public class Elementalism extends SpellAbstract implements SpellInterface{
         setDuration((byte) 0);
     }
     
-
     @Override
-    public void cast() {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         // No combat implementation
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
     public String descreiption() {
-        // TODO Auto-generated method stub
         return """
                You exert control over the elements, creating one of the following effects within range:\r
                Beckon Air. You create a breeze strong enough to ripple cloth, stir dust, rustle leaves, and close open doors and shutters, all in a 5-foot Cube. Doors and shutters being held open by someone or something aren't affected.\r
@@ -52,12 +36,6 @@ public class Elementalism extends SpellAbstract implements SpellInterface{
         //
         //
         ;
-    }
-
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override

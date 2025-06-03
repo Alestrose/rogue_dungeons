@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class EldritchBlast extends SpellAbstract implements SpellInterface{
 
-    public EldritchBlast(Creature caster, Creature target, Creature[] targetList, Cell cell){
-        super(caster, target, targetList, cell);
+    public EldritchBlast(){
         setSpellName("Eldritch Blast");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.EVOCATION);
@@ -24,26 +23,10 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
 
     // Calls one of below cast types
     @Override
-    public void cast() {
-        multiCast();
-    }
-
-    @Override
-    public void castOnArea() {
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        
-    }
-
-    @Override
-    public void multiCast() {
-        for (Creature c : getTargetList()) {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
+        for (Creature c : targetList) {
             c.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
         }
-        
     }
 
     @Override
@@ -58,48 +41,10 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
     @Override
     public void onLevelUp(int lvl) {
         switch (lvl) {
-            case 1 -> {
-            }
-            case 2 -> {
-            }
-            case 3 -> {
-            }
-            case 4 -> {
-            }
-            case 5 -> {setMultiCastHits(2);
-            }
-            case 6 -> {
-            }
-            case 7 -> {
-            }
-            case 8 -> {
-            }
-            case 9 -> {
-            }
-            case 10 -> {
-            }
-            case 11 -> {setMultiCastHits(3);
-            }
-            case 12 -> {
-            }
-            case 13 -> {
-            }
-            case 14 -> {
-            }
-            case 15 -> {
-            }
-            case 16 -> {
-            }
-            case 17 -> {setMultiCastHits(4);
-            }
-            case 18 -> {
-            }
-            case 19 -> {
-            }
-            case 20 -> {
-            }
-            default -> {
-            }
+            case 5 -> {setMultiCastHits(2);}
+            case 11 -> {setMultiCastHits(3);}
+            case 17 -> {setMultiCastHits(4);}
+            default -> {}
         }
     }
 }

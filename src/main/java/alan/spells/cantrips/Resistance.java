@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class Resistance extends SpellAbstract implements SpellInterface{
 
-    public Resistance(Creature caster, Creature target, Creature[] targetList, Cell cell) {
-        super(caster, target, targetList, cell);
+    public Resistance() {
         setSpellName("Resistance");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.ABJURATION);
@@ -21,19 +20,7 @@ public class Resistance extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         // TODO Auto-generated method stub
         
     }
@@ -42,12 +29,6 @@ public class Resistance extends SpellAbstract implements SpellInterface{
     public String descreiption() {
         // TODO Auto-generated method stub
         return null;
-    }
-
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override

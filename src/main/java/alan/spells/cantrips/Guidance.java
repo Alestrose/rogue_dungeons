@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class Guidance extends SpellAbstract implements SpellInterface{
 
-    public Guidance(Creature caster, Creature target, Creature[] targetList, Cell cell){
-        super(caster, target, targetList, cell);
+    public Guidance(){
         setSpellName("Guidance");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.DIVINATION);
@@ -20,39 +19,19 @@ public class Guidance extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast() {
-        castOnTarget();
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        getTarget().setAbilityCheckIncrease(4);
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
+        target.setAbilityCheckIncrease(4);
         
     }
 
     @Override
     public String descreiption() {
-        // TODO Auto-generated method stub
         return "You touch a willing creature and choose a skill. Until the spell ends, the creature adds 1d4 to any ability check using the chosen skill.";
-    }
-
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
     }
 
     @Override
     public void onLevelUp(int lvl) {
         // TODO Auto-generated method stub
-        
     }
 
     

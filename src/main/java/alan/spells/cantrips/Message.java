@@ -8,8 +8,7 @@ import alan.spells.SpellInterface;
 
 public class Message extends SpellAbstract implements SpellInterface{
 
-    public Message(Creature caster, Creature target, Creature[] targetList, Cell cell) {
-        super(caster, target, targetList, cell);
+    public Message() {
         setSpellName("Message");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.TRANSMUTATION);
@@ -19,33 +18,18 @@ public class Message extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast() {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
         // No combat implementation
-        
-    }
-
-    @Override
-    public void castOnArea() {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void castOnTarget() {
-        // TODO Auto-generated method stub
         
     }
 
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void multiCast() {
-        // TODO Auto-generated method stub
-        
+        return """
+               You point toward a creature within range and whisper a message. The target (and only the target) hears the message and can reply in a whisper that only you can hear.\r
+               You can cast this spell through solid objects if you are familiar with the target and know it is beyond the barrier. Magical silence; 1 foot of stone, metal, or wood; or a thin sheet of lead blocks the spell.""" //
+        ;
     }
 
     @Override
