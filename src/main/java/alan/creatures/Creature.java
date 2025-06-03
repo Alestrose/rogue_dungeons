@@ -20,8 +20,7 @@ public abstract class Creature {
         creatureType, name, raceName;
     private int
         level = 1, ac = 10, maxHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height,
-        enemyAttackRollReduction, enemyDamageRollReduction, playerAttackRollIncrease,
-        playerDamageRollIncrease, playerAbilityCheckIncrease, darkVision = 0;
+        attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
@@ -381,38 +380,6 @@ public abstract class Creature {
         this.tmepHhealth = tmepHhealth;
     }
 
-    public int getEnemyAttackRollReduction() {
-        return enemyAttackRollReduction;
-    }
-
-    public void setEnemyAttackRollReduction(int enemyAttackRollReduction) {
-        this.enemyAttackRollReduction = enemyAttackRollReduction;
-    }
-
-    public int getEnemyDamageRollReduction() {
-        return enemyDamageRollReduction;
-    }
-
-    public void setEnemyDamageRollReduction(int enemyDamageRollReduction) {
-        this.enemyDamageRollReduction = enemyDamageRollReduction;
-    }
-
-    public int getPlayerAttackRollIncrease() {
-        return playerAttackRollIncrease;
-    }
-
-    public void setPlayerAttackRollIncrease(int playerAttackRollIncrease) {
-        this.playerAttackRollIncrease = playerAttackRollIncrease;
-    }
-
-    public int getPlayerDamageRollIncrease() {
-        return playerDamageRollIncrease;
-    }
-
-    public void setPlayerDamageRollIncrease(int playerDamageRollIncrease) {
-        this.playerDamageRollIncrease = playerDamageRollIncrease;
-    }
-
     public Map<Constants.DAMAGE_TYPE, Boolean> getInVulnerabilities() {
         return inVulnerabilities;
     }
@@ -429,14 +396,85 @@ public abstract class Creature {
         this.conditionEffects = conditionEffects;
     }
 
-    public int getPlayerAbilityCheckIncrease() {
-        return playerAbilityCheckIncrease;
+    public int getAttackRollReduction() {
+        return attackRollReduction;
     }
 
-    public void setPlayerAbilityCheckIncrease(int playerAbilityCheckIncrease) {
-        this.playerAbilityCheckIncrease = playerAbilityCheckIncrease;
+    public void setAttackRollReduction(int attackRollReduction) {
+        this.attackRollReduction = attackRollReduction;
     }
-    
+
+    public int getDamageRollReduction() {
+        return damageRollReduction;
+    }
+
+    public void setDamageRollReduction(int damageRollReduction) {
+        this.damageRollReduction = damageRollReduction;
+    }
+
+    public int getAbilityCheckReduction() {
+        return abilityCheckReduction;
+    }
+
+    public void setAbilityCheckReduction(int abilityCheckReduction) {
+        this.abilityCheckReduction = abilityCheckReduction;
+    }
+
+    public int getSavingThrowDecrease() {
+        return savingThrowDecrease;
+    }
+
+    public void setSavingThrowDecrease(int savingThrowDecrease) {
+        this.savingThrowDecrease = savingThrowDecrease;
+    }
+
+    public int getAttackRollIncrease() {
+        return attackRollIncrease;
+    }
+
+    public void setAttackRollIncrease(int attackRollIncrease) {
+        this.attackRollIncrease = attackRollIncrease;
+    }
+
+    public int getDamageRollIncrease() {
+        return damageRollIncrease;
+    }
+
+    public void setDamageRollIncrease(int damageRollIncrease) {
+        this.damageRollIncrease = damageRollIncrease;
+    }
+
+    public int getAbilityCheckIncrease() {
+        return abilityCheckIncrease;
+    }
+
+    public void setAbilityCheckIncrease(int abilityCheckIncrease) {
+        this.abilityCheckIncrease = abilityCheckIncrease;
+    }
+
+    public int getPlayerSaveIncrease() {
+        return playerSaveIncrease;
+    }
+
+    public void setPlayerSaveIncrease(int playerSaveIncrease) {
+        this.playerSaveIncrease = playerSaveIncrease;
+    }
+
+    public int getSavingThrowIncrease() {
+        return savingThrowIncrease;
+    }
+
+    public void setSavingThrowIncrease(int savingThrowIncrease) {
+        this.savingThrowIncrease = savingThrowIncrease;
+    }
+
+    public Map<Constants.ABILITY, Ability> getAbilities() {
+        return abilities;
+    }
+
+    public void setAbilities(Map<Constants.ABILITY, Ability> abilities) {
+        this.abilities = abilities;
+    }
     
 }
 

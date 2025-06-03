@@ -33,14 +33,14 @@ public class Guidance extends SpellAbstract implements SpellInterface{
 
     @Override
     public void castOnTarget() {
-        getTarget().setPlayerAbilityCheckIncrease(4);
+        getTarget().setAbilityCheckIncrease(4);
         
     }
 
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return null;
+        return "You touch a willing creature and choose a skill. Until the spell ends, the creature adds 1d4 to any ability check using the chosen skill.";
     }
 
     @Override

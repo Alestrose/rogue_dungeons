@@ -31,7 +31,7 @@ public class BladeWard extends SpellAbstract implements SpellInterface{
 
     @Override
     public void castOnTarget() {
-        getCaster().setEnemyAttackRollReduction(4);
+        getTarget().setAttackRollReduction(4);
     }
     
     @Override
