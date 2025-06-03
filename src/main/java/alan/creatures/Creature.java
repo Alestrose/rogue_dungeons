@@ -12,31 +12,16 @@ import javax.swing.JPanel;
 
 import alan.Constants;
 import alan.grid_panel.Cell;
+import alan.skills_and_feats.Ability;
 import alan.skills_and_feats.ConditionEffect;
 
 public abstract class Creature {
     private String
-        creatureType,
-        name,
-        raceName;
-
+        creatureType, name, raceName;
     private int
-        level = 1,
-        ac = 10,
-        maxHealth,
-        currentHealth,
-        tmepHhealth,
-        speed,
-        dc = 10,
-        x,y,
-        width,
-        height,
-        enemyAttackRollReduction,
-        enemyDamageRollReduction,
-        playerAttackRollIncrease,
-        playerDamageRollIncrease,
-        playerAbilityCheckIncrease,
-        darkVision = 0;
+        level = 1, ac = 10, maxHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height,
+        enemyAttackRollReduction, enemyDamageRollReduction, playerAttackRollIncrease,
+        playerDamageRollIncrease, playerAbilityCheckIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
@@ -44,16 +29,7 @@ public abstract class Creature {
     private Constants.ABILITY spellCastAbility;
 
     // Ability scores & Modifiers
-    protected Map<Constants.ABILITY, Integer> abilities = new HashMap<>();
-    //private int strength, dexterity, constitution, intelligence, wisdom, charisma;
-    private int
-        strengthMod = setModifier(abilities.getOrDefault(Constants.ABILITY.STRENGTH, 10)),
-        dexterityMod = setModifier(abilities.getOrDefault(Constants.ABILITY.DEXTERITY, 10)),
-        constitutionMod = setModifier(abilities.getOrDefault(Constants.ABILITY.CONSTITUTION, 10)),
-        intelligenceMod = setModifier(abilities.getOrDefault(Constants.ABILITY.INTELLIGENCE, 10)),
-        wisdomMod = setModifier(abilities.getOrDefault(Constants.ABILITY.WISDOM, 10)),
-        charismaMod = setModifier(abilities.getOrDefault(Constants.ABILITY.CHARISMA, 10));
-    
+    protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
     // Resistances & Vulnerabilities
     protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
     protected Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities = new HashMap<>();
@@ -73,7 +49,7 @@ public abstract class Creature {
         } catch (IOException e) {
             System.out.println("file not found");
         }
-        
+
         setDefaultResistences();
         setDefaultVulnerabilities();
         setDefaultConditionMap();
@@ -115,11 +91,13 @@ public abstract class Creature {
 
     }
 
+    // Reduces health by int val
     public void damageHealth(int val){
         currentHealth -= val;
         if(currentHealth < 0) currentHealth = 0;
     }
 
+    // Increases health by int val
     public void healHealth(int val){
         currentHealth += val;
         if(currentHealth > maxHealth) currentHealth = maxHealth;
@@ -163,34 +141,31 @@ public abstract class Creature {
         }
     }
 
-    // Initialize named booleans
     private void setDefaultResistences(){
-    resistances.put(Constants.DAMAGE_TYPE.FIRE, false);
-    resistances.put(Constants.DAMAGE_TYPE.ICE, false);
-    resistances.put(Constants.DAMAGE_TYPE.LIGHTNING, false);
-    resistances.put(Constants.DAMAGE_TYPE.POISON, false);
-    resistances.put(Constants.DAMAGE_TYPE.ACID, false);
-    resistances.put(Constants.DAMAGE_TYPE.SLASHING, false);
-    resistances.put(Constants.DAMAGE_TYPE.PIERCING, false);
-    resistances.put(Constants.DAMAGE_TYPE.BLUDGEONING, false);
-    resistances.put(Constants.DAMAGE_TYPE.NECROTIC, false);
-    resistances.put(Constants.DAMAGE_TYPE.RADIANT, false);
+        resistances.put(Constants.DAMAGE_TYPE.FIRE, false);
+        resistances.put(Constants.DAMAGE_TYPE.ICE, false);
+        resistances.put(Constants.DAMAGE_TYPE.LIGHTNING, false);
+        resistances.put(Constants.DAMAGE_TYPE.POISON, false);
+        resistances.put(Constants.DAMAGE_TYPE.ACID, false);
+        resistances.put(Constants.DAMAGE_TYPE.SLASHING, false);
+        resistances.put(Constants.DAMAGE_TYPE.PIERCING, false);
+        resistances.put(Constants.DAMAGE_TYPE.BLUDGEONING, false);
+        resistances.put(Constants.DAMAGE_TYPE.NECROTIC, false);
+        resistances.put(Constants.DAMAGE_TYPE.RADIANT, false);
     }
     
-    // Initialize named booleans
     private void setDefaultVulnerabilities(){
-    vulnerabilities.put(Constants.DAMAGE_TYPE.FIRE, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.ICE, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.LIGHTNING, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.POISON, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.ACID, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.SLASHING, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.PIERCING, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.BLUDGEONING, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.NECROTIC, false);
-    vulnerabilities.put(Constants.DAMAGE_TYPE.RADIANT, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.FIRE, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.ICE, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.LIGHTNING, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.POISON, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.ACID, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.SLASHING, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.PIERCING, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.BLUDGEONING, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.NECROTIC, false);
+        vulnerabilities.put(Constants.DAMAGE_TYPE.RADIANT, false);
     }
-
 
     private void setDefaultConditionMap(){
         conditionEffects.put(Constants.CONDITION_KEY.BLINDED, new ConditionEffect("blinded"));
@@ -212,18 +187,17 @@ public abstract class Creature {
     }
 
     private void setDefaultAbilities(){
-    abilities.put(Constants.ABILITY.STRENGTH, 10);
-    abilities.put(Constants.ABILITY.CONSTITUTION, 10);
-    abilities.put(Constants.ABILITY.DEXTERITY, 10);
-    abilities.put(Constants.ABILITY.INTELLIGENCE, 10);
-    abilities.put(Constants.ABILITY.WISDOM, 10);
-    abilities.put(Constants.ABILITY.CHARISMA, 10);
-
+        abilities.put(Constants.ABILITY.STRENGTH, new Ability("Strength"));
+        abilities.put(Constants.ABILITY.CONSTITUTION, new Ability("Constitution"));
+        abilities.put(Constants.ABILITY.DEXTERITY, new Ability("Dexterity"));
+        abilities.put(Constants.ABILITY.INTELLIGENCE, new Ability("Intelligence"));
+        abilities.put(Constants.ABILITY.WISDOM, new Ability("Wisdom"));
+        abilities.put(Constants.ABILITY.CHARISMA, new Ability("Charisma"));
     }
 
-    public int setModifier(int abilityScore){
-        if(abilityScore >= 10) return strengthMod = (abilityScore - 10) /2;
-        else return strengthMod = (abilityScore - 11) /2;
+    //            implement
+    public void grantSavingThrowBonus(Constants.ABILITY a, Integer val){
+        abilities.get(a).setSaveBonus(val);
     }
 
     /*
@@ -362,60 +336,12 @@ public abstract class Creature {
         this.darkVision = darkVision;
     }
 
-    public int getStrengthMod() {
-        return strengthMod;
-    }
-
-    public int getDexterityMod() {
-        return dexterityMod;
-    }
-
-    public int getConstitutionMod() {
-        return constitutionMod;
-    }
-
-    public int getIntelligenceMod() {
-        return intelligenceMod;
-    }
-
-    public int getWisdomMod() {
-        return wisdomMod;
-    }
-
-    public int getCharismaMod() {
-        return charismaMod;
-    }
-
     public String getRaceName() {
         return raceName;
     }
 
     public void setRaceName(String raceName) {
         this.raceName = raceName;
-    }
-
-    public void setStrengthMod(int strengthMod) {
-        this.strengthMod = strengthMod;
-    }
-
-    public void setDexterityMod(int dexterityMod) {
-        this.dexterityMod = dexterityMod;
-    }
-
-    public void setConstitutionMod(int constitutionMod) {
-        this.constitutionMod = constitutionMod;
-    }
-
-    public void setIntelligenceMod(int intelligenceMod) {
-        this.intelligenceMod = intelligenceMod;
-    }
-
-    public void setWisdomMod(int wisdomMod) {
-        this.wisdomMod = wisdomMod;
-    }
-
-    public void setCharismaMod(int charismaMod) {
-        this.charismaMod = charismaMod;
     }
 
     public Map<Constants.DAMAGE_TYPE, Boolean> getResistances() {
@@ -488,14 +414,6 @@ public abstract class Creature {
 
     public void setPlayerDamageRollIncrease(int playerDamageRollIncrease) {
         this.playerDamageRollIncrease = playerDamageRollIncrease;
-    }
-
-    public Map<Constants.ABILITY, Integer> getAbilities() {
-        return abilities;
-    }
-
-    public void setAbilities(Map<Constants.ABILITY, Integer> abilities) {
-        this.abilities = abilities;
     }
 
     public Map<Constants.DAMAGE_TYPE, Boolean> getInVulnerabilities() {

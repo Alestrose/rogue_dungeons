@@ -1,5 +1,6 @@
 package alan.spells;
 
+import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;
 import alan.Constants.SCHOOL;
 import alan.creatures.Creature;
@@ -10,10 +11,11 @@ import alan.grid_panel.Grid;
 
     // Standard object constructor layout
     /*
-     *  setSpellName("Eldritch Blast");
+     *  setSpellName("Spell Name");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.EVOCATION);
         setDamage_type(Constants.DAMAGE_TYPE.FORCE);
+        setSavingThrow(Constants.ABILITY.INTELLIGENCE);
         setConcentration(true);
         setAction(true);
         setBonus(true);
@@ -42,6 +44,7 @@ public abstract class SpellAbstract implements DiceRoll{
     private boolean ritual;
     private SCHOOL school;
     private DAMAGE_TYPE damage_type;
+    private Constants.ABILITY savingThrow;
     private Creature caster;
     private Creature target;
     private Creature[] targetList;
@@ -244,5 +247,16 @@ public abstract class SpellAbstract implements DiceRoll{
         this.cell = cell;
     }
 
+
+    public Constants.ABILITY getSavingThrow() {
+        return savingThrow;
+    }
+
+
+    public void setSavingThrow(Constants.ABILITY savingThrow) {
+        this.savingThrow = savingThrow;
+    }
+
+    
     
 }
