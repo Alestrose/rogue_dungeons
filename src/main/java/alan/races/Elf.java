@@ -1,6 +1,7 @@
 package alan.races;
 
 import alan.Constants;
+import alan.Constants.CONDITION_KEY;
 import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
 
@@ -41,6 +42,8 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         setDarkVision(60);
         // Keen Senses
         grantSkillProficiency(SKILL_KEY);
+        // Fey Ancestry
+        grantConditionAdvantage(CONDITION_KEY.CHARMED);
         // Elven Lineage
         switch (lineage) {
             case DROW -> setDarkVision(120) /* Gets Dancing Lights cantrip */;

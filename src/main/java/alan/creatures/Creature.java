@@ -141,30 +141,32 @@ public abstract class Creature {
         }
     }
 
+    public void grantSavingThrowBonus(Constants.ABILITY a, Integer val){
+        abilities.get(a).setSaveBonus(val);
+    }
+
+    public void grantSavingThrowPenalty(Constants.ABILITY a, Integer val){
+        abilities.get(a).setSavePenalty(val);
+    }
+
+    public void grantAbilityAdvantage(Constants.ABILITY a, Integer val){
+        abilities.get(a).setSaveAdvantage(true);
+    }
+
+    public void grantAbilityDisadvantage(Constants.ABILITY a, Integer val){
+        abilities.get(a).setSaveDisadvantage(true);
+    }
+
     private void setDefaultResistences(){
-        resistances.put(Constants.DAMAGE_TYPE.FIRE, false);
-        resistances.put(Constants.DAMAGE_TYPE.ICE, false);
-        resistances.put(Constants.DAMAGE_TYPE.LIGHTNING, false);
-        resistances.put(Constants.DAMAGE_TYPE.POISON, false);
-        resistances.put(Constants.DAMAGE_TYPE.ACID, false);
-        resistances.put(Constants.DAMAGE_TYPE.SLASHING, false);
-        resistances.put(Constants.DAMAGE_TYPE.PIERCING, false);
-        resistances.put(Constants.DAMAGE_TYPE.BLUDGEONING, false);
-        resistances.put(Constants.DAMAGE_TYPE.NECROTIC, false);
-        resistances.put(Constants.DAMAGE_TYPE.RADIANT, false);
+        for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
+        resistances.put(type, false);
+        }
     }
     
     private void setDefaultVulnerabilities(){
-        vulnerabilities.put(Constants.DAMAGE_TYPE.FIRE, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.ICE, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.LIGHTNING, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.POISON, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.ACID, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.SLASHING, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.PIERCING, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.BLUDGEONING, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.NECROTIC, false);
-        vulnerabilities.put(Constants.DAMAGE_TYPE.RADIANT, false);
+        for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
+            vulnerabilities.put(type, false);
+        }
     }
 
     private void setDefaultConditionMap(){
@@ -193,11 +195,6 @@ public abstract class Creature {
         abilities.put(Constants.ABILITY.INTELLIGENCE, new Ability("Intelligence"));
         abilities.put(Constants.ABILITY.WISDOM, new Ability("Wisdom"));
         abilities.put(Constants.ABILITY.CHARISMA, new Ability("Charisma"));
-    }
-
-    //            implement
-    public void grantSavingThrowBonus(Constants.ABILITY a, Integer val){
-        abilities.get(a).setSaveBonus(val);
     }
 
     /*

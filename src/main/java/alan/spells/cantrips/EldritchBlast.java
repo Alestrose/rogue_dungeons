@@ -19,6 +19,7 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
         setDuration((byte) 0);
         setDamageDie(10);
         setQuantityOfDie(1);
+        setSpellAttack(true);
     }
 
     // Calls one of below cast types

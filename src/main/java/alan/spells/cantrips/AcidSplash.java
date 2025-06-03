@@ -14,12 +14,13 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.EVOCATION);
         setDamage_type(Constants.DAMAGE_TYPE.ACID);
-        // setConcentration(true);
+        setSavingThrow(Constants.ABILITY.DEXTERITY);
         setAction(true);
         setRange((short) 60);
         setDuration((byte) 0);
         setDamageDie(6);
         setQuantityOfDie(1);
+        setSpellSave(true);
     }
 
     @Override
@@ -44,7 +45,6 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
     @Override
     public void castOnTarget() {
         
-        
     }
     
     @Override
@@ -52,7 +52,6 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
         // TODO Auto-generated method stub
         
     }
-
 
     @Override
     public String descreiption() {

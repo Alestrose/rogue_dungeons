@@ -42,6 +42,8 @@ public abstract class SpellAbstract implements DiceRoll{
     private boolean bonus;
     private boolean concentration;
     private boolean ritual;
+    private boolean spellAttack;
+    private boolean spellSave;
     private SCHOOL school;
     private DAMAGE_TYPE damage_type;
     private Constants.ABILITY savingThrow;
@@ -256,6 +258,26 @@ public abstract class SpellAbstract implements DiceRoll{
     public void setSavingThrow(Constants.ABILITY savingThrow) {
         this.savingThrow = savingThrow;
     }
+
+    public boolean isSpellAttack() {
+        return spellAttack;
+    }
+
+
+    public void setSpellAttack(boolean spellAttack) {
+        this.spellAttack = spellAttack;
+    }
+
+
+    public boolean isSpellSave() {
+        return spellSave;
+    }
+
+
+    public void setSpellSave(boolean spellSave) {
+        this.spellSave = spellSave;
+    }
+    
 
     
     
