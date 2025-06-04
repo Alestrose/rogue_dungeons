@@ -6,35 +6,36 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class Guidance extends SpellAbstract implements SpellInterface{
+public class SorcerousBurst extends SpellAbstract implements SpellInterface{
 
-    public Guidance(){
-        setSpellName("Guidance");
+    public SorcerousBurst(){
+        setSpellName("Sorcerous Burst");
         setSpellLevel((byte) 0);
-        setSchool(Constants.SCHOOL.DIVINATION);
-        setConcentration(true);
+        setSchool(Constants.SCHOOL.EVOCATION);
+        setSpellAttack(true);
         setAction(true);
-        setRange((short) 0);
-        setDuration((byte) 10);
+        setRange((short) 120);
+        setDuration((byte) 0);
+        setDamageDie(10);
+        setQuantityOfDie(1);
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type) {
-        target.setAbilityCheckIncrease(4);
+        // TODO Auto-generated method stub
         
     }
 
     @Override
     public String descreiption() {
-        return "You touch a willing creature and choose a skill. Until the spell ends, the creature adds 1d4 to any ability check using the chosen skill.";
+        // TODO Auto-generated method stub
+        return null;
     }
 
     @Override
     public void onLevelUp(int lvl) {
         // TODO Auto-generated method stub
+        
     }
-
-    
-
 
 }

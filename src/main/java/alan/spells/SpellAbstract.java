@@ -16,6 +16,7 @@ import alan.grid_panel.Grid;
         setSchool(Constants.SCHOOL.EVOCATION);
         setDamage_type(Constants.DAMAGE_TYPE.FORCE);
         setSavingThrow(Constants.ABILITY.INTELLIGENCE);
+        setSpellAttack(true);
         setConcentration(true);
         setAction(true);
         setBonus(true);

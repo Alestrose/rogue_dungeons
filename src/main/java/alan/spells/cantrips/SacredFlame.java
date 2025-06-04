@@ -6,32 +6,34 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class MindSliver extends SpellAbstract implements SpellInterface{
+public class SacredFlame extends SpellAbstract implements SpellInterface{
 
-    public MindSliver() {
-        setSpellName("Mind Sliver");
+    public SacredFlame(){
+        setSpellName("Sacred Flame");
         setSpellLevel((byte) 0);
-        setSavingThrow(Constants.ABILITY.INTELLIGENCE);
-        setSchool(Constants.SCHOOL.ENCHANTMENT);
+        setSchool(Constants.SCHOOL.EVOCATION);
+        setDamage_type(Constants.DAMAGE_TYPE.RADIANT);
+        setSavingThrow(Constants.ABILITY.DEXTERITY);
+        setConcentration(true);
         setAction(true);
-        setBonus(true);
-        setReaction(true);
         setRange((short) 60);
-        setDuration((byte) 1);
-        setDamageDie(6);
+        setDuration((byte) 0);
+        setDamageDie(8);
         setQuantityOfDie(1);
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type) {
         target.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        target.setSavingThrowDecrease(4);
+        
     }
 
     @Override
     public String descreiption() {
-        // TODO Auto-generated method stub
-        return null;
+        return """
+               Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 Radiant damage. The target gains no benefit from Half Cover or Three-Quarters Cover for this save.\r
+               Cantrip Upgrade. The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).""" //
+        ;
     }
 
     @Override

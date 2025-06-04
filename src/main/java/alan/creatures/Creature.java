@@ -26,6 +26,7 @@ public abstract class Creature {
     private Cell location;
     private Constants.CREATURE_SIZE size;
     private Constants.ABILITY spellCastAbility;
+    private boolean canOpportunityAttack = true;
 
     // Ability scores & Modifiers
     protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
@@ -475,7 +476,14 @@ public abstract class Creature {
     public void setAbilities(Map<Constants.ABILITY, Ability> abilities) {
         this.abilities = abilities;
     }
-    
+
+    public boolean isCanOpportunityAttack() {
+        return canOpportunityAttack;
+    }
+
+    public void setCanOpportunityAttack(boolean canOpportunityAttack) {
+        this.canOpportunityAttack = canOpportunityAttack;
+    }
 }
 
 

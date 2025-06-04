@@ -23,7 +23,7 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type) {
         int x = cell.getX();
         int y = cell.getY();
         getGrid().getCellArray()[x][y].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));

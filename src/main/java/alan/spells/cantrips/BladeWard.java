@@ -19,7 +19,7 @@ public class BladeWard extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell) {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type) {
         target.setAttackRollReduction(4);
     }
 
