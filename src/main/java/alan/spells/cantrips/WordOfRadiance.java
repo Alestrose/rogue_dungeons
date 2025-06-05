@@ -7,13 +7,13 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class Thunderclap extends SpellAbstract implements SpellInterface{
+public class WordOfRadiance extends SpellAbstract implements SpellInterface{
 
-    public Thunderclap(){
-        setSpellName("Thunderclap");
+    public WordOfRadiance(){
+        setSpellName("Word of Radiance");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.EVOCATION);
-        setDamage_type(Constants.DAMAGE_TYPE.THUNDER);
+        setDamage_type(Constants.DAMAGE_TYPE.RADIANT);
         setSavingThrow(Constants.ABILITY.CONSTITUTION);
         setAction(true);
         setRange((short) 0);
@@ -32,7 +32,7 @@ public class Thunderclap extends SpellAbstract implements SpellInterface{
     @Override
     public String descreiption() {
         return """
-               Each creature in a 5-foot Emanation originating from you must succeed on a Constitution saving throw or take 1d6 Thunder damage. The spell's thunderous sound can be heard up to 100 feet away.\r
+               Burning radiance erupts from you in a 5-foot Emanation. Each creature of your choice that you can see in it must succeed on a Constitution saving throw or take 1d6 Radiant damage.\r
                Cantrip Upgrade. The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6).""" //
         ;
     }
@@ -45,7 +45,7 @@ public class Thunderclap extends SpellAbstract implements SpellInterface{
             case 17 -> {setQuantityOfDie(4);}
             default -> {}
         }
-        
     }
     
+
 }

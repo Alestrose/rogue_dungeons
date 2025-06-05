@@ -20,7 +20,7 @@ public abstract class Creature {
     private String
         creatureType, name, raceName;
     private int
-        level = 1, ac = 10, maxHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height,
+        level = 1, ac = 10, maxHealth, tempHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -28,6 +28,7 @@ public abstract class Creature {
     private Constants.CREATURE_SIZE size;
     private Constants.ABILITY spellCastAbility;
     private boolean canOpportunityAttack = true;
+    private boolean attackRollDisadvantage, attackRollAdvantage;
     private int proficiencyBonus = 0;
 
     // Ability scores & Modifiers
@@ -54,7 +55,6 @@ public abstract class Creature {
         }
 
         setDefaultResistences();
-        setDefaultVulnerabilities();
         setDefaultConditionMap();
         setDefaultAbilities();
         setDefaultSkills();
@@ -82,7 +82,6 @@ public abstract class Creature {
         }
 
         setDefaultResistences();
-        setDefaultVulnerabilities();
         setDefaultConditionMap();
         setDefaultAbilities();
         setDefaultSkills();
@@ -178,15 +177,15 @@ public abstract class Creature {
         }
     }
 
-    private void setDefaultResistences(){
+    private void setDefaultResistences(){  
         for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
         resistances.put(type, false);
         }
-    }
-    
-    private void setDefaultVulnerabilities(){
         for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
             vulnerabilities.put(type, false);
+        }
+        for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
+            inVulnerabilities.put(type, false);
         }
     }
 
@@ -540,6 +539,31 @@ public abstract class Creature {
     public void setProficiencyBonus(int proficiencyBonus) {
         this.proficiencyBonus = proficiencyBonus;
     }
+
+    public boolean isAttackRollDisadvantage() {
+        return attackRollDisadvantage;
+    }
+
+    public void setAttackRollDisadvantage(boolean attackRollDisadvantage) {
+        this.attackRollDisadvantage = attackRollDisadvantage;
+    }
+
+    public boolean isAttackRollAdvantage() {
+        return attackRollAdvantage;
+    }
+
+    public void setAttackRollAdvantage(boolean attackRollAdvantage) {
+        this.attackRollAdvantage = attackRollAdvantage;
+    }
+
+    public int getTempHealth() {
+        return tempHealth;
+    }
+
+    public void setTempHealth(int tempHealth) {
+        this.tempHealth = tempHealth;
+    }
+    
 }
 
 

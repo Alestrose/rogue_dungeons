@@ -21,7 +21,7 @@ public class MinorIllusion extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type) {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type, int spellLevel) {
         // No combat implementation
     }
 

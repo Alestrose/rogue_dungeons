@@ -22,8 +22,8 @@ public class FireBolt extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type) {
-        target.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type, int spellLevel) {
+        target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
     }
 
     @Override

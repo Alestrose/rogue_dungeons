@@ -7,9 +7,9 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class ThornWhip extends SpellAbstract implements SpellInterface{
+public class ThornWhip_ extends SpellAbstract implements SpellInterface{
 
-    public ThornWhip(){
+    public ThornWhip_(){
         setSpellName("Thorn Whip");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.TRANSMUTATION);
@@ -23,8 +23,8 @@ public class ThornWhip extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type) {
-        target.damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
+        target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
     }
 
     @Override

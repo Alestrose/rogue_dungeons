@@ -19,7 +19,7 @@ public class SpareTheDying extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type) {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         if(target.getCurrentHealth() <= 0) target.setCurrentHealth(1);
     }
 

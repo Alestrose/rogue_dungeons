@@ -23,18 +23,18 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type) {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type, int spellLevel) {
         int x = cell.getX();
         int y = cell.getY();
-        getGrid().getCellArray()[x][y].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x+1][y+1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x-1][y-1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x+1][y-1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x-1][y+1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x][y+1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x][y-1].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x+1][y].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x-1][y].getOccupant().damageHealth(damageRoll(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x][y].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x+1][y+1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x-1][y-1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x+1][y-1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x-1][y+1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x][y+1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x][y-1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x+1][y].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        getGrid().getCellArray()[x-1][y].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
     }
 
     @Override

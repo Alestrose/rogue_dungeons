@@ -4,10 +4,6 @@ import alan.grid_panel.Cell;
 
 public class PlayableCharacter extends Creature{
     private boolean hasAdvantage = false;
-    
-
-    
-
 
     // Without location constructor
     public PlayableCharacter(String name, String fileName) {

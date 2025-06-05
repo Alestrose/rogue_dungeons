@@ -12,7 +12,7 @@ import alan.grid_panel.Grid;
     // Standard object constructor layout
     /*
      *  setSpellName("Spell Name");
-        setSpellLevel((byte) 0);
+        setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.EVOCATION);
         setDamage_type(Constants.DAMAGE_TYPE.FORCE);
         setSavingThrow(Constants.ABILITY.INTELLIGENCE);
@@ -60,17 +60,15 @@ public abstract class SpellAbstract implements DiceRoll{
         grid = Grid.getInstance(0, 0);
         partyPlayers = PartyPlayers.getInstance();
     }
-    
 
     @Override
-    public int damageRoll(int damageDie, int quantityOfDie) {
+    public int rollDamage(int damageDie, int quantityOfDie) {
         int total = 0;
         for (int i = 0; i < quantityOfDie; i++) {
             total += random.nextInt(damageDie) + 1;
         }
         return total;
     }
-
 
     /*
      * Getters & Setters
