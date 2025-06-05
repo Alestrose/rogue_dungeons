@@ -14,6 +14,7 @@ import alan.Constants;
 import alan.grid_panel.Cell;
 import alan.skills_and_feats.Ability;
 import alan.skills_and_feats.ConditionEffect;
+import alan.skills_and_feats.Skill;
 
 public abstract class Creature {
     private String
@@ -27,9 +28,11 @@ public abstract class Creature {
     private Constants.CREATURE_SIZE size;
     private Constants.ABILITY spellCastAbility;
     private boolean canOpportunityAttack = true;
+    private int proficiencyBonus = 0;
 
     // Ability scores & Modifiers
     protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
+    protected Map<Constants.SKILL_KEY, Skill> skills = new HashMap<>();
     // Resistances & Vulnerabilities
     protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
     protected Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities = new HashMap<>();
@@ -54,6 +57,7 @@ public abstract class Creature {
         setDefaultVulnerabilities();
         setDefaultConditionMap();
         setDefaultAbilities();
+        setDefaultSkills();
     }
 
     // Specified Cell location constructor
@@ -81,6 +85,7 @@ public abstract class Creature {
         setDefaultVulnerabilities();
         setDefaultConditionMap();
         setDefaultAbilities();
+        setDefaultSkills();
     }
 
     /*
@@ -90,6 +95,8 @@ public abstract class Creature {
     public void move(){
 
     }
+
+    
 
     // Reduces health by int val
     public void damageHealth(int val){
@@ -149,12 +156,26 @@ public abstract class Creature {
         abilities.get(a).setSavePenalty(val);
     }
 
-    public void grantAbilityAdvantage(Constants.ABILITY a, Integer val){
+    public void grantAbilityAdvantage(Constants.ABILITY a){
         abilities.get(a).setSaveAdvantage(true);
     }
 
-    public void grantAbilityDisadvantage(Constants.ABILITY a, Integer val){
+    public void grantAbilityDisadvantage(Constants.ABILITY a){
         abilities.get(a).setSaveDisadvantage(true);
+    }
+
+    public void grantSkillProficiency(Constants.SKILL_KEY skill_key) {
+        Skill skill = skills.get(skill_key);
+        if (skill != null) {
+            skill.setHasProficiency(true);
+        }
+    }
+
+    public void grantSkillAdvantage(Constants.SKILL_KEY skill_key) {
+        Skill skill = skills.get(skill_key);
+        if (skill != null) {
+            skill.setHasAdvantage(true);
+        }
     }
 
     private void setDefaultResistences(){
@@ -195,6 +216,33 @@ public abstract class Creature {
         abilities.put(Constants.ABILITY.INTELLIGENCE, new Ability("Intelligence"));
         abilities.put(Constants.ABILITY.WISDOM, new Ability("Wisdom"));
         abilities.put(Constants.ABILITY.CHARISMA, new Ability("Charisma"));
+    }
+
+    private void setDefaultSkills(){
+        skills.put(Constants.SKILL_KEY.ATHLETICS, new Skill("athletics", abilities.get(Constants.ABILITY.STRENGTH).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.ACROBATICS, new Skill("acrobatics", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.SLEIGHT_OF_HAND, new Skill("sleight of Hand", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.STEALTH, new Skill("stealth", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.ARCANA, new Skill("arcana", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.HISTORY, new Skill("history", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.INVESTIGATION, new Skill("investigation", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.NATURE, new Skill("nature", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.RELIGION, new Skill("religion", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.ANIMAL_HANDLING, new Skill("animal handling", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.INSIGHT, new Skill("insight", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.MEDICINE, new Skill("medicine", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.PERCEPTION, new Skill("perception", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.SURVIVAL, new Skill("survival", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.DECEPTION, new Skill("deception", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.INTIMIDATION, new Skill("intimidation", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.PERFORMANCE, new Skill("performance", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.PERSUASION, new Skill("persuasion", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.STRENGTH, new Skill("strength", abilities.get(Constants.ABILITY.STRENGTH).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.DEXTERITY, new Skill("dexterity", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.CONSTITUTION, new Skill("constitution", abilities.get(Constants.ABILITY.CONSTITUTION).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.INTELLIGENCE, new Skill("intelligence", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.WISDOM, new Skill("wisdom", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.CHARISMA, new Skill("charisma", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
     }
 
     /*
@@ -483,6 +531,14 @@ public abstract class Creature {
 
     public void setCanOpportunityAttack(boolean canOpportunityAttack) {
         this.canOpportunityAttack = canOpportunityAttack;
+    }
+
+    public int getProficiencyBonus() {
+        return proficiencyBonus;
+    }
+
+    public void setProficiencyBonus(int proficiencyBonus) {
+        this.proficiencyBonus = proficiencyBonus;
     }
 }
 
