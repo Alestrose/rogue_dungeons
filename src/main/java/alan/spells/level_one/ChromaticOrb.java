@@ -7,18 +7,17 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class BurningHands extends SpellAbstract implements SpellInterface{
+public class ChromaticOrb extends SpellAbstract implements SpellInterface{
 
-    public BurningHands(){
-        setSpellName("Burning Hands");
+    public ChromaticOrb(){
+        setSpellName("Chromatic Orb");
         setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.EVOCATION);
-        setDamage_type(Constants.DAMAGE_TYPE.FIRE);
-        setSavingThrow(Constants.ABILITY.DEXTERITY);
+        setSpellAttack(true);
         setAction(true);
-        setRange((short) 120);
+        setRange((short) 90);
         setDuration((byte) 0);
-        setDamageDie(6);
+        setDamageDie(8);
         setQuantityOfDie(3);
     }
 
@@ -34,19 +33,15 @@ public class BurningHands extends SpellAbstract implements SpellInterface{
             case 7 -> {setQuantityOfDie(9);}
             default -> {}
         }
-        for (Creature creature : targetList) {
-            creature.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        }
+        target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
         
     }
 
     @Override
     public String descreiption() {
         return """
-               A thin sheet of flames shoots forth from you. Each creature in a 15-foot Cone makes a Dexterity saving throw, taking 3d6 Fire damage on a failed save or half as much damage on a successful one.\r
-               Flammable objects in the Cone that aren't being worn or carried start burning.\r
-               Using a Higher-Level Spell Slot. The damage increases by 1d6 for each spell slot level above 1.""" //
-        //
+               You hurl a 4-inch-diameter sphere of energy at a creature that you can see within range. You choose acid, cold, fire, lightning, poison, or thunder for the type of orb you create, and then make a ranged spell attack against the target. If the attack hits, the creature takes 3d8 damage of the type you chose.\r
+               At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d8 for each slot level above 1st.""" //
         ;
     }
 
@@ -56,5 +51,4 @@ public class BurningHands extends SpellAbstract implements SpellInterface{
         
     }
     
-
 }
