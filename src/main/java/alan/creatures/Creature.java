@@ -133,6 +133,13 @@ public abstract class Creature {
         }
     }
 
+    public void RemoveConditionEffect(Constants.CONDITION_KEY condition_key){
+        ConditionEffect effect = conditionEffects.get(condition_key);
+        if (effect != null) {
+            effect.setActive(false);
+        }
+    }
+
     public void grantConditionAdvantage(Constants.CONDITION_KEY condition_key){
         ConditionEffect effect = conditionEffects.get(condition_key);
         if (effect != null) {
@@ -418,6 +425,10 @@ public abstract class Creature {
 
     public void setSpellCastAbility(Constants.ABILITY spellCastAbility) {
         this.spellCastAbility = spellCastAbility;
+    }
+
+    public int getSpellCastModifier(){
+         return abilities.get(getSpellCastAbility()).getAbilityMod();
     }
 
     public int getTmepHhealth() {

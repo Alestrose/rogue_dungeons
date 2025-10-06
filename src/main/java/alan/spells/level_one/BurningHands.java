@@ -16,7 +16,7 @@ public class BurningHands extends SpellAbstract implements SpellInterface{
         setDamage_type(Constants.DAMAGE_TYPE.FIRE);
         setSavingThrow(Constants.ABILITY.DEXTERITY);
         setAction(true);
-        setRange((short) 120);
+        setRange((short) 60);
         setDuration((byte) 0);
         setDamageDie(6);
         setQuantityOfDie(3);
