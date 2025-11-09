@@ -20,8 +20,7 @@ public class HealingWord extends SpellAbstract implements SpellInterface{
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
-            int spellLevel) {
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         switch (spellLevel) {
             case 2 -> {setQuantityOfDie(4);}
             case 3 -> {setQuantityOfDie(6);}

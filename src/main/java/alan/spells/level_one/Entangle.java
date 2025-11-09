@@ -22,7 +22,7 @@ public class Entangle extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
-        target.ApplyConditionEffect(Constants.CONDITION_KEY.RESTRAINED);
+        target.ApplyConditionEffect(Constants.CONDITION_KEY.RESTRAINED, caster);
         
     }
 

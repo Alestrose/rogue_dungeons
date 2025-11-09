@@ -34,7 +34,7 @@ public class DissonantWhispers extends SpellAbstract implements SpellInterface{
             default -> {}
         }
         target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        target.ApplyConditionEffect(Constants.CONDITION_KEY.FRIGHTENED);
+        target.ApplyConditionEffect(Constants.CONDITION_KEY.FRIGHTENED, caster);
         
     }
 

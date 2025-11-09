@@ -111,8 +111,4 @@ public class Cell {
     public void setOccupant(Creature occupant) {
         this.occupant = occupant;
     }
-
-    
-    
-    
 }

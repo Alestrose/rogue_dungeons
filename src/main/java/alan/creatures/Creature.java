@@ -34,6 +34,7 @@ public abstract class Creature {
     // Ability scores & Modifiers
     protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
     protected Map<Constants.SKILL_KEY, Skill> skills = new HashMap<>();
+    
     // Resistances & Vulnerabilities
     protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
     protected Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities = new HashMap<>();
@@ -114,6 +115,9 @@ public abstract class Creature {
         graphics.drawImage(getImage(), getX(), getY(), getWidth(), getHeight(), panel);
     }
 
+    /*
+     * Setters for granting enum based conditions and effects
+     */
     public void grantResistance(Constants.DAMAGE_TYPE resistanceName){
         resistances.put(resistanceName, true);
     }
@@ -126,10 +130,12 @@ public abstract class Creature {
         inVulnerabilities.put(InVulnerabilityName, true);
     }
 
-    public void ApplyConditionEffect(Constants.CONDITION_KEY condition_key){
+    // sets specified condition isActive bool to true AND sets sorceCaster to the creature that applied this effect
+    public void ApplyConditionEffect(Constants.CONDITION_KEY condition_key, Creature sourceCaster){
         ConditionEffect effect = conditionEffects.get(condition_key);
         if (effect != null) {
             effect.setActive(true);
+            effect.setSourceCaster(sourceCaster);
         }
     }
 
@@ -184,9 +190,15 @@ public abstract class Creature {
         }
     }
 
+
+
+    /*
+     * Each damage type key enum in Constants is added to the resistances, vulnerabilities and inVulnerabilities maps, and sets to false
+     * Also used to reset all resistances, vulnerabilities and inVulnerabilities
+     */
     private void setDefaultResistences(){  
         for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
-        resistances.put(type, false);
+            resistances.put(type, false);
         }
         for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
             vulnerabilities.put(type, false);
@@ -196,34 +208,28 @@ public abstract class Creature {
         }
     }
 
+    /*
+     * Each condtion key enum in Constants is added to the condition map, as new condition effect object
+     */
     private void setDefaultConditionMap(){
-        conditionEffects.put(Constants.CONDITION_KEY.BLINDED, new ConditionEffect("blinded"));
-        conditionEffects.put(Constants.CONDITION_KEY.CHARMED, new ConditionEffect("charmed"));
-        conditionEffects.put(Constants.CONDITION_KEY.DEAFENED, new ConditionEffect("deafened"));
-        conditionEffects.put(Constants.CONDITION_KEY.EXHAUSTION, new ConditionEffect("exhaustion"));
-        conditionEffects.put(Constants.CONDITION_KEY.FRIGHTENED, new ConditionEffect("frightened"));
-        conditionEffects.put(Constants.CONDITION_KEY.GRAPPLED, new ConditionEffect("grappled"));
-        conditionEffects.put(Constants.CONDITION_KEY.INCAPACITATED, new ConditionEffect("incapacitated"));
-        conditionEffects.put(Constants.CONDITION_KEY.INVISIBLE, new ConditionEffect("invisible"));
-        conditionEffects.put(Constants.CONDITION_KEY.PARALYZED, new ConditionEffect("paralyzed"));
-        conditionEffects.put(Constants.CONDITION_KEY.PETRIFIED, new ConditionEffect("petrified"));
-        conditionEffects.put(Constants.CONDITION_KEY.POISONED, new ConditionEffect("poisoned"));
-        conditionEffects.put(Constants.CONDITION_KEY.PRONE, new ConditionEffect("prone"));
-        conditionEffects.put(Constants.CONDITION_KEY.RESTRAINED, new ConditionEffect("restrained"));
-        conditionEffects.put(Constants.CONDITION_KEY.STUNNED, new ConditionEffect("stunned"));
-        conditionEffects.put(Constants.CONDITION_KEY.UNCONSCIOUS, new ConditionEffect("unconscious"));
-        conditionEffects.put(Constants.CONDITION_KEY.CHILL_TOUCH, new ConditionEffect("chill touch"));
+        for (Constants.CONDITION_KEY key : Constants.CONDITION_KEY.values()) {
+            String label = key.toString().toLowerCase().replace("_", " ");
+            conditionEffects.put(key, new ConditionEffect(label));
+        }
     }
 
+    /*
+     * Each abilitie key enum in Constants is added to the abilitiy map, as new ability object
+     */
     private void setDefaultAbilities(){
-        abilities.put(Constants.ABILITY.STRENGTH, new Ability("Strength"));
-        abilities.put(Constants.ABILITY.CONSTITUTION, new Ability("Constitution"));
-        abilities.put(Constants.ABILITY.DEXTERITY, new Ability("Dexterity"));
-        abilities.put(Constants.ABILITY.INTELLIGENCE, new Ability("Intelligence"));
-        abilities.put(Constants.ABILITY.WISDOM, new Ability("Wisdom"));
-        abilities.put(Constants.ABILITY.CHARISMA, new Ability("Charisma"));
+        for (Constants.ABILITY key : Constants.ABILITY.values()) {
+            abilities.put(key, new Ability(key.toString().toLowerCase()));
+        }
     }
 
+    /*
+     * Each skill key enum in Constants is added to the abilitiy map manually here, as new skill object
+     */
     private void setDefaultSkills(){
         skills.put(Constants.SKILL_KEY.ATHLETICS, new Skill("athletics", abilities.get(Constants.ABILITY.STRENGTH).getAbilityMod(), getProficiencyBonus()));
         skills.put(Constants.SKILL_KEY.ACROBATICS, new Skill("acrobatics", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));

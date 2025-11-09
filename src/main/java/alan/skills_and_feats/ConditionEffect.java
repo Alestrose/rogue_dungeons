@@ -1,13 +1,21 @@
 package alan.skills_and_feats;
 
-public class ConditionEffect {
-    private String conditionName;
+import alan.creatures.Creature;
 
+public class ConditionEffect {
+    // Each creature has one of each condition. By default isActive is set to false
+    // Conditons can be set to active via Creature class methods
+    
+    private String conditionName;
     private boolean hasAdvantage, isInvulnerable, isActive;
     private int duration;
+    private Creature sourceCaster;      // The creature which applied this condition to the target
+
+    
 
     public ConditionEffect(String conditionName){
         this.conditionName = conditionName;
+        isActive = false;
     }
 
     public String getConditionName() {
@@ -49,6 +57,14 @@ public class ConditionEffect {
 
     public void setDuration(int duration) {
         this.duration = duration;
+    }
+
+    public Creature getSourceCaster() {
+        return sourceCaster;
+    }
+
+    public void setSourceCaster(Creature sourceCaster) {
+        this.sourceCaster = sourceCaster;
     }
 
     

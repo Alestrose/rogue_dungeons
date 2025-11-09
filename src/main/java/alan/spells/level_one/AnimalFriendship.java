@@ -24,7 +24,7 @@ public class AnimalFriendship extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         for (Creature creature : targetList) {
-            creature.ApplyConditionEffect(CONDITION_KEY.CHARMED);
+            creature.ApplyConditionEffect(CONDITION_KEY.CHARMED, caster);
         }
     }
 

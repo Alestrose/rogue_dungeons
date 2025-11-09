@@ -34,7 +34,7 @@ public class EnsnaringStrike extends SpellAbstract implements SpellInterface{
             case 7 -> {setQuantityOfDie(7);}
             default -> {}
         }
-        target.ApplyConditionEffect(Constants.CONDITION_KEY.RESTRAINED);
+        target.ApplyConditionEffect(Constants.CONDITION_KEY.RESTRAINED, caster);
         
     }
 

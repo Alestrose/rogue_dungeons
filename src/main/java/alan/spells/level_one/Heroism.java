@@ -1,23 +1,21 @@
 package alan.spells.level_one;
 
 import alan.Constants;
-import alan.Constants.CONDITION_KEY;
 import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class CharmPerson extends SpellAbstract implements SpellInterface{
-
-    public CharmPerson(){
-        setSpellName("Charm Person");
+public class Heroism extends SpellAbstract implements SpellInterface{
+    public Heroism(){
+        setSpellName("Heroism");
         setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.ENCHANTMENT);
-        setSavingThrow(Constants.ABILITY.WISDOM);
         setAction(true);
-        setRange((short) 30);
-        setDuration((byte) 600);
+        setConcentration(true);
+        setRange((short) 5);
+        setDuration((byte) 10);
         setMultiCastHits(1);
     }
 
@@ -33,16 +31,18 @@ public class CharmPerson extends SpellAbstract implements SpellInterface{
             default -> {}
         }
         for (Creature creature : targetList) {
-            creature.ApplyConditionEffect(CONDITION_KEY.CHARMED, caster);
+            target.grantConditionInvulnerability(Constants.CONDITION_KEY.FRIGHTENED);
+            target.setTempHealth(caster.getSpellCastModifier());
         }
+        
+        // implement timer for these effects...
+        
     }
 
     @Override
     public String descreiption() {
-        return """
-               One Humanoid you can see within range makes a Wisdom saving throw. It does so with Advantage if you or your allies are fighting it. On a failed save, the target has the Charmed condition until the spell ends or until you or your allies damage it. The Charmed creature is Friendly to you. When the spell ends, the target knows it was Charmed by you.\r
-               Using a Higher-Level Spell Slot. You can target one additional creature for each spell slot level above 1.""" //
-        ;
+        return "A willing creature you touch is imbued with bravery. Until the spell ends, the creature is immune to the Frightened condition and gains Temporary Hit Points equal to your spellcasting ability modifier at the start of each of its turns.\r\n" + //
+                        "Using a Higher-Level Spell Slot. You can target one additional creature for each spell slot level above 1.";
     }
 
     @Override
@@ -50,6 +50,6 @@ public class CharmPerson extends SpellAbstract implements SpellInterface{
         // TODO Auto-generated method stub
         
     }
-    
 
+    
 }

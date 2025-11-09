@@ -23,7 +23,7 @@ public class ColorSpray extends SpellAbstract implements SpellInterface{
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
         for (Creature creature : targetList) {
-            creature.ApplyConditionEffect(Constants.CONDITION_KEY.BLINDED);
+            creature.ApplyConditionEffect(Constants.CONDITION_KEY.BLINDED, caster);
         }
         
     }
