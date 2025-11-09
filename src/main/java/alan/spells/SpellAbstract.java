@@ -45,6 +45,7 @@ public abstract class SpellAbstract implements DiceRoll{
     private boolean ritual = false;
     private boolean spellAttack = false;
     private boolean spellSave = false;
+    private boolean freeCast = false;
     private SCHOOL school;
     private DAMAGE_TYPE damage_type;
     private Constants.ABILITY savingThrow;
@@ -271,8 +272,16 @@ public abstract class SpellAbstract implements DiceRoll{
     public void setSpellSave(boolean spellSave) {
         this.spellSave = spellSave;
     }
-    
 
+    public boolean isFreeCast() {
+        return freeCast;
+    }
+
+    public void setFreeCast(boolean freeCast) {
+        this.freeCast = freeCast;
+    }
+    
+    
     
     
 }

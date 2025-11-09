@@ -20,7 +20,7 @@ public abstract class Creature {
     private String
         creatureType, name, raceName;
     private int
-        level = 1, ac = 10, maxHealth, tempHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height,
+        level = 1, ac = 10, maxHealth, tempHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -47,6 +47,9 @@ public abstract class Creature {
         String fileName){
         this.name = name;
         this.fileName = fileName;
+        actions = 1;
+        bonusActions = 1;
+        reactions = 1;
         // Initializes image from images folder. Image selected via fileName
         File pic = new File("images/" + fileName);
         try {
@@ -580,6 +583,32 @@ public abstract class Creature {
     public void setTempHealth(int tempHealth) {
         this.tempHealth = tempHealth;
     }
+
+    public int getActions() {
+        return actions;
+    }
+
+    public void setActions(int actions) {
+        this.actions = actions;
+    }
+
+    public int getBonusActions() {
+        return bonusActions;
+    }
+
+    public void setBonusActions(int bonusActions) {
+        this.bonusActions = bonusActions;
+    }
+
+    public int getReactions() {
+        return reactions;
+    }
+
+    public void setReactions(int reactions) {
+        this.reactions = reactions;
+    }
+
+    
     
 }
 
