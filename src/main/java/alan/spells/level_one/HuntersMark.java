@@ -30,8 +30,10 @@ public class HuntersMark extends SpellAbstract implements SpellInterface{
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return "You magically mark one creature you can see within range as your quarry. Until the spell ends, you deal an extra 1d6 Force damage to the target whenever you hit it with an attack roll. You also have Advantage on any Wisdom (Perception or Survival) check you make to find it.\r\n" + //
-                        "If the target drops to 0 Hit Points before this spell ends, you can use a Bonus Action to mark a new creature you can see within range.";
+        return """
+               You magically mark one creature you can see within range as your quarry. Until the spell ends, you deal an extra 1d6 Force damage to the target whenever you hit it with an attack roll. You also have Advantage on any Wisdom (Perception or Survival) check you make to find it.\r
+               If the target drops to 0 Hit Points before this spell ends, you can use a Bonus Action to mark a new creature you can see within range.""" //
+        ;
     }
 
     @Override
