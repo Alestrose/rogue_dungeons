@@ -22,25 +22,18 @@ public class IceKnife extends SpellAbstract implements SpellInterface{
         setDamageDie(10);
         setQuantityOfDie(1);
         setSecondaryDamageDie(6);
-        setQuantitySecondaryOfDie(2);
+        setQuantityOfSecondaryDie(2);
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
-        switch (spellLevel) {
-            case 2 -> {setQuantitySecondaryOfDie(3);}
-            case 3 -> {setQuantitySecondaryOfDie(4);}
-            case 4 -> {setQuantitySecondaryOfDie(5);}
-            case 5 -> {setQuantitySecondaryOfDie(6);}
-            case 6 -> {setQuantitySecondaryOfDie(7);}
-            case 7 -> {setQuantitySecondaryOfDie(8);}
-            default -> {}
-        }
+        levelSpellSecondaryDie(1, spellLevel);
         
         target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        
         for (Creature creature : targetList) {
             if(!spellSaveCheck(creature, caster, getSavingThrow())){
-                creature.damageHealth(rollDamage(getSecondaryDamageDie(), getQuantitySecondaryOfDie()));
+                creature.damageHealth(rollDamage(getSecondaryDamageDie(), getQuantityOfSecondaryDie()));
             }
         }
 
@@ -49,8 +42,10 @@ public class IceKnife extends SpellAbstract implements SpellInterface{
 
     @Override
     public String descreiption() {
-        // TODO Auto-generated method stub
-        return null;
+        return """
+               You create a shard of ice and fling it at one creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Piercing damage. Hit or miss, the shard then explodes. The target and each creature within 5 feet of it must succeed on a Dexterity saving throw or take 2d6 Cold damage.\r
+               Using a Higher-Level Spell Slot. The Cold damage increases by 1d6 for each spell slot level above 1.""" //
+        ;
     }
 
     @Override

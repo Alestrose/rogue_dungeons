@@ -33,12 +33,14 @@ public abstract class SpellAbstract implements DiceRoll{
     PartyPlayers partyPlayers;
     private String spellName;
     private byte spellLevel;
-    private byte duration;
-    private int damageDie;
-    private int quantityOfDie;
-    private int secondaryDamageDie;
-    private int quantitySecondaryOfDie;
-    private int multiCastHits;
+    private byte duration;                          // Number of turns the spell is in effect
+    private int damageDie;                          // Base die size of primary damage type (4 = 1d4, 6 = 1d6, 8 = 1d8...)
+    private int quantityOfDie;                      // Number of dice rolled for primary damage type of spell
+    private int quantityOfDieIncrementer;           // Number of additional dice added for each level spell is upcast
+    private int secondaryDamageDie;                 // Base die size of secondary damage type (4 = 1d4, 6 = 1d6, 8 = 1d8...)
+    private int quantityOfSecondaryDie;             // Number of dice rolled for secondary damage type of spell
+    private int quantityOfSecondaryDieIncrementer;  // Number of additional dice for secondary damage type added for each level spell is upcast
+    private int multiCastHits;                      // Number of creatures the spell can target
     private short range;
     private boolean reaction = false;
     private boolean action = false;
@@ -65,6 +67,9 @@ public abstract class SpellAbstract implements DiceRoll{
         partyPlayers = PartyPlayers.getInstance();
     }
 
+    /*
+     * Methods
+     */
     @Override
     public int rollDamage(int damageDie, int quantityOfDie) {
         int total = 0;
@@ -77,6 +82,51 @@ public abstract class SpellAbstract implements DiceRoll{
     @Override
     public boolean  spellSaveCheck(Creature creature, Creature caster, Constants.ABILITY ability) {
         return random.nextInt(20)+1 + creature.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
+    }
+
+    // Sets quantity of aditional die for primary damage of leveled spell
+    public void levelSpellPrimaryDie(int increment, int spellLevel){
+        switch (spellLevel) {
+            case 2 -> {setQuantityOfDie(getQuantityOfDie() + increment);}
+            case 3 -> {setQuantityOfDie(getQuantityOfDie() + (increment * 2));}
+            case 4 -> {setQuantityOfDie(getQuantityOfDie() + (increment * 3));}
+            case 5 -> {setQuantityOfDie(getQuantityOfDie() + (increment * 4));}
+            case 6 -> {setQuantityOfDie(getQuantityOfDie() + (increment * 5));}
+            case 7 -> {setQuantityOfDie(getQuantityOfDie() + (increment * 6));}
+            case 8 -> {setQuantityOfDie(getQuantityOfDie() + (increment * 7));}
+            case 9 -> {setQuantityOfDie(getQuantityOfDie() + (increment * 8));}
+            default -> {}
+        }
+    }
+    
+    // Sets quantity of aditional die for secondary damage of leveled spell
+    public void levelSpellSecondaryDie(int increment, int spellLevel){
+        switch (spellLevel) {
+            case 2 -> {setQuantityOfSecondaryDie(getQuantityOfSecondaryDie() + increment);}
+            case 3 -> {setQuantityOfSecondaryDie(getQuantityOfSecondaryDie() + (increment * 2));}
+            case 4 -> {setQuantityOfSecondaryDie(getQuantityOfSecondaryDie() + (increment * 3));}
+            case 5 -> {setQuantityOfSecondaryDie(getQuantityOfSecondaryDie() + (increment * 4));}
+            case 6 -> {setQuantityOfSecondaryDie(getQuantityOfSecondaryDie() + (increment * 5));}
+            case 7 -> {setQuantityOfSecondaryDie(getQuantityOfSecondaryDie() + (increment * 6));}
+            case 8 -> {setQuantityOfSecondaryDie(getQuantityOfSecondaryDie() + (increment * 7));}
+            case 9 -> {setQuantityOfSecondaryDie(getQuantityOfSecondaryDie() + (increment * 8));}
+            default -> {}
+        }
+    }
+
+    // Sets the quantity of creatures a leveled spell can target
+    public void levelMultiCastHits(int increment, int spellLevel){
+        switch (spellLevel) {
+            case 2 -> {setMultiCastHits(getMultiCastHits() + increment);}
+            case 3 -> {setMultiCastHits(getMultiCastHits() + (increment * 2));}
+            case 4 -> {setMultiCastHits(getMultiCastHits() + (increment * 3));}
+            case 5 -> {setMultiCastHits(getMultiCastHits() + (increment * 4));}
+            case 6 -> {setMultiCastHits(getMultiCastHits() + (increment * 5));}
+            case 7 -> {setMultiCastHits(getMultiCastHits() + (increment * 6));}
+            case 8 -> {setMultiCastHits(getMultiCastHits() + (increment * 7));}
+            case 9 -> {setMultiCastHits(getMultiCastHits() + (increment * 8));}
+            default -> {}
+        }
     }
 
     /*
@@ -305,14 +355,30 @@ public abstract class SpellAbstract implements DiceRoll{
         this.secondaryDamageDie = secondaryDamageDie;
     }
 
-    public int getQuantitySecondaryOfDie() {
-        return quantitySecondaryOfDie;
+    public int getQuantityOfDieIncrementer() {
+        return quantityOfDieIncrementer;
     }
 
-    public void setQuantitySecondaryOfDie(int quantitySecondaryOfDie) {
-        this.quantitySecondaryOfDie = quantitySecondaryOfDie;
+    public void setQuantityOfDieIncrementer(int quantityOfDieIncrementer) {
+        this.quantityOfDieIncrementer = quantityOfDieIncrementer;
     }
-    
+
+    public int getQuantityOfSecondaryDie() {
+        return quantityOfSecondaryDie;
+    }
+
+    public void setQuantityOfSecondaryDie(int quantityOfSecondaryDie) {
+        this.quantityOfSecondaryDie = quantityOfSecondaryDie;
+    }
+
+    public int getQuantityOfSecondaryDieIncrementer() {
+        return quantityOfSecondaryDieIncrementer;
+    }
+
+    public void setQuantityOfSecondaryDieIncrementer(int quantityOfSecondaryDieIncrementer) {
+        this.quantityOfSecondaryDieIncrementer = quantityOfSecondaryDieIncrementer;
+    }
+
     
     
     
