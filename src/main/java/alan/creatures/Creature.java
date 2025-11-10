@@ -20,7 +20,7 @@ public abstract class Creature {
     private String
         creatureType, name, raceName;
     private int
-        level = 1, ac = 10, maxHealth, tempHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions,
+        level = 1, ac = 10, maxHealth, tempHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -606,6 +606,14 @@ public abstract class Creature {
 
     public void setReactions(int reactions) {
         this.reactions = reactions;
+    }
+
+    public int getSpellSaveDC() {
+        return spellSaveDC;
+    }
+
+    public void setSpellSaveDC(int spellSaveDC) {
+        this.spellSaveDC = spellSaveDC;
     }
 
     
