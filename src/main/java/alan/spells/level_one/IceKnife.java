@@ -32,7 +32,7 @@ public class IceKnife extends SpellAbstract implements SpellInterface{
         target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
         
         for (Creature creature : targetList) {
-            if(!spellSaveCheck(creature, caster, getSavingThrow())){
+            if(!rollSpellSaveCheck(creature, caster, getSavingThrow())){
                 creature.damageHealth(rollDamage(getSecondaryDamageDie(), getQuantityOfSecondaryDie()));
             }
         }

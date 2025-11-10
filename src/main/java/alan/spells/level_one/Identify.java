@@ -10,7 +10,7 @@ import alan.spells.SpellInterface;
 public class Identify extends SpellAbstract implements SpellInterface{
 
     public Identify(){
-        setSpellName("Spell Name");
+        setSpellName("Identify");
         setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.DIVINATION);
         setSpellAttack(true);
