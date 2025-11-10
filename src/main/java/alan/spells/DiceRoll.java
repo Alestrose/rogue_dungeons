@@ -12,5 +12,5 @@ public interface DiceRoll {
     int rollDamage(int damageDie, int quantityOfDie);
     
     // Returns true if creatures (target) specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
-    boolean spellSaveCheck(Creature creature, Creature caster, Constants.ABILITY ability);
+    boolean rollSpellSaveCheck(Creature creature, Creature caster, Constants.ABILITY ability);
 }

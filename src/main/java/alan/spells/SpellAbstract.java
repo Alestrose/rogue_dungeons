@@ -80,7 +80,7 @@ public abstract class SpellAbstract implements DiceRoll{
     }
 
     @Override
-    public boolean  spellSaveCheck(Creature creature, Creature caster, Constants.ABILITY ability) {
+    public boolean rollSpellSaveCheck(Creature creature, Creature caster, Constants.ABILITY ability) {
         return random.nextInt(20)+1 + creature.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
     }
 
