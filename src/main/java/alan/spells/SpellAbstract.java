@@ -36,6 +36,8 @@ public abstract class SpellAbstract implements DiceRoll{
     private byte duration;
     private int damageDie;
     private int quantityOfDie;
+    private int secondaryDamageDie;
+    private int quantitySecondaryOfDie;
     private int multiCastHits;
     private short range;
     private boolean reaction = false;
@@ -48,6 +50,7 @@ public abstract class SpellAbstract implements DiceRoll{
     private boolean freeCast = false;
     private SCHOOL school;
     private DAMAGE_TYPE damage_type;
+    private DAMAGE_TYPE secondary_damage_type;
     private Constants.ABILITY savingThrow;
     private Creature caster;
     private Creature target;
@@ -69,6 +72,11 @@ public abstract class SpellAbstract implements DiceRoll{
             total += random.nextInt(damageDie) + 1;
         }
         return total;
+    }
+
+    @Override
+    public boolean  spellSaveCheck(Creature creature, Creature caster, Constants.ABILITY ability) {
+        return random.nextInt(20)+1 + creature.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
     }
 
     /*
@@ -279,6 +287,30 @@ public abstract class SpellAbstract implements DiceRoll{
 
     public void setFreeCast(boolean freeCast) {
         this.freeCast = freeCast;
+    }
+
+    public DAMAGE_TYPE getSecondary_damage_type() {
+        return secondary_damage_type;
+    }
+
+    public void setSecondary_damage_type(DAMAGE_TYPE secondary_damage_type) {
+        this.secondary_damage_type = secondary_damage_type;
+    }
+
+    public int getSecondaryDamageDie() {
+        return secondaryDamageDie;
+    }
+
+    public void setSecondaryDamageDie(int secondaryDamageDie) {
+        this.secondaryDamageDie = secondaryDamageDie;
+    }
+
+    public int getQuantitySecondaryOfDie() {
+        return quantitySecondaryOfDie;
+    }
+
+    public void setQuantitySecondaryOfDie(int quantitySecondaryOfDie) {
+        this.quantitySecondaryOfDie = quantitySecondaryOfDie;
     }
     
     
