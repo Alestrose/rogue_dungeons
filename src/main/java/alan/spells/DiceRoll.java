@@ -14,5 +14,6 @@ public interface DiceRoll {
     // Returns true if target specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
     boolean rollSpellSaveCheck(Creature target, Creature caster, Constants.ABILITY ability);
 
+    // Returns true if target spell attack bonus plus a random d20 is greater than or equal to casters AC
     boolean rollToHitAC(Creature target, Creature caster);
 }
