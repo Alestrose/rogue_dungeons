@@ -11,6 +11,8 @@ public interface DiceRoll {
     // Returns damage roll based on damage die and quanity of damage die
     int rollDamage(int damageDie, int quantityOfDie);
     
-    // Returns true if creatures (target) specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
-    boolean rollSpellSaveCheck(Creature creature, Creature caster, Constants.ABILITY ability);
+    // Returns true if target specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
+    boolean rollSpellSaveCheck(Creature target, Creature caster, Constants.ABILITY ability);
+
+    boolean rollToHitAC(Creature target, Creature caster);
 }

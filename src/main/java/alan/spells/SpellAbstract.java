@@ -80,8 +80,14 @@ public abstract class SpellAbstract implements DiceRoll{
     }
 
     @Override
-    public boolean rollSpellSaveCheck(Creature creature, Creature caster, Constants.ABILITY ability) {
-        return random.nextInt(20)+1 + creature.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
+    public boolean rollSpellSaveCheck(Creature target, Creature caster, Constants.ABILITY ability) {
+        return random.nextInt(20)+1 + target.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
+    }
+
+    @Override
+    public boolean rollToHitAC(Creature target, Creature caster) {
+        // TODO Auto-generated method stub
+        return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getAc();
     }
 
     // Sets quantity of aditional die for primary damage of leveled spell
