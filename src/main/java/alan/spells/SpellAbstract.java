@@ -70,7 +70,7 @@ public abstract class SpellAbstract implements DiceRoll{
     /*
      * Methods
      */
-    @Override
+    @Override       // Returns damage roll based on damage die and quanity of damage die
     public int rollDamage(int damageDie, int quantityOfDie) {
         int total = 0;
         for (int i = 0; i < quantityOfDie; i++) {
@@ -79,14 +79,13 @@ public abstract class SpellAbstract implements DiceRoll{
         return total;
     }
 
-    @Override
+    @Override       // Returns true if target specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
     public boolean rollSpellSaveCheck(Creature target, Creature caster, Constants.ABILITY ability) {
         return random.nextInt(20)+1 + target.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
     }
 
-    @Override
+    @Override       // Returns true if target spell attack bonus plus a random d20 is greater than or equal to casters AC
     public boolean rollToHitAC(Creature target, Creature caster) {
-        // TODO Auto-generated method stub
         return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getAc();
     }
 
