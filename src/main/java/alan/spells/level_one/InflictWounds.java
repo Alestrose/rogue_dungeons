@@ -14,7 +14,6 @@ public class InflictWounds extends SpellAbstract implements SpellInterface{
         setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.NECROMANCY);
         setDamage_type(Constants.DAMAGE_TYPE.NECROTIC);
-        setSavingThrow(Constants.ABILITY.INTELLIGENCE);
         setSpellAttack(true);
         setAction(true);
         setRange((short) 5);
