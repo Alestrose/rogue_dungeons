@@ -23,7 +23,7 @@ public class TashasHideousLaughter  extends SpellAbstract implements SpellInterf
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
-        if(!rollSpellSaveCheck(target, caster, Constants.ABILITY.WISDOM)) target.ApplyConditionEffect(Constants.CONDITION_KEY.INCAPACITATED, caster);
+        if(!rollSpellSaveCheck(target, caster, getSavingThrow())) target.ApplyConditionEffect(Constants.CONDITION_KEY.INCAPACITATED, caster);
         
     }
 
