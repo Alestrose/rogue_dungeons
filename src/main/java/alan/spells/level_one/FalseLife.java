@@ -31,6 +31,8 @@ public class FalseLife extends SpellAbstract implements SpellInterface{
             case 5 -> {setLevelModifier(20);}
             case 6 -> {setLevelModifier(25);}
             case 7 -> {setLevelModifier(30);}
+            case 8 -> {setLevelModifier(35);}
+            case 9 -> {setLevelModifier(40);}
             default -> {}
         }
         caster.setTempHealth(rollDamage(getDamageDie(), getQuantityOfDie()) + 4 + getLevelModifier());

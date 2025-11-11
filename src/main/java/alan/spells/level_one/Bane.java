@@ -18,19 +18,13 @@ public class Bane extends SpellAbstract implements SpellInterface{
         setAction(true);
         setRange((short) 30);
         setDuration((byte) 10);
+        setMultiCastHits(3);
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
-        switch (spellLevel) {
-            case 2 -> {setMultiCastHits(4);}
-            case 3 -> {setMultiCastHits(5);}
-            case 4 -> {setMultiCastHits(6);}
-            case 5 -> {setMultiCastHits(7);}
-            case 6 -> {setMultiCastHits(8);}
-            case 7 -> {setMultiCastHits(9);}
-            default -> {}
-        }
+        levelMultiCastHits(1, spellLevel);
+        
         for (Creature creature : targetList) {
             creature.setAttackRollReduction(4);
             creature.setSavingThrowDecrease(4);

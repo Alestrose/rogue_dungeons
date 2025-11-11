@@ -15,12 +15,14 @@ public class FeatherFall extends SpellAbstract implements SpellInterface{
         setReaction(true);
         setRange((short) 60);
         setDuration((byte) 0);
+        setMultiCastHits(5);
     }
 
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
-            int spellLevel) {
-        // No Combat Implementation
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
+        for (Creature creature : targetList) {
+            creature.ApplyConditionEffect(Constants.CONDITION_KEY.FEATHER_FALL, caster);
+        }
         
     }
 

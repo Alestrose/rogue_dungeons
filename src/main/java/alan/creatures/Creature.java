@@ -20,8 +20,8 @@ public abstract class Creature {
     private String
         creatureType, name, raceName;
     private int
-        level = 1, ac = 10, maxHealth, tempHealth, currentHealth, tmepHhealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance,
-        attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
+        level = 1, ac = 10, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
+        attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
@@ -365,7 +365,8 @@ public abstract class Creature {
     }
 
     public int getAc() {
-        return ac;
+        int currentAC = ac + getTempAcBonus();
+        return currentAC;
     }
 
     public void setAc(int ac) {
@@ -438,14 +439,6 @@ public abstract class Creature {
 
     public int getSpellCastModifier(){
          return abilities.get(getSpellCastAbility()).getAbilityMod();
-    }
-
-    public int getTmepHhealth() {
-        return tmepHhealth;
-    }
-
-    public void setTmepHhealth(int tmepHhealth) {
-        this.tmepHhealth = tmepHhealth;
     }
 
     public Map<Constants.DAMAGE_TYPE, Boolean> getInVulnerabilities() {
@@ -639,6 +632,31 @@ public abstract class Creature {
     public void setWearingArmor(boolean isWearingArmor) {
         this.isWearingArmor = isWearingArmor;
     }
+
+    public int getNextHitDamageRollIncrease() {
+        return nextHitDamageRollIncrease;
+    }
+
+    public void setNextHitDamageRollIncrease(int nextHitDamageRollIncrease) {
+        this.nextHitDamageRollIncrease = nextHitDamageRollIncrease;
+    }
+
+    public int getTempAcBonus() {
+        return TempAcBonus;
+    }
+
+    public void setTempAcBonus(int TempAcBonus) {
+        this.TempAcBonus = getTempAcBonus() + TempAcBonus;
+    }
+
+    public int getAuraDamage() {
+        return auraDamage;
+    }
+
+    public void setAuraDamage(int auraDamage) {
+        this.auraDamage = auraDamage;
+    }
+
 }
 
 

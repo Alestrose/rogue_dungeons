@@ -13,7 +13,7 @@ public class HealingWord extends SpellAbstract implements SpellInterface{
         setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.ABJURATION);
         setBonus(true);
-        setRange((short) 0);
+        setRange((short) 60);
         setDuration((byte) 0);
         setDamageDie(4);
         setQuantityOfDie(2);
@@ -21,15 +21,8 @@ public class HealingWord extends SpellAbstract implements SpellInterface{
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
-        switch (spellLevel) {
-            case 2 -> {setQuantityOfDie(4);}
-            case 3 -> {setQuantityOfDie(6);}
-            case 4 -> {setQuantityOfDie(8);}
-            case 5 -> {setQuantityOfDie(10);}
-            case 6 -> {setQuantityOfDie(12);}
-            case 7 -> {setQuantityOfDie(14);}
-            default -> {}
-        }
+        levelSpellPrimaryDie(2, spellLevel);
+        
         target.healHealth(rollDamage(getDamageDie(), getQuantityOfDie()) + caster.getSpellCastModifier());
     }
 

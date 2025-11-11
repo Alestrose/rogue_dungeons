@@ -19,20 +19,13 @@ public class Command extends SpellAbstract implements SpellInterface{
         setAction(true);
         setRange((short) 60);
         setDuration((byte) 0);
+        setMultiCastHits(1);
     }
 
-    @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
-            int spellLevel) {
-        switch (spellLevel) {
-            case 2 -> {setMultiCastHits(2);}
-            case 3 -> {setMultiCastHits(3);}
-            case 4 -> {setMultiCastHits(4);}
-            case 5 -> {setMultiCastHits(5);}
-            case 6 -> {setMultiCastHits(6);}
-            case 7 -> {setMultiCastHits(7);}
-            default -> {}
-        }
+    @Override       // Requires further implementation when weapons are added
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
+        levelMultiCastHits(1, spellLevel);
+        
         
     }
 

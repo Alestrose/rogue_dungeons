@@ -26,6 +26,8 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type, int spellLevel) {
         int x = cell.getX();
         int y = cell.getY();
+
+        // This section for dealing area damage needs to be improved and implemented in DiceRoll interface
         getGrid().getCellArray()[x][y].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
         getGrid().getCellArray()[x+1][y+1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
         getGrid().getCellArray()[x-1][y-1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));

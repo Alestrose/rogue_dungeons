@@ -29,7 +29,7 @@ public class RayOfSickness extends SpellAbstract implements SpellInterface{
         // If hit Ac deal damage
         if(rollToHitAC(target, caster)) target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
         // If target fails constitution save, apply poisoned condition
-        if(rollSpellSaveCheck(target, caster, getSavingThrow())) target.ApplyConditionEffect(Constants.CONDITION_KEY.POISONED, caster);
+        if(!rollSpellSaveCheck(target, caster, getSavingThrow())) target.ApplyConditionEffect(Constants.CONDITION_KEY.POISONED, caster);
     }
 
     @Override

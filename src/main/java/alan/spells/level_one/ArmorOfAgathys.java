@@ -8,8 +8,7 @@ import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
 public class ArmorOfAgathys extends SpellAbstract implements SpellInterface{
-    private int tempHealthMod = 5;
-    private int auraDamage = 5;
+
     public ArmorOfAgathys(){
         setSpellName("Armor of Agathys");
         setSpellLevel((byte) 1);
@@ -19,21 +18,21 @@ public class ArmorOfAgathys extends SpellAbstract implements SpellInterface{
         setBonus(true);
         setRange((short) 0);
         setDuration((byte) 600);
-
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         switch (spellLevel) {
-            case 2 -> {setTempHealthMod(10);setAuraDamage(10);}
-            case 3 -> {setTempHealthMod(15);setAuraDamage(15);}
-            case 4 -> {setTempHealthMod(20);setAuraDamage(20);}
-            case 5 -> {setTempHealthMod(25);setAuraDamage(25);}
-            case 6-> {setTempHealthMod(30);setAuraDamage(30);}
-            case 7 -> {setTempHealthMod(35);setAuraDamage(35);}
+            case 2 -> {caster.setTempHealth(10 + caster.getTempHealth());caster.setAuraDamage(10);}
+            case 3 -> {caster.setTempHealth(15 + caster.getTempHealth());caster.setAuraDamage(15);}
+            case 4 -> {caster.setTempHealth(20 + caster.getTempHealth());caster.setAuraDamage(20);}
+            case 5 -> {caster.setTempHealth(25 + caster.getTempHealth());caster.setAuraDamage(25);}
+            case 6 -> {caster.setTempHealth(30 + caster.getTempHealth());caster.setAuraDamage(30);}
+            case 7 -> {caster.setTempHealth(35 + caster.getTempHealth());caster.setAuraDamage(35);}
+            case 8 -> {caster.setTempHealth(40 + caster.getTempHealth());caster.setAuraDamage(40);}
+            case 9 -> {caster.setTempHealth(45 + caster.getTempHealth());caster.setAuraDamage(45);}
             default -> {}
         }
-        target.setTempHealth(target.getTempHealth() + tempHealthMod);
     }
 
     @Override
@@ -49,24 +48,5 @@ public class ArmorOfAgathys extends SpellAbstract implements SpellInterface{
         // TODO Auto-generated method stub
         
     }
-
-    public int getTempHealthMod() {
-        return tempHealthMod;
-    }
-
-    public void setTempHealthMod(int tempHealthMod) {
-        this.tempHealthMod = tempHealthMod;
-    }
-
-    public int getAuraDamage() {
-        return auraDamage;
-    }
-
-    public void setAuraDamage(int auraDamage) {
-        this.auraDamage = auraDamage;
-    }
-
-    
-
     
 }

@@ -24,15 +24,8 @@ public class ArmsOfHadar extends SpellAbstract implements SpellInterface{
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,int spellLevel) {
-        switch (spellLevel) {
-            case 2 -> {setQuantityOfDie(3);}
-            case 3 -> {setQuantityOfDie(4);}
-            case 4 -> {setQuantityOfDie(5);}
-            case 5 -> {setQuantityOfDie(6);}
-            case 6-> {setQuantityOfDie(7);}
-            case 7 -> {setQuantityOfDie(8);}
-            default -> {}
-        }
+        levelSpellPrimaryDie(1, spellLevel);
+        
         for (Creature creature : targetList) {
             creature.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
         }

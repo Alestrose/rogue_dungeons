@@ -20,9 +20,8 @@ public class FogCloud extends SpellAbstract implements SpellInterface{
         setDamageDie(20); // Fog Radius
     }
 
-    @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
-            int spellLevel) {
+    @Override   // Requires implementation of cell conditions
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         // TODO Auto-generated method stub
         
     }

@@ -66,15 +66,10 @@ public class Main {
         * Game Loop
         * Updates the frame evey 100 milliseconds
         */
-        long startTime = System.currentTimeMillis();
-        while(true){
-            long elapsedTime = System.currentTimeMillis() - startTime;
-            if(elapsedTime > Constants.REFRESH_RATE){
-                gridPanel.update();
-                gamePanel.update();
-                startTime = System.currentTimeMillis();            // This function must remain at the end of this statement
-            }
-        }
+        new javax.swing.Timer(Constants.REFRESH_RATE, e -> {
+            gridPanel.update();
+            gamePanel.update();
+        }).start();
     }
 
 }
