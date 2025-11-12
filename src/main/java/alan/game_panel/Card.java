@@ -58,6 +58,7 @@ public class Card extends JPanel implements KeyListener {
         String[] labels = { 
             "Name: " + c.getName(),
             "Race: " + c.getRaceName(),
+            "Class: " + c.getPrimaryClass().getClassName(),
             "Level: " + c.getLevel(),
             "AC: " + c.getAc(), 
             "Health: " + c.getMaxHealth(),

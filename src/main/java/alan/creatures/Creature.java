@@ -12,13 +12,13 @@ import javax.swing.JPanel;
 
 import alan.Constants;
 import alan.grid_panel.Cell;
+import alan.player_class.PlayerClass;
 import alan.skills_and_feats.Ability;
 import alan.skills_and_feats.ConditionEffect;
 import alan.skills_and_feats.Skill;
 
 public abstract class Creature {
-    private String
-        creatureType, name, raceName;
+    private String creatureType, name, raceName;
     private int
         level = 1, ac = 10, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
@@ -31,6 +31,9 @@ public abstract class Creature {
     private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor;
     private int proficiencyBonus = 0;
 
+    // Classes
+    private PlayerClass primaryClass;
+
     // Ability scores & Modifiers
     protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
     protected Map<Constants.SKILL_KEY, Skill> skills = new HashMap<>();
@@ -42,11 +45,10 @@ public abstract class Creature {
     protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionEffects = new HashMap<>();
 
     // No Cell location Constructor
-    public Creature(
-        String name,
-        String fileName){
+    public Creature(String name, String fileName, PlayerClass primaryClass){
         this.name = name;
         this.fileName = fileName;
+        this.primaryClass = primaryClass;
         actions = 1;
         bonusActions = 1;
         reactions = 1;
@@ -65,12 +67,10 @@ public abstract class Creature {
     }
 
     // Specified Cell location constructor
-    public Creature(
-        String name,
-        String fileName,
-        Cell location){
+    public Creature(String name, String fileName, Cell location, PlayerClass primaryClass){
         this.name = name;
         this.fileName = fileName;
+        this.primaryClass = primaryClass;
         this.location = location;
         this.x = location.getX();
         this.y = location.getY();
@@ -656,6 +656,16 @@ public abstract class Creature {
     public void setAuraDamage(int auraDamage) {
         this.auraDamage = auraDamage;
     }
+
+    public PlayerClass getPrimaryClass() {
+        return primaryClass;
+    }
+
+    public void setPrimaryClass(PlayerClass primaryClass) {
+        this.primaryClass = primaryClass;
+    }
+
+    
 
 }
 

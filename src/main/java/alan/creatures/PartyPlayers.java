@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import alan.Constants;
 import alan.grid_panel.Grid;
+import alan.player_class.PlayerClass;
 import alan.races.Aasimar;
 import alan.races.Dragonborn;
 import alan.races.Dwarf;
@@ -29,12 +30,52 @@ public class PartyPlayers {
     }
 
     public void addPlayers(){
-        party.add(new Elf("Phillo","Fighter1.png", grid.getCellArray()[4][6], Constants.SKILL_KEY.PERCEPTION, Elf.ELVEN_LINEAGE.DROW));
-        party.add(new Human("Tanith", "Ranger1.png", grid.getCellArray()[7][9], Constants.SKILL_KEY.HISTORY));
-        party.add(new Dwarf("Ti Nee","Fighter1.png", grid.getCellArray()[1][8]));
-        party.add(new Dragonborn("Drago", "Ranger1.png", grid.getCellArray()[9][6], Dragonborn.DRACONIC_ANCESTRY.GREEN));
-        party.add(new Aasimar("Asswipe", "Fighter1.png", grid.getCellArray()[0][6]));
-        party.add(new Gnome("Gnomey", "Ranger1.png", grid.getCellArray()[4][8], Constants.ABILITY.WISDOM, Gnome.GNOMISH_LINEAGE.ROCK));
+        party.add(new Elf(
+            "Phillo",
+            "Fighter1.png",
+            grid.getCellArray()[4][6],
+            new PlayerClass(Constants.CLASS.FIGHTER),
+            Constants.SKILL_KEY.PERCEPTION, Elf.ELVEN_LINEAGE.DROW
+        ));
+
+        party.add(new Human(
+            "Tanith", 
+            "Ranger1.png", 
+            grid.getCellArray()[7][9], 
+            new PlayerClass(Constants.CLASS.RANGER), 
+            Constants.SKILL_KEY.HISTORY
+        ));
+
+        party.add(new Dwarf(
+            "Ti Nee",
+            "Fighter1.png", 
+            grid.getCellArray()[1][8], 
+            new PlayerClass(Constants.CLASS.FIGHTER)
+        ));
+
+        party.add(new Dragonborn(
+            "Drago", 
+            "Ranger1.png", 
+            grid.getCellArray()[9][6], 
+            new PlayerClass(Constants.CLASS.RANGER), 
+            Dragonborn.DRACONIC_ANCESTRY.GREEN
+        ));
+
+        party.add(new Aasimar(
+            "Asswipe", 
+            "Fighter1.png", 
+            grid.getCellArray()[0][6], 
+            new PlayerClass(Constants.CLASS.FIGHTER)
+        ));
+
+        party.add(new Gnome(
+            "Gnomey", 
+            "Ranger1.png", 
+            grid.getCellArray()[4][8], 
+            new PlayerClass(Constants.CLASS.RANGER), 
+            Constants.ABILITY.WISDOM, 
+            Gnome.GNOMISH_LINEAGE.ROCK
+        ));
     }
 
     public ArrayList<Creature> getParty() {

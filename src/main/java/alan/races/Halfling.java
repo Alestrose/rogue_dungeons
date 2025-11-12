@@ -3,12 +3,13 @@ package alan.races;
 import alan.Constants;
 import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
+import alan.player_class.PlayerClass;
 
 public class Halfling extends PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Halfling";
 
-    public Halfling(String name, String fileName) {
-        super(name, fileName);
+    public Halfling(String name, String fileName, PlayerClass primaryClass) {
+        super(name, fileName, primaryClass);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.SMALL);
@@ -16,8 +17,8 @@ public class Halfling extends PlayableCharacter implements RaceInterface{
         setSpecialFeatures();
     }
 
-    public Halfling(String name, String fileName, Cell location) {
-        super(name, fileName, location);
+    public Halfling(String name, String fileName, Cell location, PlayerClass primaryClass) {
+        super(name, fileName, location, primaryClass);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.SMALL);

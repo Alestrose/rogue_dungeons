@@ -3,14 +3,15 @@ package alan.races;
 import alan.Constants;
 import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
+import alan.player_class.PlayerClass;
 
 public class Tiefling extends PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Tiefling";
     public enum FIENDISH_LEGACY {ABYSSAL, CHTHONIC, INFERNAL};
     FIENDISH_LEGACY legacy;
 
-    public Tiefling(String name, String fileName, FIENDISH_LEGACY legacy) {
-        super(name, fileName);
+    public Tiefling(String name, String fileName, PlayerClass primaryClass, FIENDISH_LEGACY legacy) {
+        super(name, fileName, primaryClass);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);
@@ -19,8 +20,8 @@ public class Tiefling extends PlayableCharacter implements RaceInterface{
         setSpecialFeatures();
     }
 
-    public Tiefling(String name, String fileName, Cell location, FIENDISH_LEGACY legacy) {
-        super(name, fileName, location);
+    public Tiefling(String name, String fileName, Cell location, PlayerClass primaryClass, FIENDISH_LEGACY legacy) {
+        super(name, fileName, location, primaryClass);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);

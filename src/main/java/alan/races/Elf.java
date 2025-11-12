@@ -4,6 +4,7 @@ import alan.Constants;
 import alan.Constants.CONDITION_KEY;
 import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
+import alan.player_class.PlayerClass;
 
 public class Elf extends PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Elf";
@@ -11,8 +12,8 @@ public class Elf extends PlayableCharacter implements RaceInterface{
     public enum ELVEN_LINEAGE {DROW, HIGH_ELF, WOOD_ELF};
     ELVEN_LINEAGE lineage;
 
-    public Elf(String name, String fileName, Constants.SKILL_KEY skill_key, ELVEN_LINEAGE lineage) {
-        super(name, fileName);
+    public Elf(String name, String fileName, PlayerClass primaryClass, Constants.SKILL_KEY skill_key, ELVEN_LINEAGE lineage) {
+        super(name, fileName, primaryClass);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);
@@ -22,8 +23,8 @@ public class Elf extends PlayableCharacter implements RaceInterface{
         setSpecialFeatures();
     }
 
-    public Elf(String name, String fileName, Cell location, Constants.SKILL_KEY skill_key, ELVEN_LINEAGE lineage) {
-        super(name, fileName, location);
+    public Elf(String name, String fileName, Cell location, PlayerClass primaryClass, Constants.SKILL_KEY skill_key, ELVEN_LINEAGE lineage) {
+        super(name, fileName, location, primaryClass);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.MEDIUM);

@@ -1,19 +1,20 @@
 package alan.creatures;
 
 import alan.grid_panel.Cell;
+import alan.player_class.PlayerClass;
 
 public class PlayableCharacter extends Creature{
     private boolean hasAdvantage = false;
 
     // Without location constructor
-    public PlayableCharacter(String name, String fileName) {
-        super(name, fileName);
+    public PlayableCharacter(String name, String fileName, PlayerClass primaryClass) {
+        super(name, fileName, primaryClass);
         setClassFeatures();
     }
     
     // With location constructor
-    public PlayableCharacter(String name, String fileName, Cell location) {
-        super(name, fileName, location);
+    public PlayableCharacter(String name, String fileName, Cell location, PlayerClass primaryClass) {
+        super(name, fileName, location, primaryClass);
         setClassFeatures();
     }
 

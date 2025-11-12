@@ -3,14 +3,15 @@ package alan.races;
 import alan.Constants;
 import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
+import alan.player_class.PlayerClass;
 
 public class Gnome extends PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Gnome";
     public enum GNOMISH_LINEAGE {FOREST, ROCK};
     GNOMISH_LINEAGE lineage;
 
-    public Gnome(String name, String fileName, Constants.ABILITY spellCastAbility, GNOMISH_LINEAGE lineage) {
-        super(name, fileName);
+    public Gnome(String name, String fileName, PlayerClass primaryClass, Constants.ABILITY spellCastAbility, GNOMISH_LINEAGE lineage) {
+        super(name, fileName, primaryClass);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.SMALL);
@@ -20,8 +21,8 @@ public class Gnome extends PlayableCharacter implements RaceInterface{
         setSpecialFeatures();
     }
 
-    public Gnome(String name, String fileName, Cell location, Constants.ABILITY spellCastAbility, GNOMISH_LINEAGE lineage) {
-        super(name, fileName, location);
+    public Gnome(String name, String fileName, Cell location, PlayerClass primaryClass, Constants.ABILITY spellCastAbility, GNOMISH_LINEAGE lineage) {
+        super(name, fileName, location, primaryClass);
         setCreatureType("Humanoid");
         setSpeed(30);
         setSize(Constants.CREATURE_SIZE.SMALL);
