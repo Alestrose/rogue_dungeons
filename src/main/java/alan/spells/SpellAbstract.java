@@ -7,6 +7,7 @@ import alan.creatures.Creature;
 import alan.creatures.PartyPlayers;
 import alan.grid_panel.Cell;
 import alan.grid_panel.Grid;
+import alan.interfaces.DiceRoll;
 
 
     // Standard object constructor layout

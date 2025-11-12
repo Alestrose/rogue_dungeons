@@ -1,4 +1,4 @@
-package alan.spells;
+package alan.interfaces;
 
 import java.util.Random;
 

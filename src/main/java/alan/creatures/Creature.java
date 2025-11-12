@@ -52,6 +52,7 @@ public abstract class Creature {
         actions = 1;
         bonusActions = 1;
         reactions = 1;
+
         // Initializes image from images folder. Image selected via fileName
         File pic = new File("images/" + fileName);
         try {
@@ -98,8 +99,6 @@ public abstract class Creature {
     public void move(){
 
     }
-
-    
 
     // Reduces health by int val
     public void damageHealth(int val){
@@ -192,8 +191,6 @@ public abstract class Creature {
             skill.setHasAdvantage(true);
         }
     }
-
-
 
     /*
      * Each damage type key enum in Constants is added to the resistances, vulnerabilities and inVulnerabilities maps, and sets to false

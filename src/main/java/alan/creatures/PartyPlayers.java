@@ -62,7 +62,7 @@ public class PartyPlayers {
         ));
 
         party.add(new Aasimar(
-            "Asswipe", 
+            "Alan",
             "Fighter1.png", 
             grid.getCellArray()[0][6], 
             new PlayerClass(Constants.CLASS.FIGHTER)
