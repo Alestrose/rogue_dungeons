@@ -19,13 +19,8 @@ public class Barbarian extends PlayerClass{
         barbarianFeatures.put(Constants.CLASS_FEATURE.RAGE, new Rage());
         barbarianFeatures.put(Constants.CLASS_FEATURE.UNARMORED_DEFENSE, new UnarmoredDefense());
 
-
-        // Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel
-        for(Map.Entry<Constants.CLASS_FEATURE, ClassFeatureAbstract> entry : barbarianFeatures.entrySet()){
-            if(entry.getValue().isActive()) {
-                entry.getValue().cast(getOwner(), null, null, null, null, 1);
-            }
-        }
+        // Applies or updates class passive features
+        updatePassives(barbarianFeatures);
     }
 
     /*

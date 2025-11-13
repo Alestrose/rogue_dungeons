@@ -21,7 +21,7 @@ public abstract class Creature {
     private String creatureType, name, raceName;
     private int proficiencyBonus = 0;
     private int baseAC = 10;
-    private int ac = baseAC + getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
+    private int ac;
     private int
         level = 1, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
@@ -70,6 +70,10 @@ public abstract class Creature {
         setDefaultConditionMap();
         setDefaultAbilities();
         setDefaultSkills();
+
+        // Done last
+        initStartingAttributes();
+        
     }
 
     // Specified Cell location constructor
@@ -95,11 +99,18 @@ public abstract class Creature {
         setDefaultConditionMap();
         setDefaultAbilities();
         setDefaultSkills();
+
+        // Done last
+        initStartingAttributes();
     }
 
     /*
      * Methods
      */
+
+    public final void initStartingAttributes(){
+        setAc(getBaseAC());
+    }
 
     public void move(){
 
@@ -371,8 +382,9 @@ public abstract class Creature {
         return currentAC;
     }
 
-    public void setAc(int ac) {
-        this.ac = ac;
+    public void setAc(int baseAC) {
+        this.ac = baseAC + getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
+        
     }
 
     public int getDc() {
