@@ -2,6 +2,7 @@ package alan.player_class;
 
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
@@ -10,14 +11,14 @@ import alan.spells.SpellAbstract;
 import alan.spells.cantrips.*;
 import alan.spells.level_one.*;
 
-public class PlayerClass {
+public class PlayerClass implements PlayerClassInterface{
 
     private String className;
     private Constants.CLASS playerClass;
     private int classLevel = 1;
     private ArrayList<Constants.ABILITY> primaryAbilities;
     private int hitPointDie;
-    private ArrayList<Constants.ABILITY> savingThrowProficiencies;
+
     private ArrayList<Constants.WEAPON_TRAINING> weaponProficiencies;
     private ArrayList<Constants.ARMOR_TRAINING> armorTraining;
 
@@ -25,14 +26,14 @@ public class PlayerClass {
     protected String classImageFileName;
 
     // Class spell lists
-    private Map<Constants.SPELL, SpellAbstract> bardSpells;
-    private Map<Constants.SPELL, SpellAbstract> clericSpells;
-    private Map<Constants.SPELL, SpellAbstract> druidSpells;
-    private Map<Constants.SPELL, SpellAbstract> paladinSpells;
-    private Map<Constants.SPELL, SpellAbstract> rangerSpells;
-    private Map<Constants.SPELL, SpellAbstract> sorcererSpells;
-    private Map<Constants.SPELL, SpellAbstract> warlockSpells;
-    private Map<Constants.SPELL, SpellAbstract> wizardSpells;
+    private Map<Constants.SPELL, SpellAbstract> bardSpells = new HashMap<>();
+    private Map<Constants.SPELL, SpellAbstract> clericSpells = new HashMap<>();
+    private Map<Constants.SPELL, SpellAbstract> druidSpells = new HashMap<>();
+    private Map<Constants.SPELL, SpellAbstract> paladinSpells = new HashMap<>();
+    private Map<Constants.SPELL, SpellAbstract> rangerSpells = new HashMap<>();
+    private Map<Constants.SPELL, SpellAbstract> sorcererSpells = new HashMap<>();
+    private Map<Constants.SPELL, SpellAbstract> warlockSpells = new HashMap<>();
+    private Map<Constants.SPELL, SpellAbstract> wizardSpells = new HashMap<>();
 
     // Class Feature Lists
     private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> classFeaturesMap;
@@ -71,6 +72,16 @@ public class PlayerClass {
         }
     
     }
+
+    @Override
+    public void onLevelUp(int lvl) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    /*
+     * Set Classes
+     */
 
     public void setBarbarianClass(){
         
@@ -395,13 +406,6 @@ public class PlayerClass {
         this.hitPointDie = hitPointDie;
     }
 
-    public ArrayList<Constants.ABILITY> getSavingThrowProficiencies() {
-        return savingThrowProficiencies;
-    }
-
-    public void setSavingThrowProficiencies(ArrayList<Constants.ABILITY> savingThrowProficiencies) {
-        this.savingThrowProficiencies = savingThrowProficiencies;
-    }
 
     public ArrayList<Constants.WEAPON_TRAINING> getWeaponProficiencies() {
         return weaponProficiencies;
@@ -499,7 +503,13 @@ public class PlayerClass {
         this.wizardSpells = wizardSpells;
     }
 
-    
+    public Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> getClassFeaturesMap() {
+        return classFeaturesMap;
+    }
 
+    public void setClassFeaturesMap(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> classFeaturesMap) {
+        this.classFeaturesMap = classFeaturesMap;
+    }
+    
     
 }

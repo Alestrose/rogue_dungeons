@@ -19,6 +19,7 @@ import alan.skills_and_feats.Skill;
 
 public abstract class Creature {
     private String creatureType, name, raceName;
+    private int proficiencyBonus = 0;
     private int
         level = 1, ac = 10, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
@@ -27,9 +28,11 @@ public abstract class Creature {
     private Cell location;
     private Constants.CREATURE_SIZE size;
     private Constants.ABILITY spellCastAbility;
+
+    // Booleans
+    private boolean isRaging = false;
     private boolean canOpportunityAttack = true;
     private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor;
-    private int proficiencyBonus = 0;
 
     // Classes
     private PlayerClass primaryClass;
@@ -660,6 +663,28 @@ public abstract class Creature {
 
     public void setPrimaryClass(PlayerClass primaryClass) {
         this.primaryClass = primaryClass;
+    }
+
+    public boolean isRaging() {
+        return isRaging;
+    }
+
+    public void setRaging(boolean isRaging) {
+        if(isRaging){
+            grantResistance(Constants.DAMAGE_TYPE.SLASHING);
+            grantResistance(Constants.DAMAGE_TYPE.PIERCING);
+            grantResistance(Constants.DAMAGE_TYPE.BLUDGEONING);
+            this.isRaging = isRaging;
+        }
+        
+    }
+
+    public Map<Constants.SKILL_KEY, Skill> getSkills() {
+        return skills;
+    }
+
+    public void setSkills(Map<Constants.SKILL_KEY, Skill> skills) {
+        this.skills = skills;
     }
 
     

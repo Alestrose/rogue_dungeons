@@ -6,6 +6,8 @@ public class Ability {
     private int abilityMod = 0;
     private boolean saveAdvantage;
     private boolean saveDisadvantage;
+    private boolean checkAdvantage;
+    private boolean checkDisadvantage;
     private int saveBonus = 0;
     private int savePenalty = 0;
 
@@ -96,6 +98,26 @@ public class Ability {
     public void setAbilityMod() {
         if(this.abilityScore >= 10) abilityMod = (abilityScore - 10) /2;
         else abilityMod = (abilityScore - 11) /2;
+    }
+
+    public void setAbilityMod(int abilityMod) {
+        this.abilityMod = abilityMod;
+    }
+
+    public boolean isCheckAdvantage() {
+        return checkAdvantage;
+    }
+
+    public void setCheckAdvantage(boolean checkAdvantage) {
+        this.checkAdvantage = checkAdvantage;
+    }
+
+    public boolean isCheckDisadvantage() {
+        return checkDisadvantage;
+    }
+
+    public void setCheckDisadvantage(boolean checkDisadvantage) {
+        this.checkDisadvantage = checkDisadvantage;
     }
     
     

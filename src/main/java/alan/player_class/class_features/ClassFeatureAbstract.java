@@ -6,15 +6,23 @@ import alan.creatures.Creature;
 import alan.creatures.PartyPlayers;
 import alan.grid_panel.Cell;
 import alan.grid_panel.Grid;
+import alan.interfaces.DiceRoll;
+import alan.spells.SpellInterface;
 
-public abstract class ClassFeatureAbstract {
+public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
     Grid grid;
     PartyPlayers partyPlayers;
 
     private Constants.CLASS playerClass;
     private Constants.CLASS_FEATURE classFeatureKey;
     private String classFeatureName;
+    private byte duration;
     private int featureLevel;
+    private int damageDie;                        
+    private int quantityOfDie;                      
+    private int quantityOfDieIncrementer;         
+    private int secondaryDamageDie;                
+    private int quantityOfSecondaryDieIncrementer;
     private boolean reaction = false;
     private boolean action = false;
     private boolean bonus = false;
@@ -31,12 +39,51 @@ public abstract class ClassFeatureAbstract {
 
 
     // Constructor
-    public ClassFeatureAbstract(Constants.CLASS_FEATURE classFeatureKey){
-        String s = classFeatureKey.name().toLowerCase().replace('_', ' ');
-        this.classFeatureName = s.substring(0, 1).toUpperCase() + s.substring(1);
-        
+    public ClassFeatureAbstract(){
         grid = Grid.getInstance(0, 0);
         partyPlayers = PartyPlayers.getInstance();
+    }
+
+    /*
+     * Methods
+     */
+
+    @Override
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
+            int spellLevel) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public String descreiption() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+    @Override
+    public void onLevelUp(int lvl) {
+        // TODO Auto-generated method stub
+        
+    }
+
+    @Override       // Returns damage roll based on damage die and quanity of damage die
+    public int rollDamage(int damageDie, int quantityOfDie) {
+        int total = 0;
+        for (int i = 0; i < quantityOfDie; i++) {
+            total += random.nextInt(damageDie) + 1;
+        }
+        return total;
+    }
+
+    @Override       // Returns true if target specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
+    public boolean rollSpellSaveCheck(Creature target, Creature caster, Constants.ABILITY ability) {
+        return random.nextInt(20)+1 + target.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
+    }
+
+    @Override       // Returns true if target spell attack bonus plus a random d20 is greater than or equal to targets AC
+    public boolean rollToHitAC(Creature target, Creature caster) {
+        return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getAc();
     }
 
 
@@ -72,8 +119,9 @@ public abstract class ClassFeatureAbstract {
         return classFeatureName;
     }
 
-    public void setClassFeatureName(String classFeatureName) {
-        this.classFeatureName = classFeatureName;
+    public void setClassFeatureName() {
+        String s = classFeatureKey.name().toLowerCase().replace('_', ' ');
+        this.classFeatureName = s.substring(0, 1).toUpperCase() + s.substring(1);
     }
 
     public int getFeatureLevel() {
@@ -197,5 +245,59 @@ public abstract class ClassFeatureAbstract {
     public void setClassFeatureKey(Constants.CLASS_FEATURE classFeatureKey) {
         this.classFeatureKey = classFeatureKey;
     }
+
+    public void setClassFeatureName(String classFeatureName) {
+        this.classFeatureName = classFeatureName;
+    }
+
+    public int getDamageDie() {
+        return damageDie;
+    }
+
+    public void setDamageDie(int damageDie) {
+        this.damageDie = damageDie;
+    }
+
+    public int getQuantityOfDie() {
+        return quantityOfDie;
+    }
+
+    public void setQuantityOfDie(int quantityOfDie) {
+        this.quantityOfDie = quantityOfDie;
+    }
+
+    public int getQuantityOfDieIncrementer() {
+        return quantityOfDieIncrementer;
+    }
+
+    public void setQuantityOfDieIncrementer(int quantityOfDieIncrementer) {
+        this.quantityOfDieIncrementer = quantityOfDieIncrementer;
+    }
+
+    public int getSecondaryDamageDie() {
+        return secondaryDamageDie;
+    }
+
+    public void setSecondaryDamageDie(int secondaryDamageDie) {
+        this.secondaryDamageDie = secondaryDamageDie;
+    }
+
+    public int getQuantityOfSecondaryDieIncrementer() {
+        return quantityOfSecondaryDieIncrementer;
+    }
+
+    public void setQuantityOfSecondaryDieIncrementer(int quantityOfSecondaryDieIncrementer) {
+        this.quantityOfSecondaryDieIncrementer = quantityOfSecondaryDieIncrementer;
+    }
+
+    public byte getDuration() {
+        return duration;
+    }
+
+    public void setDuration(byte duration) {
+        this.duration = duration;
+    }
+    
+    
     
 }
