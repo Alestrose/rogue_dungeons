@@ -3,8 +3,8 @@ package alan.creatures;
 import java.util.ArrayList;
 
 import alan.Constants;
-import alan.grid_panel.Grid;
 import alan.player_class.PlayerClass;
+import alan.grid_panel.Grid;
 import alan.races.Aasimar;
 import alan.races.Dragonborn;
 import alan.races.Dwarf;

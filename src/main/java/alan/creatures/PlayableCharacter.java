@@ -1,7 +1,7 @@
 package alan.creatures;
 
-import alan.grid_panel.Cell;
 import alan.player_class.PlayerClass;
+import alan.grid_panel.Cell;
 
 public class PlayableCharacter extends Creature{
     private boolean hasAdvantage = false;

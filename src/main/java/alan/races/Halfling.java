@@ -2,8 +2,8 @@ package alan.races;
 
 import alan.Constants;
 import alan.creatures.PlayableCharacter;
-import alan.grid_panel.Cell;
 import alan.player_class.PlayerClass;
+import alan.grid_panel.Cell;
 
 public class Halfling extends PlayableCharacter implements RaceInterface{
     final String RACE_NAME = "Halfling";

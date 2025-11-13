@@ -11,8 +11,8 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import alan.Constants;
-import alan.grid_panel.Cell;
 import alan.player_class.PlayerClass;
+import alan.grid_panel.Cell;
 import alan.skills_and_feats.Ability;
 import alan.skills_and_feats.ConditionEffect;
 import alan.skills_and_feats.Skill;
@@ -32,7 +32,6 @@ public abstract class Creature {
     private Constants.ABILITY spellCastAbility;
 
     // Booleans
-    private boolean isRaging = false;
     private boolean canOpportunityAttack = true;
     private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor;
 
@@ -678,20 +677,6 @@ public abstract class Creature {
     public void setPrimaryClass(PlayerClass primaryClass) {
         this.primaryClass = primaryClass;
         primaryClass.setOwner(this);
-    }
-
-    public boolean isRaging() {
-        return isRaging;
-    }
-
-    public void setRaging(boolean isRaging) {
-        if(isRaging){
-            grantResistance(Constants.DAMAGE_TYPE.SLASHING);
-            grantResistance(Constants.DAMAGE_TYPE.PIERCING);
-            grantResistance(Constants.DAMAGE_TYPE.BLUDGEONING);
-            this.isRaging = isRaging;
-        }
-        
     }
 
     public Map<Constants.SKILL_KEY, Skill> getSkills() {
