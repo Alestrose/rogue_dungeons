@@ -7,9 +7,8 @@ import alan.creatures.PartyPlayers;
 import alan.grid_panel.Cell;
 import alan.grid_panel.Grid;
 import alan.interfaces.DiceRoll;
-import alan.spells.SpellInterface;
 
-public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
+public abstract class ClassFeatureAbstract implements DiceRoll{
     Grid grid;
     PartyPlayers partyPlayers;
 
@@ -40,6 +39,7 @@ public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
 
     // Constructor
     public ClassFeatureAbstract(){
+        
         grid = Grid.getInstance(0, 0);
         partyPlayers = PartyPlayers.getInstance();
     }
@@ -47,25 +47,6 @@ public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
     /*
      * Methods
      */
-
-    @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
-            int spellLevel) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public String descreiption() {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public void onLevelUp(int lvl) {
-        // TODO Auto-generated method stub
-        
-    }
 
     @Override       // Returns damage roll based on damage die and quanity of damage die
     public int rollDamage(int damageDie, int quantityOfDie) {
