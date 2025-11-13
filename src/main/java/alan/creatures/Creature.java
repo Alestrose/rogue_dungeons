@@ -20,8 +20,10 @@ import alan.skills_and_feats.Skill;
 public abstract class Creature {
     private String creatureType, name, raceName;
     private int proficiencyBonus = 0;
+    private int baseAC = 10;
+    private int ac = baseAC + getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
     private int
-        level = 1, ac = 10, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
+        level = 1, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -663,6 +665,7 @@ public abstract class Creature {
 
     public void setPrimaryClass(PlayerClass primaryClass) {
         this.primaryClass = primaryClass;
+        primaryClass.setOwner(this);
     }
 
     public boolean isRaging() {
@@ -687,6 +690,15 @@ public abstract class Creature {
         this.skills = skills;
     }
 
+    public int getBaseAC() {
+        return baseAC;
+    }
+
+    public void setBaseAC(int baseAC) {
+        this.baseAC = baseAC;
+    }
+
+    
     
 
 }

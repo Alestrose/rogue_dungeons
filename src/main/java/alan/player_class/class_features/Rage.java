@@ -4,9 +4,8 @@ import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
-import alan.spells.SpellInterface;
 
-public class Rage extends ClassFeatureAbstract implements SpellInterface{
+public class Rage extends ClassFeatureAbstract{
     private int resourceRage = 2;
     private int damageBonus = 2;
 

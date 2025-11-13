@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
+import alan.creatures.Creature;
 import alan.player_class.class_features.ClassFeatureAbstract;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.*;
@@ -14,6 +15,7 @@ import alan.spells.level_one.*;
 public class PlayerClass implements PlayerClassInterface{
 
     private String className;
+    private Creature owner;
     private Constants.CLASS playerClass;
     private int classLevel = 1;
     private ArrayList<Constants.ABILITY> primaryAbilities;
@@ -362,6 +364,14 @@ public class PlayerClass implements PlayerClassInterface{
         }
     }
 
+    public void updatePassives(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> featuresMap){
+        for(Map.Entry<Constants.CLASS_FEATURE, ClassFeatureAbstract> entry : featuresMap.entrySet()){
+            if(entry.getValue().isActive()) {
+                entry.getValue().cast(getOwner(), null, null, null, null, 1);
+            }
+        }
+    }
+
     /*
     * Getters and Setters
     */
@@ -509,6 +519,14 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setClassFeaturesMap(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> classFeaturesMap) {
         this.classFeaturesMap = classFeaturesMap;
+    }
+
+    public Creature getOwner() {
+        return owner;
+    }
+
+    public void setOwner(Creature owner) {
+        this.owner = owner;
     }
     
     

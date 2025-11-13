@@ -40,5 +40,5 @@ public class Constants {
         WITCH_BOLT, WRATHFUL_SMITE, DIVINE_SMITE};
 
     // Features
-    public static enum CLASS_FEATURE {RAGE, UNARMORED_DEFENSE};
+    public static enum CLASS_FEATURE {RAGE, UNARMORED_DEFENSE, WEAPON_MASTERY};
 }

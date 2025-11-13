@@ -1,13 +1,15 @@
 package alan.player_class;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
 import alan.player_class.class_features.ClassFeatureAbstract;
 import alan.player_class.class_features.Rage;
+import alan.player_class.class_features.UnarmoredDefense;
 
 public class Barbarian extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> barbarianFeatures;
+    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> barbarianFeatures = new HashMap<>();
 
     private int resourceRage = 0;
 
@@ -15,6 +17,15 @@ public class Barbarian extends PlayerClass{
     public Barbarian(Constants.CLASS playerClass){
         super(playerClass);
         barbarianFeatures.put(Constants.CLASS_FEATURE.RAGE, new Rage());
+        barbarianFeatures.put(Constants.CLASS_FEATURE.UNARMORED_DEFENSE, new UnarmoredDefense());
+
+
+        // Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel
+        for(Map.Entry<Constants.CLASS_FEATURE, ClassFeatureAbstract> entry : barbarianFeatures.entrySet()){
+            if(entry.getValue().isActive()) {
+                entry.getValue().cast(getOwner(), null, null, null, null, 1);
+            }
+        }
     }
 
     /*

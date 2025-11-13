@@ -7,8 +7,9 @@ import alan.creatures.PartyPlayers;
 import alan.grid_panel.Cell;
 import alan.grid_panel.Grid;
 import alan.interfaces.DiceRoll;
+import alan.spells.SpellInterface;
 
-public abstract class ClassFeatureAbstract implements DiceRoll{
+public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
     Grid grid;
     PartyPlayers partyPlayers;
 
@@ -26,8 +27,8 @@ public abstract class ClassFeatureAbstract implements DiceRoll{
     private boolean action = false;
     private boolean bonus = false;
     private boolean freeCast = false;
-    private boolean isActive = false;
-    private boolean isPassive = false;
+    private boolean isActive = false;       // Denotes feature which must be activley triggered
+    private boolean isPassive = false;      // Denotes feature which is always active
     private DAMAGE_TYPE damage_type;
     private DAMAGE_TYPE secondary_damage_type;
     private Constants.ABILITY savingThrow;
@@ -44,9 +45,36 @@ public abstract class ClassFeatureAbstract implements DiceRoll{
         partyPlayers = PartyPlayers.getInstance();
     }
 
+    
+
     /*
      * Methods
      */
+
+    @Override
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
+            int spellLevel) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
+
+    @Override
+    public String descreiption() {
+        // TODO Auto-generated method stub
+        return null;
+    }
+
+
+
+    @Override
+    public void onLevelUp(int lvl) {
+        // TODO Auto-generated method stub
+        
+    }
+
+
 
     @Override       // Returns damage roll based on damage die and quanity of damage die
     public int rollDamage(int damageDie, int quantityOfDie) {
