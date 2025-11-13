@@ -7,8 +7,8 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class Grease_ extends SpellAbstract implements SpellInterface{
-    public Grease_(){
+public class Grease extends SpellAbstract implements SpellInterface{
+    public Grease(){
         setSpellName("Grease");
         setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.CONJURATION);

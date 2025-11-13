@@ -16,6 +16,7 @@ public class SearingSmite extends SpellAbstract implements SpellInterface{
         setSavingThrow(Constants.ABILITY.CONSTITUTION);
         setConcentration(true);
         setBonus(true);
+        setAction(true);
         setRange((short) 0);
         setDuration((byte) 10);
         setDamageDie(6);

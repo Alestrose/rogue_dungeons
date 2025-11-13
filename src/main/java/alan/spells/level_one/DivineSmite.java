@@ -7,25 +7,26 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class WrathfulSmite extends SpellAbstract implements SpellInterface{
+public class DivineSmite extends SpellAbstract implements SpellInterface{
 
-    public WrathfulSmite(){
-        setSpellName("Wrathful Smite");
+    public DivineSmite(){
+        setSpellName("Divine Smite");
         setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.EVOCATION);
-        setDamage_type(Constants.DAMAGE_TYPE.PSYCHIC);
+        setDamage_type(Constants.DAMAGE_TYPE.RADIANT);
         setSavingThrow(Constants.ABILITY.WISDOM);
         setConcentration(true);
         setAction(true);
         setBonus(true);
         setRange((short) 0);
         setDuration((byte) 10);
-        setDamageDie(6);
-        setQuantityOfDie(1);
+        setDamageDie(8);
+        setQuantityOfDie(2);
     }
 
-    @Override       // Requires implementation to hit enemy and check to frighten
+    @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
+        levelSpellPrimaryDie(1, spellLevel);
         caster.setNextHitDamageRollIncrease(rollDamage(getDamageDie(), getQuantityOfDie()));
         
     }
@@ -33,7 +34,12 @@ public class WrathfulSmite extends SpellAbstract implements SpellInterface{
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return "The next time you hit with a melee weapon attack during this spell's duration, your attack deals an extra 1d6 psychic damage. Additionally, if the target is a creature, it must make a Wisdom saving throw or be frightened of you until the spell ends. As an action, the creature can make a Wisdom check against your spell save DC to steel its resolve and end this spell.";
+        return """
+               The target takes an extra 2d8 Radiant damage from the attack. The damage increases by 1d8 if the target is a Fiend or an Undead.\r
+               \r
+               Using a Higher-Level Spell Slot. The damage increases by 1d8 for each spell slot level above 1""" //
+        //
+        ;
     }
 
     @Override

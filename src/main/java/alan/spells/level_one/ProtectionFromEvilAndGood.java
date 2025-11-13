@@ -7,9 +7,9 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class ProtectionFromGoodAndEvil extends SpellAbstract implements SpellInterface{
+public class ProtectionFromEvilAndGood extends SpellAbstract implements SpellInterface{
 
-    public ProtectionFromGoodAndEvil(){
+    public ProtectionFromEvilAndGood(){
         setSpellName("Protection From Good And Evil");
         setSpellLevel((byte) 1);
         setSchool(Constants.SCHOOL.ABJURATION);

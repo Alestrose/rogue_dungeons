@@ -24,7 +24,7 @@ public class HuntersMark extends SpellAbstract implements SpellInterface{
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
-        target.ApplyConditionEffect(Constants.CONDITION_KEY.HUNTERS_MARK, caster);
+        target.ApplyConditionEffect(Constants.CONDITION_KEY.HUNTERS_MARKED, caster);
     }
 
     @Override

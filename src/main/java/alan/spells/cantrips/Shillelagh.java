@@ -6,9 +6,9 @@ import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
 
-public class Shillelagh_ extends SpellAbstract implements SpellInterface{
+public class Shillelagh extends SpellAbstract implements SpellInterface{
 
-    public Shillelagh_(){
+    public Shillelagh(){
         setSpellName("Shillelagh");
         setSpellLevel((byte) 0);
         setSchool(Constants.SCHOOL.TRANSMUTATION);

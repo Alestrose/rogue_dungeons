@@ -17,6 +17,7 @@ public class ThunderousSmite  extends SpellAbstract implements SpellInterface{
         setSavingThrow(Constants.ABILITY.STRENGTH);
         setConcentration(true);
         setBonus(true);
+        setAction(true);
         setRange((short) 0);
         setDuration((byte) 10);
         setDamageDie(6);
