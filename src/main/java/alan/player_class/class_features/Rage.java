@@ -8,6 +8,7 @@ import alan.grid_panel.Cell;
 public class Rage extends ClassFeatureAbstract{
     private int resourceRage = 2;
     private int damageBonus = 2;
+    private boolean isRaging = false;
 
     public Rage(){
         setPlayerClass(Constants.CLASS.BARBARIAN);
@@ -17,13 +18,14 @@ public class Rage extends ClassFeatureAbstract{
         setDuration((byte) 100);
         setBonus(true);
         setActive(true);
+        
 
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         if(!caster.isWearingArmor()){
-            caster.setRaging(true);
+            setRaging(true);
             caster.setDamageRollIncrease(damageBonus);
             caster.getAbilities().get(Constants.ABILITY.STRENGTH).setSaveAdvantage(true);
             caster.getAbilities().get(Constants.ABILITY.STRENGTH).setCheckAdvantage(true);
@@ -137,6 +139,14 @@ public class Rage extends ClassFeatureAbstract{
 
     public void setDamageBonus(int damageBonus) {
         this.damageBonus = damageBonus;
+    }
+
+    public boolean isRaging() {
+        return isRaging;
+    }
+
+    public void setRaging(boolean isRaging) {
+        this.isRaging = isRaging;
     }
 
     
