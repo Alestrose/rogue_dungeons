@@ -15,6 +15,8 @@ public class Javelin extends Weapon{
         setMasterySkill(Constants.MASTERY_SKILL.SLOW);
         setDamageDice(6);
         setDamageDiceQuantity(1);
+        setSimple(true);
+        setMelee(true);
         setReach(5);
         setRange(120);
         setThrown(true);

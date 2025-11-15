@@ -15,6 +15,8 @@ public class Dagger extends Weapon{
         setMasterySkill(Constants.MASTERY_SKILL.NICK);
         setDamageDice(4);
         setDamageDiceQuantity(1);
+        setSimple(true);
+        setMelee(true);
         setReach(5);
         setRange(60);
         setLight(true);

@@ -14,6 +14,8 @@ public class Club extends Weapon{
         setMasterySkill(Constants.MASTERY_SKILL.SLOW);
         setDamageDice(4);
         setDamageDiceQuantity(1);
+        setSimple(true);
+        setMelee(true);
         setReach(5);
         setRange(0);
         setLight(true);

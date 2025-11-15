@@ -16,6 +16,8 @@ public class Greatclub extends Weapon{
         setDamageDice(8);
         setDamageDiceTwoHanded(8);
         setDamageDiceQuantity(1);
+        setSimple(true);
+        setMelee(true);
         setReach(5);
         setRange(0);
         setTwoHanded(true);

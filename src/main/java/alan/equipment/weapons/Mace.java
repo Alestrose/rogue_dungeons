@@ -15,6 +15,8 @@ public class Mace extends Weapon{
         setMasterySkill(Constants.MASTERY_SKILL.SAP);
         setDamageDice(6);
         setDamageDiceQuantity(1);
+        setSimple(true);
+        setMelee(true);
         setReach(5);
         setRange(0);
         setWeight(4);

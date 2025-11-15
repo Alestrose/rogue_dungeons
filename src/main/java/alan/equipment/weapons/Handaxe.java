@@ -15,6 +15,8 @@ public class Handaxe extends Weapon{
         setMasterySkill(Constants.MASTERY_SKILL.VEX);
         setDamageDice(6);
         setDamageDiceQuantity(1);
+        setSimple(true);
+        setMelee(true);
         setReach(5);
         setRange(60);
         setLight(true);

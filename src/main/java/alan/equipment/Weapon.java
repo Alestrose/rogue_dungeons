@@ -29,6 +29,10 @@ public abstract class Weapon implements DiceRoll{
     private boolean isVersitile = false;
     private boolean isHeavy = false;
     private boolean isReach = false;
+    private boolean isSimple = false;
+    private boolean isMartial = false;
+    private boolean isMelee = false;
+    private boolean isRanged = false;
 
     /*
      *  setWeaponKey(Constants.WEAPON_KEY.CLUB);
@@ -252,6 +256,40 @@ public abstract class Weapon implements DiceRoll{
     public void setCost(double cost) {
         this.cost = cost;
     }
+
+    public boolean isSimple() {
+        return isSimple;
+    }
+
+    public void setSimple(boolean isSimple) {
+        this.isSimple = isSimple;
+    }
+
+    public boolean isMartial() {
+        return isMartial;
+    }
+
+    public void setMartial(boolean isMartial) {
+        this.isMartial = isMartial;
+    }
+
+    public boolean isMelee() {
+        return isMelee;
+    }
+
+    public void setMelee(boolean isMelee) {
+        this.isMelee = isMelee;
+    }
+
+    public boolean isRanged() {
+        return isRanged;
+    }
+
+    public void setRanged(boolean isRanged) {
+        this.isRanged = isRanged;
+    }
+
+    
 
     
 }
