@@ -18,7 +18,7 @@ public abstract class Weapon implements DiceRoll{
     private int damageBonus = 0;
     private int reach;
     private int range;
-    private int weight;
+    private double  weight;
     private double cost;
 
     // properties
@@ -221,7 +221,7 @@ public abstract class Weapon implements DiceRoll{
         return isReach;
     }
 
-    public void setReach(boolean isReach) {
+    public void setIsReach(boolean isReach) {
         this.isReach = isReach;
     }
 
@@ -241,11 +241,11 @@ public abstract class Weapon implements DiceRoll{
         this.wielder = wielder;
     }
 
-    public int getWeight() {
+    public double  getWeight() {
         return weight;
     }
 
-    public void setWeight(int weight) {
+    public void setWeight(double  weight) {
         this.weight = weight;
     }
 
