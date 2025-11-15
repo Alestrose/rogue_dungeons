@@ -1,0 +1,24 @@
+package alan.equipment.weapons;
+
+import alan.Constants;
+import alan.creatures.Creature;
+import alan.equipment.Weapon;
+
+public class Quarterstaff extends Weapon{
+
+    public Quarterstaff(Creature wielder){
+        super(wielder);
+        setWeaponKey(Constants.WEAPON_KEY.QUARTERSTAFF);
+        String s = getWeaponKey().name().toLowerCase().replace('_', ' ');
+        setWeaponName(s.substring(0, 1).toUpperCase() + s.substring(1));
+        setWeaponDamageType(Constants.DAMAGE_TYPE.BLUDGEONING);
+        setMasterySkill(Constants.MASTERY_SKILL.TOPPLE);
+        setDamageDice(6);
+        setDamageDiceQuantity(1);
+        setReach(5);
+        setRange(0);
+        setVersitile(true);
+        setWeight(4);
+        setCost(.2);
+    }
+}
