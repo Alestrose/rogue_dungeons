@@ -13,7 +13,6 @@ public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
     Grid grid;
     PartyPlayers partyPlayers;
 
-    private Constants.CLASS playerClass;
     private Constants.CLASS_FEATURE classFeatureKey;
     private String classFeatureName;
     private byte duration;
@@ -114,14 +113,6 @@ public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
 
     public void setPartyPlayers(PartyPlayers partyPlayers) {
         this.partyPlayers = partyPlayers;
-    }
-
-    public Constants.CLASS getPlayerClass() {
-        return playerClass;
-    }
-
-    public void setPlayerClass(Constants.CLASS playerClass) {
-        this.playerClass = playerClass;
     }
 
     public String getClassFeatureName() {

@@ -2,6 +2,11 @@ C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\Co
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\creatures\Creature.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\creatures\PartyPlayers.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\creatures\PlayableCharacter.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\equipment\Weapon.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\equipment\weapons\Club.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\equipment\weapons\Dagger.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\equipment\weapons\Greatclub.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\equipment\weapons\Handaxe.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\game_panel\Card.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\game_panel\GameManager.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\game_panel\GamePanel.java
@@ -15,6 +20,7 @@ C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\pl
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\class_features\ClassFeatureAbstract.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\class_features\Rage.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\class_features\UnarmoredDefense.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\class_features\WeaponMastery.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\PlayerClass.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\PlayerClassInterface.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\races\Aasimar.java

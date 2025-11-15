@@ -11,7 +11,6 @@ public class Rage extends ClassFeatureAbstract{
     private boolean isRaging = false;
 
     public Rage(){
-        setPlayerClass(Constants.CLASS.BARBARIAN);
         setClassFeatureKey(Constants.CLASS_FEATURE.RAGE);
         setClassFeatureName();
         setFeatureLevel(1);

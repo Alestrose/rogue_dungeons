@@ -8,7 +8,9 @@ import alan.grid_panel.Cell;
 public class UnarmoredDefense extends ClassFeatureAbstract{
 
     public UnarmoredDefense(){
-
+        setClassFeatureKey(Constants.CLASS_FEATURE.UNARMORED_DEFENSE);
+        setPassive(true);
+        setFeatureLevel(1);
     }
 
     @Override
