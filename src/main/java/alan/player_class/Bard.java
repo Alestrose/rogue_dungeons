@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
+import alan.player_class.class_features.BardicInspiration;
 import alan.player_class.class_features.ClassFeatureAbstract;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.MageHand;
@@ -16,8 +17,8 @@ import alan.spells.level_one.Thunderwave;
 public class Bard extends PlayerClass{
     private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> bardFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
-    private int resourceBardicInspiration = 0;
     private SpellSlots bardSpellSlots = new SpellSlots();
+    
 
     // Spell Slots
 
@@ -25,7 +26,8 @@ public class Bard extends PlayerClass{
         super(playerClass);
 
         // Setting level one spell slots
-        bardSpellSlots.setKnownCantrips(2);
+        bardSpellSlots.setNumKnownCantrips(2);
+        bardSpellSlots.setNumPreparedSpells(4);
         bardSpellSlots.setMaxLevelOneSlots(2);
         bardSpellSlots.setCurrentLevelOneSlots(bardSpellSlots.getMaxLevelOneSlots());
 
@@ -37,10 +39,43 @@ public class Bard extends PlayerClass{
         preparedSpells.put(Constants.SPELL.HEALING_WORD, new HealingWord());
         preparedSpells.put(Constants.SPELL.THUNDERWAVE, new Thunderwave());
 
+        // Setting level one class features
+        bardFeatures.put(Constants.CLASS_FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
+
+        // Setting starting uses of inspiration
+        setInspirationQuantity();
 
         // Applies or updates class passive features
         updatePassives(bardFeatures);
     }
+
+    /*
+     * Methods
+     */
+
+    @Override
+    public void onLevelUp(int lvl) {
+        
+    }
+    
+    @Override
+    public void onShortRest(){
+        setInspirationQuantity();
+    }
+
+    @Override
+    public void onLongRest(){
+        setInspirationQuantity();
+    }
+
+    public final void setInspirationQuantity(){
+        bardFeatures.get(Constants.CLASS_FEATURE.BARDIC_INSPIRATION).setResourceQuanity(getOwner().getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod());
+    }
+
+    /*
+     * Getters and Setters
+     * 
+     */
 
     public Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> getBardFeatures() {
         return bardFeatures;
@@ -48,14 +83,6 @@ public class Bard extends PlayerClass{
 
     public void setBardFeatures(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> bardFeatures) {
         this.bardFeatures = bardFeatures;
-    }
-
-    public int getResourceBardicInspiration() {
-        return resourceBardicInspiration;
-    }
-
-    public void setResourceBardicInspiration(int resourceBardicInspiration) {
-        this.resourceBardicInspiration = resourceBardicInspiration;
     }
 
     public SpellSlots getBardSpellSlots() {

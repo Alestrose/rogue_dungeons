@@ -11,7 +11,6 @@ import alan.player_class.class_features.WeaponMastery;
 
 public class Barbarian extends PlayerClass{
     private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> barbarianFeatures = new HashMap<>();
-    private int resourceRage = 0;
 
     // Constructor
     public Barbarian(Constants.CLASS playerClass){
@@ -22,6 +21,25 @@ public class Barbarian extends PlayerClass{
 
         // Applies or updates class passive features
         updatePassives(barbarianFeatures);
+    }
+    
+    /*
+     * Methods
+     */
+
+     @Override
+    public void onLevelUp(int lvl) {
+        
+    }
+    
+    @Override
+    public void onShortRest(){
+
+    }
+
+    @Override
+    public void onLongRest(){
+        
     }
 
     /*
@@ -36,17 +54,6 @@ public class Barbarian extends PlayerClass{
     public void setBarbarianFeatires(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> barbarianFeatires) {
         this.barbarianFeatures = barbarianFeatires;
     }
-
-
-    public int getResourceRage() {
-        return resourceRage;
-    }
-
-
-    public void setResourceRage(int resourceRage) {
-        this.resourceRage = resourceRage;
-    }
-
     
 
 

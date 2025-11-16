@@ -39,7 +39,7 @@ public class Constants {
         WITCH_BOLT, WRATHFUL_SMITE, DIVINE_SMITE};
 
     // Features
-    public static enum CLASS_FEATURE {RAGE, UNARMORED_DEFENSE_BARBARIAN, WEAPON_MASTERY};
+    public static enum CLASS_FEATURE {RAGE, UNARMORED_DEFENSE_BARBARIAN, WEAPON_MASTERY, BARDIC_INSPIRATION};
 
     // Weapon and Armor
     public static enum WEAPON_TRAINING {SIMPLE, MARTIAL};

@@ -6,7 +6,6 @@ import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 
 public class Rage extends ClassFeatureAbstract{
-    private int resourceRage = 2;
     private int damageBonus = 2;
     private boolean isRaging = false;
 
@@ -17,18 +16,18 @@ public class Rage extends ClassFeatureAbstract{
         setDuration((byte) 100);
         setBonus(true);
         setActive(true);
-        
 
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
-        if(!caster.isWearingArmor()){
+        if(!caster.isWearingArmor() && getResourceQuanity() > 0){
             setRaging(true);
             caster.setDamageRollIncrease(damageBonus);
             caster.getAbilities().get(Constants.ABILITY.STRENGTH).setSaveAdvantage(true);
             caster.getAbilities().get(Constants.ABILITY.STRENGTH).setCheckAdvantage(true);
         }else System.err.println("Can't do while wearing armor");
+        setResourceQuanity(getResourceQuanity()-1);
     }
 
     @Override
@@ -109,12 +108,12 @@ public class Rage extends ClassFeatureAbstract{
     @Override
     public void onLevelUp(int lvl) {
         switch (lvl) {
-            case 3 -> {setResourceRage(3); }
-            case 6 -> {setResourceRage(4);}
+            case 3 -> {setResourceQuanity(3); }
+            case 6 -> {setResourceQuanity(43);}
             case 9 -> {setDamageBonus(3);}
-            case 12 -> {setResourceRage(5);}
+            case 12 -> {setResourceQuanity(5);}
             case 16 -> {setDamageBonus(4);}
-            case 17 -> {setResourceRage(6);}
+            case 17 -> {setResourceQuanity(6);}
             default -> {}
         }
         
@@ -123,14 +122,6 @@ public class Rage extends ClassFeatureAbstract{
     /*
      * Getters and Setters
      */
-
-    public int getResourceRage() {
-        return resourceRage;
-    }
-
-    public void setResourceRage(int resourceRage) {
-        this.resourceRage = resourceRage;
-    }
 
     public int getDamageBonus() {
         return damageBonus;

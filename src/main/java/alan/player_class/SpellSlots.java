@@ -2,7 +2,7 @@ package alan.player_class;
 
 public class SpellSlots {
 
-    int knownCantrips;
+    int numKnownCantrips, numPreparedSpells, numKnownSpells;
     int maxLevelOneSlots = 0,   currentLevelOneSlots = 0;
     int maxLevelTwoSlots = 0,   currentLevelTwoSlots = 0;
     int maxLevelThreeSlots = 0, currentLevelThreeSlots = 0;
@@ -161,13 +161,30 @@ public class SpellSlots {
         this.currentLevelNineSlots = currentLevelNineSlots;
     }
 
-    public int getKnownCantrips() {
-        return knownCantrips;
+    public int getNumKnownCantrips() {
+        return numKnownCantrips;
     }
 
-    public void setKnownCantrips(int knownCantrips) {
-        this.knownCantrips = knownCantrips;
+    public void setNumKnownCantrips(int numKnownCantrips) {
+        this.numKnownCantrips = numKnownCantrips;
     }
 
+    public int getNumPreparedSpells() {
+        return numPreparedSpells;
+    }
+
+    public void setNumPreparedSpells(int numPreparedSpells) {
+        this.numPreparedSpells = numPreparedSpells;
+    }
+
+    public int getNumKnownSpells() {
+        return numKnownSpells;
+    }
+
+    public void setNumKnownSpells(int numKnownSpells) {
+        this.numKnownSpells = numKnownSpells;
+    }
+
+    
     
 }

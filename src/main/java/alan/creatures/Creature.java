@@ -23,7 +23,7 @@ public abstract class Creature {
     private int baseAC = 10;
     private int ac;
     private int
-        level = 1, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
+        level = 1, inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -34,6 +34,7 @@ public abstract class Creature {
     // Booleans
     private boolean canOpportunityAttack = true;
     private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor;
+    private boolean hasInspiration = false;
 
     // Classes
     private PlayerClass primaryClass;
@@ -693,6 +694,23 @@ public abstract class Creature {
 
     public void setBaseAC(int baseAC) {
         this.baseAC = baseAC;
+    }
+
+    public int getInspirationDie() {
+        return inspirationDie;
+    }
+
+    public void setInspirationDie(int inspirationDie) {
+        this.inspirationDie = inspirationDie;
+    }
+
+    public boolean isHasInspiration() {
+        return hasInspiration;
+    }
+
+    public void setHasInspiration(boolean hasInspiration, int die) {
+        setInspirationDie(die);
+        this.hasInspiration = hasInspiration;
     }
 
     

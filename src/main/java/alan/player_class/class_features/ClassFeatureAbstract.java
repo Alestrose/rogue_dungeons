@@ -16,6 +16,7 @@ public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
     private Constants.CLASS_FEATURE classFeatureKey;
     private String classFeatureName;
     private byte duration;
+    private int resourceQuanity;
     private int featureLevel;
     private int damageDie;                        
     private int quantityOfDie;                      
@@ -296,6 +297,14 @@ public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
 
     public void setDuration(byte duration) {
         this.duration = duration;
+    }
+
+    public int getResourceQuanity() {
+        return resourceQuanity;
+    }
+
+    public void setResourceQuanity(int resourceQuanity) {
+        this.resourceQuanity = resourceQuanity;
     }
     
     

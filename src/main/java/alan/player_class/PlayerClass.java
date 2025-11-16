@@ -77,7 +77,16 @@ public class PlayerClass implements PlayerClassInterface{
 
     @Override
     public void onLevelUp(int lvl) {
-        // TODO Auto-generated method stub
+        
+    }
+
+    @Override
+    public void onShortRest(){
+
+    }
+
+    @Override
+    public void onLongRest(){
         
     }
 
