@@ -34,7 +34,7 @@ public class PartyPlayers {
             "Phillo",
             "Fighter1.png",
             grid.getCellArray()[4][6],
-            new PlayerClass(Constants.CLASS.FIGHTER),
+            new PlayerClass(Constants.CLASS.BARBARIAN),
             Constants.SKILL_KEY.PERCEPTION, Elf.ELVEN_LINEAGE.DROW
         ));
 
@@ -42,7 +42,7 @@ public class PartyPlayers {
             "Tanith", 
             "Ranger1.png", 
             grid.getCellArray()[7][9], 
-            new PlayerClass(Constants.CLASS.RANGER), 
+            new PlayerClass(Constants.CLASS.BARD), 
             Constants.SKILL_KEY.HISTORY
         ));
 
@@ -50,7 +50,7 @@ public class PartyPlayers {
             "Ti Nee",
             "Fighter1.png", 
             grid.getCellArray()[1][8], 
-            new PlayerClass(Constants.CLASS.FIGHTER)
+            new PlayerClass(Constants.CLASS.CLERIC)
         ));
 
         party.add(new Dragonborn(

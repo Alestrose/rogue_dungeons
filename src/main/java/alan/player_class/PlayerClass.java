@@ -18,7 +18,7 @@ public class PlayerClass implements PlayerClassInterface{
     private Creature owner;
     private Constants.CLASS playerClass;
     private int classLevel = 1;
-    private ArrayList<Constants.ABILITY> primaryAbilities;
+    private ArrayList<Constants.ABILITY> primaryAbilities = new ArrayList<>();
     private int hitPointDie;
 
     protected BufferedImage classImage;
@@ -45,7 +45,7 @@ public class PlayerClass implements PlayerClassInterface{
         String s = playerClass.name().toLowerCase().replace('_', ' ');
         className = s.substring(0, 1).toUpperCase() + s.substring(1);
         
-        initNewCharacter();
+        //initNewCharacter();
     }
 
     /*

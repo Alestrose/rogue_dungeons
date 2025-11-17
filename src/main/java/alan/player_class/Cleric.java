@@ -18,9 +18,11 @@ public class Cleric extends PlayerClass{
     private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> clericFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots clericSpellSlots = new SpellSlots();
+    private Constants.DIVINE_ORDERS divineOrder;
 
-    public Cleric(Constants.CLASS playerClass){
+    public Cleric(Constants.CLASS playerClass, Constants.DIVINE_ORDERS divineOrder){
         super(playerClass);
+        this.divineOrder = divineOrder;
 
         // Setting level one spell slots
         clericSpellSlots.setNumKnownCantrips(3);
@@ -61,6 +63,25 @@ public class Cleric extends PlayerClass{
     public void onLongRest(){
         
     }
+
+    public final void SET_DIVINE_ORDER(){
+        switch (getDivineOrder()) {
+            case PROTECTOR: {
+                getOwner().addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+                getOwner().addArmorProficiency(Constants.ARMOR_PROFICIENCY.HEAVY);
+            }
+            case THAUMATURGE: {
+                clericSpellSlots.setNumKnownCantrips(clericSpellSlots.getNumKnownCantrips()+1);
+                getOwner().grantSkillBonus(
+                    Constants.SKILL_KEY.ARCANA,
+                    getOwner().getAbilities().get(Constants.ABILITY.WISDOM).getAbilityMod());
+            }
+                
+                break;
+            default:
+                throw new AssertionError();
+        }
+    }
     
 
     /*
@@ -91,4 +112,13 @@ public class Cleric extends PlayerClass{
         this.clericSpellSlots = clericSpellSlots;
     }
 
+    public Constants.DIVINE_ORDERS getDivineOrder() {
+        return divineOrder;
+    }
+
+    public void setDivineOrder(Constants.DIVINE_ORDERS divineOrder) {
+        this.divineOrder = divineOrder;
+    }
+
+    
 }

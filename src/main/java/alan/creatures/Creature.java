@@ -24,7 +24,7 @@ public abstract class Creature {
     private int baseAC = 10;
     private int ac;
     private int
-        level = 1, inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions, bonusActions, reactions, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
+        level = 1, inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -43,8 +43,8 @@ public abstract class Creature {
     // Ability scores & Modifiers
     protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
     protected Map<Constants.SKILL_KEY, Skill> skills = new HashMap<>();
-    private ArrayList<Constants.WEAPON_PROFICIENCY> weaponProficiencies;
-    private ArrayList<Constants.ARMOR_PROFICIENCY> armorProficiencies;
+    private ArrayList<Constants.WEAPON_PROFICIENCY> weaponProficiencies = new ArrayList<>();
+    private ArrayList<Constants.ARMOR_PROFICIENCY> armorProficiencies = new ArrayList<>();
     
     // Resistances & Vulnerabilities
     protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
@@ -56,10 +56,7 @@ public abstract class Creature {
     public Creature(String name, String fileName, PlayerClass primaryClass){
         this.name = name;
         this.fileName = fileName;
-        this.primaryClass = primaryClass;
-        actions = 1;
-        bonusActions = 1;
-        reactions = 1;
+        setPrimaryClass(primaryClass);
 
         // Initializes image from images folder. Image selected via fileName
         File pic = new File("images/" + fileName);
@@ -83,7 +80,9 @@ public abstract class Creature {
     public Creature(String name, String fileName, Cell location, PlayerClass primaryClass){
         this.name = name;
         this.fileName = fileName;
-        this.primaryClass = primaryClass;
+        setPrimaryClass(primaryClass);
+
+        // Cell
         this.location = location;
         this.x = location.getX();
         this.y = location.getY();
@@ -104,12 +103,17 @@ public abstract class Creature {
         setDefaultSkills();
 
         // Done last
+        initClassAttributes();
         initStartingAttributes();
     }
 
     /*
      * Methods
      */
+
+    public final void initClassAttributes(){
+        primaryClass.initNewCharacter();
+    }
 
     public final void initStartingAttributes(){
         setAc(getBaseAC());
@@ -210,6 +214,21 @@ public abstract class Creature {
             skill.setHasProficiency(true);
         }
     }
+
+    public void grantSkillBonus(Constants.SKILL_KEY skill_key, int i){
+        Skill skill = skills.get(skill_key);
+        if (skill != null) {
+            skill.setValueBonus(i);
+            skill.setValue(skill.getValue() + i);
+        }
+    }
+
+    /*
+     * public void setValueBonus(int valueBonus) {
+        this.valueBonus = valueBonus;
+        this.value = abilityModifier + valueBonus;
+    }
+     */
 
     public void grantSkillAdvantage(Constants.SKILL_KEY skill_key) {
         Skill skill = skills.get(skill_key);
@@ -690,7 +709,7 @@ public abstract class Creature {
         return primaryClass;
     }
 
-    public void setPrimaryClass(PlayerClass primaryClass) {
+    public final void setPrimaryClass(PlayerClass primaryClass) {
         this.primaryClass = primaryClass;
         primaryClass.setOwner(this);
     }

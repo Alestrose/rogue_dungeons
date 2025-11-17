@@ -5,14 +5,16 @@ public class Skill {
     private int abilityModifier;
     private int proficiencyBonus;
     private int value;
+    private int valueBonus = 0;
     private boolean hasProficiency = false;
     private boolean hasAdvantage = false;
+
 
     public Skill(String skillName, int abilityModifier, int proficiencyBonus){
         this.skillName = skillName;
         this.abilityModifier = abilityModifier;
         this.proficiencyBonus = proficiencyBonus;
-        this.value = abilityModifier;
+        this.value = abilityModifier + valueBonus;
     }
 
     /*
@@ -67,5 +69,15 @@ public class Skill {
     public void setProficiencyBonus(int proficiencyBonus) {
         this.proficiencyBonus = proficiencyBonus;
     }
+
+    public int getValueBonus() {
+        return valueBonus;
+    }
+
+    public void setValueBonus(int valueBonus) {
+        this.valueBonus = valueBonus;
+        this.value = abilityModifier + valueBonus;
+    }
+    
     
 }

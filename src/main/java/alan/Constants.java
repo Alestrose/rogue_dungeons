@@ -40,6 +40,7 @@ public class Constants {
 
     // Features
     public static enum CLASS_FEATURE {RAGE, UNARMORED_DEFENSE_BARBARIAN, WEAPON_MASTERY, BARDIC_INSPIRATION};
+    public static enum DIVINE_ORDERS {PROTECTOR, THAUMATURGE};
 
     // Weapon and Armor
     public static enum WEAPON_PROFICIENCY {SIMPLE, MARTIAL};
