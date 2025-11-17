@@ -20,7 +20,7 @@ public class Barbarian extends PlayerClass{
         barbarianFeatures.put(Constants.CLASS_FEATURE.WEAPON_MASTERY, new WeaponMastery());
 
         // Applies or updates class passive features
-        updatePassives(barbarianFeatures);
+        UPDATE_PASSIVES(barbarianFeatures);
     }
     
     /*

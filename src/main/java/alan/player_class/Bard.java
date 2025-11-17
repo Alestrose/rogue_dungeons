@@ -46,7 +46,7 @@ public class Bard extends PlayerClass{
         setInspirationQuantity();
 
         // Applies or updates class passive features
-        updatePassives(bardFeatures);
+        UPDATE_PASSIVES(bardFeatures);
     }
 
     /*

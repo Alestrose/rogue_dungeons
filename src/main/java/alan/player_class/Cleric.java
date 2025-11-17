@@ -39,7 +39,7 @@ public class Cleric extends PlayerClass{
         preparedSpells.put(Constants.SPELL.SHILED_OF_FAITH, new ShieldOfFaith());
         preparedSpells.put(Constants.SPELL.GUIDING_BOLT, new GuidingBolt());
 
-        updatePassives(clericFeatures);
+        UPDATE_PASSIVES(clericFeatures);
     }
 
     

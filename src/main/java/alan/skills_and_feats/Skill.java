@@ -10,8 +10,9 @@ public class Skill {
 
     public Skill(String skillName, int abilityModifier, int proficiencyBonus){
         this.skillName = skillName;
+        this.abilityModifier = abilityModifier;
         this.proficiencyBonus = proficiencyBonus;
-        value = abilityModifier;
+        this.value = abilityModifier;
     }
 
     /*

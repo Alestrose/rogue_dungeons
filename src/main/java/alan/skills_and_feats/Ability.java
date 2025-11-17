@@ -4,10 +4,11 @@ public class Ability {
     private String abilityName;
     private int abilityScore = 10;
     private int abilityMod = 0;
-    private boolean saveAdvantage;
-    private boolean saveDisadvantage;
-    private boolean checkAdvantage;
-    private boolean checkDisadvantage;
+    private boolean hasProficiency = false;
+    private boolean saveAdvantage = false;
+    private boolean saveDisadvantage = false;
+    private boolean checkAdvantage = false;
+    private boolean checkDisadvantage = false;
     private int saveBonus = 0;
     private int savePenalty = 0;
 
@@ -118,6 +119,14 @@ public class Ability {
 
     public void setCheckDisadvantage(boolean checkDisadvantage) {
         this.checkDisadvantage = checkDisadvantage;
+    }
+
+    public boolean isHasProficiency() {
+        return hasProficiency;
+    }
+
+    public void setHasProficiency(boolean hasProficiency) {
+        this.hasProficiency = hasProficiency;
     }
     
     

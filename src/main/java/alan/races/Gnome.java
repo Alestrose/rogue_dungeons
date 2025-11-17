@@ -41,9 +41,9 @@ public class Gnome extends PlayableCharacter implements RaceInterface{
         setDarkVision(60);
 
         // Gnomish Cunning
-        grantSkillAdvantage(Constants.SKILL_KEY.CHARISMA);
-        grantSkillAdvantage(Constants.SKILL_KEY.INTELLIGENCE);
-        grantSkillAdvantage(Constants.SKILL_KEY.WISDOM);
+        grantAbilitySaveAdvantage(Constants.ABILITY.INTELLIGENCE);
+        grantAbilitySaveAdvantage(Constants.ABILITY.WISDOM);
+        grantAbilitySaveAdvantage(Constants.ABILITY.CHARISMA);
         
         // Gnomish Lineage
         switch (lineage) {

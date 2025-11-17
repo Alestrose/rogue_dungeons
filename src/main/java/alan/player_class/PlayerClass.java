@@ -21,9 +21,6 @@ public class PlayerClass implements PlayerClassInterface{
     private ArrayList<Constants.ABILITY> primaryAbilities;
     private int hitPointDie;
 
-    private ArrayList<Constants.WEAPON_TRAINING> weaponProficiencies;
-    private ArrayList<Constants.ARMOR_TRAINING> armorTraining;
-
     protected BufferedImage classImage;
     protected String classImageFileName;
 
@@ -42,6 +39,7 @@ public class PlayerClass implements PlayerClassInterface{
 
     public PlayerClass(Constants.CLASS playerClass){
         this.playerClass = playerClass;
+
 
         // Capitalize first letter of class name
         String s = playerClass.name().toLowerCase().replace('_', ' ');
@@ -95,10 +93,35 @@ public class PlayerClass implements PlayerClassInterface{
      */
 
     public void setBarbarianClass(){
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.STRENGTH);
+        setHitPointDie(12);
+        owner.grantAbilityProficiency(Constants.ABILITY.STRENGTH);
+        owner.grantAbilityProficiency(Constants.ABILITY.CONSTITUTION);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
         
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.SURVIVAL);
     }
 
     public void setBardClass(){
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.CHARISMA);
+        setHitPointDie(8);
+        owner.grantAbilityProficiency(Constants.ABILITY.DEXTERITY);
+        owner.grantAbilityProficiency(Constants.ABILITY.CHARISMA);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+        
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.PERFORMANCE);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.DECEPTION);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.PERSUASION);
 
         // Adding spells to classes spell map
         {
@@ -138,7 +161,19 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public void setClericClass(){
-
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.WISDOM);
+        setHitPointDie(8);
+        owner.grantAbilityProficiency(Constants.ABILITY.WISDOM);
+        owner.grantAbilityProficiency(Constants.ABILITY.CHARISMA);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.SURVIVAL);
         // Adding spells to classes spell map
         {
             clericSpells.put(Constants.SPELL.GUIDANCE, new Guidance());
@@ -373,7 +408,7 @@ public class PlayerClass implements PlayerClassInterface{
         }
     }
 
-    public void updatePassives(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> featuresMap){
+    public final void UPDATE_PASSIVES(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> featuresMap){
         for(Map.Entry<Constants.CLASS_FEATURE, ClassFeatureAbstract> entry : featuresMap.entrySet()){
             if(entry.getValue().isActive()) {
                 entry.getValue().cast(getOwner(), null, null, null, null, 1);
@@ -423,23 +458,6 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setHitPointDie(int hitPointDie) {
         this.hitPointDie = hitPointDie;
-    }
-
-
-    public ArrayList<Constants.WEAPON_TRAINING> getWeaponProficiencies() {
-        return weaponProficiencies;
-    }
-
-    public void setWeaponProficiencies(ArrayList<Constants.WEAPON_TRAINING> weaponProficiencies) {
-        this.weaponProficiencies = weaponProficiencies;
-    }
-
-    public ArrayList<Constants.ARMOR_TRAINING> getArmorTraining() {
-        return armorTraining;
-    }
-
-    public void setArmorTraining(ArrayList<Constants.ARMOR_TRAINING> armorTraining) {
-        this.armorTraining = armorTraining;
     }
 
     public BufferedImage getClassImage() {

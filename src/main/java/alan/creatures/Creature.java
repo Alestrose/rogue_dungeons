@@ -4,6 +4,7 @@ import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import alan.skills_and_feats.Skill;
 
 public abstract class Creature {
     private String creatureType, name, raceName;
-    private int proficiencyBonus = 0;
+    private int proficiencyBonus = 2;
     private int baseAC = 10;
     private int ac;
     private int
@@ -42,6 +43,8 @@ public abstract class Creature {
     // Ability scores & Modifiers
     protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
     protected Map<Constants.SKILL_KEY, Skill> skills = new HashMap<>();
+    private ArrayList<Constants.WEAPON_PROFICIENCY> weaponProficiencies;
+    private ArrayList<Constants.ARMOR_PROFICIENCY> armorProficiencies;
     
     // Resistances & Vulnerabilities
     protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
@@ -186,12 +189,19 @@ public abstract class Creature {
         abilities.get(a).setSavePenalty(val);
     }
 
-    public void grantAbilityAdvantage(Constants.ABILITY a){
+    public void grantAbilitySaveAdvantage(Constants.ABILITY a){
         abilities.get(a).setSaveAdvantage(true);
     }
 
-    public void grantAbilityDisadvantage(Constants.ABILITY a){
+    public void grantAbilitySaveDisadvantage(Constants.ABILITY a){
         abilities.get(a).setSaveDisadvantage(true);
+    }
+
+    public void grantAbilityProficiency(Constants.ABILITY ability_key) {
+        Ability ability = abilities.get(ability_key);
+        if (ability != null) {
+            ability.setHasProficiency(true);
+        }
     }
 
     public void grantSkillProficiency(Constants.SKILL_KEY skill_key) {
@@ -207,6 +217,17 @@ public abstract class Creature {
             skill.setHasAdvantage(true);
         }
     }
+
+    public void addWeaponProficiency(Constants.WEAPON_PROFICIENCY e){
+        if (!weaponProficiencies.contains(e)) weaponProficiencies.add(e);
+        else System.err.println("Creature is already proficient in " + e.name());  
+    }
+
+    public void addArmorProficiency(Constants.ARMOR_PROFICIENCY e){
+        if (!armorProficiencies.contains(e)) armorProficiencies.add(e);
+        else System.err.println("Creature is already proficient in " + e.name());  
+    }
+    
 
     /*
      * Each damage type key enum in Constants is added to the resistances, vulnerabilities and inVulnerabilities maps, and sets to false
@@ -265,12 +286,6 @@ public abstract class Creature {
         skills.put(Constants.SKILL_KEY.INTIMIDATION, new Skill("intimidation", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
         skills.put(Constants.SKILL_KEY.PERFORMANCE, new Skill("performance", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
         skills.put(Constants.SKILL_KEY.PERSUASION, new Skill("persuasion", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.STRENGTH, new Skill("strength", abilities.get(Constants.ABILITY.STRENGTH).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.DEXTERITY, new Skill("dexterity", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.CONSTITUTION, new Skill("constitution", abilities.get(Constants.ABILITY.CONSTITUTION).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.INTELLIGENCE, new Skill("intelligence", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.WISDOM, new Skill("wisdom", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.CHARISMA, new Skill("charisma", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
     }
 
     /*
@@ -711,6 +726,26 @@ public abstract class Creature {
     public void setHasInspiration(boolean hasInspiration, int die) {
         setInspirationDie(die);
         this.hasInspiration = hasInspiration;
+    }
+
+    public void setHasInspiration(boolean hasInspiration) {
+        this.hasInspiration = hasInspiration;
+    }
+
+    public ArrayList<Constants.WEAPON_PROFICIENCY> getWeaponProficiencies() {
+        return weaponProficiencies;
+    }
+
+    public void setWeaponProficiencies(ArrayList<Constants.WEAPON_PROFICIENCY> weaponProficiencies) {
+        this.weaponProficiencies = weaponProficiencies;
+    }
+
+    public ArrayList<Constants.ARMOR_PROFICIENCY> getArmorProficiencies() {
+        return armorProficiencies;
+    }
+
+    public void setArmorTraining(ArrayList<Constants.ARMOR_PROFICIENCY> armorProficiencies) {
+        this.armorProficiencies = armorProficiencies;
     }
 
     
