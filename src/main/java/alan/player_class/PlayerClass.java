@@ -203,6 +203,18 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public void setDruidClass(){
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.WISDOM);
+        setHitPointDie(8);
+        owner.grantAbilityProficiency(Constants.ABILITY.WISDOM);
+        owner.grantAbilityProficiency(Constants.ABILITY.INTELLIGENCE);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ANIMAL_HANDLING);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.NATURE);
 
         // Adding spells to classes spell map
         {
@@ -217,7 +229,7 @@ public class PlayerClass implements PlayerClassInterface{
             druidSpells.put(Constants.SPELL.SHILLELAGH, new Shillelagh());
             druidSpells.put(Constants.SPELL.SPARE_THE_DYING, new SpareTheDying());
             druidSpells.put(Constants.SPELL.STARRY_WISP, new StarryWisp());
-            druidSpells.put(Constants.SPELL.THORN_WHIP, new ThornWhip_());
+            druidSpells.put(Constants.SPELL.THORN_WHIP, new ThornWhip());
             druidSpells.put(Constants.SPELL.THUNDERCLAP, new Thunderclap());
             druidSpells.put(Constants.SPELL.ANIMAL_FRIENDSHIP, new AnimalFriendship());
             druidSpells.put(Constants.SPELL.CHARM_PERSON, new CharmPerson());
