@@ -35,17 +35,15 @@ public class PlayerClass implements PlayerClassInterface{
     private Map<Constants.SPELL, SpellAbstract> wizardSpells = new HashMap<>();
 
     // Class Feature Lists
-    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> classFeaturesMap;
+    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> classFeaturesMap =  new HashMap<>();
 
     public PlayerClass(Constants.CLASS playerClass){
         this.playerClass = playerClass;
 
-
         // Capitalize first letter of class name
         String s = playerClass.name().toLowerCase().replace('_', ' ');
         className = s.substring(0, 1).toUpperCase() + s.substring(1);
-        
-        //initNewCharacter();
+
     }
 
     /*
@@ -54,7 +52,9 @@ public class PlayerClass implements PlayerClassInterface{
 
     public final void initNewCharacter(){
         if(playerClass == null) return; // guard against NPE
-
+        onLevelUp();
+        initNewClass();
+        owner.grantLanguage(Constants.LANGUAGE.COMMON);
         switch (playerClass) {
             case BARBARIAN  -> {setBarbarianClass();}
             case BARD       -> {setBardClass();}
@@ -74,8 +74,8 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     @Override
-    public void onLevelUp(int lvl) {
-        
+    public void onLevelUp() {
+        setClassLevel(getClassLevel() + 1);
     }
 
     @Override
@@ -86,6 +86,11 @@ public class PlayerClass implements PlayerClassInterface{
     @Override
     public void onLongRest(){
         
+    }
+
+    @Override
+    public void initNewClass(){
+        UPDATE_PASSIVES(classFeaturesMap);
     }
 
     /*
@@ -111,6 +116,7 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setBardClass(){
         //Core traits
+        owner.setSpellCastAbility(Constants.ABILITY.CHARISMA);
         primaryAbilities.add(Constants.ABILITY.CHARISMA);
         setHitPointDie(8);
         owner.grantAbilityProficiency(Constants.ABILITY.DEXTERITY);
@@ -162,6 +168,7 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setClericClass(){
         //Core traits
+        owner.setSpellCastAbility(Constants.ABILITY.WISDOM);
         primaryAbilities.add(Constants.ABILITY.WISDOM);
         setHitPointDie(8);
         owner.grantAbilityProficiency(Constants.ABILITY.WISDOM);
@@ -204,6 +211,7 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setDruidClass(){
         //Core traits
+        owner.setSpellCastAbility(Constants.ABILITY.WISDOM);
         primaryAbilities.add(Constants.ABILITY.WISDOM);
         setHitPointDie(8);
         owner.grantAbilityProficiency(Constants.ABILITY.WISDOM);
@@ -211,6 +219,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        owner.grantLanguage(Constants.LANGUAGE.COMMON);
 
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ANIMAL_HANDLING);

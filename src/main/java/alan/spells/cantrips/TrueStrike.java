@@ -24,7 +24,7 @@ public class TrueStrike extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         // Default mellee attack
-        switch (caster.getLevel()) {
+        switch (caster.getPrimaryClass().getClassLevel()) {
             case 5 -> {target.damageHealth(rollDamage(getDamageDie(), 1));}
             case 11 -> {target.damageHealth(rollDamage(getDamageDie(), 2));}
             case 17 -> {target.damageHealth(rollDamage(getDamageDie(), 3));}

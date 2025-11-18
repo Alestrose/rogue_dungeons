@@ -31,7 +31,7 @@ public class GridManager {
      * Initialize classes to be rendered here
      */
     private void start(){
-        grid = Grid.getInstance(10, 10);
+        grid = Grid.getInstance(20, 20);
         partyPlayers = PartyPlayers.getInstance();
         partyPlayers.addPlayers();
 

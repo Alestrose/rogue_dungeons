@@ -20,7 +20,7 @@ public class Barbarian extends PlayerClass{
         barbarianFeatures.put(Constants.CLASS_FEATURE.WEAPON_MASTERY, new WeaponMastery());
 
         // Applies or updates class passive features
-        UPDATE_PASSIVES(barbarianFeatures);
+        // UPDATE_PASSIVES(barbarianFeatures);
     }
     
     /*
@@ -28,7 +28,7 @@ public class Barbarian extends PlayerClass{
      */
 
      @Override
-    public void onLevelUp(int lvl) {
+    public void onLevelUp() {
         
     }
     

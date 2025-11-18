@@ -24,8 +24,6 @@ public class Cleric extends PlayerClass{
         super(playerClass);
         this.divineOrder = divineOrder;
 
-        getOwner().setSpellCastAbility(Constants.ABILITY.WISDOM);
-
         // Setting level one spell slots
         clericSpellSlots.setNumKnownCantrips(3);
         clericSpellSlots.setNumPreparedSpells(4);
@@ -43,7 +41,8 @@ public class Cleric extends PlayerClass{
         preparedSpells.put(Constants.SPELL.SHILED_OF_FAITH, new ShieldOfFaith());
         preparedSpells.put(Constants.SPELL.GUIDING_BOLT, new GuidingBolt());
 
-        UPDATE_PASSIVES(clericFeatures);
+        // UPDATE_PASSIVES(clericFeatures);
+        
     }
 
     
@@ -52,7 +51,7 @@ public class Cleric extends PlayerClass{
      */
 
     @Override
-    public void onLevelUp(int lvl) {
+    public void onLevelUp() {
         
     }
     
@@ -66,10 +65,15 @@ public class Cleric extends PlayerClass{
         
     }
 
+    @Override
+    public void initNewClass(){
+        SET_DIVINE_ORDER();
+    }
+
     public final void SET_DIVINE_ORDER(){
         switch (getDivineOrder()) {
             case PROTECTOR: {
-                getOwner().addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+                getOwner().addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
                 getOwner().addArmorProficiency(Constants.ARMOR_PROFICIENCY.HEAVY);
             }
             case THAUMATURGE: {

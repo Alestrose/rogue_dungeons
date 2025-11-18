@@ -24,17 +24,18 @@ public abstract class Creature {
     private int baseAC = 10;
     private int ac;
     private int
-        level = 1, inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
+        inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
     private Constants.CREATURE_SIZE size;
     private Constants.ABILITY spellCastAbility;
+    private Map<Constants.LANGUAGE, Boolean> languages = new HashMap<>();
 
     // Booleans
     private boolean canOpportunityAttack = true;
-    private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor;
+    private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor = false;
     private boolean hasInspiration = false;
 
     // Classes
@@ -70,8 +71,10 @@ public abstract class Creature {
         setDefaultConditionMap();
         setDefaultAbilities();
         setDefaultSkills();
+        setDefaultLanguages();
 
         // Done last
+        initClassAttributes();
         initStartingAttributes();
         
     }
@@ -101,6 +104,7 @@ public abstract class Creature {
         setDefaultConditionMap();
         setDefaultAbilities();
         setDefaultSkills();
+        setDefaultLanguages();
 
         // Done last
         initClassAttributes();
@@ -143,6 +147,11 @@ public abstract class Creature {
     /*
      * Setters for granting enum based conditions and effects
      */
+
+    public void grantLanguage(Constants.LANGUAGE language){
+        languages.put(language, true);
+    }
+    
     public void grantResistance(Constants.DAMAGE_TYPE resistanceName){
         resistances.put(resistanceName, true);
     }
@@ -218,8 +227,14 @@ public abstract class Creature {
     public void grantSkillBonus(Constants.SKILL_KEY skill_key, int i){
         Skill skill = skills.get(skill_key);
         if (skill != null) {
-            skill.setValueBonus(i);
-            skill.setValue(skill.getValue() + i);
+            if(i>0){
+                skill.setValueBonus(i);
+                skill.setValue(skill.getValue() + i);
+            }else{
+                skill.setValueBonus(1);
+                skill.setValue(skill.getValue() + 1);
+            }
+            
         }
     }
 
@@ -282,6 +297,13 @@ public abstract class Creature {
             abilities.put(key, new Ability(key.toString().toLowerCase()));
         }
     }
+
+    private void setDefaultLanguages(){
+        for (Constants.LANGUAGE key : Constants.LANGUAGE.values()) {
+            languages.put(key, false);
+        }
+    }
+    
 
     /*
      * Each skill key enum in Constants is added to the abilitiy map manually here, as new skill object
@@ -401,14 +423,6 @@ public abstract class Creature {
         this.y = location.getY();
         this.width = location.getWidth();
         this.height = location.getHeight();
-    }
-
-    public int getLevel() {
-        return level;
-    }
-
-    public void setLevel(int level) {
-        this.level = level;
     }
 
     public int getAc() {
@@ -770,7 +784,21 @@ public abstract class Creature {
         this.armorProficiencies = armorProficiencies;
     }
 
-    
+    public void setSpellSaveDC(int spellSaveDC) {
+        this.spellSaveDC = spellSaveDC;
+    }
+
+    public Map<Constants.LANGUAGE, Boolean> getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(Map<Constants.LANGUAGE, Boolean> languages) {
+        this.languages = languages;
+    }
+
+    public void setArmorProficiencies(ArrayList<Constants.ARMOR_PROFICIENCY> armorProficiencies) {
+        this.armorProficiencies = armorProficiencies;
+    }
     
 
 }

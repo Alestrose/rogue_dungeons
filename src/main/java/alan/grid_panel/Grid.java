@@ -52,11 +52,17 @@ public class Grid {
         return cellArray;
     }
 
+    // By default position (0,0) is set to the bottom left
     private void setCellArray(){
         cellArray = new Cell[rows][cols];
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                cellArray[i][j] = new Cell(i, j,(Constants.GRID_PANEL_WIDTH/rows)-borderBuffer, (Constants.GRID_PANEL_WIDTH/cols)-borderBuffer, "Cell.png");
+                int flippedCol= cols - 1 - i;
+                cellArray[i][j] = new Cell(j, flippedCol,
+                    (Constants.GRID_PANEL_WIDTH / rows) - borderBuffer,
+                    (Constants.GRID_PANEL_WIDTH / cols) - borderBuffer,
+                    "Cell.png"
+                );
             }
         }
     }

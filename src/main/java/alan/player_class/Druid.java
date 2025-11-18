@@ -6,21 +6,24 @@ import java.util.Map;
 import alan.Constants;
 import alan.player_class.class_features.ClassFeatureAbstract;
 import alan.spells.SpellAbstract;
+import alan.spells.cantrips.PoisonSpray;
 import alan.spells.cantrips.Shillelagh;
 import alan.spells.cantrips.ThornWhip;
 import alan.spells.level_one.CharmPerson;
 import alan.spells.level_one.Entangle;
 import alan.spells.level_one.FogCloud;
+import alan.spells.level_one.IceKnife;
 import alan.spells.level_one.SpeakWithAnimals;
 
 public class Druid extends PlayerClass{
     private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> druidFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots druidSpellSlots = new SpellSlots();
+    private Constants.PRIMAL_ORDERS primalOrder;
 
-    public Druid(Constants.CLASS playerClass){
+    public Druid(Constants.CLASS playerClass, Constants.PRIMAL_ORDERS primalOrder){
         super(playerClass);
-        getOwner().setSpellCastAbility(Constants.ABILITY.WISDOM);
+        this.primalOrder = primalOrder;
 
         // Setting level one spell slots
         druidSpellSlots.setNumKnownCantrips(2);
@@ -32,15 +35,16 @@ public class Druid extends PlayerClass{
         // Cantrips
         preparedSpells.put(Constants.SPELL.GUIDANCE, new ThornWhip());
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new Shillelagh());
+        preparedSpells.put(Constants.SPELL.SACRED_FLAME, new PoisonSpray());
         // Spells
+        preparedSpells.put(Constants.SPELL.SACRED_FLAME, new SpeakWithAnimals()); // Always prepared with Druidic Class Feature
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new CharmPerson());
-        preparedSpells.put(Constants.SPELL.SACRED_FLAME, new SpeakWithAnimals());
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new Entangle());
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new FogCloud());
+        preparedSpells.put(Constants.SPELL.ICE_KNIFE, new IceKnife());
 
         // Applies or updates class passive features
-        UPDATE_PASSIVES(druidFeatures);
-
+        // UPDATE_PASSIVES(druidFeatures);
     }
 
     /*
@@ -48,8 +52,8 @@ public class Druid extends PlayerClass{
      */
 
     @Override
-    public void onLevelUp(int lvl) {
-        
+    public void onLevelUp() {
+        SET_PRIMAL_ORDER();
     }
     
     @Override
@@ -60,6 +64,25 @@ public class Druid extends PlayerClass{
     @Override
     public void onLongRest(){
         
+    }
+
+    public final void SET_PRIMAL_ORDER(){
+        switch (getPrimalOrder()) {
+            case WARDEN: {
+                getOwner().addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
+                getOwner().addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
+            }
+            case MAGICIAN: {
+                druidSpellSlots.setNumKnownCantrips(druidSpellSlots.getNumKnownCantrips()+1);
+                getOwner().grantSkillBonus(
+                    Constants.SKILL_KEY.NATURE,
+                    getOwner().getAbilities().get(Constants.ABILITY.WISDOM).getAbilityMod());
+            }
+                
+                break;
+            default:
+                throw new AssertionError();
+        }
     }
 
     /*
@@ -88,6 +111,14 @@ public class Druid extends PlayerClass{
 
     public void setDruidSpellSlots(SpellSlots druidSpellSlots) {
         this.druidSpellSlots = druidSpellSlots;
+    }
+
+    public Constants.PRIMAL_ORDERS getPrimalOrder() {
+        return primalOrder;
+    }
+
+    public void setPrimalOrder(Constants.PRIMAL_ORDERS primalOrder) {
+        this.primalOrder = primalOrder;
     }
 
     

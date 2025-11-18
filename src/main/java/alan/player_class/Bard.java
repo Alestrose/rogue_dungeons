@@ -25,8 +25,6 @@ public class Bard extends PlayerClass{
     public Bard(Constants.CLASS playerClass){
         super(playerClass);
 
-        getOwner().setSpellCastAbility(Constants.ABILITY.CHARISMA);
-
         // Setting level one spell slots
         bardSpellSlots.setNumKnownCantrips(2);
         bardSpellSlots.setNumPreparedSpells(4);
@@ -44,11 +42,8 @@ public class Bard extends PlayerClass{
         // Setting level one class features
         bardFeatures.put(Constants.CLASS_FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
 
-        // Setting starting uses of inspiration
-        setInspirationQuantity();
-
         // Applies or updates class passive features
-        UPDATE_PASSIVES(bardFeatures);
+        // UPDATE_PASSIVES(bardFeatures);
     }
 
     /*
@@ -56,7 +51,7 @@ public class Bard extends PlayerClass{
      */
 
     @Override
-    public void onLevelUp(int lvl) {
+    public void onLevelUp() {
         
     }
     
@@ -67,6 +62,11 @@ public class Bard extends PlayerClass{
 
     @Override
     public void onLongRest(){
+        setInspirationQuantity();
+    }
+
+    @Override
+    public void initNewClass(){
         setInspirationQuantity();
     }
 
