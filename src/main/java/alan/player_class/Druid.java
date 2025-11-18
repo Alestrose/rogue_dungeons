@@ -20,6 +20,7 @@ public class Druid extends PlayerClass{
 
     public Druid(Constants.CLASS playerClass){
         super(playerClass);
+        getOwner().setSpellCastAbility(Constants.ABILITY.WISDOM);
 
         // Setting level one spell slots
         druidSpellSlots.setNumKnownCantrips(2);
@@ -36,6 +37,9 @@ public class Druid extends PlayerClass{
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new SpeakWithAnimals());
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new Entangle());
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new FogCloud());
+
+        // Applies or updates class passive features
+        UPDATE_PASSIVES(druidFeatures);
 
     }
 

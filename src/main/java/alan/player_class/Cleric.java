@@ -24,6 +24,8 @@ public class Cleric extends PlayerClass{
         super(playerClass);
         this.divineOrder = divineOrder;
 
+        getOwner().setSpellCastAbility(Constants.ABILITY.WISDOM);
+
         // Setting level one spell slots
         clericSpellSlots.setNumKnownCantrips(3);
         clericSpellSlots.setNumPreparedSpells(4);

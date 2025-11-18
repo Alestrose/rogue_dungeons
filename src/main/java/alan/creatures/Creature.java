@@ -483,6 +483,7 @@ public abstract class Creature {
 
     public void setSpellCastAbility(Constants.ABILITY spellCastAbility) {
         this.spellCastAbility = spellCastAbility;
+        setSpellSaveDC();
     }
 
     public int getSpellCastModifier(){
@@ -653,8 +654,10 @@ public abstract class Creature {
         return spellSaveDC;
     }
 
-    public void setSpellSaveDC(int spellSaveDC) {
-        this.spellSaveDC = spellSaveDC;
+    public void setSpellSaveDC() {
+        // 8 + proficiency bonus + spellcasting ability modifier
+        if(getSpellCastAbility() != null) this.spellSaveDC = 8 + getProficiencyBonus() + getSpellCastModifier();
+        else System.err.println("Spell casting ability is not set");
     }
 
     public int getSpellAttackBonus() {

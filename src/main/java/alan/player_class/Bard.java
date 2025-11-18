@@ -25,6 +25,8 @@ public class Bard extends PlayerClass{
     public Bard(Constants.CLASS playerClass){
         super(playerClass);
 
+        getOwner().setSpellCastAbility(Constants.ABILITY.CHARISMA);
+
         // Setting level one spell slots
         bardSpellSlots.setNumKnownCantrips(2);
         bardSpellSlots.setNumPreparedSpells(4);
