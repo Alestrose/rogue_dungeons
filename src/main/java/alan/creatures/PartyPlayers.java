@@ -3,7 +3,6 @@ package alan.creatures;
 import java.util.ArrayList;
 
 import alan.Constants;
-import alan.player_class.PlayerClass;
 import alan.grid_panel.Grid;
 import alan.player_class.Barbarian;
 import alan.player_class.Bard;

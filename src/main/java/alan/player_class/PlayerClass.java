@@ -261,7 +261,22 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public void setFighterClass(){
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.STRENGTH);
+        setHitPointDie(10);
+        owner.grantAbilityProficiency(Constants.ABILITY.STRENGTH);
+        owner.grantAbilityProficiency(Constants.ABILITY.CONSTITUTION);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.HEAVY);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        owner.grantLanguage(Constants.LANGUAGE.COMMON);
 
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ACROBATICS);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
     }
 
     public void setMonkClass(){

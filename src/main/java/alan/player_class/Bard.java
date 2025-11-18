@@ -41,9 +41,6 @@ public class Bard extends PlayerClass{
 
         // Setting level one class features
         bardFeatures.put(Constants.CLASS_FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
-
-        // Applies or updates class passive features
-        // UPDATE_PASSIVES(bardFeatures);
     }
 
     /*

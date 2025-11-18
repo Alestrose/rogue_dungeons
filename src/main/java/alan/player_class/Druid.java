@@ -42,9 +42,6 @@ public class Druid extends PlayerClass{
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new Entangle());
         preparedSpells.put(Constants.SPELL.SACRED_FLAME, new FogCloud());
         preparedSpells.put(Constants.SPELL.ICE_KNIFE, new IceKnife());
-
-        // Applies or updates class passive features
-        // UPDATE_PASSIVES(druidFeatures);
     }
 
     /*
@@ -53,7 +50,7 @@ public class Druid extends PlayerClass{
 
     @Override
     public void onLevelUp() {
-        SET_PRIMAL_ORDER();
+        
     }
     
     @Override
@@ -64,6 +61,12 @@ public class Druid extends PlayerClass{
     @Override
     public void onLongRest(){
         
+    }
+
+    @Override
+    public void initNewClass() {
+        super.initNewClass();
+        SET_PRIMAL_ORDER();
     }
 
     public final void SET_PRIMAL_ORDER(){
