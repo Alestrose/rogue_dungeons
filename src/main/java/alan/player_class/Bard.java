@@ -15,7 +15,7 @@ import alan.spells.level_one.HealingWord;
 import alan.spells.level_one.Thunderwave;
 
 public class Bard extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, FeatureAbstract> bardFeatures = new HashMap<>();
+    private Map<Constants.FEATURE, FeatureAbstract> bardFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots bardSpellSlots = new SpellSlots();
     
@@ -40,7 +40,7 @@ public class Bard extends PlayerClass{
         preparedSpells.put(Constants.SPELL.THUNDERWAVE, new Thunderwave());
 
         // Setting level one class features
-        bardFeatures.put(Constants.CLASS_FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
+        bardFeatures.put(Constants.FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
     }
 
     /*
@@ -68,7 +68,7 @@ public class Bard extends PlayerClass{
     }
 
     public final void setInspirationQuantity(){
-        bardFeatures.get(Constants.CLASS_FEATURE.BARDIC_INSPIRATION).setResourceQuanity(getOwner().getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod());
+        bardFeatures.get(Constants.FEATURE.BARDIC_INSPIRATION).setResourceQuanity(getOwner().getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod());
     }
 
     /*
@@ -76,11 +76,11 @@ public class Bard extends PlayerClass{
      * 
      */
 
-    public Map<Constants.CLASS_FEATURE, FeatureAbstract> getBardFeatures() {
+    public Map<Constants.FEATURE, FeatureAbstract> getBardFeatures() {
         return bardFeatures;
     }
 
-    public void setBardFeatures(Map<Constants.CLASS_FEATURE, FeatureAbstract> bardFeatures) {
+    public void setBardFeatures(Map<Constants.FEATURE, FeatureAbstract> bardFeatures) {
         this.bardFeatures = bardFeatures;
     }
 

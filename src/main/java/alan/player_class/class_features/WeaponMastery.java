@@ -12,7 +12,7 @@ public class WeaponMastery extends FeatureAbstract{
     private ArrayList<Constants.WEAPON_KEY> currentMasteries = new ArrayList<>();
 
     public WeaponMastery(){
-        setClassFeatureKey(Constants.CLASS_FEATURE.WEAPON_MASTERY);
+        setClassFeatureKey(Constants.FEATURE.WEAPON_MASTERY);
         setPassive(true);
         setFeatureLevel(1);
         setFeatType(Constants.FEAT_TYPE.CLASS);

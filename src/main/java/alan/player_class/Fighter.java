@@ -8,12 +8,11 @@ import alan.player_class.class_features.FeatureAbstract;
 import alan.player_class.class_features.WeaponMastery;
 
 public class Fighter extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, FeatureAbstract> fighterFeatures = new HashMap<>();
-    private Constants.FIGHTING_STYLE fightingStyle;
+    private Map<Constants.FEATURE, FeatureAbstract> fighterFeatures = new HashMap<>();
 
     public Fighter(Constants.CLASS playerClass){
         super(playerClass);
-        fighterFeatures.put(Constants.CLASS_FEATURE.WEAPON_MASTERY, new WeaponMastery());
+        fighterFeatures.put(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
     }
     
     /*
@@ -56,22 +55,14 @@ public class Fighter extends PlayerClass{
      * Getters and Setters
      */
 
-    public void setFighterFeatures(Map<Constants.CLASS_FEATURE, FeatureAbstract> fighterFeatures) {
+    public void setFighterFeatures(Map<Constants.FEATURE, FeatureAbstract> fighterFeatures) {
         this.fighterFeatures = fighterFeatures;
     }
     
-    public Map<Constants.CLASS_FEATURE, FeatureAbstract> getFighterFeatures() {
+    public Map<Constants.FEATURE, FeatureAbstract> getFighterFeatures() {
         return fighterFeatures;
     }
 
-    public Constants.FIGHTING_STYLE getFightingStyle() {
-        return fightingStyle;
-    }
-
-    public void setFightingStyle(Constants.FIGHTING_STYLE fightingStyle) {
-        this.fightingStyle = fightingStyle;
-    }
-    
 
     
 

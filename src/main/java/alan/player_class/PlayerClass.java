@@ -37,7 +37,7 @@ public class PlayerClass implements PlayerClassInterface{
     private Map<Constants.SPELL, SpellAbstract> wizardSpells = new HashMap<>();
 
     // Class Feature Lists
-    private Map<Constants.CLASS_FEATURE, FeatureAbstract> classFeaturesMap =  new HashMap<>();
+    private Map<Constants.FEATURE, FeatureAbstract> classFeaturesMap =  new HashMap<>();
 
     public PlayerClass(Constants.CLASS playerClass){
         this.playerClass = playerClass;
@@ -95,11 +95,11 @@ public class PlayerClass implements PlayerClassInterface{
         UPDATE_PASSIVES(classFeaturesMap);
     }
 
-    public void addWeaponMastery(Map<Constants.CLASS_FEATURE, FeatureAbstract> featMap, Constants.WEAPON_KEY wk){
-        if(featMap.containsKey(Constants.CLASS_FEATURE.WEAPON_MASTERY) && wm.getMaxNumberOfMasteries() < wm.getCurrentMasteries().size()){
+    public void addWeaponMastery(Map<Constants.FEATURE, FeatureAbstract> featMap, Constants.WEAPON_KEY wk){
+        if(featMap.containsKey(Constants.FEATURE.WEAPON_MASTERY) && wm.getMaxNumberOfMasteries() < wm.getCurrentMasteries().size()){
             wm.addMastery(wk);
         } else {
-            if(featMap.containsKey(Constants.CLASS_FEATURE.WEAPON_MASTERY)) System.err.println("Max number of masteries known");
+            if(featMap.containsKey(Constants.FEATURE.WEAPON_MASTERY)) System.err.println("Max number of masteries known");
             else System.err.println("Character does not have the weapon mastery feat");
         }
     }
@@ -455,8 +455,8 @@ public class PlayerClass implements PlayerClassInterface{
         }
     }
 
-    public final void UPDATE_PASSIVES(Map<Constants.CLASS_FEATURE, FeatureAbstract> featuresMap){
-        for(Map.Entry<Constants.CLASS_FEATURE, FeatureAbstract> entry : featuresMap.entrySet()){
+    public final void UPDATE_PASSIVES(Map<Constants.FEATURE, FeatureAbstract> featuresMap){
+        for(Map.Entry<Constants.FEATURE, FeatureAbstract> entry : featuresMap.entrySet()){
             if(entry.getValue().isActive()) {
                 entry.getValue().cast(getOwner(), null, null, null, null, 1);
             }
@@ -587,11 +587,11 @@ public class PlayerClass implements PlayerClassInterface{
         this.wizardSpells = wizardSpells;
     }
 
-    public Map<Constants.CLASS_FEATURE, FeatureAbstract> getClassFeaturesMap() {
+    public Map<Constants.FEATURE, FeatureAbstract> getClassFeaturesMap() {
         return classFeaturesMap;
     }
 
-    public void setClassFeaturesMap(Map<Constants.CLASS_FEATURE, FeatureAbstract> classFeaturesMap) {
+    public void setClassFeaturesMap(Map<Constants.FEATURE, FeatureAbstract> classFeaturesMap) {
         this.classFeaturesMap = classFeaturesMap;
     }
 

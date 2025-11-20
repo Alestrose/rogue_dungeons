@@ -5,10 +5,10 @@ import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 
-public class UnarmoredDefenseBarbarian extends FeatureAbstract{
+public class UnarmoredDefense extends FeatureAbstract{
 
-    public UnarmoredDefenseBarbarian(){
-        setClassFeatureKey(Constants.CLASS_FEATURE.UNARMORED_DEFENSE_BARBARIAN);
+    public UnarmoredDefense(){
+        setClassFeatureKey(Constants.FEATURE.UNARMORED_DEFENSE);
         setPassive(true);
         setFeatureLevel(1);
         setFeatType(Constants.FEAT_TYPE.CLASS);

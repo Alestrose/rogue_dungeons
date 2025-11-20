@@ -16,7 +16,7 @@ import alan.spells.level_one.IceKnife;
 import alan.spells.level_one.SpeakWithAnimals;
 
 public class Druid extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, FeatureAbstract> druidFeatures = new HashMap<>();
+    private Map<Constants.FEATURE, FeatureAbstract> druidFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots druidSpellSlots = new SpellSlots();
     private Constants.PRIMAL_ORDERS primalOrder;
@@ -92,11 +92,11 @@ public class Druid extends PlayerClass{
      * Getters and Setters
      */
 
-    public Map<Constants.CLASS_FEATURE, FeatureAbstract> getDruidFeatures() {
+    public Map<Constants.FEATURE, FeatureAbstract> getDruidFeatures() {
         return druidFeatures;
     }
 
-    public void setDruidFeatures(Map<Constants.CLASS_FEATURE, FeatureAbstract> druidFeatures) {
+    public void setDruidFeatures(Map<Constants.FEATURE, FeatureAbstract> druidFeatures) {
         this.druidFeatures = druidFeatures;
     }
 

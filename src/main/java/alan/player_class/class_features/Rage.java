@@ -10,7 +10,7 @@ public class Rage extends FeatureAbstract{
     private boolean isRaging = false;
 
     public Rage(){
-        setClassFeatureKey(Constants.CLASS_FEATURE.RAGE);
+        setClassFeatureKey(Constants.FEATURE.RAGE);
         setClassFeatureName();
         setFeatureLevel(1);
         setDuration((byte) 100);

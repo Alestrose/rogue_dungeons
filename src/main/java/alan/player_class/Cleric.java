@@ -15,7 +15,7 @@ import alan.spells.level_one.Sanctuary;
 import alan.spells.level_one.ShieldOfFaith;
 
 public class Cleric extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, FeatureAbstract> clericFeatures = new HashMap<>();
+    private Map<Constants.FEATURE, FeatureAbstract> clericFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots clericSpellSlots = new SpellSlots();
     private Constants.DIVINE_ORDERS divineOrder;
@@ -92,11 +92,11 @@ public class Cleric extends PlayerClass{
      * Getters and Setters
      */
 
-    public Map<Constants.CLASS_FEATURE, FeatureAbstract> getClericFeatures() {
+    public Map<Constants.FEATURE, FeatureAbstract> getClericFeatures() {
         return clericFeatures;
     }
 
-    public void setClericFeatures(Map<Constants.CLASS_FEATURE, FeatureAbstract> clericFeatures) {
+    public void setClericFeatures(Map<Constants.FEATURE, FeatureAbstract> clericFeatures) {
         this.clericFeatures = clericFeatures;
     }
 

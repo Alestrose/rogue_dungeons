@@ -6,18 +6,18 @@ import java.util.Map;
 import alan.Constants;
 import alan.player_class.class_features.FeatureAbstract;
 import alan.player_class.class_features.Rage;
-import alan.player_class.class_features.UnarmoredDefenseBarbarian;
+import alan.player_class.class_features.UnarmoredDefense;
 import alan.player_class.class_features.WeaponMastery;
 
 public class Barbarian extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, FeatureAbstract> barbarianFeatures = new HashMap<>();
+    private Map<Constants.FEATURE, FeatureAbstract> barbarianFeatures = new HashMap<>();
 
     // Constructor
     public Barbarian(Constants.CLASS playerClass){
         super(playerClass);
-        barbarianFeatures.put(Constants.CLASS_FEATURE.RAGE, new Rage());
-        barbarianFeatures.put(Constants.CLASS_FEATURE.UNARMORED_DEFENSE_BARBARIAN, new UnarmoredDefenseBarbarian());
-        barbarianFeatures.put(Constants.CLASS_FEATURE.WEAPON_MASTERY, new WeaponMastery());
+        barbarianFeatures.put(Constants.FEATURE.RAGE, new Rage());
+        barbarianFeatures.put(Constants.FEATURE.UNARMORED_DEFENSE, new UnarmoredDefense());
+        barbarianFeatures.put(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
 
         // Applies or updates class passive features
         // UPDATE_PASSIVES(barbarianFeatures);
@@ -46,12 +46,12 @@ public class Barbarian extends PlayerClass{
      * Getters and Setters
      */
 
-    public Map<Constants.CLASS_FEATURE, FeatureAbstract> getBarbarianFeatures() {
+    public Map<Constants.FEATURE, FeatureAbstract> getBarbarianFeatures() {
         return barbarianFeatures;
     }
 
 
-    public void setBarbarianFeatires(Map<Constants.CLASS_FEATURE, FeatureAbstract> barbarianFeatires) {
+    public void setBarbarianFeatires(Map<Constants.FEATURE, FeatureAbstract> barbarianFeatires) {
         this.barbarianFeatures = barbarianFeatires;
     }
     

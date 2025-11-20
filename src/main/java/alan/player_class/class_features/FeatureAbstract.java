@@ -13,7 +13,7 @@ public abstract class FeatureAbstract implements DiceRoll, SpellInterface{
     Grid grid;
     PartyPlayers partyPlayers;
 
-    private Constants.CLASS_FEATURE classFeatureKey;
+    private Constants.FEATURE classFeatureKey;
     private String classFeatureName;
     private byte duration;
     private int resourceQuanity;
@@ -240,11 +240,11 @@ public abstract class FeatureAbstract implements DiceRoll, SpellInterface{
         this.isPassive = isPassive;
     }
 
-    public Constants.CLASS_FEATURE getClassFeatureKey() {
+    public Constants.FEATURE getClassFeatureKey() {
         return classFeatureKey;
     }
 
-    public void setClassFeatureKey(Constants.CLASS_FEATURE classFeatureKey) {
+    public void setClassFeatureKey(Constants.FEATURE classFeatureKey) {
         this.classFeatureKey = classFeatureKey;
     }
 

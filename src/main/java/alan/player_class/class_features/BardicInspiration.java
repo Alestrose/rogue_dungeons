@@ -9,7 +9,7 @@ public class BardicInspiration extends FeatureAbstract{
     public int bardicDie = 6;
     
     public BardicInspiration(){
-        setClassFeatureKey(Constants.CLASS_FEATURE.BARDIC_INSPIRATION);
+        setClassFeatureKey(Constants.FEATURE.BARDIC_INSPIRATION);
         setClassFeatureName();
         setFeatureLevel(1);
         setDuration((byte) 100);

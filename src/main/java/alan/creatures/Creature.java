@@ -24,8 +24,12 @@ public abstract class Creature {
     private int baseAC = 10;
     private int ac;
     private int
-        inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage, melleeAttackBonus = 0, rangedAttackBonus = 0,
-        attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
+        inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, 
+        x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, 
+        jumpDistance, auraDamage, melleeAttackRollBonus = 0, rangedAttackRollBonus = 0,
+        attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, 
+        attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, 
+        playerSaveIncrease, savingThrowIncrease, darkVision = 0, thrownAttackDamageBonus = 0;
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
@@ -800,20 +804,28 @@ public abstract class Creature {
         this.armorProficiencies = armorProficiencies;
     }
 
-    public int getMelleeAttackBonus() {
-        return melleeAttackBonus;
+    public int getMelleeAttackRollBonus() {
+        return melleeAttackRollBonus;
     }
 
-    public void setMelleeAttackBonus(int melleeAttackBonus) {
-        this.melleeAttackBonus = melleeAttackBonus;
+    public void setMelleeAttackRollBonus(int melleeAttackRollBonus) {
+        this.melleeAttackRollBonus = melleeAttackRollBonus;
     }
 
-    public int getRangedAttackBonus() {
-        return rangedAttackBonus;
+    public int getRangedAttackRollBonus() {
+        return rangedAttackRollBonus;
     }
 
-    public void setRangedAttackBonus(int rangedAttackBonus) {
-        this.rangedAttackBonus = rangedAttackBonus;
+    public void setRangedAttackRollBonus(int rangedAttackRollBonus) {
+        this.rangedAttackRollBonus = rangedAttackRollBonus;
+    }
+
+    public int getThrownAttackDamageBonus() {
+        return thrownAttackDamageBonus;
+    }
+
+    public void setThrownAttackDamageBonus(int thrownAttackDamageBonus) {
+        this.thrownAttackDamageBonus = thrownAttackDamageBonus;
     }
     
     
