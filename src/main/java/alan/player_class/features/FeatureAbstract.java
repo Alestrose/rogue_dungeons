@@ -52,6 +52,10 @@ public abstract class FeatureAbstract implements DiceRoll, SpellInterface{
      * Methods
      */
 
+    public void update(Creature owner){
+
+    }
+
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
@@ -74,8 +78,6 @@ public abstract class FeatureAbstract implements DiceRoll, SpellInterface{
         // TODO Auto-generated method stub
         
     }
-
-
 
     @Override       // Returns damage roll based on damage die and quanity of damage die
     public int rollDamage(int damageDie, int quantityOfDie) {

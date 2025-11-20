@@ -16,6 +16,7 @@ public class UnarmedFighting extends FeatureAbstract{
         setFeatType(Constants.FEAT_TYPE.FIGHTING_STYLE);
     }
 
+    // Needs to be implemented when attack types are done
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
@@ -26,6 +27,23 @@ public class UnarmedFighting extends FeatureAbstract{
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return super.descreiption();
+        return """
+               When you hit with your Unarmed Strike and deal\r
+               damage, you can deal Bludgeoning damage equal\r
+               to 1d6 plus your Strength modifier instead of the\r
+               normal damage of an Unarmed Strike. If you aren't\r
+               holding any weapons or a Shield when you make the\r
+               attack roll, the d6 becomes a d8.\r
+               At the start of each of your turns, you can deal\r
+               ld4 Bludgeoning damage to one creature Grap-\r
+               pled by you.""" //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        ;
     }
 }

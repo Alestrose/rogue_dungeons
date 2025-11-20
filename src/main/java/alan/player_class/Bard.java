@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.features.FeatureAbstract;
 import alan.player_class.features.class_features.BardicInspiration;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.MageHand;
@@ -15,7 +14,6 @@ import alan.spells.level_one.HealingWord;
 import alan.spells.level_one.Thunderwave;
 
 public class Bard extends PlayerClass{
-    private Map<Constants.FEATURE, FeatureAbstract> bardFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots bardSpellSlots = new SpellSlots();
     
@@ -40,7 +38,7 @@ public class Bard extends PlayerClass{
         preparedSpells.put(Constants.SPELL.THUNDERWAVE, new Thunderwave());
 
         // Setting level one class features
-        bardFeatures.put(Constants.FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
+        grantFeature(Constants.FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
     }
 
     /*
@@ -68,21 +66,13 @@ public class Bard extends PlayerClass{
     }
 
     public final void setInspirationQuantity(){
-        bardFeatures.get(Constants.FEATURE.BARDIC_INSPIRATION).setResourceQuanity(getOwner().getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod());
+        getFeatures().get(Constants.FEATURE.BARDIC_INSPIRATION).setResourceQuanity(getOwner().getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod());
     }
 
     /*
      * Getters and Setters
      * 
      */
-
-    public Map<Constants.FEATURE, FeatureAbstract> getBardFeatures() {
-        return bardFeatures;
-    }
-
-    public void setBardFeatures(Map<Constants.FEATURE, FeatureAbstract> bardFeatures) {
-        this.bardFeatures = bardFeatures;
-    }
 
     public SpellSlots getBardSpellSlots() {
         return bardSpellSlots;

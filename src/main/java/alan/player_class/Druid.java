@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.features.FeatureAbstract;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.PoisonSpray;
 import alan.spells.cantrips.Shillelagh;
@@ -16,7 +15,6 @@ import alan.spells.level_one.IceKnife;
 import alan.spells.level_one.SpeakWithAnimals;
 
 public class Druid extends PlayerClass{
-    private Map<Constants.FEATURE, FeatureAbstract> druidFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots druidSpellSlots = new SpellSlots();
     private Constants.PRIMAL_ORDERS primalOrder;
@@ -91,14 +89,6 @@ public class Druid extends PlayerClass{
     /*
      * Getters and Setters
      */
-
-    public Map<Constants.FEATURE, FeatureAbstract> getDruidFeatures() {
-        return druidFeatures;
-    }
-
-    public void setDruidFeatures(Map<Constants.FEATURE, FeatureAbstract> druidFeatures) {
-        this.druidFeatures = druidFeatures;
-    }
 
     public Map<Constants.SPELL, SpellAbstract> getPreparedSpells() {
         return preparedSpells;

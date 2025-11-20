@@ -38,6 +38,7 @@ public class PlayerClass implements PlayerClassInterface{
 
     // Class Feature Lists
     private Map<Constants.FEATURE, FeatureAbstract> classFeaturesMap =  new HashMap<>();
+    private Map<Constants.FEATURE, FeatureAbstract> Features = new HashMap<>();
 
     public PlayerClass(Constants.CLASS playerClass){
         this.playerClass = playerClass;
@@ -92,7 +93,7 @@ public class PlayerClass implements PlayerClassInterface{
 
     @Override
     public void initNewClass(){
-        UPDATE_PASSIVES(classFeaturesMap);
+        UPDATE_PASSIVES(Features);
     }
 
     public void addWeaponMastery(Map<Constants.FEATURE, FeatureAbstract> featMap, Constants.WEAPON_KEY wk){
@@ -102,6 +103,10 @@ public class PlayerClass implements PlayerClassInterface{
             if(featMap.containsKey(Constants.FEATURE.WEAPON_MASTERY)) System.err.println("Max number of masteries known");
             else System.err.println("Character does not have the weapon mastery feat");
         }
+    }
+
+    public void grantFeature(Constants.FEATURE key, FeatureAbstract feat){
+        Features.put(key, feat);
     }
 
     /*
@@ -231,6 +236,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
         owner.grantLanguage(Constants.LANGUAGE.COMMON);
+        owner.grantLanguage(Constants.LANGUAGE.DRUIDIC);
 
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ANIMAL_HANDLING);
@@ -455,8 +461,8 @@ public class PlayerClass implements PlayerClassInterface{
         }
     }
 
-    public final void UPDATE_PASSIVES(Map<Constants.FEATURE, FeatureAbstract> featuresMap){
-        for(Map.Entry<Constants.FEATURE, FeatureAbstract> entry : featuresMap.entrySet()){
+    public final void UPDATE_PASSIVES(Map<Constants.FEATURE, FeatureAbstract> Features){
+        for(Map.Entry<Constants.FEATURE, FeatureAbstract> entry : Features.entrySet()){
             if(entry.getValue().isActive()) {
                 entry.getValue().cast(getOwner(), null, null, null, null, 1);
             }
@@ -609,6 +615,14 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setWm(WeaponMastery wm) {
         this.wm = wm;
+    }
+
+    public Map<Constants.FEATURE, FeatureAbstract> getFeatures() {
+        return Features;
+    }
+
+    public void setFeatures(Map<Constants.FEATURE, FeatureAbstract> features) {
+        Features = features;
     }
     
     

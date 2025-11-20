@@ -5,14 +5,14 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.player_class.features.FeatureAbstract;
-import alan.player_class.features.WeaponMastery;
+import alan.player_class.features.class_features.WeaponMastery;
 
 public class Fighter extends PlayerClass{
     private Map<Constants.FEATURE, FeatureAbstract> fighterFeatures = new HashMap<>();
 
     public Fighter(Constants.CLASS playerClass){
         super(playerClass);
-        fighterFeatures.put(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
+        grantFeature(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
     }
     
     /*

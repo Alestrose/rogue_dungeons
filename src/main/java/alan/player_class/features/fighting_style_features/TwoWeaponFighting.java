@@ -26,6 +26,13 @@ public class TwoWeaponFighting extends FeatureAbstract{
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return super.descreiption();
+        return """
+               When you make an extra attack as a result of using\r
+               a weapon that has the Light property, you can add\r
+               your ability modifier to the damage of that attack if\r
+               you aren't already adding it to the damage.""" //
+        //
+        //
+        ;
     }
 }

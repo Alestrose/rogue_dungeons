@@ -27,6 +27,11 @@ public class ThrownWeaponFighting extends FeatureAbstract{
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return super.descreiption();
+        return """
+               When you hit with a ranged attack roll using a\r
+               weapon that has the Thrown property, you gain a\r
+               +2 bonus to the damage roll.""" //
+        //
+        ;
     }
 }

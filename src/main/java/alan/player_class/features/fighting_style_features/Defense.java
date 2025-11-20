@@ -6,10 +6,11 @@ import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 import alan.player_class.features.FeatureAbstract;
 
-public class Archery extends FeatureAbstract{
+public class Defense extends FeatureAbstract{
+    private int bonusToAC = 1;
 
-    public Archery(){
-        setClassFeatureKey(Constants.FEATURE.ARCHERY);
+    public Defense(){
+        setClassFeatureKey(Constants.FEATURE.DEFENSE);
         setClassFeatureName();
         setFeatureLevel(1);
         setPassive(true);
@@ -17,23 +18,43 @@ public class Archery extends FeatureAbstract{
     }
 
     @Override
+    public void update(Creature owner) {
+        // TODO Auto-generated method stub
+        super.update(owner);
+        if(!owner.isWearingArmor()) setBonusToAC(0);
+        else setBonusToAC(1);
+    }
+
+
+
+
+
+    @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
         // TODO Auto-generated method stub
         super.cast(caster, target, targetList, cell, damage_type, spellLevel);
-        caster.setRangedAttackRollBonus(2);
     }
 
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
         return """
-               You gain a +2 bonus to attack rolls you make with\r
-               Ranged weapons""" //
+               While you're wearing Light, Medium, or Heavy ar-\r
+               mor, you gain a +1 bonus to Armor Class.""" //
         ;
     }
 
-    
+    /*
+        Getters and Setters
+     */
 
+    public int getBonusToAC() {
+        return bonusToAC;
+    }
+
+    public void setBonusToAC(int bonusToAC) {
+        this.bonusToAC = bonusToAC;
+    }
 
 }
