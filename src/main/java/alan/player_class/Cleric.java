@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.class_features.ClassFeatureAbstract;
+import alan.player_class.class_features._ClassFeatureAbstract;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.Guidance;
 import alan.spells.cantrips.SacredFlame;
@@ -15,7 +15,7 @@ import alan.spells.level_one.Sanctuary;
 import alan.spells.level_one.ShieldOfFaith;
 
 public class Cleric extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> clericFeatures = new HashMap<>();
+    private Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> clericFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots clericSpellSlots = new SpellSlots();
     private Constants.DIVINE_ORDERS divineOrder;
@@ -92,11 +92,11 @@ public class Cleric extends PlayerClass{
      * Getters and Setters
      */
 
-    public Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> getClericFeatures() {
+    public Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> getClericFeatures() {
         return clericFeatures;
     }
 
-    public void setClericFeatures(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> clericFeatures) {
+    public void setClericFeatures(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> clericFeatures) {
         this.clericFeatures = clericFeatures;
     }
 

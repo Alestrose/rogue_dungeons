@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.class_features.ClassFeatureAbstract;
+import alan.player_class.class_features._ClassFeatureAbstract;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.PoisonSpray;
 import alan.spells.cantrips.Shillelagh;
@@ -16,7 +16,7 @@ import alan.spells.level_one.IceKnife;
 import alan.spells.level_one.SpeakWithAnimals;
 
 public class Druid extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> druidFeatures = new HashMap<>();
+    private Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> druidFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots druidSpellSlots = new SpellSlots();
     private Constants.PRIMAL_ORDERS primalOrder;
@@ -92,11 +92,11 @@ public class Druid extends PlayerClass{
      * Getters and Setters
      */
 
-    public Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> getDruidFeatures() {
+    public Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> getDruidFeatures() {
         return druidFeatures;
     }
 
-    public void setDruidFeatures(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> druidFeatures) {
+    public void setDruidFeatures(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> druidFeatures) {
         this.druidFeatures = druidFeatures;
     }
 

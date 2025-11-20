@@ -5,7 +5,7 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.player_class.class_features.BardicInspiration;
-import alan.player_class.class_features.ClassFeatureAbstract;
+import alan.player_class.class_features._ClassFeatureAbstract;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.MageHand;
 import alan.spells.cantrips.ViciousMockery;
@@ -15,7 +15,7 @@ import alan.spells.level_one.HealingWord;
 import alan.spells.level_one.Thunderwave;
 
 public class Bard extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> bardFeatures = new HashMap<>();
+    private Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> bardFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots bardSpellSlots = new SpellSlots();
     
@@ -76,11 +76,11 @@ public class Bard extends PlayerClass{
      * 
      */
 
-    public Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> getBardFeatures() {
+    public Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> getBardFeatures() {
         return bardFeatures;
     }
 
-    public void setBardFeatures(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> bardFeatures) {
+    public void setBardFeatures(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> bardFeatures) {
         this.bardFeatures = bardFeatures;
     }
 

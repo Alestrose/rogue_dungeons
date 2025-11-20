@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.class_features.ClassFeatureAbstract;
+import alan.player_class.class_features._ClassFeatureAbstract;
 import alan.player_class.class_features.Rage;
 import alan.player_class.class_features.UnarmoredDefenseBarbarian;
 import alan.player_class.class_features.WeaponMastery;
 
 public class Barbarian extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> barbarianFeatures = new HashMap<>();
+    private Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> barbarianFeatures = new HashMap<>();
 
     // Constructor
     public Barbarian(Constants.CLASS playerClass){
@@ -46,12 +46,12 @@ public class Barbarian extends PlayerClass{
      * Getters and Setters
      */
 
-    public Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> getBarbarianFeatures() {
+    public Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> getBarbarianFeatures() {
         return barbarianFeatures;
     }
 
 
-    public void setBarbarianFeatires(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> barbarianFeatires) {
+    public void setBarbarianFeatires(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> barbarianFeatires) {
         this.barbarianFeatures = barbarianFeatires;
     }
     
