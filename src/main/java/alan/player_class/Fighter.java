@@ -14,9 +14,6 @@ public class Fighter extends PlayerClass{
     public Fighter(Constants.CLASS playerClass){
         super(playerClass);
         fighterFeatures.put(Constants.CLASS_FEATURE.WEAPON_MASTERY, new WeaponMastery());
-
-        
-
     }
     
     /*

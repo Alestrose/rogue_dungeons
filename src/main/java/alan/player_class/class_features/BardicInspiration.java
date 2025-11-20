@@ -15,6 +15,7 @@ public class BardicInspiration extends _ClassFeatureAbstract{
         setDuration((byte) 100);
         setBonus(true);
         setActive(true);
+        setFeatType(Constants.FEAT_TYPE.CLASS);
     }
 
     @Override

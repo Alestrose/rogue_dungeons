@@ -11,6 +11,7 @@ public class UnarmoredDefenseBarbarian extends _ClassFeatureAbstract{
         setClassFeatureKey(Constants.CLASS_FEATURE.UNARMORED_DEFENSE_BARBARIAN);
         setPassive(true);
         setFeatureLevel(1);
+        setFeatType(Constants.FEAT_TYPE.CLASS);
     }
 
     @Override

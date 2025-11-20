@@ -15,6 +15,7 @@ public class WeaponMastery extends _ClassFeatureAbstract{
         setClassFeatureKey(Constants.CLASS_FEATURE.WEAPON_MASTERY);
         setPassive(true);
         setFeatureLevel(1);
+        setFeatType(Constants.FEAT_TYPE.CLASS);
     }
 
     @Override

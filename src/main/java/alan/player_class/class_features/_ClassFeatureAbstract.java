@@ -31,6 +31,7 @@ public abstract class _ClassFeatureAbstract implements DiceRoll, SpellInterface{
     private boolean isPassive = false;      // Denotes feature which is always active
     private DAMAGE_TYPE damage_type;
     private DAMAGE_TYPE secondary_damage_type;
+    private Constants.FEAT_TYPE featType;
     private Constants.ABILITY savingThrow;
     private Creature caster;
     private Creature target;
@@ -305,6 +306,18 @@ public abstract class _ClassFeatureAbstract implements DiceRoll, SpellInterface{
 
     public void setResourceQuanity(int resourceQuanity) {
         this.resourceQuanity = resourceQuanity;
+    }
+
+
+
+    public Constants.FEAT_TYPE getFeatType() {
+        return featType;
+    }
+
+
+
+    public void setFeatType(Constants.FEAT_TYPE featType) {
+        this.featType = featType;
     }
     
     

@@ -16,6 +16,7 @@ public class Rage extends _ClassFeatureAbstract{
         setDuration((byte) 100);
         setBonus(true);
         setActive(true);
+        setFeatType(Constants.FEAT_TYPE.CLASS);
 
     }
 
