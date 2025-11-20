@@ -7,7 +7,7 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.player_class.class_features._ClassFeatureAbstract;
+import alan.player_class.class_features.FeatureAbstract;
 import alan.player_class.class_features.WeaponMastery;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.*;
@@ -37,7 +37,7 @@ public class PlayerClass implements PlayerClassInterface{
     private Map<Constants.SPELL, SpellAbstract> wizardSpells = new HashMap<>();
 
     // Class Feature Lists
-    private Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> classFeaturesMap =  new HashMap<>();
+    private Map<Constants.CLASS_FEATURE, FeatureAbstract> classFeaturesMap =  new HashMap<>();
 
     public PlayerClass(Constants.CLASS playerClass){
         this.playerClass = playerClass;
@@ -95,7 +95,7 @@ public class PlayerClass implements PlayerClassInterface{
         UPDATE_PASSIVES(classFeaturesMap);
     }
 
-    public void addWeaponMastery(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> featMap, Constants.WEAPON_KEY wk){
+    public void addWeaponMastery(Map<Constants.CLASS_FEATURE, FeatureAbstract> featMap, Constants.WEAPON_KEY wk){
         if(featMap.containsKey(Constants.CLASS_FEATURE.WEAPON_MASTERY) && wm.getMaxNumberOfMasteries() < wm.getCurrentMasteries().size()){
             wm.addMastery(wk);
         } else {
@@ -455,8 +455,8 @@ public class PlayerClass implements PlayerClassInterface{
         }
     }
 
-    public final void UPDATE_PASSIVES(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> featuresMap){
-        for(Map.Entry<Constants.CLASS_FEATURE, _ClassFeatureAbstract> entry : featuresMap.entrySet()){
+    public final void UPDATE_PASSIVES(Map<Constants.CLASS_FEATURE, FeatureAbstract> featuresMap){
+        for(Map.Entry<Constants.CLASS_FEATURE, FeatureAbstract> entry : featuresMap.entrySet()){
             if(entry.getValue().isActive()) {
                 entry.getValue().cast(getOwner(), null, null, null, null, 1);
             }
@@ -587,11 +587,11 @@ public class PlayerClass implements PlayerClassInterface{
         this.wizardSpells = wizardSpells;
     }
 
-    public Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> getClassFeaturesMap() {
+    public Map<Constants.CLASS_FEATURE, FeatureAbstract> getClassFeaturesMap() {
         return classFeaturesMap;
     }
 
-    public void setClassFeaturesMap(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> classFeaturesMap) {
+    public void setClassFeaturesMap(Map<Constants.CLASS_FEATURE, FeatureAbstract> classFeaturesMap) {
         this.classFeaturesMap = classFeaturesMap;
     }
 

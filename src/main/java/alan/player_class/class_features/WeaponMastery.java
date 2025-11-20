@@ -7,7 +7,7 @@ import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 
-public class WeaponMastery extends _ClassFeatureAbstract{
+public class WeaponMastery extends FeatureAbstract{
     private int maxNumberOfMasteries = 2;
     private ArrayList<Constants.WEAPON_KEY> currentMasteries = new ArrayList<>();
 

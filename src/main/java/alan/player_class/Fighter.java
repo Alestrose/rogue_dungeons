@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.class_features._ClassFeatureAbstract;
+import alan.player_class.class_features.FeatureAbstract;
 import alan.player_class.class_features.WeaponMastery;
 
 public class Fighter extends PlayerClass{
-    private Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> fighterFeatures = new HashMap<>();
+    private Map<Constants.CLASS_FEATURE, FeatureAbstract> fighterFeatures = new HashMap<>();
     private Constants.FIGHTING_STYLE fightingStyle;
 
     public Fighter(Constants.CLASS playerClass){
@@ -56,11 +56,11 @@ public class Fighter extends PlayerClass{
      * Getters and Setters
      */
 
-    public void setFighterFeatures(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> fighterFeatures) {
+    public void setFighterFeatures(Map<Constants.CLASS_FEATURE, FeatureAbstract> fighterFeatures) {
         this.fighterFeatures = fighterFeatures;
     }
     
-    public Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> getFighterFeatures() {
+    public Map<Constants.CLASS_FEATURE, FeatureAbstract> getFighterFeatures() {
         return fighterFeatures;
     }
 
