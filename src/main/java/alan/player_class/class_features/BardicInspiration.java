@@ -5,7 +5,7 @@ import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 
-public class BardicInspiration extends ClassFeatureAbstract{
+public class BardicInspiration extends _ClassFeatureAbstract{
     public int bardicDie = 6;
     
     public BardicInspiration(){

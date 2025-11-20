@@ -1,4 +1,4 @@
-package alan.skills_and_feats;
+package alan.skills;
 
 public class Skill {
     private String skillName;

@@ -7,7 +7,8 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.player_class.class_features.ClassFeatureAbstract;
+import alan.player_class.class_features._ClassFeatureAbstract;
+import alan.player_class.class_features.WeaponMastery;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.*;
 import alan.spells.level_one.*;
@@ -20,6 +21,7 @@ public class PlayerClass implements PlayerClassInterface{
     private int classLevel = 1;
     private ArrayList<Constants.ABILITY> primaryAbilities = new ArrayList<>();
     private int hitPointDie;
+    private WeaponMastery wm;
 
     protected BufferedImage classImage;
     protected String classImageFileName;
@@ -35,7 +37,7 @@ public class PlayerClass implements PlayerClassInterface{
     private Map<Constants.SPELL, SpellAbstract> wizardSpells = new HashMap<>();
 
     // Class Feature Lists
-    private Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> classFeaturesMap =  new HashMap<>();
+    private Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> classFeaturesMap =  new HashMap<>();
 
     public PlayerClass(Constants.CLASS playerClass){
         this.playerClass = playerClass;
@@ -91,6 +93,15 @@ public class PlayerClass implements PlayerClassInterface{
     @Override
     public void initNewClass(){
         UPDATE_PASSIVES(classFeaturesMap);
+    }
+
+    public void addWeaponMastery(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> featMap, Constants.WEAPON_KEY wk){
+        if(featMap.containsKey(Constants.CLASS_FEATURE.WEAPON_MASTERY) && wm.getMaxNumberOfMasteries() < wm.getCurrentMasteries().size()){
+            wm.addMastery(wk);
+        } else {
+            if(featMap.containsKey(Constants.CLASS_FEATURE.WEAPON_MASTERY)) System.err.println("Max number of masteries known");
+            else System.err.println("Character does not have the weapon mastery feat");
+        }
     }
 
     /*
@@ -444,8 +455,8 @@ public class PlayerClass implements PlayerClassInterface{
         }
     }
 
-    public final void UPDATE_PASSIVES(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> featuresMap){
-        for(Map.Entry<Constants.CLASS_FEATURE, ClassFeatureAbstract> entry : featuresMap.entrySet()){
+    public final void UPDATE_PASSIVES(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> featuresMap){
+        for(Map.Entry<Constants.CLASS_FEATURE, _ClassFeatureAbstract> entry : featuresMap.entrySet()){
             if(entry.getValue().isActive()) {
                 entry.getValue().cast(getOwner(), null, null, null, null, 1);
             }
@@ -576,11 +587,11 @@ public class PlayerClass implements PlayerClassInterface{
         this.wizardSpells = wizardSpells;
     }
 
-    public Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> getClassFeaturesMap() {
+    public Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> getClassFeaturesMap() {
         return classFeaturesMap;
     }
 
-    public void setClassFeaturesMap(Map<Constants.CLASS_FEATURE, ClassFeatureAbstract> classFeaturesMap) {
+    public void setClassFeaturesMap(Map<Constants.CLASS_FEATURE, _ClassFeatureAbstract> classFeaturesMap) {
         this.classFeaturesMap = classFeaturesMap;
     }
 
@@ -590,6 +601,14 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setOwner(Creature owner) {
         this.owner = owner;
+    }
+
+    public WeaponMastery getWm() {
+        return wm;
+    }
+
+    public void setWm(WeaponMastery wm) {
+        this.wm = wm;
     }
     
     

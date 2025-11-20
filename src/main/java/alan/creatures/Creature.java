@@ -13,10 +13,10 @@ import javax.swing.JPanel;
 
 import alan.Constants;
 import alan.player_class.PlayerClass;
+import alan.skills.Ability;
+import alan.skills.ConditionEffect;
+import alan.skills.Skill;
 import alan.grid_panel.Cell;
-import alan.skills_and_feats.Ability;
-import alan.skills_and_feats.ConditionEffect;
-import alan.skills_and_feats.Skill;
 
 public abstract class Creature {
     private String creatureType, name, raceName;
@@ -24,7 +24,7 @@ public abstract class Creature {
     private int baseAC = 10;
     private int ac;
     private int
-        inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage,
+        inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, jumpDistance, auraDamage, melleeAttackBonus = 0, rangedAttackBonus = 0,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, playerSaveIncrease, savingThrowIncrease, darkVision = 0;
     protected String fileName;
     protected BufferedImage image;
@@ -799,6 +799,23 @@ public abstract class Creature {
     public void setArmorProficiencies(ArrayList<Constants.ARMOR_PROFICIENCY> armorProficiencies) {
         this.armorProficiencies = armorProficiencies;
     }
+
+    public int getMelleeAttackBonus() {
+        return melleeAttackBonus;
+    }
+
+    public void setMelleeAttackBonus(int melleeAttackBonus) {
+        this.melleeAttackBonus = melleeAttackBonus;
+    }
+
+    public int getRangedAttackBonus() {
+        return rangedAttackBonus;
+    }
+
+    public void setRangedAttackBonus(int rangedAttackBonus) {
+        this.rangedAttackBonus = rangedAttackBonus;
+    }
+    
     
 
 }

@@ -5,7 +5,7 @@ import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 
-public class Rage extends ClassFeatureAbstract{
+public class Rage extends _ClassFeatureAbstract{
     private int damageBonus = 2;
     private boolean isRaging = false;
 

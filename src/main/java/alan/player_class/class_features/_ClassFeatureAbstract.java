@@ -9,7 +9,7 @@ import alan.grid_panel.Grid;
 import alan.interfaces.DiceRoll;
 import alan.spells.SpellInterface;
 
-public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
+public abstract class _ClassFeatureAbstract implements DiceRoll, SpellInterface{
     Grid grid;
     PartyPlayers partyPlayers;
 
@@ -39,7 +39,7 @@ public abstract class ClassFeatureAbstract implements DiceRoll, SpellInterface{
 
 
     // Constructor
-    public ClassFeatureAbstract(){
+    public _ClassFeatureAbstract(){
         
         grid = Grid.getInstance(0, 0);
         partyPlayers = PartyPlayers.getInstance();
