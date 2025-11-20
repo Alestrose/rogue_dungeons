@@ -7,8 +7,8 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.player_class.class_features.FeatureAbstract;
-import alan.player_class.class_features.WeaponMastery;
+import alan.player_class.features.FeatureAbstract;
+import alan.player_class.features.class_features.WeaponMastery;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.*;
 import alan.spells.level_one.*;

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.class_features.FeatureAbstract;
+import alan.player_class.features.FeatureAbstract;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.Guidance;
 import alan.spells.cantrips.SacredFlame;

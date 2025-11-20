@@ -1,4 +1,4 @@
-package alan.player_class.class_features;
+package alan.player_class.features;
 
 import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;

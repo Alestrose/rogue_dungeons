@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.class_features.FeatureAbstract;
-import alan.player_class.class_features.WeaponMastery;
+import alan.player_class.features.FeatureAbstract;
+import alan.player_class.features.WeaponMastery;
 
 public class Fighter extends PlayerClass{
     private Map<Constants.FEATURE, FeatureAbstract> fighterFeatures = new HashMap<>();

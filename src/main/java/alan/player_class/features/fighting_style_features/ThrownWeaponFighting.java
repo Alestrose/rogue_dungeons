@@ -1,14 +1,15 @@
-package alan.player_class.class_features;
+package alan.player_class.features.fighting_style_features;
 
 import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
+import alan.player_class.features.FeatureAbstract;
 
-public class UnarmedFighting extends FeatureAbstract{
+public class ThrownWeaponFighting extends FeatureAbstract{
 
-    public UnarmedFighting(){
-        setClassFeatureKey(Constants.FEATURE.UNARMED_FIGHTING);
+    public ThrownWeaponFighting(){
+        setClassFeatureKey(Constants.FEATURE.THROWN_WEAPON_FIGHTING);
         setClassFeatureName();
         setFeatureLevel(1);
         setPassive(true);
@@ -20,6 +21,7 @@ public class UnarmedFighting extends FeatureAbstract{
             int spellLevel) {
         // TODO Auto-generated method stub
         super.cast(caster, target, targetList, cell, damage_type, spellLevel);
+        caster.setThrownAttackDamageBonus(2);
     }
 
     @Override

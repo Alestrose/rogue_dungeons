@@ -1,4 +1,4 @@
-package alan.player_class.class_features;
+package alan.player_class.features.class_features;
 
 import java.util.ArrayList;
 
@@ -6,6 +6,7 @@ import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
+import alan.player_class.features.FeatureAbstract;
 
 public class WeaponMastery extends FeatureAbstract{
     private int maxNumberOfMasteries = 2;

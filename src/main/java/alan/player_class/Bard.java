@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.class_features.BardicInspiration;
-import alan.player_class.class_features.FeatureAbstract;
+import alan.player_class.features.FeatureAbstract;
+import alan.player_class.features.class_features.BardicInspiration;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.MageHand;
 import alan.spells.cantrips.ViciousMockery;

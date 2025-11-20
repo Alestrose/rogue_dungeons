@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.class_features.FeatureAbstract;
-import alan.player_class.class_features.Rage;
-import alan.player_class.class_features.UnarmoredDefense;
-import alan.player_class.class_features.WeaponMastery;
+import alan.player_class.features.FeatureAbstract;
+import alan.player_class.features.class_features.Rage;
+import alan.player_class.features.class_features.UnarmoredDefense;
+import alan.player_class.features.class_features.WeaponMastery;
 
 public class Barbarian extends PlayerClass{
     private Map<Constants.FEATURE, FeatureAbstract> barbarianFeatures = new HashMap<>();

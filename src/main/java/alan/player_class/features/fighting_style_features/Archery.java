@@ -1,14 +1,15 @@
-package alan.player_class.class_features;
+package alan.player_class.features.fighting_style_features;
 
 import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
+import alan.player_class.features.FeatureAbstract;
 
-public class TwoWeaponFighting extends FeatureAbstract{
+public class Archery extends FeatureAbstract{
 
-    public TwoWeaponFighting(){
-        setClassFeatureKey(Constants.FEATURE.THROWN_WEAPON_FIGHTING);
+    public Archery(){
+        setClassFeatureKey(Constants.FEATURE.ARCHERY);
         setClassFeatureName();
         setFeatureLevel(1);
         setPassive(true);
@@ -20,6 +21,7 @@ public class TwoWeaponFighting extends FeatureAbstract{
             int spellLevel) {
         // TODO Auto-generated method stub
         super.cast(caster, target, targetList, cell, damage_type, spellLevel);
+        caster.setRangedAttackRollBonus(2);
     }
 
     @Override
@@ -27,4 +29,8 @@ public class TwoWeaponFighting extends FeatureAbstract{
         // TODO Auto-generated method stub
         return super.descreiption();
     }
+
+    
+
+
 }
