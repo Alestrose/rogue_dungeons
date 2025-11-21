@@ -34,6 +34,19 @@ public class Protection extends FeatureAbstract{
     @Override
     public String descreiption() {
         // TODO Auto-generated method stub
-        return "";
+        return """
+               When a creature you can see attacks a target other\r
+               than you that is within 5 feet of you, you can take a\r
+               Reaction to interpose your Shield if you're holding\r
+               one. You impose Disadvantage on the triggering\r
+               attack roll and all other attack rolls against the tar-\r
+               get until the start of your next turn if you remain\r
+               within 5 feet of the target.""" //
+        //
+        //
+        //
+        //
+        //
+        ;
     }
 }

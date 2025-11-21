@@ -16,11 +16,23 @@ public class Ability {
         this.abilityName = abilityName;
     }
 
+
+    
+
     /*
      * Getters & Setters
      */
     
     
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        return abilityName + ": " + abilityScore + "/" + abilityMod;
+    }
+
+
+
+
     public String getAbilityName() {
         return abilityName;
     }
@@ -99,10 +111,6 @@ public class Ability {
     public void setAbilityMod() {
         if(this.abilityScore >= 10) abilityMod = (abilityScore - 10) /2;
         else abilityMod = (abilityScore - 11) /2;
-    }
-
-    public void setAbilityMod(int abilityMod) {
-        this.abilityMod = abilityMod;
     }
 
     public boolean isCheckAdvantage() {

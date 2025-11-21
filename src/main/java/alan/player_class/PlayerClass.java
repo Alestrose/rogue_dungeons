@@ -15,13 +15,14 @@ import alan.spells.level_one.*;
 
 public class PlayerClass implements PlayerClassInterface{
 
+    private int proficiencyBonus;
     private String className;
     private Creature owner;
     private Constants.CLASS playerClass;
     private int classLevel = 1;
     private ArrayList<Constants.ABILITY> primaryAbilities = new ArrayList<>();
     private int hitPointDie;
-    private WeaponMastery wm;
+    private WeaponMastery wm = new WeaponMastery();
 
     protected BufferedImage classImage;
     protected String classImageFileName;
@@ -55,8 +56,8 @@ public class PlayerClass implements PlayerClassInterface{
 
     public final void initNewCharacter(){
         if(playerClass == null) return; // guard against NPE
-        onLevelUp();
         initNewClass();
+        proficiencyBonus = owner.getProficiencyBonus();
         owner.grantLanguage(Constants.LANGUAGE.COMMON);
         switch (playerClass) {
             case BARBARIAN  -> {setBarbarianClass();}
@@ -96,11 +97,11 @@ public class PlayerClass implements PlayerClassInterface{
         UPDATE_PASSIVES(Features);
     }
 
-    public void addWeaponMastery(Map<Constants.FEATURE, FeatureAbstract> featMap, Constants.WEAPON_KEY wk){
-        if(featMap.containsKey(Constants.FEATURE.WEAPON_MASTERY) && wm.getMaxNumberOfMasteries() < wm.getCurrentMasteries().size()){
+    public void addWeaponMastery(Map<Constants.FEATURE, FeatureAbstract> Features, Constants.WEAPON_KEY wk){
+        if(Features.containsKey(Constants.FEATURE.WEAPON_MASTERY) && wm.getMaxNumberOfMasteries() >= wm.getCurrentMasteries().size()){
             wm.addMastery(wk);
         } else {
-            if(featMap.containsKey(Constants.FEATURE.WEAPON_MASTERY)) System.err.println("Max number of masteries known");
+            if(Features.containsKey(Constants.FEATURE.WEAPON_MASTERY)) System.err.println("Max number of masteries known");
             else System.err.println("Character does not have the weapon mastery feat");
         }
     }
@@ -114,7 +115,7 @@ public class PlayerClass implements PlayerClassInterface{
      */
 
     public void setBarbarianClass(){
-        //Core traits
+        // Core traits
         primaryAbilities.add(Constants.ABILITY.STRENGTH);
         setHitPointDie(12);
         owner.grantAbilityProficiency(Constants.ABILITY.STRENGTH);
@@ -124,6 +125,14 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(12);
         
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
@@ -139,6 +148,14 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantAbilityProficiency(Constants.ABILITY.CHARISMA);
         owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(12);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(15);
         
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.PERFORMANCE);
@@ -193,10 +210,19 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(12);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(8);
         
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
         owner.grantSkillProficiency(Constants.SKILL_KEY.SURVIVAL);
+        
         // Adding spells to classes spell map
         {
             clericSpells.put(Constants.SPELL.GUIDANCE, new Guidance());
@@ -237,6 +263,14 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
         owner.grantLanguage(Constants.LANGUAGE.COMMON);
         owner.grantLanguage(Constants.LANGUAGE.DRUIDIC);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(12);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(10);
 
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ANIMAL_HANDLING);
@@ -290,6 +324,14 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.HEAVY);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
         owner.grantLanguage(Constants.LANGUAGE.COMMON);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(12);
 
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ACROBATICS);
@@ -624,6 +666,15 @@ public class PlayerClass implements PlayerClassInterface{
     public void setFeatures(Map<Constants.FEATURE, FeatureAbstract> features) {
         Features = features;
     }
+
+    public int getProficiencyBonus() {
+        return proficiencyBonus;
+    }
+
+    public void setProficiencyBonus(int proficiencyBonus) {
+        this.proficiencyBonus = proficiencyBonus;
+    }
+    
     
     
 }

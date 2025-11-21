@@ -30,6 +30,7 @@ public abstract class Creature {
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, 
         attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, 
         playerSaveIncrease, savingThrowIncrease, darkVision = 0, thrownAttackDamageBonus = 0;
+
     protected String fileName;
     protected BufferedImage image;
     private Cell location;
@@ -78,8 +79,9 @@ public abstract class Creature {
         setDefaultLanguages();
 
         // Done last
-        initClassAttributes();
+        initClass();
         initStartingAttributes();
+        
         
     }
 
@@ -111,20 +113,21 @@ public abstract class Creature {
         setDefaultLanguages();
 
         // Done last
-        initClassAttributes();
+        initClass();
         initStartingAttributes();
+        
     }
 
     /*
      * Methods
      */
 
-    public final void initClassAttributes(){
+    public final void initClass(){
         primaryClass.initNewCharacter();
     }
 
     public final void initStartingAttributes(){
-        setAc(getBaseAC());
+        setAc();
     }
 
     public void move(){
@@ -430,12 +433,11 @@ public abstract class Creature {
     }
 
     public int getAc() {
-        int currentAC = ac + getTempAcBonus();
-        return currentAC;
+        return ac ;
     }
 
-    public void setAc(int baseAC) {
-        this.ac = baseAC + getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
+    public void setAc() {
+        this.ac = baseAC + getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod() + getTempAcBonus();
         
     }
 
@@ -715,7 +717,7 @@ public abstract class Creature {
     }
 
     public void setTempAcBonus(int TempAcBonus) {
-        this.TempAcBonus = getTempAcBonus() + TempAcBonus;
+        this.TempAcBonus = TempAcBonus;
     }
 
     public int getAuraDamage() {

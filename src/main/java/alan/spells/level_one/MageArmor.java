@@ -28,7 +28,7 @@ public class MageArmor extends SpellAbstract implements SpellInterface{
 
         // If the effectn of the spell would increase the targets ac, and if the target is not wearing armor; increase targets ac to 13 plus targets dexterity modifier
         if(targetAcPlusDex < spellsMaxAcBonus && !target.isWearingArmor()){
-            target.setAc(spellsMaxAcBonus);
+            target.setTempAcBonus(spellsMaxAcBonus);
         }
         
     }

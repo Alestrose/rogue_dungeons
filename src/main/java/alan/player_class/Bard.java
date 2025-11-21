@@ -37,8 +37,7 @@ public class Bard extends PlayerClass{
         preparedSpells.put(Constants.SPELL.HEALING_WORD, new HealingWord());
         preparedSpells.put(Constants.SPELL.THUNDERWAVE, new Thunderwave());
 
-        // Setting level one class features
-        grantFeature(Constants.FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
+        
     }
 
     /*
@@ -66,6 +65,7 @@ public class Bard extends PlayerClass{
     }
 
     public final void setInspirationQuantity(){
+        grantFeature(Constants.FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
         getFeatures().get(Constants.FEATURE.BARDIC_INSPIRATION).setResourceQuanity(getOwner().getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod());
     }
 

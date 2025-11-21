@@ -8,8 +8,11 @@ import java.awt.Insets;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import alan.creatures.Creature;
+import alan.creatures.PartyPlayers;
 import alan.game_panel.GamePanel;
 import alan.grid_panel.GridPanel;
+import alan.skills.Ability;
 
 public class Main {
     public static void main(String[] args) {
@@ -61,6 +64,15 @@ public class Main {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLocationRelativeTo(null);
         frame.setResizable(false);
+
+        PartyPlayers players = PartyPlayers.getInstance();
+        for (Creature p : players.getParty()) {
+            System.out.println("========================================");
+            System.out.println(p.getName() + ": AC; "+ p.getAc());
+            for (Ability a : p.getAbilities().values()) {
+                System.out.println(a.toString());
+            }
+        }
 
         /*
         * Game Loop

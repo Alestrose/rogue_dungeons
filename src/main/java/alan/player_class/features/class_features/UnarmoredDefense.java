@@ -18,7 +18,7 @@ public class UnarmoredDefense extends FeatureAbstract{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         if(!caster.isWearingArmor()){
-            caster.setAc(caster.getBaseAC() + caster.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod() + caster.getAbilities().get(Constants.ABILITY.STRENGTH).getAbilityMod());
+            caster.setTempAcBonus(caster.getAbilities().get(Constants.ABILITY.STRENGTH).getAbilityMod());
         }else System.err.println(caster.getName() + " must not be wearing armor");
     }
 

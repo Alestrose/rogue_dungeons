@@ -8,6 +8,7 @@ import alan.player_class.Barbarian;
 import alan.player_class.Bard;
 import alan.player_class.Cleric;
 import alan.player_class.Druid;
+import alan.player_class.Fighter;
 import alan.races.Aasimar;
 import alan.races.Dragonborn;
 import alan.races.Dwarf;
@@ -68,7 +69,7 @@ public class PartyPlayers {
             "Alan",
             "Fighter1.png", 
             grid.getCellArray()[2][14], 
-            new Cleric(Constants.CLASS.CLERIC, Constants.DIVINE_ORDERS.THAUMATURGE)
+            new Fighter(Constants.CLASS.FIGHTER)
         ));
 
         party.add(new Gnome(
