@@ -9,7 +9,7 @@ import alan.grid_panel.Cell;
 import alan.player_class.features.FeatureAbstract;
 
 public class WeaponMastery extends FeatureAbstract{
-    private int maxNumberOfMasteries = 2;
+    
     private ArrayList<Constants.WEAPON_KEY> currentMasteries = new ArrayList<>();
 
     public WeaponMastery(){
@@ -17,6 +17,7 @@ public class WeaponMastery extends FeatureAbstract{
         setPassive(true);
         setFeatureLevel(1);
         setFeatType(Constants.FEAT_TYPE.CLASS);
+        setResourceQuanity(2);
     }
 
     @Override
@@ -33,14 +34,14 @@ public class WeaponMastery extends FeatureAbstract{
     @Override
     public void onLevelUp(int lvl) {
         switch (lvl) {
-            case 4 -> {setMaxNumberOfMasteries(3);}
-            case 10 -> {setMaxNumberOfMasteries(4);}
+            case 4 -> {setResourceQuanity(3);}
+            case 10 -> {setResourceQuanity(4);}
             default -> {}
         }
     }
 
     public void addMastery(Constants.WEAPON_KEY key){
-        if(currentMasteries.size() < maxNumberOfMasteries){
+        if(currentMasteries.size() < getResourceQuanity()){
             currentMasteries.add(key);
         }else System.err.println("Cant train any more masteries.");
     }    
@@ -49,13 +50,6 @@ public class WeaponMastery extends FeatureAbstract{
      * Getters and Setters
      */
     
-     public int getMaxNumberOfMasteries() {
-        return maxNumberOfMasteries;
-    }
-
-    public void setMaxNumberOfMasteries(int maxNumberOfMasteries) {
-        this.maxNumberOfMasteries = maxNumberOfMasteries;
-    }
 
     public ArrayList<Constants.WEAPON_KEY> getCurrentMasteries() {
         return currentMasteries;

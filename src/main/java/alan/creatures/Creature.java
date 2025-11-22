@@ -21,8 +21,6 @@ import alan.grid_panel.Cell;
 public abstract class Creature {
     private String creatureType, name, raceName;
     private int proficiencyBonus = 2;
-    private int baseAC = 10;
-    private int ac;
     private int
         inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, 
         x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, 
@@ -45,6 +43,7 @@ public abstract class Creature {
 
     // Classes
     private PlayerClass primaryClass;
+    private ArmorClass armorClass;
 
     // Ability scores & Modifiers
     protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
@@ -77,10 +76,10 @@ public abstract class Creature {
         setDefaultAbilities();
         setDefaultSkills();
         setDefaultLanguages();
-
+        
         // Done last
+        this.armorClass = new ArmorClass(abilities);
         initClass();
-        initStartingAttributes();
         
         
     }
@@ -113,9 +112,8 @@ public abstract class Creature {
         setDefaultLanguages();
 
         // Done last
+        this.armorClass = new ArmorClass(abilities);
         initClass();
-        initStartingAttributes();
-        
     }
 
     /*
@@ -124,10 +122,11 @@ public abstract class Creature {
 
     public final void initClass(){
         primaryClass.initNewCharacter();
+        armorClass.setAC();
     }
 
     public final void initStartingAttributes(){
-        setAc();
+        
     }
 
     public void move(){
@@ -430,15 +429,6 @@ public abstract class Creature {
         this.y = location.getY();
         this.width = location.getWidth();
         this.height = location.getHeight();
-    }
-
-    public int getAc() {
-        return ac ;
-    }
-
-    public void setAc() {
-        this.ac = baseAC + getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod() + getTempAcBonus();
-        
     }
 
     public int getDc() {
@@ -745,14 +735,6 @@ public abstract class Creature {
         this.skills = skills;
     }
 
-    public int getBaseAC() {
-        return baseAC;
-    }
-
-    public void setBaseAC(int baseAC) {
-        this.baseAC = baseAC;
-    }
-
     public int getInspirationDie() {
         return inspirationDie;
     }
@@ -829,6 +811,15 @@ public abstract class Creature {
     public void setThrownAttackDamageBonus(int thrownAttackDamageBonus) {
         this.thrownAttackDamageBonus = thrownAttackDamageBonus;
     }
+
+    public ArmorClass getArmorClass() {
+        return armorClass;
+    }
+
+    public void setArmorClass(ArmorClass armorClass) {
+        this.armorClass = armorClass;
+    }
+
     
     
 

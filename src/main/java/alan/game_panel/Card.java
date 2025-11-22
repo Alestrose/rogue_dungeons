@@ -18,15 +18,22 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import alan.Constants;
+import alan.creatures.ArmorClass;
 import alan.creatures.Creature;
+import alan.creatures.PlayableCharacter;
 
 public class Card extends JPanel implements KeyListener {
     protected String fileName;
     protected BufferedImage image;
+    private ArmorClass ac;
 
     // Constructor
     public Card(Creature c) {
         this.fileName = c.getFileName();
+        
+        if (c instanceof PlayableCharacter pc) {
+            this.ac = pc.getArmorClass();
+        }
 
         // Layout Manager
         this.setLayout(new GridBagLayout());
@@ -60,7 +67,7 @@ public class Card extends JPanel implements KeyListener {
             "Race: " + c.getRaceName(),
             "Class: " + c.getPrimaryClass().getClassName(),
             "Level: " + c.getPrimaryClass().getClassLevel(),
-            "AC: " + c.getAc(), 
+            "AC: " + c.getArmorClass().getAC(), 
             "Health: " + c.getMaxHealth(),
             "Speed: " + c.getSpeed(), 
             "DC: " + c.getDc()
@@ -110,4 +117,32 @@ public class Card extends JPanel implements KeyListener {
     public void keyTyped(KeyEvent e) {
         // TODO
     }
+
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
+    public ArmorClass getAc() {
+        return ac;
+    }
+
+    public void setAc(ArmorClass ac) {
+        this.ac = ac;
+    }
+
+    
+
+    
 }

@@ -67,8 +67,9 @@ public class Main {
 
         PartyPlayers players = PartyPlayers.getInstance();
         for (Creature p : players.getParty()) {
+
             System.out.println("========================================");
-            System.out.println(p.getName() + ": AC; "+ p.getAc());
+            System.out.println(p.getName() + ": AC; "+ p.getArmorClass().getAC());
             for (Ability a : p.getAbilities().values()) {
                 System.out.println(a.toString());
             }

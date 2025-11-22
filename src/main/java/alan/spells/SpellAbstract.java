@@ -87,7 +87,7 @@ public abstract class SpellAbstract implements DiceRoll{
 
     @Override       // Returns true if target spell attack bonus plus a random d20 is greater than or equal to targets AC
     public boolean rollToHitAC(Creature target, Creature caster) {
-        return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getAc();
+        return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getArmorClass().getAC();
     }
 
     // Sets quantity of aditional die for primary damage of leveled spell

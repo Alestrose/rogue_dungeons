@@ -5,24 +5,32 @@ import alan.grid_panel.Cell;
 
 public class PlayableCharacter extends Creature{
     private boolean hasAdvantage = false;
-
-
-
+    
     // Without location constructor
     public PlayableCharacter(String name, String fileName, PlayerClass primaryClass) {
         super(name, fileName, primaryClass);
+        
         setClassFeatures();
+        initPlayable();
+
     }
     
     // With location constructor
     public PlayableCharacter(String name, String fileName, Cell location, PlayerClass primaryClass) {
         super(name, fileName, location, primaryClass);
+
         setClassFeatures();
+        initPlayable();
+        
     }
 
     /*
      * Methods
      */
+
+    private void initPlayable(){
+        
+    }
 
     private  void setClassFeatures(){
         
@@ -51,5 +59,6 @@ public class PlayableCharacter extends Creature{
     public void setHasAdvantage(boolean hasAdvantage) {
         this.hasAdvantage = hasAdvantage;
     }
+    
 
 }

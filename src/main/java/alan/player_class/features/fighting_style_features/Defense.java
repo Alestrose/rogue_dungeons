@@ -2,7 +2,9 @@ package alan.player_class.features.fighting_style_features;
 
 import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;
+import alan.creatures.ArmorClass;
 import alan.creatures.Creature;
+import alan.creatures.PlayableCharacter;
 import alan.grid_panel.Cell;
 import alan.player_class.features.FeatureAbstract;
 
@@ -21,20 +23,24 @@ public class Defense extends FeatureAbstract{
     public void update(Creature owner) {
         // TODO Auto-generated method stub
         super.update(owner);
-        // If player no longer has Defense feat or is no longer wearing armor
-        if(!owner.isWearingArmor() || !owner.getPrimaryClass().getFeatures().containsKey(Constants.FEATURE.DEFENSE)) {
-            owner.setTempAcBonus(owner.getTempAcBonus() - bonusToAC);
-            setBonusToAC(0);
+        if (owner instanceof PlayableCharacter pc) {
+            ArmorClass ac = pc.getArmorClass();
+            ac.setHasDefenseFeat(true);
+        } else {
+            System.out.println("This creature does not have ArmorClass.");
         }
-        else setBonusToAC(1);
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
-        // TODO Auto-generated method stub
-        super.cast(caster, target, targetList, cell, damage_type, spellLevel);
-        caster.setTempAcBonus(caster.getTempAcBonus() + bonusToAC);
+        if (caster instanceof PlayableCharacter pc) {
+            ArmorClass ac = pc.getArmorClass();
+            ac.setHasDefenseFeat(true);
+        } else {
+            System.out.println("This creature does not have ArmorClass.");
+        }
+        
     }
 
     @Override

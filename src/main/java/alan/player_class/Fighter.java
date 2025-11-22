@@ -48,6 +48,7 @@ public class Fighter extends PlayerClass{
         super.initNewClass();
         grantFeature(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
         grantFeature(Constants.FEATURE.DEFENSE, new Defense());
+        getFeatures().get(Constants.FEATURE.WEAPON_MASTERY).setResourceQuanity(3);
         addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.BATTLEAXE);
         addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATSWORD);
         addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATAXE);

@@ -13,7 +13,7 @@ public class Barbarian extends PlayerClass{
         grantFeature(Constants.FEATURE.RAGE, new Rage());
         grantFeature(Constants.FEATURE.UNARMORED_DEFENSE, new UnarmoredDefense());
         grantFeature(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
-
+        
     }
     
     /*

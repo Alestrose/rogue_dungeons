@@ -18,6 +18,7 @@ public class Rage extends FeatureAbstract{
         setBonus(true);
         setActive(true);
         setFeatType(Constants.FEAT_TYPE.CLASS);
+        setResourceQuanity(2);
 
     }
 

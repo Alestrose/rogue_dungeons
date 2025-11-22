@@ -22,7 +22,7 @@ public class MageArmor extends SpellAbstract implements SpellInterface{
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         
         // Targets ac plus targets dexterity modifier
-        int targetAcPlusDex = target.getAc() + target.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
+        int targetAcPlusDex = target.getArmorClass().getAC() + target.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
         // 13 + targets dexterity modifier (max ac the spell could give to target)
         int spellsMaxAcBonus = 13 + target.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
 
