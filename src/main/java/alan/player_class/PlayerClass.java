@@ -8,7 +8,11 @@ import java.util.Map;
 import alan.Constants;
 import alan.creatures.Creature;
 import alan.player_class.features.FeatureAbstract;
+import alan.player_class.features.class_features.Rage;
+import alan.player_class.features.class_features.SecondWind;
+import alan.player_class.features.class_features.UnarmoredDefense;
 import alan.player_class.features.class_features.WeaponMastery;
+import alan.player_class.features.fighting_style_features.Defense;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.*;
 import alan.spells.level_one.*;
@@ -125,6 +129,13 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
 
+        // Level One Class Feats
+        grantFeature(Constants.FEATURE.RAGE, new Rage());
+        grantFeature(Constants.FEATURE.UNARMORED_DEFENSE, new UnarmoredDefense());
+        grantFeature(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
+        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATSWORD);
+        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATAXE);
+
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
         owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(13);
@@ -136,6 +147,8 @@ public class PlayerClass implements PlayerClassInterface{
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
         owner.grantSkillProficiency(Constants.SKILL_KEY.SURVIVAL);
+
+       
     }
 
     public void setBardClass(){
@@ -324,6 +337,15 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
         owner.grantLanguage(Constants.LANGUAGE.COMMON);
 
+        // Level One Class Feats
+        grantFeature(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
+        grantFeature(Constants.FEATURE.DEFENSE, new Defense());
+        grantFeature(Constants.FEATURE.SECOND_WIND, new SecondWind());
+        getFeatures().get(Constants.FEATURE.WEAPON_MASTERY).setResourceQuanity(3);
+        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.LONGBOW);
+        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATSWORD);
+        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.LONGSWORD);
+
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
         owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(13);
@@ -503,7 +525,6 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public final void UPDATE_PASSIVES(Map<Constants.FEATURE, FeatureAbstract> Features){
-        System.out.println("Update_Passives running");
         for(Map.Entry<Constants.FEATURE, FeatureAbstract> entry : Features.entrySet()){
             if(entry.getValue().isPassive()) {
                 entry.getValue().cast(getOwner(), null, null, null, null, 1);

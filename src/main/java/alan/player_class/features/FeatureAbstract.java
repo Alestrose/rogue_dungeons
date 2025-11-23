@@ -98,6 +98,14 @@ public abstract class FeatureAbstract implements DiceRoll, SpellInterface{
         return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getArmorClass().getAC();
     }
 
+    public void onShortRest(){
+
+    }
+
+    public void onLongRest(){
+        
+    }
+
 
     /* 
      * Getters and Setters

@@ -33,7 +33,6 @@ public class ArmorClass {
     // Ac is set in PlayableCharacter constructor and should be set again when equiping/unequiping armor and shields
 
     public ArmorClass(Map<Constants.ABILITY, Ability> abilities){
-        System.out.println("ArmorClass constructed");
         this.abilities = abilities;
         this.constitutionModifier = this.abilities.get(Constants.ABILITY.CONSTITUTION).getAbilityMod();
         this.dexterityModifier = this.abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod();
@@ -106,7 +105,6 @@ public class ArmorClass {
         // 4. Default Unarmored AC
         ac = baseAC + dexterityModifier + shieldBonus + bonusToAc + tempBonusToAc;
 
-        System.out.println("AC updated");
     }
 
 

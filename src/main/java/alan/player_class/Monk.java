@@ -2,15 +2,12 @@ package alan.player_class;
 
 import alan.Constants;
 
-public class Barbarian extends PlayerClass{
+public class Monk extends PlayerClass{
 
-    // Constructor
-    public Barbarian(Constants.CLASS playerClass){
+    public Monk(Constants.CLASS playerClass){
         super(playerClass);
-        
-        
     }
-    
+
     /*
      * Methods
      */
@@ -38,7 +35,4 @@ public class Barbarian extends PlayerClass{
     /*
      * Getters and Setters
      */
-    
-
-
 }
