@@ -22,6 +22,8 @@ public class Bard extends PlayerClass{
 
     public Bard(Constants.CLASS playerClass){
         super(playerClass);
+        // Level One Class Feats
+        grantFeature(Constants.FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
 
         // Setting level one spell slots
         bardSpellSlots.setNumKnownCantrips(2);
@@ -46,16 +48,18 @@ public class Bard extends PlayerClass{
 
     @Override
     public void onLevelUp() {
-        
+        super.onLevelUp();
     }
     
     @Override
     public void onShortRest(){
+        super.onShortRest();
         setInspirationQuantity();
     }
 
     @Override
     public void onLongRest(){
+        super.onLongRest();
         setInspirationQuantity();
     }
 
@@ -65,7 +69,6 @@ public class Bard extends PlayerClass{
     }
 
     public final void setInspirationQuantity(){
-        grantFeature(Constants.FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
         getFeatures().get(Constants.FEATURE.BARDIC_INSPIRATION).setResourceQuanity(getOwner().getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod());
     }
 

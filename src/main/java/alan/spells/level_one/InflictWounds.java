@@ -25,7 +25,7 @@ public class InflictWounds extends SpellAbstract implements SpellInterface{
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         levelSpellPrimaryDie(1, spellLevel);
         
-        if(rollToHitAC(target, caster)){
+        if(rollToHitACSpellAttack(target, caster)){
             target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
         }
     }

@@ -8,11 +8,7 @@ import java.util.Map;
 import alan.Constants;
 import alan.creatures.Creature;
 import alan.player_class.features.FeatureAbstract;
-import alan.player_class.features.class_features.Rage;
-import alan.player_class.features.class_features.SecondWind;
-import alan.player_class.features.class_features.UnarmoredDefense;
 import alan.player_class.features.class_features.WeaponMastery;
-import alan.player_class.features.fighting_style_features.Defense;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.*;
 import alan.spells.level_one.*;
@@ -129,12 +125,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
 
-        // Level One Class Feats
-        grantFeature(Constants.FEATURE.RAGE, new Rage());
-        grantFeature(Constants.FEATURE.UNARMORED_DEFENSE, new UnarmoredDefense());
-        grantFeature(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
-        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATSWORD);
-        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATAXE);
+        
 
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
@@ -337,14 +328,6 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
         owner.grantLanguage(Constants.LANGUAGE.COMMON);
 
-        // Level One Class Feats
-        grantFeature(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
-        grantFeature(Constants.FEATURE.DEFENSE, new Defense());
-        grantFeature(Constants.FEATURE.SECOND_WIND, new SecondWind());
-        getFeatures().get(Constants.FEATURE.WEAPON_MASTERY).setResourceQuanity(3);
-        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.LONGBOW);
-        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATSWORD);
-        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.LONGSWORD);
 
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
@@ -360,7 +343,26 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public void setMonkClass(){
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.DEXTERITY);
+        primaryAbilities.add(Constants.ABILITY.WISDOM);
+        setHitPointDie(8);
+        owner.grantAbilityProficiency(Constants.ABILITY.STRENGTH);
+        owner.grantAbilityProficiency(Constants.ABILITY.DEXTERITY);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
 
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(12);
+
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ACROBATICS);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.INSIGHT);
     }
 
     public void setPaladinClass(){

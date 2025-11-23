@@ -9,6 +9,7 @@ import alan.player_class.Bard;
 import alan.player_class.Cleric;
 import alan.player_class.Druid;
 import alan.player_class.Fighter;
+import alan.player_class.Monk;
 import alan.races.Aasimar;
 import alan.races.Dragonborn;
 import alan.races.Dwarf;
@@ -76,7 +77,7 @@ public class PartyPlayers {
             "Gnomey", 
             "Ranger1.png", 
             grid.getCellArray()[2][4], 
-            new Druid(Constants.CLASS.DRUID, Constants.PRIMAL_ORDERS.WARDEN), 
+            new Monk(Constants.CLASS.MONK), 
             Constants.ABILITY.WISDOM, 
             Gnome.GNOMISH_LINEAGE.ROCK
         ));

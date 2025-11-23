@@ -56,7 +56,9 @@ C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\pl
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\Cleric.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\Druid.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\BardicInspiration.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\MartialArts.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\Rage.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\SecondWind.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\UnarmoredDefense.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\WeaponMastery.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\FeatureAbstract.java
@@ -70,6 +72,7 @@ C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\pl
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\fighting_style_features\TwoWeaponFighting.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\fighting_style_features\UnarmedFighting.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\Fighter.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\Monk.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\PlayerClass.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\PlayerClassInterface.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\SpellSlots.java

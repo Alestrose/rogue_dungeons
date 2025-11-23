@@ -38,7 +38,7 @@ public abstract class Creature {
 
     // Booleans
     private boolean canOpportunityAttack = true;
-    private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor = false;
+    private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor = false, hasShieldEquiped = false;
     private boolean hasInspiration = false;
 
     // Classes
@@ -820,6 +820,15 @@ public abstract class Creature {
         this.armorClass = armorClass;
     }
 
+    public boolean isHasShieldEquiped() {
+        return hasShieldEquiped;
+    }
+
+    public void setHasShieldEquiped(boolean hasShieldEquiped) {
+        this.hasShieldEquiped = hasShieldEquiped;
+    }
+
+    
     
     
 

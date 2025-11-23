@@ -88,7 +88,19 @@ public abstract class Weapon implements DiceRoll{
 
 
     @Override
-    public boolean rollToHitAC(Creature target, Creature caster) {
+    public boolean rollToHitACRanged(Creature target, Creature caster) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean rollToHitACMellee(Creature target, Creature caster) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public boolean rollToHitACSpellAttack(Creature target, Creature caster) {
         // TODO Auto-generated method stub
         return false;
     }

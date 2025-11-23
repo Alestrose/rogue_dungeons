@@ -47,18 +47,21 @@ public class Druid extends PlayerClass{
      */
 
     @Override
+    public void onLongRest() {
+        // TODO Auto-generated method stub
+        super.onLongRest();
+    }
+
+    @Override
     public void onLevelUp() {
-        
-    }
-    
-    @Override
-    public void onShortRest(){
-
+        // TODO Auto-generated method stub
+        super.onLevelUp();
     }
 
     @Override
-    public void onLongRest(){
-        
+    public void onShortRest() {
+        // TODO Auto-generated method stub
+        super.onShortRest();
     }
 
     @Override

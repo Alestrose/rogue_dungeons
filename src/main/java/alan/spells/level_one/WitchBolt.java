@@ -32,7 +32,7 @@ public class WitchBolt  extends SpellAbstract implements SpellInterface{
         // If already linked to target, deal damage without to hit AC check
         if(getWitchBoltLinked().equals(target)){
             target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        }else if(rollToHitAC(target, caster)){
+        }else if(rollToHitACSpellAttack(target, caster)){
             target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
             setWitchBoltLinked(target);     // Links to target on hit
         }

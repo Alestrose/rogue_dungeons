@@ -1,13 +1,21 @@
 package alan.player_class;
 
 import alan.Constants;
+import alan.player_class.features.class_features.Rage;
+import alan.player_class.features.class_features.UnarmoredDefense;
+import alan.player_class.features.class_features.WeaponMastery;
 
 public class Barbarian extends PlayerClass{
 
     // Constructor
     public Barbarian(Constants.CLASS playerClass){
         super(playerClass);
-        
+        // Level One Class Feats
+        grantFeature(Constants.FEATURE.RAGE, new Rage());
+        grantFeature(Constants.FEATURE.UNARMORED_DEFENSE, new UnarmoredDefense(playerClass));
+        grantFeature(Constants.FEATURE.WEAPON_MASTERY, new WeaponMastery());
+        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATSWORD);
+        addWeaponMastery(getFeatures(), Constants.WEAPON_KEY.GREATAXE);
         
     }
     
@@ -28,11 +36,6 @@ public class Barbarian extends PlayerClass{
     @Override
     public void onLongRest(){
         
-    }
-    
-    @Override
-    public void initNewClass() {
-    
     }
 
     /*

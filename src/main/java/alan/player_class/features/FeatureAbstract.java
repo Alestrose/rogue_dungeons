@@ -93,9 +93,19 @@ public abstract class FeatureAbstract implements DiceRoll, SpellInterface{
         return random.nextInt(20)+1 + target.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
     }
 
-    @Override       // Returns true if target spell attack bonus plus a random d20 is greater than or equal to targets AC
-    public boolean rollToHitAC(Creature target, Creature caster) {
+    @Override       // Returns true if casters spell attack bonus plus a random d20 is greater than or equal to targets AC
+    public boolean rollToHitACSpellAttack(Creature target, Creature caster) {
         return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getArmorClass().getAC();
+    }
+
+    @Override       // Returns true if casters attack bonus plus a random d20 is greater than or equal to targets AC
+    public boolean rollToHitACMellee(Creature target, Creature caster) {
+        return random.nextInt(20)+1 + caster.getMelleeAttackRollBonus() >= target.getArmorClass().getAC();
+    }
+
+    @Override       // Returns true if casters attack bonus plus a random d20 is greater than or equal to targets AC
+    public boolean rollToHitACRanged(Creature target, Creature caster) {
+        return random.nextInt(20)+1 + caster.getRangedAttackRollBonus() >= target.getArmorClass().getAC();
     }
 
     public void onShortRest(){
