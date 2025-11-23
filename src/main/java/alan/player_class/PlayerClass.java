@@ -366,6 +366,31 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public void setPaladinClass(){
+        //Core traits
+        owner.setSpellCastAbility(Constants.ABILITY.CHARISMA);
+        primaryAbilities.add(Constants.ABILITY.STRENGTH);
+        primaryAbilities.add(Constants.ABILITY.CHARISMA);
+        setHitPointDie(10);
+        owner.grantAbilityProficiency(Constants.ABILITY.WISDOM);
+        owner.grantAbilityProficiency(Constants.ABILITY.CHARISMA);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.HEAVY);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(12);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(14);
+
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.INSIGHT);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.MEDICINE);
 
         // Adding spells to classes spell map
         {
@@ -388,6 +413,31 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public void setRangerlass(){
+        //Core traits
+        owner.setSpellCastAbility(Constants.ABILITY.WISDOM);
+        primaryAbilities.add(Constants.ABILITY.DEXTERITY);
+        primaryAbilities.add(Constants.ABILITY.WISDOM);
+        setHitPointDie(10);
+        owner.grantAbilityProficiency(Constants.ABILITY.STRENGTH);
+        owner.grantAbilityProficiency(Constants.ABILITY.DEXTERITY);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(12);
+
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ANIMAL_HANDLING);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.NATURE);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.SURVIVAL);
 
         // Adding spells to classes spell map
         {
