@@ -50,6 +50,7 @@ public class Druid extends PlayerClass{
     public void onLongRest() {
         // TODO Auto-generated method stub
         super.onLongRest();
+        druidSpellSlots.refreshSpellSlots();
     }
 
     @Override

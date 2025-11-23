@@ -4,7 +4,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.features.FeatureAbstract;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.Guidance;
 import alan.spells.cantrips.SacredFlame;
@@ -15,7 +14,6 @@ import alan.spells.level_one.Sanctuary;
 import alan.spells.level_one.ShieldOfFaith;
 
 public class Cleric extends PlayerClass{
-    private Map<Constants.FEATURE, FeatureAbstract> clericFeatures = new HashMap<>();
     private Map<Constants.SPELL, SpellAbstract> preparedSpells = new HashMap<>();
     private SpellSlots clericSpellSlots = new SpellSlots();
     private Constants.DIVINE_ORDERS divineOrder;
@@ -52,6 +50,7 @@ public class Cleric extends PlayerClass{
     public void onLongRest() {
         // TODO Auto-generated method stub
         super.onLongRest();
+        clericSpellSlots.refreshSpellSlots();
     }
 
     @Override
@@ -94,14 +93,6 @@ public class Cleric extends PlayerClass{
     /*
      * Getters and Setters
      */
-
-    public Map<Constants.FEATURE, FeatureAbstract> getClericFeatures() {
-        return clericFeatures;
-    }
-
-    public void setClericFeatures(Map<Constants.FEATURE, FeatureAbstract> clericFeatures) {
-        this.clericFeatures = clericFeatures;
-    }
 
     public Map<Constants.SPELL, SpellAbstract> getPreparedSpells() {
         return preparedSpells;

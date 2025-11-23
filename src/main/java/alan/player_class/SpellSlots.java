@@ -8,7 +8,7 @@ public class SpellSlots {
     int maxLevelThreeSlots = 0, currentLevelThreeSlots = 0;
     int maxLevelFourSlots = 0,  currentLevelFourSlots = 0;
     int maxLevelFiveSlots = 0,  currentLevelFiveSlots = 0;
-    int maxLevelSixSlots = 0,   currentLevelSizSlots = 0;
+    int maxLevelSixSlots = 0,   currentLevelSixSlots = 0;
     int maxLevelSevenSlots = 0, currentLevelSevenSlots = 0;
     int maxLevelEightSlots = 0, currentLevelEightSlots = 0;
     int maxLevelNineSlots = 0,  currentLevelNineSlots = 0;
@@ -16,6 +16,27 @@ public class SpellSlots {
     public SpellSlots(){
 
     }
+
+    /*
+        Methods
+     */
+
+    public void refreshSpellSlots(){
+        setCurrentLevelOneSlots(getMaxLevelOneSlots());
+        setCurrentLevelTwoSlots(getMaxLevelTwoSlots());
+        setCurrentLevelThreeSlots(getMaxLevelThreeSlots());
+        setCurrentLevelFourSlots(getMaxLevelFourSlots());
+        setCurrentLevelFiveSlots(getMaxLevelFiveSlots());
+        setCurrentLevelSixSlots(getMaxLevelSixSlots());
+        setCurrentLevelSevenSlots(getMaxLevelSevenSlots());
+        setCurrentLevelEightSlots(getMaxLevelEightSlots());
+        setCurrentLevelNineSlots(getMaxLevelNineSlots());
+    }
+
+
+    /*
+        Getters and Setters
+     */
 
     public int getMaxLevelOneSlots() {
         return maxLevelOneSlots;
@@ -105,12 +126,12 @@ public class SpellSlots {
         this.maxLevelSixSlots = maxLevelSixSlots;
     }
 
-    public int getCurrentLevelSizSlots() {
-        return currentLevelSizSlots;
+    public int getCurrentLevelSixSlots() {
+        return currentLevelSixSlots;
     }
 
-    public void setCurrentLevelSizSlots(int currentLevelSizSlots) {
-        this.currentLevelSizSlots = currentLevelSizSlots;
+    public void setCurrentLevelSixSlots(int currentLevelSixSlots) {
+        this.currentLevelSixSlots = currentLevelSixSlots;
     }
 
     public int getMaxLevelSevenSlots() {

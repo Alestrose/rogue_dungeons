@@ -61,6 +61,7 @@ public class Bard extends PlayerClass{
     public void onLongRest(){
         super.onLongRest();
         setInspirationQuantity();
+        bardSpellSlots.refreshSpellSlots();
     }
 
     @Override
