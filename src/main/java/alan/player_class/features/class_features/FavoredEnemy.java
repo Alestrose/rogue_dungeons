@@ -64,5 +64,14 @@ public class FavoredEnemy extends FeatureAbstract{
         ;
     }
 
+    public HuntersMark getHuntersMark() {
+        return huntersMark;
+    }
+
+    public void setHuntersMark(HuntersMark huntersMark) {
+        this.huntersMark = huntersMark;
+    }
+
+    
     
 }
