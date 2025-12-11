@@ -16,9 +16,6 @@ public class Ability {
         this.abilityName = abilityName;
     }
 
-
-    
-
     /*
      * Getters & Setters
      */

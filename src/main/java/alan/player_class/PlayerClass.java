@@ -461,6 +461,31 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setRogueClass(){
 
+         //Core traits
+         owner.grantLanguage(Constants.LANGUAGE.THIEVES_CANT);
+        primaryAbilities.add(Constants.ABILITY.DEXTERITY);
+        setHitPointDie(8);
+        owner.grantAbilityProficiency(Constants.ABILITY.DEXTERITY);
+        owner.grantAbilityProficiency(Constants.ABILITY.INTELLIGENCE);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(12);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(13);
+
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.STEALTH);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.SLEIGHT_OF_HAND);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ACROBATICS);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.DECEPTION);
+        owner.grantSkillExpertise(Constants.SKILL_KEY.STEALTH);
+        owner.grantSkillExpertise(Constants.SKILL_KEY.SLEIGHT_OF_HAND);
     }
 
     public void setSorcererClass(){

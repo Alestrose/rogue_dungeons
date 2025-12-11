@@ -56,6 +56,7 @@ C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\pl
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\Cleric.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\Druid.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\BardicInspiration.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\FavoredEnemy.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\LayOnHands.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\MartialArts.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\features\class_features\Rage.java
@@ -77,6 +78,7 @@ C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\pl
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\Paladin.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\PlayerClass.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\PlayerClassInterface.java
+C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\Ranger.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\player_class\SpellSlots.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\races\Aasimar.java
 C:\Users\almcg\Projects\rogue_dungeons_repo\rogue_dungeons\src\main\java\alan\races\Dragonborn.java

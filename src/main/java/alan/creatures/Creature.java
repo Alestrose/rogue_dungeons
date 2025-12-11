@@ -230,6 +230,13 @@ public abstract class Creature {
         }
     }
 
+    public void grantSkillExpertise(Constants.SKILL_KEY skill_key) {
+        Skill skill = skills.get(skill_key);
+        if (skill != null) {
+            skill.setHasExpertise(true);
+        }
+    }
+
     public void grantSkillBonus(Constants.SKILL_KEY skill_key, int i){
         Skill skill = skills.get(skill_key);
         if (skill != null) {
@@ -315,24 +322,24 @@ public abstract class Creature {
      * Each skill key enum in Constants is added to the abilitiy map manually here, as new skill object
      */
     private void setDefaultSkills(){
-        skills.put(Constants.SKILL_KEY.ATHLETICS, new Skill("athletics", abilities.get(Constants.ABILITY.STRENGTH).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.ACROBATICS, new Skill("acrobatics", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.ATHLETICS,       new Skill("athletics", abilities.get(Constants.ABILITY.STRENGTH).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.ACROBATICS,      new Skill("acrobatics", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
         skills.put(Constants.SKILL_KEY.SLEIGHT_OF_HAND, new Skill("sleight of Hand", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.STEALTH, new Skill("stealth", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.ARCANA, new Skill("arcana", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.HISTORY, new Skill("history", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.INVESTIGATION, new Skill("investigation", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.NATURE, new Skill("nature", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.RELIGION, new Skill("religion", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.STEALTH,         new Skill("stealth", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.ARCANA,          new Skill("arcana", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.HISTORY,         new Skill("history", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.INVESTIGATION,   new Skill("investigation", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.NATURE,          new Skill("nature", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.RELIGION,        new Skill("religion", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
         skills.put(Constants.SKILL_KEY.ANIMAL_HANDLING, new Skill("animal handling", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.INSIGHT, new Skill("insight", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.MEDICINE, new Skill("medicine", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.PERCEPTION, new Skill("perception", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.SURVIVAL, new Skill("survival", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.DECEPTION, new Skill("deception", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.INTIMIDATION, new Skill("intimidation", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.PERFORMANCE, new Skill("performance", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.PERSUASION, new Skill("persuasion", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.INSIGHT,         new Skill("insight", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.MEDICINE,        new Skill("medicine", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.PERCEPTION,      new Skill("perception", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.SURVIVAL,        new Skill("survival", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.DECEPTION,       new Skill("deception", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.INTIMIDATION,    new Skill("intimidation", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.PERFORMANCE,     new Skill("performance", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+        skills.put(Constants.SKILL_KEY.PERSUASION,      new Skill("persuasion", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
     }
 
     /*

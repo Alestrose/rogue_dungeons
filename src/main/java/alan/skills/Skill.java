@@ -8,6 +8,7 @@ public class Skill {
     private int valueBonus = 0;
     private boolean hasProficiency = false;
     private boolean hasAdvantage = false;
+    private boolean hasExpertise = false;
 
 
     public Skill(String skillName, int abilityModifier, int proficiencyBonus){
@@ -15,6 +16,18 @@ public class Skill {
         this.abilityModifier = abilityModifier;
         this.proficiencyBonus = proficiencyBonus;
         this.value = abilityModifier + valueBonus;
+    }
+
+
+    /*
+        Methods
+     */
+
+
+    public void setExpertise(boolean hasExpertise) {
+        if(hasProficiency) value = abilityModifier + (proficiencyBonus * 2);
+        else System.err.println("Character needs to be proficent with this skill to gain expertise");
+        this.hasExpertise = hasExpertise;
     }
 
     /*
@@ -78,6 +91,17 @@ public class Skill {
         this.valueBonus = valueBonus;
         this.value = abilityModifier + valueBonus;
     }
+
+    public boolean isHasExpertise() {
+        return hasExpertise;
+    }
+
+    public void setHasExpertise(boolean hasExpertise) {
+        if(hasProficiency) value = abilityModifier + (proficiencyBonus * 2);
+        else System.err.println("Character needs to be proficent with this skill to gain expertise");
+        this.hasExpertise = hasExpertise;
+    }
+    
     
     
 }
