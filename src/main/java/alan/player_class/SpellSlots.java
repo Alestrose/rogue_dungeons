@@ -12,6 +12,7 @@ public class SpellSlots {
     int maxLevelSevenSlots = 0, currentLevelSevenSlots = 0;
     int maxLevelEightSlots = 0, currentLevelEightSlots = 0;
     int maxLevelNineSlots = 0,  currentLevelNineSlots = 0;
+    int maxLevelWarlockSlots = 0,  currentLevelWarlockSlots = 0, warlockSpellLevel = 0;
 
     public SpellSlots(){
 
@@ -31,6 +32,7 @@ public class SpellSlots {
         setCurrentLevelSevenSlots(getMaxLevelSevenSlots());
         setCurrentLevelEightSlots(getMaxLevelEightSlots());
         setCurrentLevelNineSlots(getMaxLevelNineSlots());
+        setCurrentLevelWarlockSlots(getMaxLevelWarlockSlots());
     }
 
 
@@ -204,6 +206,30 @@ public class SpellSlots {
 
     public void setNumKnownSpells(int numKnownSpells) {
         this.numKnownSpells = numKnownSpells;
+    }
+
+    public int getMaxLevelWarlockSlots() {
+        return maxLevelWarlockSlots;
+    }
+
+    public void setMaxLevelWarlockSlots(int maxLevelWarlockSlots) {
+        this.maxLevelWarlockSlots = maxLevelWarlockSlots;
+    }
+
+    public int getCurrentLevelWarlockSlots() {
+        return currentLevelWarlockSlots;
+    }
+
+    public void setCurrentLevelWarlockSlots(int currentLevelWarlockSlots) {
+        this.currentLevelWarlockSlots = currentLevelWarlockSlots;
+    }
+
+    public int getWarlockSpellLevel() {
+        return warlockSpellLevel;
+    }
+
+    public void setWarlockSpellLevel(int warlockSpellLevel) {
+        this.warlockSpellLevel = warlockSpellLevel;
     }
 
     

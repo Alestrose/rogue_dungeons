@@ -26,7 +26,7 @@ public class GuidingBolt extends SpellAbstract implements SpellInterface{
         levelSpellPrimaryDie(1, spellLevel);
         
         target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        target.isAttackRollAdvantage();     // Until end of targets next turn
+        target.isMelleeAttackRollAdvantage();     // Until end of targets next turn
     }
 
     @Override

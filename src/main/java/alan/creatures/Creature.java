@@ -12,6 +12,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import alan.Constants;
+import alan.equipment.Weapon;
 import alan.player_class.PlayerClass;
 import alan.skills.Ability;
 import alan.skills.ConditionEffect;
@@ -23,7 +24,7 @@ public abstract class Creature {
     private int proficiencyBonus = 2;
     private int
         inspirationDie = 0, TempAcBonus, maxHealth, tempHealth, currentHealth, speed, dc = 10, 
-        x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellAttackBonus, 
+        x,y, width, height, actions = 1, bonusActions = 1, reactions = 1, spellSaveDC, spellSaveDCBonus , spellAttackBonus, 
         jumpDistance, auraDamage, melleeAttackRollBonus = 0, rangedAttackRollBonus = 0,
         attackRollReduction, damageRollReduction, abilityCheckReduction, savingThrowDecrease, 
         attackRollIncrease, damageRollIncrease, nextHitDamageRollIncrease, abilityCheckIncrease, 
@@ -38,7 +39,10 @@ public abstract class Creature {
 
     // Booleans
     private boolean canOpportunityAttack = true;
-    private boolean attackRollDisadvantage, attackRollAdvantage, isWearingArmor = false, hasShieldEquiped = false;
+    private boolean melleeAttackRollDisadvantage, melleeAttackRollAdvantage,
+                    rangedAttackRollDisadvantage, rangedAttackRollAdvantage,
+                    spellAttackRollAdvantage, spellAttackRollDisadvantage,
+                    isWearingArmor = false, hasShieldEquiped = false;
     private boolean hasInspiration = false;
 
     // Classes
@@ -56,6 +60,11 @@ public abstract class Creature {
     protected Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities = new HashMap<>();
     protected Map<Constants.DAMAGE_TYPE, Boolean> inVulnerabilities = new HashMap<>();
     protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionEffects = new HashMap<>();
+
+    // Inventory and Equipments
+    // Will be replaced with inventory class
+    private Weapon equipedWeapon = null;
+    protected Map<Constants.WEAPON_KEY, Weapon> weapons = new HashMap<>();
 
     // No Cell location Constructor
     public Creature(String name, String fileName, PlayerClass primaryClass){
@@ -251,13 +260,6 @@ public abstract class Creature {
         }
     }
 
-    /*
-     * public void setValueBonus(int valueBonus) {
-        this.valueBonus = valueBonus;
-        this.value = abilityModifier + valueBonus;
-    }
-     */
-
     public void grantSkillAdvantage(Constants.SKILL_KEY skill_key) {
         Skill skill = skills.get(skill_key);
         if (skill != null) {
@@ -274,6 +276,20 @@ public abstract class Creature {
         if (!armorProficiencies.contains(e)) armorProficiencies.add(e);
         else System.err.println("Creature is already proficient in " + e.name());  
     }
+
+    public void addWeapon(Constants.WEAPON_KEY key, Weapon w){
+        if(w instanceof Weapon && !weapons.containsValue(w)){
+            weapons.put(key, w);
+        }
+    }
+
+    public void removeWeapon(Constants.WEAPON_KEY key){
+        if(weapons.containsKey(key)){
+            weapons.remove(key);
+        }
+    }
+
+    
     
 
     /*
@@ -619,20 +635,20 @@ public abstract class Creature {
         this.proficiencyBonus = proficiencyBonus;
     }
 
-    public boolean isAttackRollDisadvantage() {
-        return attackRollDisadvantage;
+    public boolean isMelleeAttackRollDisadvantage() {
+        return melleeAttackRollDisadvantage;
     }
 
-    public void setAttackRollDisadvantage(boolean attackRollDisadvantage) {
-        this.attackRollDisadvantage = attackRollDisadvantage;
+    public void setMelleeAttackRollDisadvantage(boolean melleeAttackRollDisadvantage) {
+        this.melleeAttackRollDisadvantage = melleeAttackRollDisadvantage;
     }
 
-    public boolean isAttackRollAdvantage() {
-        return attackRollAdvantage;
+    public boolean isMelleeAttackRollAdvantage() {
+        return melleeAttackRollAdvantage;
     }
 
-    public void setAttackRollAdvantage(boolean attackRollAdvantage) {
-        this.attackRollAdvantage = attackRollAdvantage;
+    public void setMelleeAttackRollAdvantage(boolean melleeAttackRollAdvantage) {
+        this.melleeAttackRollAdvantage = melleeAttackRollAdvantage;
     }
 
     public int getTempHealth() {
@@ -835,10 +851,63 @@ public abstract class Creature {
         this.hasShieldEquiped = hasShieldEquiped;
     }
 
-    
-    
-    
+    public boolean isSpellAttackRollAdvantage() {
+        return spellAttackRollAdvantage;
+    }
 
+    public void setSpellAttackRollAdvantage(boolean spellAttackRollAdvantage) {
+        this.spellAttackRollAdvantage = spellAttackRollAdvantage;
+    }
+
+    public boolean isSpellAttackRollDisadvantage() {
+        return spellAttackRollDisadvantage;
+    }
+
+    public void setSpellAttackRollDisadvantage(boolean spellAttackRollDisadvantage) {
+        this.spellAttackRollDisadvantage = spellAttackRollDisadvantage;
+    }
+
+    public boolean isRangedAttackRollDisadvantage() {
+        return rangedAttackRollDisadvantage;
+    }
+
+    public void setRangedAttackRollDisadvantage(boolean rangedAttackRollDisadvantage) {
+        this.rangedAttackRollDisadvantage = rangedAttackRollDisadvantage;
+    }
+
+    public boolean isRangedAttackRollAdvantage() {
+        return rangedAttackRollAdvantage;
+    }
+
+    public void setRangedAttackRollAdvantage(boolean rangedAttackRollAdvantage) {
+        this.rangedAttackRollAdvantage = rangedAttackRollAdvantage;
+    }
+
+    public Map<Constants.WEAPON_KEY, Weapon> getWeapons() {
+        return weapons;
+    }
+
+    public void setWeapons(Map<Constants.WEAPON_KEY, Weapon> weapons) {
+        this.weapons = weapons;
+    }
+
+    public Weapon getEquipedWeapon() {
+        return equipedWeapon;
+    }
+
+    public void setEquipedWeapon(Weapon equipedWeapon) {
+        this.equipedWeapon = equipedWeapon;
+    }
+
+    public int getSpellSaveDCBonus() {
+        return spellSaveDCBonus;
+    }
+
+    public void setSpellSaveDCBonus(int spellSaveDCBonus) {
+        this.spellSaveDCBonus = spellSaveDCBonus;
+    }
+
+    
 }
 
 

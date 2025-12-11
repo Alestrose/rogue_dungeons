@@ -18,15 +18,24 @@ public class SneakAttack extends FeatureAbstract{
         setQuantityOfDie(1);
     }
 
-    // Requires implementation of weapon attacks
+    // Checks if player has advantage with their weapon types
+    // Rolls to hit for attack type (ranged or mellee)
+    // Deals sneak attack damage and weapon attack damage on hit
     @Override
-    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
-            int spellLevel) {
-        // TODO Auto-generated method stub
+    public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         super.cast(caster, target, targetList, cell, damage_type, spellLevel);
-        if(caster.isAttackRollAdvantage()){
-            target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        }
+        if(caster.isMelleeAttackRollAdvantage() && caster.getEquipedWeapon().isMelee()){
+            if(rollToHitACMellee(target, caster)) {
+                target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+                target.damageHealth(rollDamage(caster.getEquipedWeapon().getDamageDice(), caster.getEquipedWeapon().getDamageDiceQuantity()));
+            } else System.err.println("Missed");
+        }else if (caster.isRangedAttackRollAdvantage() && caster.getEquipedWeapon().isRanged()) {
+            if(rollToHitACRanged(target, caster)) {
+                target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+                target.damageHealth(rollDamage(caster.getEquipedWeapon().getDamageDice(), caster.getEquipedWeapon().getDamageDiceQuantity()));
+            } else System.err.println("Missed");
+        }else System.err.println("Must have advantage to sneak attack");
+
         
     }
 

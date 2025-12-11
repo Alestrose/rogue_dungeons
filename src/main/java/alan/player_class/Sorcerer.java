@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
-import alan.player_class.features.class_features.BardicInspiration;
+import alan.player_class.features.class_features.InnateSorcery;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.FireBolt;
 import alan.spells.cantrips.RayOfFrost;
@@ -21,7 +21,7 @@ public class Sorcerer extends PlayerClass{
         super(playerClass);
 
         // Level One Class Feats
-        grantFeature(Constants.FEATURE.BARDIC_INSPIRATION, new BardicInspiration());
+        grantFeature(Constants.FEATURE.INNATE_SORCERY, new InnateSorcery());
 
         // Setting level one spell slots
         sorcererSpellSlots.setNumKnownCantrips(4);

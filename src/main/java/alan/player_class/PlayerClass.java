@@ -7,6 +7,7 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.creatures.Creature;
+import alan.equipment.weapons.Shortbow;
 import alan.player_class.features.FeatureAbstract;
 import alan.player_class.features.class_features.WeaponMastery;
 import alan.spells.SpellAbstract;
@@ -461,8 +462,8 @@ public class PlayerClass implements PlayerClassInterface{
 
     public void setRogueClass(){
 
-         //Core traits
-         owner.grantLanguage(Constants.LANGUAGE.THIEVES_CANT);
+        //Core traits
+        owner.grantLanguage(Constants.LANGUAGE.THIEVES_CANT);
         primaryAbilities.add(Constants.ABILITY.DEXTERITY);
         setHitPointDie(8);
         owner.grantAbilityProficiency(Constants.ABILITY.DEXTERITY);
@@ -486,9 +487,31 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantSkillProficiency(Constants.SKILL_KEY.DECEPTION);
         owner.grantSkillExpertise(Constants.SKILL_KEY.STEALTH);
         owner.grantSkillExpertise(Constants.SKILL_KEY.SLEIGHT_OF_HAND);
+
+        // Equipment
+        owner.addWeapon(Constants.WEAPON_KEY.SHORTBOW, new Shortbow(owner));
+        owner.setEquipedWeapon(owner.getWeapons().get(Constants.WEAPON_KEY.SHORTBOW));
     }
 
     public void setSorcererClass(){
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.CHARISMA);
+        setHitPointDie(6);
+        owner.grantAbilityProficiency(Constants.ABILITY.CONSTITUTION);
+        owner.grantAbilityProficiency(Constants.ABILITY.CHARISMA);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(12);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(15);
+
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ARCANA);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.DECEPTION);
         
         // Adding spells to classes spell map
         {
@@ -516,6 +539,25 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public void setWarlockClass(){
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.CHARISMA);
+        setHitPointDie(8);
+        owner.grantAbilityProficiency(Constants.ABILITY.WISDOM);
+        owner.grantAbilityProficiency(Constants.ABILITY.CHARISMA);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(12);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(10);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(15);
+
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.INVESTIGATION);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.INTIMIDATION);
 
         // Adding spells to classes spell map
         {

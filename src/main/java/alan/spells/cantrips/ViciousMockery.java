@@ -25,7 +25,7 @@ public class ViciousMockery extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        target.setAttackRollDisadvantage(true);
+        target.setMelleeAttackRollDisadvantage(true);
         
     }
 
