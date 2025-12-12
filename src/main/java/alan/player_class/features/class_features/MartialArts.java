@@ -20,15 +20,12 @@ public class MartialArts extends FeatureAbstract{
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
-            int spellLevel) {
-        // TODO Auto-generated method stub
-        super.cast(caster, target, targetList, cell, damage_type, spellLevel);
+            int spellLevel) {;
         if(!caster.isWearingArmor() && !caster.isHasShieldEquiped()){
             //rollToHitAC(caster, caster)
             if(rollToHitACMellee(target, caster)){
                 target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()) + caster.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod());
             }
-            
         }
     }
 

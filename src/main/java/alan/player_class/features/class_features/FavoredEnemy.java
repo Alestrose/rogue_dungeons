@@ -23,7 +23,6 @@ public class FavoredEnemy extends FeatureAbstract{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
-        // TODO Auto-generated method stub
         if(getResourceQuanity() > 0){
             huntersMark.cast(caster, target, targetList, cell, damage_type, spellLevel);
         } else System.err.println("No remaining free uses available. Take a long rest to refresh");
@@ -32,14 +31,12 @@ public class FavoredEnemy extends FeatureAbstract{
 
     @Override
     public void onLongRest() {
-        // TODO Auto-generated method stub
         super.onLongRest();
         setResourceQuanity(2);
     }
 
     @Override
     public void onShortRest() {
-        // TODO Auto-generated method stub
         super.onShortRest(); 
     }
 

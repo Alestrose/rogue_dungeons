@@ -21,16 +21,34 @@ public class InnateSorcery extends FeatureAbstract{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
-        // TODO Auto-generated method stub
         caster.setSpellSaveDCBonus(1);
         caster.setSpellAttackRollAdvantage(true);
-        super.cast(caster, target, targetList, cell, damage_type, spellLevel);
     }
 
     @Override
     public String descreiption() {
-        // TODO Auto-generated method stub
-        return super.descreiption();
+        return """
+               An event in your past left an indelible mark on you,\r
+               infusing you with simmering magic. As a Bonus\r
+               Action, you can unleash that magic for 1 minute,\r
+               during which you gain the following benefits:\r
+               \u2022 The spell save DC of your Sorcerer spells\r
+               increases by 1.\r
+               \u2022 You have Advantage on the attack rolls of\r
+               Sorcerer spells you cast.\r
+               You can use this feature twice, and you regain all\r
+               expended uses of it when you fin ish a Long Rest.\r
+               """ //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        //
+        ;
     }
 
     @Override

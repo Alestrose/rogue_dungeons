@@ -27,8 +27,6 @@ public class LayOnHands extends FeatureAbstract{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
-        // TODO Auto-generated method stub
-        super.cast(caster, target, targetList, cell, damage_type, spellLevel);
         if(getResourceQuanity() > 0 && hitPool > 0){
             int targetMissingHealth = target.getMaxHealth() - target.getCurrentHealth();
             int toHeal = hitPool - targetMissingHealth;

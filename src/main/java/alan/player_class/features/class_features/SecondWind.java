@@ -23,8 +23,6 @@ public class SecondWind extends FeatureAbstract{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
-        // TODO Auto-generated method stub
-        super.cast(caster, target, targetList, cell, damage_type, spellLevel);
         if(getResourceQuanity() > 0) caster.healHealth(rollDamage(getDamageDie(), getQuantityOfDie()) + caster.getPrimaryClass().getClassLevel());
         else System.err.println(caster.getPrimaryClass() + ": " + caster.getName() + " has no available uses left. Short or long rest to regain this resource");
         

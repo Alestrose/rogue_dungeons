@@ -35,7 +35,6 @@ public class Rage extends FeatureAbstract{
 
     @Override
     public String descreiption() {
-        // TODO Auto-generated method stub
         return """
                You can imbue yourself with a primal power called\r
                Rage, a force that grants you extraordinary might\r

@@ -19,7 +19,6 @@ public class UnarmoredDefense extends FeatureAbstract{
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
-        System.out.println("UnarmoredDefense Cast");
         if(playerClass == Constants.CLASS.BARBARIAN) caster.getArmorClass().setHasUnarmoredDefenseBarbarianFeat(true);
         if(playerClass == Constants.CLASS.MONK) caster.getArmorClass().setHasUnarmoredDefenseMonkFeat(true);
         caster.getArmorClass().setAC();
@@ -27,7 +26,6 @@ public class UnarmoredDefense extends FeatureAbstract{
 
     @Override
     public String descreiption() {
-        // TODO Auto-generated method stub
         return """
                (Barbarian) While you aren't wearing any armor, your base Ar-\r
                mor Class equals 10 plus your Dexterity and Consti-\r

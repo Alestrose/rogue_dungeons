@@ -23,7 +23,7 @@ public class SneakAttack extends FeatureAbstract{
     // Deals sneak attack damage and weapon attack damage on hit
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
-        super.cast(caster, target, targetList, cell, damage_type, spellLevel);
+
         if(caster.isMelleeAttackRollAdvantage() && caster.getEquipedWeapon().isMelee()){
             if(rollToHitACMellee(target, caster)) {
                 target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
