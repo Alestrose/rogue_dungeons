@@ -33,6 +33,7 @@ public abstract class Weapon implements DiceRoll{
     private boolean isMartial = false;
     private boolean isMelee = false;
     private boolean isRanged = false;
+    private boolean isPactWeapon = false;
 
     /*
      *  setWeaponKey(Constants.WEAPON_KEY.CLUB);
@@ -59,7 +60,10 @@ public abstract class Weapon implements DiceRoll{
         int modifier = wielder.getAbilities().get(Constants.ABILITY.STRENGTH).getAbilityMod();
 
         // If finesse weapon and dex > str, set modifier to dex modifier
-        if(isFinesse && 
+        if (isPactWeapon) {
+            modifier = wielder.getAbilities().get(Constants.ABILITY.CHARISMA).getAbilityMod();
+        }
+        else if(isFinesse && 
         wielder.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod() 
         > wielder.getAbilities().get(Constants.ABILITY.STRENGTH).getAbilityMod()){
             modifier = wielder.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
@@ -299,6 +303,18 @@ public abstract class Weapon implements DiceRoll{
 
     public void setRanged(boolean isRanged) {
         this.isRanged = isRanged;
+    }
+
+    public void setReach(boolean isReach) {
+        this.isReach = isReach;
+    }
+
+    public boolean isPactWeapon() {
+        return isPactWeapon;
+    }
+
+    public void setPactWeapon(boolean isPactWeapon) {
+        this.isPactWeapon = isPactWeapon;
     }
 
     
