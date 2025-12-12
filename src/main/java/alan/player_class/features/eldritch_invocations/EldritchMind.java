@@ -5,34 +5,29 @@ import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.grid_panel.Cell;
 import alan.player_class.features.FeatureAbstract;
-import alan.spells.level_one.MageArmor;
 
-public class ArmorOfShadows extends FeatureAbstract{
-    private final MageArmor mageArmor = new MageArmor();
+public class EldritchMind extends FeatureAbstract{
 
-    public ArmorOfShadows() {
-        setClassFeatureKey(Constants.FEATURE.ARMOR_OF_SHADOWS);
-        setAction(true);
-        setActive(true);
+    public EldritchMind() {
+        setClassFeatureKey(Constants.FEATURE.ELDRITCH_MIND);
+        setPassive(true);
         setFeatureLevel(1);
         setFeatType(Constants.FEAT_TYPE.ELDRITCH_INVOCATION);
-        
     }
 
-    @Override
+    @Override   // Grants the caster advantage on constitution concentration checks
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
-        mageArmor.cast(caster, target, targetList, cell, damage_type, spellLevel);
+        caster.getAbilities().get(Constants.ABILITY.CONSTITUTION).setConcentrationAdvantage(true);
     }
 
     @Override
     public String descreiption() {
         return """
-               You can cast Mage Armor on yourself without ex-\r
-               pending a spell slot.""" //
+               You have Advantage on Constitution saving throws\r
+               that you make to maintain Concentration.""" //
         ;
     }
 
-    
     
 }

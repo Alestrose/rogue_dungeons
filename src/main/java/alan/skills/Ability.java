@@ -9,6 +9,7 @@ public class Ability {
     private boolean saveDisadvantage = false;
     private boolean checkAdvantage = false;
     private boolean checkDisadvantage = false;
+    private boolean concentrationAdvantage = false; // For use with constitution concentration saves
     private int saveBonus = 0;
     private int savePenalty = 0;
 
@@ -26,9 +27,6 @@ public class Ability {
         // TODO Auto-generated method stub
         return abilityName + ": " + abilityScore + "/" + abilityMod;
     }
-
-
-
 
     public String getAbilityName() {
         return abilityName;
@@ -132,6 +130,18 @@ public class Ability {
 
     public void setHasProficiency(boolean hasProficiency) {
         this.hasProficiency = hasProficiency;
+    }
+
+    public void setAbilityMod(int abilityMod) {
+        this.abilityMod = abilityMod;
+    }
+
+    public boolean isConcentrationAdvantage() {
+        return concentrationAdvantage;
+    }
+
+    public void setConcentrationAdvantage(boolean concentrationAdvantage) {
+        this.concentrationAdvantage = concentrationAdvantage;
     }
     
     
