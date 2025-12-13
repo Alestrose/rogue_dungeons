@@ -1,6 +1,7 @@
-package alan.player_class;
+package alan.player_class.classes;
 
 import alan.Constants;
+import alan.player_class.PlayerClass;
 import alan.player_class.features.class_features.Rage;
 import alan.player_class.features.class_features.UnarmoredDefense;
 import alan.player_class.features.class_features.WeaponMastery;

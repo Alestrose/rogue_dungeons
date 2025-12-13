@@ -1,9 +1,11 @@
-package alan.player_class;
+package alan.player_class.classes;
 
 import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
+import alan.player_class.PlayerClass;
+import alan.player_class.SpellSlots;
 import alan.spells.SpellAbstract;
 import alan.spells.cantrips.Guidance;
 import alan.spells.cantrips.SacredFlame;

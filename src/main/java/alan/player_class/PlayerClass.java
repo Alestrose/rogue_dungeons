@@ -590,6 +590,24 @@ public class PlayerClass implements PlayerClassInterface{
     }
 
     public void setWizardClass(){
+        //Core traits
+        primaryAbilities.add(Constants.ABILITY.INTELLIGENCE);
+        setHitPointDie(6);
+        owner.grantAbilityProficiency(Constants.ABILITY.INTELLIGENCE);
+        owner.grantAbilityProficiency(Constants.ABILITY.WISDOM);
+        owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
+
+        // Ability scores (standard array)
+        owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(8);
+        owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(12);
+        owner.getAbilities().get(Constants.ABILITY.CONSTITUTION).setAbilityScore(14);
+        owner.getAbilities().get(Constants.ABILITY.INTELLIGENCE).setAbilityScore(15);
+        owner.getAbilities().get(Constants.ABILITY.WISDOM).setAbilityScore(13);
+        owner.getAbilities().get(Constants.ABILITY.CHARISMA).setAbilityScore(10);
+
+        // Future choice
+        owner.grantSkillProficiency(Constants.SKILL_KEY.ARCANA);
+        owner.grantSkillProficiency(Constants.SKILL_KEY.INSIGHT);
 
         // Adding spells to classes spell map
         {

@@ -4,12 +4,12 @@ import java.util.ArrayList;
 
 import alan.Constants;
 import alan.grid_panel.Grid;
-import alan.player_class.Barbarian;
-import alan.player_class.Bard;
-import alan.player_class.Cleric;
-import alan.player_class.Druid;
-import alan.player_class.Monk;
-import alan.player_class.Paladin;
+import alan.player_class.classes.Barbarian;
+import alan.player_class.classes.Bard;
+import alan.player_class.classes.Cleric;
+import alan.player_class.classes.Druid;
+import alan.player_class.classes.Monk;
+import alan.player_class.classes.Paladin;
 import alan.races.Aasimar;
 import alan.races.Dragonborn;
 import alan.races.Dwarf;
