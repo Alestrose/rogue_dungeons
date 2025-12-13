@@ -22,6 +22,7 @@ public class ArmorOfShadows extends FeatureAbstract{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
+        
         mageArmor.cast(caster, target, targetList, cell, damage_type, spellLevel);
     }
 
