@@ -20,11 +20,11 @@ public class PactOfTheBlade extends FeatureAbstract{
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type,
             int spellLevel) {
         // Sets attack roll bonus to charisma modifier based on melle or ranged weapon
-        if (caster.getEquipedWeapon().isMelee()) {
+        if (caster.getEquipment().getMainHand().isMelee()) {
             caster.setMelleeAttackRollBonus(caster.getAbilities().get(Constants.ABILITY.CHARISMA).getAbilityMod());
         }else caster.setRangedAttackRollBonus(caster.getAbilities().get(Constants.ABILITY.CHARISMA).getAbilityMod());
 
-        caster.getEquipedWeapon().setPactWeapon(true);
+        caster.getEquipment().getMainHand().setPactWeapon(true);
     }
 
     @Override

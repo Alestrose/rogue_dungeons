@@ -126,8 +126,6 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
 
-        
-
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
         owner.getAbilities().get(Constants.ABILITY.DEXTERITY).setAbilityScore(13);
@@ -489,8 +487,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantSkillExpertise(Constants.SKILL_KEY.SLEIGHT_OF_HAND);
 
         // Equipment
-        owner.addWeapon(Constants.WEAPON_KEY.SHORTBOW, new Shortbow(owner));
-        owner.setEquipedWeapon(owner.getWeapons().get(Constants.WEAPON_KEY.SHORTBOW));
+
     }
 
     public void setSorcererClass(){

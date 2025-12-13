@@ -12,7 +12,6 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import alan.Constants;
-import alan.equipment.Weapon;
 import alan.player_class.PlayerClass;
 import alan.skills.Ability;
 import alan.skills.ConditionEffect;
@@ -62,9 +61,7 @@ public abstract class Creature {
     protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionEffects = new HashMap<>();
 
     // Inventory and Equipments
-    // Will be replaced with inventory class
-    private Weapon equipedWeapon = null;
-    protected Map<Constants.WEAPON_KEY, Weapon> weapons = new HashMap<>();
+    private Equipment equipment = new Equipment();
 
     // No Cell location Constructor
     public Creature(String name, String fileName, PlayerClass primaryClass){
@@ -276,21 +273,6 @@ public abstract class Creature {
         if (!armorProficiencies.contains(e)) armorProficiencies.add(e);
         else System.err.println("Creature is already proficient in " + e.name());  
     }
-
-    public void addWeapon(Constants.WEAPON_KEY key, Weapon w){
-        if(w instanceof Weapon && !weapons.containsValue(w)){
-            weapons.put(key, w);
-        }
-    }
-
-    public void removeWeapon(Constants.WEAPON_KEY key){
-        if(weapons.containsKey(key)){
-            weapons.remove(key);
-        }
-    }
-
-    
-    
 
     /*
      * Each damage type key enum in Constants is added to the resistances, vulnerabilities and inVulnerabilities maps, and sets to false
@@ -883,28 +865,20 @@ public abstract class Creature {
         this.rangedAttackRollAdvantage = rangedAttackRollAdvantage;
     }
 
-    public Map<Constants.WEAPON_KEY, Weapon> getWeapons() {
-        return weapons;
-    }
-
-    public void setWeapons(Map<Constants.WEAPON_KEY, Weapon> weapons) {
-        this.weapons = weapons;
-    }
-
-    public Weapon getEquipedWeapon() {
-        return equipedWeapon;
-    }
-
-    public void setEquipedWeapon(Weapon equipedWeapon) {
-        this.equipedWeapon = equipedWeapon;
-    }
-
     public int getSpellSaveDCBonus() {
         return spellSaveDCBonus;
     }
 
     public void setSpellSaveDCBonus(int spellSaveDCBonus) {
         this.spellSaveDCBonus = spellSaveDCBonus;
+    }
+
+    public Equipment getEquipment() {
+        return equipment;
+    }
+
+    public void setEquipment(Equipment equipment) {
+        this.equipment = equipment;
     }
 
     
