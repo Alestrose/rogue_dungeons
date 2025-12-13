@@ -10,7 +10,7 @@ public class Pistol extends Weapon{
         super(wielder);
         setWeaponKey(Constants.WEAPON_KEY.PISTOL);
         String s = getWeaponKey().name().toLowerCase().replace('_', ' ');
-        setWeaponName(s.substring(0, 1).toUpperCase() + s.substring(1));
+        setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.PIERCING);
         setMasterySkill(Constants.MASTERY_SKILL.VEX);
         setDamageDice(10);

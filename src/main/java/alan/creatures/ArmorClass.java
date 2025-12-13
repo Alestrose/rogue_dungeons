@@ -15,7 +15,7 @@ public class ArmorClass {
     private int bonusToAc = 0;
     private int tempBonusToAc = 0;
 
-    private Constants.ARMOR_KEY armorType;;
+    private Constants.ARMOR_KEY armorType;
 
     private int constitutionModifier;
     private int dexterityModifier;

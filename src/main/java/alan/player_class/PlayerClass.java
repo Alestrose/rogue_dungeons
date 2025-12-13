@@ -7,7 +7,6 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.equipment.weapons.Shortbow;
 import alan.player_class.features.FeatureAbstract;
 import alan.player_class.features.class_features.WeaponMastery;
 import alan.spells.SpellAbstract;

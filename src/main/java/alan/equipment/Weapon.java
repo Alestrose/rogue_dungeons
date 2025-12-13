@@ -11,7 +11,6 @@ public abstract class Weapon extends Item implements DiceRoll{
     private Constants.WEAPON_KEY weaponKey;
     private Constants.DAMAGE_TYPE weaponDamageType;
     private Constants.MASTERY_SKILL masterySkill;
-    private String weaponName;
     private int damageDice;
     private int damageDiceTwoHanded = 0;
     private int damageDiceQuantity;
@@ -19,7 +18,7 @@ public abstract class Weapon extends Item implements DiceRoll{
     private int reach;
     private int range;
     private double  weight;
-    private double cost;
+    
 
     // properties
     private boolean isLight = false;
@@ -136,14 +135,6 @@ public abstract class Weapon extends Item implements DiceRoll{
 
     public void setMasterySkill(Constants.MASTERY_SKILL masterySkill) {
         this.masterySkill = masterySkill;
-    }
-
-    public String getWeaponName() {
-        return weaponName;
-    }
-
-    public void setWeaponName(String weaponName) {
-        this.weaponName = weaponName;
     }
 
     public int getDamageDice() {
@@ -264,14 +255,6 @@ public abstract class Weapon extends Item implements DiceRoll{
 
     public void setWeight(double  weight) {
         this.weight = weight;
-    }
-
-    public double getCost() {
-        return cost;
-    }
-
-    public void setCost(double cost) {
-        this.cost = cost;
     }
 
     public boolean isSimple() {

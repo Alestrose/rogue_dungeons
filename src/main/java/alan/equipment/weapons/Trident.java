@@ -10,7 +10,7 @@ public class Trident extends Weapon{
         super(wielder);
         setWeaponKey(Constants.WEAPON_KEY.TRIDENT);
         String s = getWeaponKey().name().toLowerCase().replace('_', ' ');
-        setWeaponName(s.substring(0, 1).toUpperCase() + s.substring(1));
+        setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.PIERCING);
         setMasterySkill(Constants.MASTERY_SKILL.TOPPLE);
         setDamageDice(8);

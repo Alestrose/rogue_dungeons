@@ -5,6 +5,7 @@ import alan.Constants;
 public abstract class Item {
     private Constants.ITEM_TYPE itemType;
     private String name;
+    private double cost;
 
     public Item() {
 
@@ -26,6 +27,16 @@ public abstract class Item {
         this.name = name;
     }
 
+    public double getCost() {
+        return cost;
+    }
+
+    public void setCost(double cost) {
+        this.cost = cost;
+    }
+
+
+    
     
     
 
