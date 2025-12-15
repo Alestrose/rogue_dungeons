@@ -4,9 +4,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
+import alan.Constants.ABILITY;
+import alan.Constants.ARMOR_KEY;
+import static alan.Constants.ARMOR_KEY.SHIELD_ARMOR;
+import alan.equipment.ArmorAbstract;
 import alan.skills.Ability;
 
 public class ArmorClass {
+    private ArmorAbstract armor;
+    private ArmorAbstract shield;
     private int ac;
     private int baseAC = 10;
     private int armourAC = 0;
@@ -15,7 +21,7 @@ public class ArmorClass {
     private int bonusToAc = 0;
     private int tempBonusToAc = 0;
 
-    private Constants.ARMOR_KEY armorType;
+    private ARMOR_KEY armorKey = ARMOR_KEY.UNARMORED;
 
     private int constitutionModifier;
     private int dexterityModifier;
@@ -28,15 +34,15 @@ public class ArmorClass {
     private boolean hasUnarmoredDefenseMonkFeat = false;
     private boolean stealthDisadvantage = false;
 
-    protected Map<Constants.ABILITY, Ability> abilities = new HashMap<>();
+    protected Map<ABILITY, Ability> abilities = new HashMap<>();
 
     // Ac is set in PlayableCharacter constructor and should be set again when equiping/unequiping armor and shields
 
-    public ArmorClass(Map<Constants.ABILITY, Ability> abilities){
+    public ArmorClass(Map<ABILITY, Ability> abilities){
         this.abilities = abilities;
-        this.constitutionModifier = this.abilities.get(Constants.ABILITY.CONSTITUTION).getAbilityMod();
-        this.dexterityModifier = this.abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod();
-        this.wisdomModifier = this.abilities.get(Constants.ABILITY.WISDOM).getAbilityMod();
+        this.constitutionModifier = this.abilities.get(ABILITY.CONSTITUTION).getAbilityMod();
+        this.dexterityModifier = this.abilities.get(ABILITY.DEXTERITY).getAbilityMod();
+        this.wisdomModifier = this.abilities.get(ABILITY.WISDOM).getAbilityMod();
     }
 
     public int getAC() {
@@ -46,13 +52,17 @@ public class ArmorClass {
     public void setAC() {
 
         // Update ability modifiers
-        this.constitutionModifier = abilities.get(Constants.ABILITY.CONSTITUTION).getAbilityMod();
-        this.dexterityModifier    = abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod();
-        this.wisdomModifier       = abilities.get(Constants.ABILITY.WISDOM).getAbilityMod();
+        this.constitutionModifier = abilities.get(ABILITY.CONSTITUTION).getAbilityMod();
+        this.dexterityModifier    = abilities.get(ABILITY.DEXTERITY).getAbilityMod();
+        this.wisdomModifier       = abilities.get(ABILITY.WISDOM).getAbilityMod();
 
         // 1. Wearing Armor
         if (isWearingArmor) {
-            switch (armorType) {
+            switch (armorKey) {
+                case SHIELD_ARMOR ->{
+                    shieldEquiped = true;
+                }
+                case UNARMORED -> {} // Unarmored is set via the remove armor method
                 case PADDED -> {
                     ac = 11 + dexterityModifier; stealthDisadvantage = true;
                 }
@@ -243,12 +253,12 @@ public class ArmorClass {
         setAC();
     }
 
-    public Constants.ARMOR_KEY getArmorType() {
-        return armorType;
+    public Constants.ARMOR_KEY getArmorKey() {
+        return armorKey;
     }
 
-    public void setArmorType(Constants.ARMOR_KEY armorType) {
-        this.armorType = armorType;
+    public void setArmorKey(Constants.ARMOR_KEY armorKey) {
+        this.armorKey = armorKey;
     }
 
     public boolean isStealthDisadvantage() {
@@ -259,8 +269,33 @@ public class ArmorClass {
         this.stealthDisadvantage = stealthDisadvantage;
     }
 
-    
-    
+    public ArmorAbstract getArmor() {
+        return armor;
+    }
+
+    public void setArmor(ArmorAbstract armor) {
+        if(armor.getArmorKey() == SHIELD_ARMOR){
+            this.shield = armor;
+        }else{
+            this.armor = armor;
+            this.armorKey = armor.getArmorKey();
+            setWearingArmor(true);
+        }
+        setAC();
+    }
+
+    public void removeArmor(){
+        this.armor = null;
+        this.armorKey = ARMOR_KEY.UNARMORED;
+    }
+
+    public ArmorAbstract getShield() {
+        return shield;
+    }
+
+    public void setShield(ArmorAbstract shield) {
+        this.shield = shield;
+    }
 
     
     

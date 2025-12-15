@@ -2,9 +2,9 @@ package alan.equipment.weapons;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.equipment.Weapon;
+import alan.equipment.WeaponAbstract;
 
-public class Battleaxe extends Weapon{
+public class Battleaxe extends WeaponAbstract{
 
     public Battleaxe(Creature wielder){
         super(wielder);

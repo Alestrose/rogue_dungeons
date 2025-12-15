@@ -61,7 +61,7 @@ public abstract class Creature {
     protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionEffects = new HashMap<>();
 
     // Inventory and Equipments
-    private Equipment equipment = new Equipment();
+    private Equipment equipment = new Equipment(this);
 
     // No Cell location Constructor
     public Creature(String name, String fileName, PlayerClass primaryClass){

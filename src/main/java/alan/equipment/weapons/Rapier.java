@@ -2,9 +2,9 @@ package alan.equipment.weapons;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.equipment.Weapon;
+import alan.equipment.WeaponAbstract;
 
-public class Rapier extends Weapon{
+public class Rapier extends WeaponAbstract{
 
     public Rapier(Creature wielder){
         super(wielder);

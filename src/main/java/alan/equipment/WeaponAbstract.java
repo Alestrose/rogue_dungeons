@@ -5,7 +5,7 @@ import alan.Constants.ABILITY;
 import alan.creatures.Creature;
 import alan.interfaces.DiceRoll;
 
-public abstract class Weapon extends Item implements DiceRoll{
+public abstract class WeaponAbstract extends Item implements DiceRoll{
 
     private Creature wielder;
     private Constants.WEAPON_KEY weaponKey;
@@ -49,7 +49,7 @@ public abstract class Weapon extends Item implements DiceRoll{
         setCost(.2);
      */
     
-    public Weapon(Creature wielder){
+    public WeaponAbstract(Creature wielder){
         this.wielder = wielder;
         setItemType(Constants.ITEM_TYPE.WEAPON);
     }

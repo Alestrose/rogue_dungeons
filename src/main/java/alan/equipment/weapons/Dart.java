@@ -2,9 +2,9 @@ package alan.equipment.weapons;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.equipment.Weapon;
+import alan.equipment.WeaponAbstract;
 
-public class Dart extends Weapon{
+public class Dart extends WeaponAbstract{
 
     public Dart(Creature wielder){
         super(wielder);

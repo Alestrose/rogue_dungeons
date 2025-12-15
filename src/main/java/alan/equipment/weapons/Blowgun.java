@@ -2,9 +2,9 @@ package alan.equipment.weapons;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.equipment.Weapon;
+import alan.equipment.WeaponAbstract;
 
-public class Blowgun extends Weapon{
+public class Blowgun extends WeaponAbstract{
 
     public Blowgun(Creature wielder){
         super(wielder);

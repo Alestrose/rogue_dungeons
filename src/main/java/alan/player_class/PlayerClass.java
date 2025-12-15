@@ -7,6 +7,26 @@ import java.util.Map;
 
 import alan.Constants;
 import alan.creatures.Creature;
+import alan.equipment.armor.ChainMail;
+import alan.equipment.armor.ChainShirt;
+import alan.equipment.armor.LeatherArmor;
+import alan.equipment.armor.ShieldArmor;
+import alan.equipment.armor.StuddedLeatherArmor;
+import alan.equipment.weapons.Dagger;
+import alan.equipment.weapons.Flail;
+import alan.equipment.weapons.Greataxe;
+import alan.equipment.weapons.Greatsword;
+import alan.equipment.weapons.Handaxe;
+import alan.equipment.weapons.Javelin;
+import alan.equipment.weapons.Longbow;
+import alan.equipment.weapons.Longsword;
+import alan.equipment.weapons.Mace;
+import alan.equipment.weapons.Quarterstaff;
+import alan.equipment.weapons.Scimitar;
+import alan.equipment.weapons.Shortbow;
+import alan.equipment.weapons.Shortsword;
+import alan.equipment.weapons.Sickle;
+import alan.equipment.weapons.Spear;
 import alan.player_class.features.FeatureAbstract;
 import alan.player_class.features.class_features.WeaponMastery;
 import alan.spells.SpellAbstract;
@@ -123,7 +143,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
-        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELDS);
 
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
@@ -137,7 +157,9 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
         owner.grantSkillProficiency(Constants.SKILL_KEY.SURVIVAL);
 
-       
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Greataxe(owner));
+        owner.getEquipment().addToInventory(new Handaxe(owner), 4);
     }
 
     public void setBardClass(){
@@ -162,6 +184,11 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantSkillProficiency(Constants.SKILL_KEY.PERFORMANCE);
         owner.grantSkillProficiency(Constants.SKILL_KEY.DECEPTION);
         owner.grantSkillProficiency(Constants.SKILL_KEY.PERSUASION);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Dagger(owner));
+        owner.getEquipment().addToInventory(new Dagger(owner), 1);
+        owner.getEquipment().setBody(new LeatherArmor());
 
         // Adding spells to classes spell map
         {
@@ -210,7 +237,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
-        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELDS);
 
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(13);
@@ -223,6 +250,11 @@ public class PlayerClass implements PlayerClassInterface{
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
         owner.grantSkillProficiency(Constants.SKILL_KEY.SURVIVAL);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Mace(owner));
+        owner.getEquipment().setOffHand(new ShieldArmor());
+        owner.getEquipment().setBody(new ChainShirt());
         
         // Adding spells to classes spell map
         {
@@ -261,7 +293,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantAbilityProficiency(Constants.ABILITY.INTELLIGENCE);
         owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.SIMPLE);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
-        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELDS);
         owner.grantLanguage(Constants.LANGUAGE.COMMON);
         owner.grantLanguage(Constants.LANGUAGE.DRUIDIC);
 
@@ -276,6 +308,11 @@ public class PlayerClass implements PlayerClassInterface{
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ANIMAL_HANDLING);
         owner.grantSkillProficiency(Constants.SKILL_KEY.NATURE);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Sickle(owner));
+        owner.getEquipment().setOffHand(new ShieldArmor());
+        owner.getEquipment().setBody(new LeatherArmor());
 
         // Adding spells to classes spell map
         {
@@ -323,7 +360,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.HEAVY);
-        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELDS);
         owner.grantLanguage(Constants.LANGUAGE.COMMON);
 
 
@@ -338,6 +375,12 @@ public class PlayerClass implements PlayerClassInterface{
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ACROBATICS);
         owner.grantSkillProficiency(Constants.SKILL_KEY.ATHLETICS);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Greatsword(owner));
+        owner.getEquipment().addToInventory(new Flail(owner), 1);
+        owner.getEquipment().addToInventory(new Javelin(owner), 8);
+        owner.getEquipment().setBody(new ChainMail());
     }
 
     public void setMonkClass(){
@@ -361,6 +404,10 @@ public class PlayerClass implements PlayerClassInterface{
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ACROBATICS);
         owner.grantSkillProficiency(Constants.SKILL_KEY.INSIGHT);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Spear(owner));
+        owner.getEquipment().addToInventory(new Dagger(owner), 5);
     }
 
     public void setPaladinClass(){
@@ -376,7 +423,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.HEAVY);
-        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELDS);
 
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(15);
@@ -389,6 +436,12 @@ public class PlayerClass implements PlayerClassInterface{
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.INSIGHT);
         owner.grantSkillProficiency(Constants.SKILL_KEY.MEDICINE);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Longsword(owner));
+        owner.getEquipment().setOffHand(new ShieldArmor());
+        owner.getEquipment().addToInventory(new Javelin(owner), 6);
+        owner.getEquipment().setBody(new ChainMail());
 
         // Adding spells to classes spell map
         {
@@ -422,7 +475,7 @@ public class PlayerClass implements PlayerClassInterface{
         owner.addWeaponProficiency(Constants.WEAPON_PROFICIENCY.MARTIAL);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.LIGHT);
         owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.MEDIUM);
-        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELD);
+        owner.addArmorProficiency(Constants.ARMOR_PROFICIENCY.SHIELDS);
 
         // Ability scores (standard array)
         owner.getAbilities().get(Constants.ABILITY.STRENGTH).setAbilityScore(8);
@@ -436,6 +489,12 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantSkillProficiency(Constants.SKILL_KEY.ANIMAL_HANDLING);
         owner.grantSkillProficiency(Constants.SKILL_KEY.NATURE);
         owner.grantSkillProficiency(Constants.SKILL_KEY.SURVIVAL);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Longbow(owner));
+        owner.getEquipment().addToInventory(new Shortbow(owner), 1);
+        owner.getEquipment().addToInventory(new Scimitar(owner), 1);
+        owner.getEquipment().setBody(new StuddedLeatherArmor());
 
         // Adding spells to classes spell map
         {
@@ -485,7 +544,11 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantSkillExpertise(Constants.SKILL_KEY.STEALTH);
         owner.grantSkillExpertise(Constants.SKILL_KEY.SLEIGHT_OF_HAND);
 
-        // Equipment
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Shortbow(owner));
+        owner.getEquipment().addToInventory(new Dagger(owner), 2);
+        owner.getEquipment().addToInventory(new Shortsword(owner), 1);
+        owner.getEquipment().setBody(new LeatherArmor());
 
     }
 
@@ -508,6 +571,10 @@ public class PlayerClass implements PlayerClassInterface{
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.ARCANA);
         owner.grantSkillProficiency(Constants.SKILL_KEY.DECEPTION);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Spear(owner));
+        owner.getEquipment().addToInventory(new Dagger(owner), 2);
         
         // Adding spells to classes spell map
         {
@@ -554,6 +621,11 @@ public class PlayerClass implements PlayerClassInterface{
         // Future choice
         owner.grantSkillProficiency(Constants.SKILL_KEY.INVESTIGATION);
         owner.grantSkillProficiency(Constants.SKILL_KEY.INTIMIDATION);
+
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Sickle(owner));
+        owner.getEquipment().addToInventory(new Dagger(owner), 2);
+        owner.getEquipment().setBody(new LeatherArmor());
 
         // Adding spells to classes spell map
         {
@@ -605,6 +677,10 @@ public class PlayerClass implements PlayerClassInterface{
         owner.grantSkillProficiency(Constants.SKILL_KEY.ARCANA);
         owner.grantSkillProficiency(Constants.SKILL_KEY.INSIGHT);
 
+        // Starting Equipment
+        owner.getEquipment().setMainHand(new Quarterstaff(owner));
+        owner.getEquipment().addToInventory(new Dagger(owner), 2);
+
         // Adding spells to classes spell map
         {
             wizardSpells.put(Constants.SPELL.ACID_SPLASH, new AcidSplash());
@@ -649,7 +725,7 @@ public class PlayerClass implements PlayerClassInterface{
             wizardSpells.put(Constants.SPELL.MAGIC_MISSILE, new MagicMissile());
             wizardSpells.put(Constants.SPELL.PROTECTION_FROM_EVIL_AND_GOOD, new ProtectionFromEvilAndGood());
             wizardSpells.put(Constants.SPELL.RAY_OF_FROST, new RayOfFrost());
-            wizardSpells.put(Constants.SPELL.SHILED, new Shield());
+            wizardSpells.put(Constants.SPELL.SHIELD, new Shield());
             wizardSpells.put(Constants.SPELL.SLEEP, new Sleep());
             wizardSpells.put(Constants.SPELL.TASHAS_HIDEOUS_LAUGHTER, new TashasHideousLaughter());
             wizardSpells.put(Constants.SPELL.THUNDERWAVE, new Thunderwave());

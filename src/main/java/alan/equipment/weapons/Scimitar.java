@@ -2,9 +2,9 @@ package alan.equipment.weapons;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.equipment.Weapon;
+import alan.equipment.WeaponAbstract;
 
-public class Scimitar extends Weapon{
+public class Scimitar extends WeaponAbstract{
 
     public Scimitar(Creature wielder){
         super(wielder);

@@ -1,111 +1,111 @@
 package alan.creatures;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
 
+import alan.equipment.ArmorAbstract;
 import alan.equipment.Item;
-import alan.equipment.Weapon;
+import alan.equipment.WeaponAbstract;
+import alan.equipment.armor.ShieldArmor;
 
 public class Equipment {
-    private final Deque<Item> inventory = new ArrayDeque<>();
-
-    private Weapon attackingWeapon;
-    private Weapon mainHand;
+    private final Map<Item, Integer> inventory = new HashMap<>();
+    private final Creature owner;
+    private WeaponAbstract attackingWeapon;
+    private WeaponAbstract mainHand;
     private Item offHand;
-    private Weapon ranged;
-    private Item body;
+    private WeaponAbstract ranged;
+    private ArmorAbstract body;
     private Item head;
     private Item cloak;
     private Item gloves;
     private Item boots;
 
-
-    public Equipment() {
-        
+    public Equipment(Creature owner) {
+        this.owner = owner;
     }
 
+    /*
+     *  Getters and Setters
+     */
 
-    public Deque<Item> getInventory() {
+    public Map<Item, Integer> getInventory() {
         return inventory;
     }
 
 
-    public Weapon getMainHand() {
+    public WeaponAbstract getMainHand() {
         return mainHand;
     }
 
-    public void setMainHand(Weapon mainHand) {
+    public void setMainHand(WeaponAbstract mainHand) {
         // Will display selection of items in invenotory
-        if (inventory.contains(mainHand)) {
+        if(!mainHand.isTwoHanded()){        // Equip one handed weapon to main hand
             if(this.mainHand != null){
-                inventory.add(this.mainHand);
+                addToInventory(this.mainHand, 1);
                 this.mainHand = mainHand;
-                inventory.remove(mainHand);
             }else{
                 this.mainHand = mainHand;
-                inventory.remove(mainHand);
             }
-        }else System.err.println(mainHand.getName() + " is not in players inventory");
+        }else{                              // Return offhand item to inventory, equip two handed weapon to main hand
+            if(this.mainHand != null){
+                addToInventory(this.mainHand, 1);
+                addToInventory(this.offHand, 1);
+                this.mainHand = mainHand;
+                this.offHand = null;
+            }else{
+                this.mainHand = mainHand;
+                addToInventory(this.offHand, 1);
+                this.offHand = null;
+            }
+        }
     }
-
 
     public Item getOffHand() {
         return offHand;
     }
 
-
     public void setOffHand(Item offHand) {
         // Will display selection of items in invenotory
-        if (inventory.contains(offHand)) {
-            if(this.offHand != null){
-                inventory.add(this.offHand);
-                this.offHand = offHand;
-                inventory.remove(offHand);
-            }else{
-                this.offHand = offHand;
-                inventory.remove(offHand);
-            }
-        }else System.err.println(offHand.getName() + " is not in players inventory");
+        if (offHand instanceof ShieldArmor shieldArmor) {
+            owner.getArmorClass().setShieldBonus(shieldArmor.getAcBonus());
+        }
+        if(this.offHand != null){
+            addToInventory(this.offHand, 1);
+            this.offHand = offHand;
+        }else{
+            this.offHand = offHand;
+        }
     }
 
-
-    public Weapon getRanged() {
+    public WeaponAbstract getRanged() {
         return ranged;
     }
 
-
-    public void setRanged(Weapon ranged) {
+    public void setRanged(WeaponAbstract ranged) {
         // Will display selection of items in invenotory
-        if (inventory.contains(ranged)) {
-            if(this.ranged != null){
-                inventory.add(this.ranged);
-                this.ranged = ranged;
-                inventory.remove(ranged);
-            }else{
-                this.ranged = ranged;
-                inventory.remove(ranged);
-            }
-        }else System.err.println(ranged.getName() + " is not in players inventory");
+        if(this.ranged != null){
+            addToInventory(this.ranged, 1);
+            this.ranged = ranged;
+        }else{
+            this.ranged = ranged;
+        }
     }
 
-
-    public Item getBody() {
+    public ArmorAbstract getBody() {
         return body;
     }
 
-
-    public void setBody(Item body) {
+    public void setBody(ArmorAbstract body) {
         // Will display selection of items in invenotory
-        if (inventory.contains(body)) {
-            if(this.body != null){
-                inventory.add(this.body);
-                this.body = body;
-                inventory.remove(body);
-            }else{
-                this.body = body;
-                inventory.remove(body);
-            }
-        }else System.err.println(body.getName() + " is not in players inventory");
+        if(this.body != null){
+            addToInventory(body, 1);
+            this.body = body;
+        }else{
+            this.body = body;
+        }
+        owner.getArmorClass().setWearingArmor(true);
+        owner.getArmorClass().setArmorKey(body.getArmorKey());
     }
 
 
@@ -113,88 +113,80 @@ public class Equipment {
         return head;
     }
 
-
     public void setHead(Item head) {
         // Will display selection of items in invenotory
-        if (inventory.contains(head)) {
-            if(this.head != null){
-                inventory.add(this.head);
-                this.head = head;
-                inventory.remove(head);
-            }else{
-                this.head = head;
-                inventory.remove(head);
-            }
-        }else System.err.println(head.getName() + " is not in players inventory");
+        if(this.head != null){
+            addToInventory(head, 1);
+            this.head = head;
+        }else{
+            this.head = head;
+        }
     }
-
 
     public Item getCloak() {
         return cloak;
     }
 
-
     public void setCloak(Item cloak) {
         // Will display selection of items in invenotory
-        if (inventory.contains(cloak)) {
-            if(this.cloak != null){
-                inventory.add(this.cloak);
-                this.cloak = cloak;
-                inventory.remove(cloak);
-            }else{
-                this.cloak = cloak;
-                inventory.remove(cloak);
-            }
-        }else System.err.println(cloak.getName() + " is not in players inventory");
+        if(this.cloak != null){
+            addToInventory(cloak, 1);
+            this.cloak = cloak;
+        }else{
+            this.cloak = cloak;
+        }
     }
-
 
     public Item getGloves() {
         return gloves;
     }
 
-
     public void setGloves(Item gloves) {
         // Will display selection of items in invenotory
-        if (inventory.contains(gloves)) {
-            if(this.gloves != null){
-                inventory.add(this.gloves);
-                this.gloves = gloves;
-                inventory.remove(gloves);
-            }else{
-                this.gloves = gloves;
-                inventory.remove(gloves);
-            }
-        }else System.err.println(gloves.getName() + " is not in players inventory");
+        if(this.gloves != null){
+            addToInventory(gloves,1);
+            this.gloves = gloves;
+        }else{
+            this.gloves = gloves;
+        }
     }
-
 
     public Item getBoots() {
         return boots;
     }
 
-
     public void setBoots(Item boots) {
         // Will display selection of items in invenotory
-        if (inventory.contains(boots)) {
-            if(this.boots != null){
-                inventory.add(this.boots);
-                this.boots = boots;
-                inventory.remove(boots);
-            }else{
-                this.boots = boots;
-                inventory.remove(boots);
-            }
-        }else System.err.println(boots.getName() + " is not in players inventory");
+        if(this.boots != null){
+            addToInventory(boots, 1);
+            this.boots = boots;
+        }else{
+            this.boots = boots;
+        }
     }
 
+    public void addToInventory(Item item, int quantity){
+        if (inventory.containsKey(item)) {
+            inventory.put(item, inventory.getOrDefault(item, quantity));
+        }
+        else{
+            inventory.put(item, quantity);
+        }
+    }
 
-    public Weapon getAttackingWeapon() {
+    public void removeFromInventory(Item item){
+        // If more there are more than one of that item: decrement, else remove item
+        if (inventory.containsKey(item)) {
+            inventory.computeIfPresent(item, (k, v) -> v > 1 ? v - 1 : null);
+        }
+        else System.err.println("Item was not found in inventory");
+    }
+
+    public WeaponAbstract getAttackingWeapon() {
         return attackingWeapon;
     }
 
-
-    public void setAttackingWeapon(Weapon attackingWeapon) {
+    public void setAttackingWeapon(WeaponAbstract attackingWeapon) {
         this.attackingWeapon = attackingWeapon;
     }
 

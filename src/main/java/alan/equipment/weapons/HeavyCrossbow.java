@@ -2,9 +2,9 @@ package alan.equipment.weapons;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.equipment.Weapon;
+import alan.equipment.WeaponAbstract;
 
-public class HeavyCrossbow extends Weapon{
+public class HeavyCrossbow extends WeaponAbstract{
 
     public HeavyCrossbow(Creature wielder){
         super(wielder);

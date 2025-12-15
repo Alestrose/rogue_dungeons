@@ -2,9 +2,9 @@ package alan.equipment.weapons;
 
 import alan.Constants;
 import alan.creatures.Creature;
-import alan.equipment.Weapon;
+import alan.equipment.WeaponAbstract;
 
-public class Sickle extends Weapon{
+public class Sickle extends WeaponAbstract{
 
     public Sickle(Creature wielder){
         super(wielder);

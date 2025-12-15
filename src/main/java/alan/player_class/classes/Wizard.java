@@ -35,7 +35,7 @@ public class Wizard extends PlayerClass{
 
         // Setting level one spells (will be done manualy on character building)
         // Spell Book
-        spellBook.put(Constants.SPELL.SHILED, new Shield());
+        spellBook.put(Constants.SPELL.SHIELD, new Shield());
         spellBook.put(Constants.SPELL.MAGIC_MISSILE, new MagicMissile());
         spellBook.put(Constants.SPELL.MAGE_ARMOR, new MageArmor());
         spellBook.put(Constants.SPELL.IDENTIFY, new Identify());
@@ -46,7 +46,7 @@ public class Wizard extends PlayerClass{
         preparedSpells.put(Constants.SPELL.LIGHT, new Light());
         preparedSpells.put(Constants.SPELL.FIRE_BOLT, new FireBolt());
         preparedSpells.put(Constants.SPELL.RAY_OF_FROST, new RayOfFrost());
-        preparedSpells.put(Constants.SPELL.SHILED, new Shield());
+        preparedSpells.put(Constants.SPELL.SHIELD, new Shield());
         preparedSpells.put(Constants.SPELL.MAGE_ARMOR, new MageArmor());
         preparedSpells.put(Constants.SPELL.MAGIC_MISSILE, new MagicMissile());
         preparedSpells.put(Constants.SPELL.TASHAS_HIDEOUS_LAUGHTER, new TashasHideousLaughter());

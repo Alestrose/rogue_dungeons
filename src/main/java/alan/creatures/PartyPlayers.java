@@ -7,9 +7,9 @@ import alan.grid_panel.Grid;
 import alan.player_class.classes.Barbarian;
 import alan.player_class.classes.Bard;
 import alan.player_class.classes.Cleric;
-import alan.player_class.classes.Druid;
-import alan.player_class.classes.Monk;
-import alan.player_class.classes.Paladin;
+import alan.player_class.classes.Sorcerer;
+import alan.player_class.classes.Warlock;
+import alan.player_class.classes.Wizard;
 import alan.races.Aasimar;
 import alan.races.Dragonborn;
 import alan.races.Dwarf;
@@ -62,7 +62,7 @@ public class PartyPlayers {
             "Drago", 
             "Ranger1.png", 
             grid.getCellArray()[1][11], 
-            new Druid(Constants.CLASS.DRUID, Constants.PRIMAL_ORDERS.MAGICIAN), 
+            new Warlock(Constants.CLASS.WARLOCK), 
             Dragonborn.DRACONIC_ANCESTRY.GREEN
         ));
 
@@ -70,14 +70,14 @@ public class PartyPlayers {
             "Alan",
             "Fighter1.png", 
             grid.getCellArray()[2][14], 
-            new Paladin(Constants.CLASS.PALADIN)
+            new Sorcerer(Constants.CLASS.SORCERER)
         ));
 
         party.add(new Gnome(
             "Gnomey", 
             "Ranger1.png", 
             grid.getCellArray()[2][4], 
-            new Monk(Constants.CLASS.MONK), 
+            new Wizard(Constants.CLASS.WIZARD), 
             Constants.ABILITY.WISDOM, 
             Gnome.GNOMISH_LINEAGE.ROCK
         ));
