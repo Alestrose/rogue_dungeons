@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
+import alan.features.class_features.FavoredEnemy;
+import alan.features.class_features.WeaponMastery;
 import alan.player_class.PlayerClass;
 import alan.player_class.SpellSlots;
-import alan.player_class.features.class_features.FavoredEnemy;
-import alan.player_class.features.class_features.WeaponMastery;
 import alan.spells.SpellAbstract;
 import alan.spells.level_one.FogCloud;
 import alan.spells.level_one.HuntersMark;

@@ -4,10 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 import alan.Constants;
+import alan.features.class_features.LayOnHands;
+import alan.features.class_features.WeaponMastery;
 import alan.player_class.PlayerClass;
 import alan.player_class.SpellSlots;
-import alan.player_class.features.class_features.LayOnHands;
-import alan.player_class.features.class_features.WeaponMastery;
 import alan.spells.SpellAbstract;
 import alan.spells.level_one.CureWounds;
 import alan.spells.level_one.DivineSmite;

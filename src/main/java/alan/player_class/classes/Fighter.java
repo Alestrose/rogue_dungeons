@@ -1,10 +1,10 @@
 package alan.player_class.classes;
 
 import alan.Constants;
+import alan.features.class_features.SecondWind;
+import alan.features.class_features.WeaponMastery;
+import alan.features.fighting_style_features.Defense;
 import alan.player_class.PlayerClass;
-import alan.player_class.features.class_features.SecondWind;
-import alan.player_class.features.class_features.WeaponMastery;
-import alan.player_class.features.fighting_style_features.Defense;
 
 
 public class Fighter extends PlayerClass{

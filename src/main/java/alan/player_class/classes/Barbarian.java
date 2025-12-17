@@ -1,10 +1,10 @@
 package alan.player_class.classes;
 
 import alan.Constants;
+import alan.features.class_features.Rage;
+import alan.features.class_features.UnarmoredDefense;
+import alan.features.class_features.WeaponMastery;
 import alan.player_class.PlayerClass;
-import alan.player_class.features.class_features.Rage;
-import alan.player_class.features.class_features.UnarmoredDefense;
-import alan.player_class.features.class_features.WeaponMastery;
 
 public class Barbarian extends PlayerClass{
 
