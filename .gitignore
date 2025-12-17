@@ -1,4 +1,5 @@
 /target/
+/VSCodeCounter/
 .classpath
 .project
 .settings/
