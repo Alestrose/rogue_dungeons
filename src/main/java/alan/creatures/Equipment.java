@@ -9,7 +9,7 @@ import alan.equipment.WeaponAbstract;
 import alan.equipment.armor.ShieldArmor;
 
 public class Equipment {
-    private final static Map<Item, Integer> inventory = new HashMap<>();
+    private final static Map<Item, Integer> IVENTORY = new HashMap<>();
     private final Creature owner;
     private WeaponAbstract attackingWeapon;
     private WeaponAbstract mainHand;
@@ -30,7 +30,7 @@ public class Equipment {
      */
 
     public Map<Item, Integer> getInventory() {
-        return inventory;
+        return IVENTORY;
     }
 
 
@@ -166,18 +166,18 @@ public class Equipment {
     }
 
     public void addToInventory(Item item, int quantity){
-        if (inventory.containsKey(item)) {
-            inventory.put(item, inventory.getOrDefault(item, quantity));
+        if (IVENTORY.containsKey(item)) {
+            IVENTORY.put(item, IVENTORY.getOrDefault(item, quantity));
         }
         else{
-            inventory.put(item, quantity);
+            IVENTORY.put(item, quantity);
         }
     }
 
     public void removeFromInventory(Item item){
         // If more there are more than one of that item: decrement, else remove item
-        if (inventory.containsKey(item)) {
-            inventory.computeIfPresent(item, (k, v) -> v > 1 ? v - 1 : null);
+        if (IVENTORY.containsKey(item)) {
+            IVENTORY.computeIfPresent(item, (k, v) -> v > 1 ? v - 1 : null);
         }
         else System.err.println("Item was not found in inventory");
     }
