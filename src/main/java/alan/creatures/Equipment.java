@@ -9,7 +9,7 @@ import alan.equipment.WeaponAbstract;
 import alan.equipment.armor.ShieldArmor;
 
 public class Equipment {
-    private final Map<Item, Integer> inventory = new HashMap<>();
+    private final static Map<Item, Integer> inventory = new HashMap<>();
     private final Creature owner;
     private WeaponAbstract attackingWeapon;
     private WeaponAbstract mainHand;
