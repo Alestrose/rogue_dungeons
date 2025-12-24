@@ -27,9 +27,11 @@ public class RayOfSickness extends SpellAbstract implements SpellInterface{
         levelSpellPrimaryDie(1, spellLevel);
         
         // If hit Ac deal damage
-        if(rollToHitACSpellAttack(target, caster)) target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        rollToHitAcMeleeSpellAttack(target, caster, getSavingThrow(), () -> target.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type));
         // If target fails constitution save, apply poisoned condition
-        if(!rollSpellSaveCheck(target, caster, getSavingThrow())) target.ApplyConditionEffect(Constants.CONDITION_KEY.POISONED, caster);
+        rollSpellSaveCheck(target, caster, getSavingThrow(),
+            () -> {},
+            () -> target.ApplyConditionEffect(Constants.CONDITION_KEY.POISONED, caster));
     }
 
     @Override

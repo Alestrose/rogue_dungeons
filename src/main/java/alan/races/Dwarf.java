@@ -36,7 +36,7 @@ public class Dwarf extends PlayableCharacter implements RaceInterface{
         // Darkvision
         setDarkVision(120);
         //Dwarven Resilience
-        grantResistance(Constants.DAMAGE_TYPE.POISON);
+        addResistance(Constants.DAMAGE_TYPE.POISON);
         grantConditionAdvantage(Constants.CONDITION_KEY.POISONED);
     }
 

@@ -5,6 +5,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import alan.Constants;
+import alan.Constants.DAMAGE_TYPE;
 import alan.player_class.PlayerClass;
 import alan.skills.Ability;
 import alan.skills.ConditionEffect;
@@ -55,9 +57,9 @@ public abstract class Creature {
     private ArrayList<Constants.ARMOR_PROFICIENCY> armorProficiencies = new ArrayList<>();
     
     // Resistances & Vulnerabilities
-    protected Map<Constants.DAMAGE_TYPE, Boolean> resistances = new HashMap<>();
-    protected Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities = new HashMap<>();
-    protected Map<Constants.DAMAGE_TYPE, Boolean> inVulnerabilities = new HashMap<>();
+    protected EnumSet<DAMAGE_TYPE> resistances = EnumSet.noneOf(DAMAGE_TYPE.class);
+    protected EnumSet<DAMAGE_TYPE> vulnerabilities = EnumSet.noneOf(DAMAGE_TYPE.class);
+    protected EnumSet<DAMAGE_TYPE> immunities = EnumSet.noneOf(DAMAGE_TYPE.class);
     protected Map<Constants.CONDITION_KEY, ConditionEffect> conditionEffects = new HashMap<>();
 
     // Inventory and Equipments
@@ -77,7 +79,6 @@ public abstract class Creature {
             System.out.println("file not found");
         }
 
-        setDefaultResistences();
         setDefaultConditionMap();
         setDefaultAbilities();
         setDefaultSkills();
@@ -111,7 +112,6 @@ public abstract class Creature {
             System.out.println("file not found");
         }
 
-        setDefaultResistences();
         setDefaultConditionMap();
         setDefaultAbilities();
         setDefaultSkills();
@@ -139,6 +139,39 @@ public abstract class Creature {
 
     }
 
+    public int applyDamage(int baseDamage, Constants.DAMAGE_TYPE type) {
+
+        if (baseDamage <= 0) return 0;
+
+        // 1. Immunity
+        if (immunities.contains(type)) return 0;
+
+        int finalDamage = baseDamage;
+
+        // 2. Resistance / Vulnerability
+        if (resistances.contains(type)) finalDamage /= 2;
+        else if (vulnerabilities.contains(type)) finalDamage *= 2;
+
+        // 3. Temporary HP absorbs damage first
+        if (tempHealth > 0) {
+            int absorbed = Math.min(tempHealth, finalDamage);
+            tempHealth -= absorbed;
+            finalDamage -= absorbed;
+        }
+
+        // 4. Apply remaining damage to HP
+        if (finalDamage > 0) damageHealth(finalDamage);
+        
+        // 5. Optional: trigger hooks
+        onDamageTaken(finalDamage, type);
+
+        return finalDamage;
+    }
+
+    private void onDamageTaken(@SuppressWarnings("unused") int finalDamage, @SuppressWarnings("unused") DAMAGE_TYPE type) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
     // Reduces health by int val
     public void damageHealth(int val){
         currentHealth -= val;
@@ -147,8 +180,11 @@ public abstract class Creature {
 
     // Increases health by int val
     public void healHealth(int val){
-        currentHealth += val;
-        if(currentHealth > maxHealth) currentHealth = maxHealth;
+        if (!conditionEffects.containsKey(Constants.CONDITION_KEY.CHILL_TOUCH)) {
+            currentHealth += val;
+            if(currentHealth > maxHealth) currentHealth = maxHealth;
+        }
+        
     }
 
     // For use in "GameManager.drawSprites()"
@@ -164,16 +200,22 @@ public abstract class Creature {
         languages.put(language, true);
     }
     
-    public void grantResistance(Constants.DAMAGE_TYPE resistanceName){
-        resistances.put(resistanceName, true);
+    public void addResistance(DAMAGE_TYPE type) {
+        immunities.remove(type);
+        vulnerabilities.remove(type);
+        resistances.add(type);
     }
 
-    public void grantDamageVulnerabilities(Constants.DAMAGE_TYPE vulnerabilityName){
-        vulnerabilities.put(vulnerabilityName, true);
+    public void addVulnerability(DAMAGE_TYPE type) {
+        immunities.remove(type);
+        resistances.remove(type);
+        vulnerabilities.add(type);
     }
 
-    public void grantDamageInVulnerabilities(Constants.DAMAGE_TYPE InVulnerabilityName){
-        inVulnerabilities.put(InVulnerabilityName, true);
+    public void addImmunity(DAMAGE_TYPE type) {
+        resistances.remove(type);
+        vulnerabilities.remove(type);
+        immunities.add(type);
     }
 
     // sets specified condition isActive bool to true AND sets sorceCaster to the creature that applied this effect
@@ -275,22 +317,6 @@ public abstract class Creature {
     }
 
     /*
-     * Each damage type key enum in Constants is added to the resistances, vulnerabilities and inVulnerabilities maps, and sets to false
-     * Also used to reset all resistances, vulnerabilities and inVulnerabilities
-     */
-    private void setDefaultResistences(){  
-        for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
-            resistances.put(type, false);
-        }
-        for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
-            vulnerabilities.put(type, false);
-        }
-        for (Constants.DAMAGE_TYPE type : Constants.DAMAGE_TYPE.values()) {
-            inVulnerabilities.put(type, false);
-        }
-    }
-
-    /*
      * Each condtion key enum in Constants is added to the condition map, as new condition effect object
      */
     private void setDefaultConditionMap(){
@@ -317,28 +343,24 @@ public abstract class Creature {
     
 
     /*
-     * Each skill key enum in Constants is added to the abilitiy map manually here, as new skill object
+     * Each skill key enum in Constants is added to the abilitiy map automatically here, as new skill object
      */
-    private void setDefaultSkills(){
-        skills.put(Constants.SKILL_KEY.ATHLETICS,       new Skill("athletics", abilities.get(Constants.ABILITY.STRENGTH).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.ACROBATICS,      new Skill("acrobatics", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.SLEIGHT_OF_HAND, new Skill("sleight of Hand", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.STEALTH,         new Skill("stealth", abilities.get(Constants.ABILITY.DEXTERITY).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.ARCANA,          new Skill("arcana", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.HISTORY,         new Skill("history", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.INVESTIGATION,   new Skill("investigation", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.NATURE,          new Skill("nature", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.RELIGION,        new Skill("religion", abilities.get(Constants.ABILITY.INTELLIGENCE).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.ANIMAL_HANDLING, new Skill("animal handling", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.INSIGHT,         new Skill("insight", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.MEDICINE,        new Skill("medicine", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.PERCEPTION,      new Skill("perception", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.SURVIVAL,        new Skill("survival", abilities.get(Constants.ABILITY.WISDOM).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.DECEPTION,       new Skill("deception", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.INTIMIDATION,    new Skill("intimidation", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.PERFORMANCE,     new Skill("performance", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
-        skills.put(Constants.SKILL_KEY.PERSUASION,      new Skill("persuasion", abilities.get(Constants.ABILITY.CHARISMA).getAbilityMod(), getProficiencyBonus()));
+    private void setDefaultSkills() {
+    for (Constants.SKILL_KEY key : Constants.SKILL_KEY.values()) {
+
+        Constants.ABILITY ability = key.getGoverningAbility();
+        int abilityMod = abilities.get(ability).getAbilityMod();
+
+        skills.put(
+            key,
+            new Skill(
+                key.name().toLowerCase().replace("_", " "),
+                abilityMod,
+                getProficiencyBonus()
+            )
+        );
     }
+}
 
     /*
      * Getters & Setters
@@ -468,20 +490,16 @@ public abstract class Creature {
         this.raceName = raceName;
     }
 
-    public Map<Constants.DAMAGE_TYPE, Boolean> getResistances() {
+    public EnumSet<Constants.DAMAGE_TYPE> getResistances() {
         return resistances;
     }
 
-    public void setResistances(Map<Constants.DAMAGE_TYPE, Boolean> resistances) {
-        this.resistances = resistances;
-    }
-
-    public Map<Constants.DAMAGE_TYPE, Boolean> getVulnerabilities() {
+    public  EnumSet<Constants.DAMAGE_TYPE> getVulnerabilities() {
         return vulnerabilities;
     }
 
-    public void setVulnerabilities(Map<Constants.DAMAGE_TYPE, Boolean> vulnerabilities) {
-        this.vulnerabilities = vulnerabilities;
+    public  EnumSet<Constants.DAMAGE_TYPE> getImunities() {
+        return immunities;
     }
 
     public Constants.CREATURE_SIZE getSize() {
@@ -503,14 +521,6 @@ public abstract class Creature {
 
     public int getSpellCastModifier(){
          return abilities.get(getSpellCastAbility()).getAbilityMod();
-    }
-
-    public Map<Constants.DAMAGE_TYPE, Boolean> getInVulnerabilities() {
-        return inVulnerabilities;
-    }
-
-    public void setInVulnerabilities(Map<Constants.DAMAGE_TYPE, Boolean> inVulnerabilities) {
-        this.inVulnerabilities = inVulnerabilities;
     }
 
     public Map<Constants.CONDITION_KEY, ConditionEffect> getConditionEffects() {
@@ -880,6 +890,8 @@ public abstract class Creature {
     public void setEquipment(Equipment equipment) {
         this.equipment = equipment;
     }
+
+    
 
     
 }

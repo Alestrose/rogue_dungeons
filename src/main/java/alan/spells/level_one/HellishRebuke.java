@@ -28,11 +28,9 @@ public class HellishRebuke extends SpellAbstract implements SpellInterface{
         levelSpellPrimaryDie(1, spellLevel);
         
         // Full damage on failed save
-        if(!rollSpellSaveCheck(target, caster, getSavingThrow())){
-            target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        }else{  // Half damage on success
-            target.damageHealth(((int)rollDamage(getDamageDie(), getQuantityOfDie()))/2);
-        }
+        rollSpellSaveCheck(target, caster, getSavingThrow(), 
+            () -> target.applyDamage(rollDamage(getSecondaryDamageDie(), getQuantityOfSecondaryDie())/2, damage_type), 
+            () -> target.applyDamage(rollDamage(getSecondaryDamageDie(), getQuantityOfSecondaryDie()), damage_type));
         
     }
 

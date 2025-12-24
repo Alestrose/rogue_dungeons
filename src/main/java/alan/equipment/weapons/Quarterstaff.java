@@ -13,9 +13,9 @@ public class Quarterstaff extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.BLUDGEONING);
         setMasterySkill(Constants.MASTERY_SKILL.TOPPLE);
-        setDamageDice(6);
-        setDamageDiceTwoHanded(8);
-        setDamageDiceQuantity(1);
+        setDamageDie(6);
+        setDamageDieTwoHanded(8);
+        setDamageDieQuantity(1);
         setReach(5);
         setRange(0);
         setVersitile(true);

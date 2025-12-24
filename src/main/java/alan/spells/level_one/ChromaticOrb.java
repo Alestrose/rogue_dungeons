@@ -25,7 +25,7 @@ public class ChromaticOrb extends SpellAbstract implements SpellInterface{
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         levelSpellPrimaryDie(1, spellLevel);
         
-        target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        target.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type);
         
     }
 

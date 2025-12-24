@@ -13,9 +13,9 @@ public class Greatsword extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.SLASHING);
         setMasterySkill(Constants.MASTERY_SKILL.GRAZE);
-        setDamageDice(6);
-        setDamageDiceTwoHanded(6);
-        setDamageDiceQuantity(2);
+        setDamageDie(6);
+        setDamageDieTwoHanded(6);
+        setDamageDieQuantity(2);
         setRange(0);
         setMartial(true);
         setMelee(true);

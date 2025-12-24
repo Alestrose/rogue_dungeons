@@ -3,6 +3,7 @@ package alan.spells.cantrips;
 import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
+import alan.equipment.WeaponAbstract;
 import alan.grid_panel.Cell;
 import alan.spells.SpellAbstract;
 import alan.spells.SpellInterface;
@@ -24,12 +25,10 @@ public class TrueStrike extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         // Default mellee attack
-        switch (caster.getPrimaryClass().getClassLevel()) {
-            case 5 -> {target.damageHealth(rollDamage(getDamageDie(), 1));}
-            case 11 -> {target.damageHealth(rollDamage(getDamageDie(), 2));}
-            case 17 -> {target.damageHealth(rollDamage(getDamageDie(), 3));}
-            default -> {}// Default mellee attack
-        }
+        WeaponAbstract attackingWeapon = caster.getEquipment().getAttackingWeapon();
+        // requires roll to hit melee
+        target.applyDamage(attackingWeapon.rollWeaponDamage(), damage_type);
+
         
     }
 
@@ -43,7 +42,12 @@ public class TrueStrike extends SpellAbstract implements SpellInterface{
 
     @Override
     public void onLevelUp(int lvl) {
-        // TODO Auto-generated method stub
+        switch (lvl) {
+            case 5 -> {setQuantityOfDie(2);}
+            case 11 -> {setQuantityOfDie(3);}
+            case 17 -> {setQuantityOfDie(4);}
+            default -> {}
+        }
         
     }
 

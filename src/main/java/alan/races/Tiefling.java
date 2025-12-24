@@ -40,13 +40,13 @@ public class Tiefling extends PlayableCharacter implements RaceInterface{
         //Fiendish Legacy
         switch (legacy) {
             case ABYSSAL -> {// get Poison Spray cantrip
-                grantResistance(Constants.DAMAGE_TYPE.POISON);
+                addResistance(Constants.DAMAGE_TYPE.POISON);
             }
             case CHTHONIC -> {// get Chill Touch cantrip
-                grantResistance(Constants.DAMAGE_TYPE.NECROTIC);
+                addResistance(Constants.DAMAGE_TYPE.NECROTIC);
             }
             case INFERNAL -> {// get Fire Bolt cantrip
-                grantResistance(Constants.DAMAGE_TYPE.FIRE);
+                addResistance(Constants.DAMAGE_TYPE.FIRE);
             }
             default -> throw new AssertionError();
         }

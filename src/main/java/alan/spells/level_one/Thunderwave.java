@@ -26,11 +26,9 @@ public class Thunderwave  extends SpellAbstract implements SpellInterface{
         levelSpellPrimaryDie(1, spellLevel);
 
         for (Creature creature : targetList) {
-            if(!rollSpellSaveCheck(target, caster, getSavingThrow())){
-                creature.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-            }else{
-                creature.damageHealth((int)(rollDamage(getDamageDie(), getQuantityOfDie()))/2);
-            }
+            rollSpellSaveCheck(target, caster, getSavingThrow(),
+                () -> creature.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type),
+                () -> creature.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type));
         }
         
     }

@@ -13,8 +13,8 @@ public class Sling extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.BLUDGEONING);
         setMasterySkill(Constants.MASTERY_SKILL.SLOW);
-        setDamageDice(4);
-        setDamageDiceQuantity(1);
+        setDamageDie(4);
+        setDamageDieQuantity(1);
         setSimple(true);
         setRanged(true);
         setReach(5);

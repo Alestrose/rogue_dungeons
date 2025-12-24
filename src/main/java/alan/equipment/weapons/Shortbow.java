@@ -13,9 +13,9 @@ public class Shortbow extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.PIERCING);
         setMasterySkill(Constants.MASTERY_SKILL.VEX);
-        setDamageDice(6);
-        setDamageDiceTwoHanded(6);
-        setDamageDiceQuantity(1);
+        setDamageDie(6);
+        setDamageDieTwoHanded(6);
+        setDamageDieQuantity(1);
         setSimple(true);
         setRanged(true);
         setReach(5);

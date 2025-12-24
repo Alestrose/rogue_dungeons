@@ -1,6 +1,7 @@
 package alan.features;
 
 import alan.Constants;
+import alan.Constants.ABILITY;
 import alan.Constants.DAMAGE_TYPE;
 import alan.creatures.Creature;
 import alan.creatures.PartyPlayers;
@@ -88,14 +89,26 @@ public abstract class FeatureAbstract implements DiceRoll, SpellInterface{
         return total;
     }
 
-    @Override       // Returns true if target specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
-    public boolean rollSpellSaveCheck(Creature target, Creature caster, Constants.ABILITY ability) {
-        return random.nextInt(20)+1 + target.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
+    @Override
+    public void rollSpellSaveCheck(Creature target, Creature caster, ABILITY ability, Runnable onSuccess,
+            Runnable onFail) {
+        // TODO Auto-generated method stub
+        
     }
 
-    @Override       // Returns true if casters spell attack bonus plus a random d20 is greater than or equal to targets AC
-    public boolean rollToHitACSpellAttack(Creature target, Creature caster) {
-        return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getArmorClass().getAC();
+    @Override
+    public int rollWeaponDamage() {
+        // TODO Auto-generated method stub
+        return 0;
+    }
+
+    @Override       // run affect if target spell attack bonus plus a random d20 is greater than or equal to targets AC
+    public void rollToHitAcMeleeSpellAttack(Creature target, Creature caster, Constants.ABILITY ability, Runnable onFail) {
+        boolean success = 
+        random.nextInt(20)+1 + caster.getSpellAttackBonus()                     // D20 plus spell attack bonus
+        >= target.getArmorClass().getAC();                                      // Against target armor class
+
+        if (!success) onFail.run();
     }
 
     @Override       // Returns true if casters attack bonus plus a random d20 is greater than or equal to targets AC

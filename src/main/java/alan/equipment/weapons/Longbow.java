@@ -13,9 +13,9 @@ public class Longbow extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.PIERCING);
         setMasterySkill(Constants.MASTERY_SKILL.SLOW);
-        setDamageDice(8);
-        setDamageDiceTwoHanded(8);
-        setDamageDiceQuantity(1);
+        setDamageDie(8);
+        setDamageDieTwoHanded(8);
+        setDamageDieQuantity(1);
         setRange(600);
         setHeavy(true);
         setTwoHanded(true);

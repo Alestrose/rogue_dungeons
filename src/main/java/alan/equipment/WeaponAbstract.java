@@ -11,9 +11,9 @@ public abstract class WeaponAbstract extends Item implements DiceRoll{
     private Constants.WEAPON_KEY weaponKey;
     private Constants.DAMAGE_TYPE weaponDamageType;
     private Constants.MASTERY_SKILL masterySkill;
-    private int damageDice;
-    private int damageDiceTwoHanded = 0;
-    private int damageDiceQuantity;
+    private int damageDie;
+    private int damageDieTwoHanded = 0;
+    private int damageDieQuantity;
     private int damageBonus = 0;
     private int reach;
     private int range;
@@ -55,41 +55,60 @@ public abstract class WeaponAbstract extends Item implements DiceRoll{
     }
 
     @Override
-    public int rollDamage(int damageDie, int quantityOfDie) {
-        int total = 0;
-        int modifier = wielder.getAbilities().get(Constants.ABILITY.STRENGTH).getAbilityMod();
+    public int rollWeaponDamage() {
+        int die = isTwoHanded ? damageDieTwoHanded : damageDie;
 
-        // If finesse weapon and dex > str, set modifier to dex modifier
+        int total = rollDice(die, damageDieQuantity);
+
+        return total
+                + damageBonus
+                + getDamageAbilityModifier();
+    }
+
+
+    private int getDamageAbilityModifier() {
         if (isPactWeapon) {
-            modifier = wielder.getAbilities().get(Constants.ABILITY.CHARISMA).getAbilityMod();
-        }
-        else if(isFinesse && 
-        wielder.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod() 
-        > wielder.getAbilities().get(Constants.ABILITY.STRENGTH).getAbilityMod()){
-            modifier = wielder.getAbilities().get(Constants.ABILITY.DEXTERITY).getAbilityMod();
+            return wielder.getAbilities()
+                    .get(Constants.ABILITY.CHARISMA)
+                    .getAbilityMod();
         }
 
-        if(isTwoHanded){
-            for (int i = 0; i < quantityOfDie; i++) {
-                total += random.nextInt(damageDiceTwoHanded) + 1;
-            }
-            return total + damageBonus + modifier;
-        }else{
-            for (int i = 0; i < quantityOfDie; i++) {
-                total += random.nextInt(damageDie) + 1;
-            }
-            return total + damageBonus + modifier;
+        int str = wielder.getAbilities()
+                .get(Constants.ABILITY.STRENGTH)
+                .getAbilityMod();
+
+        int dex = wielder.getAbilities()
+                .get(Constants.ABILITY.DEXTERITY)
+                .getAbilityMod();
+
+        if (isFinesse && dex > str) {
+            return dex;
         }
 
+        return str;
+    }
+
+    private int rollDice(int die, int count) {
+        int total = 0;
+        for (int i = 0; i < count; i++) {
+            total += random.nextInt(die) + 1;
+        }
+        return total;
     }
 
 
     @Override
-    public boolean rollSpellSaveCheck(Creature target, Creature caster, ABILITY ability) {
+    public int rollDamage(int damageDie, int quantityOfDie) {
         // TODO Auto-generated method stub
-        return false;
+        return 0;
     }
 
+    @Override
+    public void rollSpellSaveCheck(Creature target, Creature caster, ABILITY ability, Runnable onSuccess,
+            Runnable onFail) {
+        // TODO Auto-generated method stub
+        
+    }
 
     @Override
     public boolean rollToHitACRanged(Creature target, Creature caster) {
@@ -103,10 +122,13 @@ public abstract class WeaponAbstract extends Item implements DiceRoll{
         return false;
     }
 
-    @Override
-    public boolean rollToHitACSpellAttack(Creature target, Creature caster) {
-        // TODO Auto-generated method stub
-        return false;
+    @Override       // run affect if target spell attack bonus plus a random d20 is greater than or equal to targets AC
+    public void rollToHitAcMeleeSpellAttack(Creature target, Creature caster, Constants.ABILITY ability, Runnable onFail) {
+        boolean success = 
+        random.nextInt(20)+1 + caster.getSpellAttackBonus()                     // D20 plus spell attack bonus
+        >= target.getArmorClass().getAC();                                      // Against target armor class
+
+        if (!success) onFail.run();
     }
 
     /*
@@ -137,20 +159,20 @@ public abstract class WeaponAbstract extends Item implements DiceRoll{
         this.masterySkill = masterySkill;
     }
 
-    public int getDamageDice() {
-        return damageDice;
+    public int getDamageDie() {
+        return damageDie;
     }
 
-    public void setDamageDice(int damageDice) {
-        this.damageDice = damageDice;
+    public void setDamageDie(int damageDice) {
+        this.damageDie = damageDice;
     }
 
-    public int getDamageDiceQuantity() {
-        return damageDiceQuantity;
+    public int getDamageDieQuantity() {
+        return damageDieQuantity;
     }
 
-    public void setDamageDiceQuantity(int damageDiceQuantity) {
-        this.damageDiceQuantity = damageDiceQuantity;
+    public void setDamageDieQuantity(int damageDiceQuantity) {
+        this.damageDieQuantity = damageDiceQuantity;
     }
 
     public int getDamageBonus() {
@@ -233,12 +255,12 @@ public abstract class WeaponAbstract extends Item implements DiceRoll{
         this.isReach = isReach;
     }
 
-    public int getDamageDiceTwoHanded() {
-        return damageDiceTwoHanded;
+    public int getDamageDieTwoHanded() {
+        return damageDieTwoHanded;
     }
 
-    public void setDamageDiceTwoHanded(int damageDiceTwoHanded) {
-        this.damageDiceTwoHanded = damageDiceTwoHanded;
+    public void setDamageDieTwoHanded(int damageDiceTwoHanded) {
+        this.damageDieTwoHanded = damageDiceTwoHanded;
     }
 
     public Creature getWielder() {

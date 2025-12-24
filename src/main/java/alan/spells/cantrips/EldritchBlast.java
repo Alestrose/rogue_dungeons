@@ -25,7 +25,7 @@ public class EldritchBlast extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type, int spellLevel) {
         for (Creature c : targetList) {
-            c.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+            c.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type);
         }
     }
 

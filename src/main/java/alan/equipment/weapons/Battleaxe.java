@@ -13,9 +13,9 @@ public class Battleaxe extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.SLASHING);
         setMasterySkill(Constants.MASTERY_SKILL.TOPPLE);
-        setDamageDice(8);
-        setDamageDiceTwoHanded(10);
-        setDamageDiceQuantity(1);
+        setDamageDie(8);
+        setDamageDieTwoHanded(10);
+        setDamageDieQuantity(1);
         setMartial(true);
         setMelee(true);
         setReach(5);

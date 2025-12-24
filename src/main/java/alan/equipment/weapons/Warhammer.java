@@ -13,9 +13,9 @@ public class Warhammer extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.BLUDGEONING);
         setMasterySkill(Constants.MASTERY_SKILL.PUSH);
-        setDamageDice(8);
-        setDamageDiceTwoHanded(10);
-        setDamageDiceQuantity(1);
+        setDamageDie(8);
+        setDamageDieTwoHanded(10);
+        setDamageDieQuantity(1);
         setRange(0);
         setMartial(true);
         setMelee(true);

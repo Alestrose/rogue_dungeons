@@ -26,7 +26,7 @@ public class MagicMissile extends SpellAbstract implements SpellInterface{
         levelMultiCastHits(1, spellLevel);
 
         for (Creature creature : targetList) {
-            creature.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+            creature.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type);
         }
     }
 

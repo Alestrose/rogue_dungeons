@@ -28,15 +28,26 @@ public class WitchBolt  extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         levelSpellPrimaryDie(1, spellLevel);
-        
-        // If already linked to target, deal damage without to hit AC check
-        if(getWitchBoltLinked().equals(target)){
-            target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        }else if(rollToHitACSpellAttack(target, caster)){
-            target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-            setWitchBoltLinked(target);     // Links to target on hit
+
+        int damage = rollDamage(getDamageDie(), getQuantityOfDie());
+
+        if (target.equals(getWitchBoltLinked())) {
+            // Already linked → auto damage
+            target.applyDamage(damage, damage_type);
+        } else {
+            // New target → attack roll required
+            rollToHitAcMeleeSpellAttack(
+                target,
+                caster,
+                getSavingThrow(),
+                () -> {
+                    target.applyDamage(damage, damage_type);
+                    setWitchBoltLinked(target);
+                }
+            );
         }
     }
+
 
     @Override
     public String descreiption() {

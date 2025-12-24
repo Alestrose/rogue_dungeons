@@ -13,8 +13,8 @@ public class Pistol extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.PIERCING);
         setMasterySkill(Constants.MASTERY_SKILL.VEX);
-        setDamageDice(10);
-        setDamageDiceQuantity(1);
+        setDamageDie(10);
+        setDamageDieQuantity(1);
         setRange(90);
         setMartial(true);
         setRanged(true);

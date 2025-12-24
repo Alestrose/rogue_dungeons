@@ -28,13 +28,14 @@ public class SneakAttack extends FeatureAbstract{
 
         if(caster.isMelleeAttackRollAdvantage() && attackingWeapon.isMelee()){
             if(rollToHitACMellee(target, caster)) {
-                target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-                target.damageHealth(rollDamage(attackingWeapon.getDamageDice(), attackingWeapon.getDamageDiceQuantity()));
+                target.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type);
+                target.applyDamage(attackingWeapon.rollWeaponDamage(), damage_type);
+
             } else System.err.println("Missed");
         }else if (caster.isRangedAttackRollAdvantage() && attackingWeapon.isRanged()) {
             if(rollToHitACRanged(target, caster)) {
-                target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-                target.damageHealth(rollDamage(attackingWeapon.getDamageDice(), attackingWeapon.getDamageDiceQuantity()));
+                target.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type);
+                target.applyDamage(attackingWeapon.rollWeaponDamage(), damage_type);
             } else System.err.println("Missed");
         }else System.err.println("Must have advantage to sneak attack");
 

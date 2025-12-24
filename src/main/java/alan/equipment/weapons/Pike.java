@@ -13,9 +13,9 @@ public class Pike extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.PIERCING);
         setMasterySkill(Constants.MASTERY_SKILL.PUSH);
-        setDamageDice(10);
-        setDamageDiceTwoHanded(10);
-        setDamageDiceQuantity(1);
+        setDamageDie(10);
+        setDamageDieTwoHanded(10);
+        setDamageDieQuantity(1);
         setRange(0);
         setMartial(true);
         setMelee(true);

@@ -29,12 +29,12 @@ public class IceKnife extends SpellAbstract implements SpellInterface{
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         levelSpellSecondaryDie(1, spellLevel);
         
-        target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        target.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type);
         
         for (Creature creature : targetList) {
-            if(!rollSpellSaveCheck(creature, caster, getSavingThrow())){
-                creature.damageHealth(rollDamage(getSecondaryDamageDie(), getQuantityOfSecondaryDie()));
-            }
+            rollSpellSaveCheck(creature, caster, getSavingThrow(),
+                () -> {},
+                () -> creature.applyDamage(rollDamage(getSecondaryDamageDie(), getQuantityOfSecondaryDie()), damage_type));
         }
 
         

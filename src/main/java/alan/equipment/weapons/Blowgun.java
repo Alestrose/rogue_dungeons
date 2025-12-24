@@ -13,8 +13,8 @@ public class Blowgun extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.PIERCING);
         setMasterySkill(Constants.MASTERY_SKILL.VEX);
-        setDamageDice(1);
-        setDamageDiceQuantity(1);
+        setDamageDie(1);
+        setDamageDieQuantity(1);
         setRange(100);
         setMartial(true);
         setRanged(true);

@@ -25,7 +25,7 @@ public class WordOfRadiance extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         for (Creature creature : targetList) {
-            creature.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+            creature.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type);
         }
     }
 

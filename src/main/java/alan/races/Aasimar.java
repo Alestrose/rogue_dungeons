@@ -34,8 +34,8 @@ public class Aasimar extends PlayableCharacter implements RaceInterface{
         // Darkvision
         setDarkVision(60);
         // Celestial Resistance
-        grantResistance(Constants.DAMAGE_TYPE.NECROTIC);
-        grantResistance(Constants.DAMAGE_TYPE.RADIANT);
+        addResistance(Constants.DAMAGE_TYPE.NECROTIC);
+        addResistance(Constants.DAMAGE_TYPE.RADIANT);
         
     }
 

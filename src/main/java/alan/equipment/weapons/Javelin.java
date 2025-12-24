@@ -13,8 +13,8 @@ public class Javelin extends WeaponAbstract{
         setName(s.substring(0, 1).toUpperCase() + s.substring(1));
         setWeaponDamageType(Constants.DAMAGE_TYPE.PIERCING);
         setMasterySkill(Constants.MASTERY_SKILL.SLOW);
-        setDamageDice(6);
-        setDamageDiceQuantity(1);
+        setDamageDie(6);
+        setDamageDieQuantity(1);
         setSimple(true);
         setMelee(true);
         setReach(5);

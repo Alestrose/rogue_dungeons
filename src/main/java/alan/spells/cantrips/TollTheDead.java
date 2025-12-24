@@ -25,8 +25,8 @@ public class TollTheDead extends SpellAbstract implements SpellInterface{
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, DAMAGE_TYPE damage_type, int spellLevel) {
         if(target.getCurrentHealth() < target.getMaxHealth()){
-            target.damageHealth(rollDamage(getDamageDie()+4, getQuantityOfDie()));
-        }else target.damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+            target.applyDamage(rollDamage(getDamageDie()+4, getQuantityOfDie()), damage_type);
+        }else target.applyDamage(rollDamage(getDamageDie(), getQuantityOfDie()), damage_type);
     }
 
     @Override

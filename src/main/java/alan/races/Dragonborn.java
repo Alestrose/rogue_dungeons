@@ -40,16 +40,16 @@ public class Dragonborn extends PlayableCharacter implements RaceInterface{
 
         // Draconic Acestry
         switch (ancestry) {
-            case BLACK -> grantResistance(Constants.DAMAGE_TYPE.ACID);
-            case BLUE -> grantResistance(Constants.DAMAGE_TYPE.LIGHTNING);
-            case BRASS -> grantResistance(Constants.DAMAGE_TYPE.FIRE);
-            case BRONZE -> grantResistance(Constants.DAMAGE_TYPE.LIGHTNING);
-            case COPPER -> grantResistance(Constants.DAMAGE_TYPE.ACID);
-            case GOLD -> grantResistance(Constants.DAMAGE_TYPE.FIRE);
-            case GREEN -> grantResistance(Constants.DAMAGE_TYPE.POISON);
-            case RED -> grantResistance(Constants.DAMAGE_TYPE.FIRE);
-            case SILVER -> grantResistance(Constants.DAMAGE_TYPE.ICE);
-            case WHITE -> grantResistance(Constants.DAMAGE_TYPE.ICE);
+            case BLACK -> addResistance(Constants.DAMAGE_TYPE.ACID);
+            case BLUE -> addResistance(Constants.DAMAGE_TYPE.LIGHTNING);
+            case BRASS -> addResistance(Constants.DAMAGE_TYPE.FIRE);
+            case BRONZE -> addResistance(Constants.DAMAGE_TYPE.LIGHTNING);
+            case COPPER -> addResistance(Constants.DAMAGE_TYPE.ACID);
+            case GOLD -> addResistance(Constants.DAMAGE_TYPE.FIRE);
+            case GREEN -> addResistance(Constants.DAMAGE_TYPE.POISON);
+            case RED -> addResistance(Constants.DAMAGE_TYPE.FIRE);
+            case SILVER -> addResistance(Constants.DAMAGE_TYPE.ICE);
+            case WHITE -> addResistance(Constants.DAMAGE_TYPE.ICE);
             default -> throw new AssertionError();
         }
     }

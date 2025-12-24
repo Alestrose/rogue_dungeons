@@ -1,5 +1,8 @@
 package alan.spells;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import alan.Constants;
 import alan.Constants.DAMAGE_TYPE;
 import alan.Constants.SCHOOL;
@@ -42,6 +45,7 @@ public abstract class SpellAbstract implements DiceRoll{
     private int quantityOfSecondaryDie;             // Number of dice rolled for secondary damage type of spell
     private int quantityOfSecondaryDieIncrementer;  // Number of additional dice for secondary damage type added for each level spell is upcast
     private int multiCastHits;                      // Number of creatures the spell can target
+    private int aoeRadius;
     private short range;
     private boolean reaction = false;
     private boolean action = false;
@@ -80,26 +84,75 @@ public abstract class SpellAbstract implements DiceRoll{
         return total;
     }
 
-    @Override       // Returns true if target specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
-    public boolean rollSpellSaveCheck(Creature target, Creature caster, Constants.ABILITY ability) {
-        return random.nextInt(20)+1 + target.getAbilities().get(ability).getAbilityMod() >= caster.getSpellSaveDC();
+    @Override
+    public int rollWeaponDamage() {
+        // TODO Auto-generated method stub
+        return 0;
     }
 
-    @Override       // Returns true if target spell attack bonus plus a random d20 is greater than or equal to targets AC
-    public boolean rollToHitACSpellAttack(Creature target, Creature caster) {
-        return random.nextInt(20)+1 + caster.getSpellAttackBonus() >= target.getArmorClass().getAC();
+    @Override       // Returns true if target specified ability modifier plus a random d20 is greater than or equal to casters spell save DC
+    public void rollSpellSaveCheck(Creature target, Creature caster, Constants.ABILITY savingThrow, Runnable onSuccess, Runnable onFail) {
+        boolean success =
+            random.nextInt(20) + 1 + target.getAbilities().get(savingThrow).getAbilityMod() // D20 plus relevant saving throw bonus
+            >= caster.getSpellSaveDC();                                                     // Against casters spell save DC
+
+        if (success) {
+            onSuccess.run();
+        }else {
+            onFail.run();
+        }
+    }
+
+    @Override       // run affect if target spell attack bonus plus a random d20 is greater than or equal to targets AC
+    public void rollToHitAcMeleeSpellAttack(Creature target, Creature caster, Constants.ABILITY ability, Runnable onFail) {
+        boolean success = 
+        random.nextInt(20)+1 + caster.getSpellAttackBonus()                     // D20 plus spell attack bonus
+        >= target.getArmorClass().getAC();                                      // Against target armor class
+
+        if (!success) onFail.run();
     }
 
     @Override
     public boolean rollToHitACMellee(Creature target, Creature caster) {
         // TODO Auto-generated method stub
-        return false;
+        return random.nextInt(20)+1 + caster.getMelleeAttackRollBonus() >= target.getArmorClass().getAC();
     }
 
     @Override
     public boolean rollToHitACRanged(Creature target, Creature caster) {
         // TODO Auto-generated method stub
-        return false;
+        return random.nextInt(20)+1 + caster.getRangedAttackRollBonus() >= target.getArmorClass().getAC();
+    }
+
+    // Returns list of all targets in range of origin cell
+    public List<Creature> getAOEList(Cell originCell) {
+        int x = originCell.getX();
+        int y = originCell.getY();
+
+        int effectDistance = getAoeRadius() / 5;
+        List<Creature> targetsInRange = new ArrayList<>();
+
+        for (int dx = -effectDistance; dx <= effectDistance; dx++) {
+            for (int dy = -effectDistance; dy <= effectDistance; dy++) {
+
+                int nx = x + dx;
+                int ny = y + dy;
+
+                // Bounds check
+                if (nx < 0 || ny < 0 ||
+                    nx >= grid.getCellArray().length ||
+                    ny >= grid.getCellArray()[0].length) {
+                    continue;
+                }
+
+                Creature occupant = grid.getCellArray()[nx][ny].getOccupant();
+                if (occupant != null) {
+                    targetsInRange.add(occupant);
+                }
+            }
+        }
+
+        return targetsInRange;
     }
 
     // Sets quantity of aditional die for primary damage of leveled spell
@@ -397,6 +450,15 @@ public abstract class SpellAbstract implements DiceRoll{
         this.quantityOfSecondaryDieIncrementer = quantityOfSecondaryDieIncrementer;
     }
 
+    public int getAoeRadius() {
+        return aoeRadius;
+    }
+
+    public void setAoeRadius(int aoeRadius) {
+        this.aoeRadius = aoeRadius;
+    }
+
+    
     
     
     

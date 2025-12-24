@@ -20,23 +20,18 @@ public class AcidSplash extends SpellAbstract implements SpellInterface{
         setDamageDie(6);
         setQuantityOfDie(1);
         setSpellSave(true);
+        setAoeRadius(5);
     }
 
     @Override
     public void cast(Creature caster, Creature target, Creature[] targetList, Cell cell, Constants.DAMAGE_TYPE damage_type, int spellLevel) {
-        int x = cell.getX();
-        int y = cell.getY();
-
-        // This section for dealing area damage needs to be improved and implemented in DiceRoll interface
-        getGrid().getCellArray()[x][y].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x+1][y+1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x-1][y-1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x+1][y-1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x-1][y+1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x][y+1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x][y-1].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x+1][y].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
-        getGrid().getCellArray()[x-1][y].getOccupant().damageHealth(rollDamage(getDamageDie(), getQuantityOfDie()));
+        // Casts on all creatures in effect range that fail dex roll
+        for (Creature creature : getAOEList(cell)) {
+            rollSpellSaveCheck(target, caster, getSavingThrow(),
+                () -> {},
+                () -> creature.applyDamage(rollDamage(getSecondaryDamageDie(), getQuantityOfSecondaryDie()), damage_type));
+        }
+        
     }
 
     @Override
